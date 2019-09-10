@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mysql.demo</groupId>
-	<artifactId>mysql.demo</artifactId>
+	<artifactId>com.mysql.demo</artifactId>
 	<version>0.0.1-DEMO_TESTING</version>
 	<name>mysql.demo</name>
 	<description>Demo project for Spring Boot</description>
