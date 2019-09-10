@@ -6,5 +6,4 @@ import org.springframework.data.repository.CrudRepository;
 // CRUD refers Create, Read, Update, Delete
 
 public interface UserTypeRepository extends CrudRepository<UserType, String> {
-
 }
