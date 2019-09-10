@@ -1,7 +1,5 @@
 package com.mysql.demo;
 
-import org.springframework.data.rest.core.annotation.RestResource;
-
 import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class

@@ -9,11 +9,18 @@ public class Type {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer typeID;
 
-    @Column
     private String description;
 
-    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "type")
     private Set<UserType> userType;
+
+    public Type(){
+    }
+
+    public Type(int id, String desc){
+        this.typeID = id;
+        this.description = desc;
+    }
 
     public int getTypeID(){
         return this.typeID;
@@ -30,7 +37,5 @@ public class Type {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
 
 }

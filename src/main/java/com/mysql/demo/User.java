@@ -16,7 +16,7 @@ public class User {
     @Column(name = "email", unique = true)
     private String email;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user")
     private UserType userType;
 
     public Integer getUserID() {
