@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import com.csv_upload.demo.storage.StorageProperties;
 import com.csv_upload.demo.storage.StorageService;
 
-@SpringBootApplication
+//@SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
 public class Application {
 
