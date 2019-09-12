@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function usertypes() {
+            var userid_var = document.getElementById("userid").value;
+            $.ajax({
+                type: "POST",
+                url : '/usertypes',
+                data: { userid: userid_var },
+                success : function(data) {
+                    if(data){
+                        $('#result').html("User "+userid_var+" has type(s) "+"<br><hr>TypeID: "+ data.typeID+" Description: "+data.description);
+                    }else{
+                        $('#result').empty();
+                    }
+                }
+            });
+        }
+
+        function getusers() {
+            $.ajax({
+                type: "GET",
+                url : '/getuser',
+                success : function(data) {
+                    if(data[0]){
+                        jQuery.each(data, function(i, val) {
+                            $('#users').append("UserID: "+ val.userID+" Email: "+val.email+" Name: "+val.name+"<br>");
+                        });
+                    }else{
+                        $('#users').empty();
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body onload="getusers();">
+<div id="users"></div>
+<div align="center">
+    <div id="result"></div>
+    <br>
+    <input type="text" id="userid" />
+    <br>
+    <button onclick="usertypes()" id="getusertypes">Get User Types</button>
+</div>
+</body>
+</html>
+

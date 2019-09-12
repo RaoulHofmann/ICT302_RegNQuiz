@@ -2,6 +2,7 @@
 /home/raoul/Documents/GitHub/ICT302_RegNQuiz/src/main/java/com/csv_upload/demo/FileUploadController.java
 /home/raoul/Documents/GitHub/ICT302_RegNQuiz/src/main/java/com/mysql/demo/Application.java
 /home/raoul/Documents/GitHub/ICT302_RegNQuiz/src/main/java/com/csv_upload/demo/storage/StorageService.java
+/home/raoul/Documents/GitHub/ICT302_RegNQuiz/src/main/java/com/mysql/demo/UserQueryRepository.java
 /home/raoul/Documents/GitHub/ICT302_RegNQuiz/src/main/java/com/csv_upload/demo/FileUploadTests.java
 /home/raoul/Documents/GitHub/ICT302_RegNQuiz/src/main/java/com/csv_upload/demo/storage/StorageFileNotFoundException.java
 /home/raoul/Documents/GitHub/ICT302_RegNQuiz/src/main/java/com/mysql/demo/UserTypeRepository.java

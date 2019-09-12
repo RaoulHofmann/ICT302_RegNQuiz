@@ -1,17 +1,27 @@
 
 package com.mysql.demo;
 
+import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
+import java.util.Map;
 
 @Controller
-@RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
+@RequestMapping(path="/") // This means URL's start with /demo (after Application path)
 public class MainController {
     @Autowired
     private UserRepository userRepository;
@@ -28,7 +38,7 @@ public class MainController {
     }
 
     @PostMapping(path="/usertypes")
-    public @ResponseBody Iterable<Type> getUserTypes(@RequestParam int userid) {
+    public @ResponseBody Type getUserTypes(@RequestParam int userid) {
         return userTypeQueryRepository.getUserTypes(userid);
     }
 
@@ -89,4 +99,27 @@ public class MainController {
         }
         return "Saved";
     }
+
+    @PostMapping(path="/login")
+    public @ResponseBody Integer login(@RequestParam int userid, @RequestParam int password) {
+        try {
+            if (userRepository.countByUserIDAndUserType_Password(userid, password) == 1) {
+                return userTypeQueryRepository.getUserTypes(userid).getTypeID();
+            }
+        }catch(InvalidDataAccessResourceUsageException e){
+            return -2;
+        }
+        return -1;
+    }
+
+    @GetMapping(path="/student")
+    public View gotoStudent(HttpServletRequest request, HttpServletResponse response) {
+        return new RedirectView("/student.html", true);
+    }
+
+    @GetMapping(path="/staff")
+    public View gotoStaff(HttpServletRequest request, HttpServletResponse response) {
+        return new RedirectView("/staff.html", true);
+    }
+
 }
