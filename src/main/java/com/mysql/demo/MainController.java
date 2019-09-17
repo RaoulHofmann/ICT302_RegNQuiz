@@ -15,9 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -101,15 +104,17 @@ public class MainController {
     }
 
     @PostMapping(path="/login")
-    public @ResponseBody Integer login(@RequestParam int userid, @RequestParam int password) {
+    public @ResponseBody List<Integer> login(@RequestParam int userid, @RequestParam int password) {
+        List<Integer> user_info = new ArrayList<>();
         try {
             if (userRepository.countByUserIDAndUserType_Password(userid, password) == 1) {
-                return userTypeQueryRepository.getUserTypes(userid).getTypeID();
+                user_info.add(userTypeQueryRepository.getUserTypes(userid).getTypeID());
+                user_info.add(userRepository.findById(userid).get().getUserID());
             }
         }catch(InvalidDataAccessResourceUsageException e){
-            return -2;
+            user_info.add(-2);
         }
-        return -1;
+        return user_info;
     }
 
     @GetMapping(path="/student")
