@@ -90,9 +90,8 @@ public class MainController {
         // @RequestParam means it is a parameter from the GET or POST request
 
         User n = new User();
-        n.setName(name);
-        n.setEmail(email);
-        System.out.println("Email: "+n.getEmail()+" \nName: "+n.getName());
+        n.setGivenName(name);
+        System.out.println("Name: "+n.getGivenName());
 
         try {
             userRepository.save(n);
