@@ -11,6 +11,7 @@ import java.util.Date;
 /**
  *
  * @author Matthew MacLennan
+ * @version 1.1
  */
 @Entity
 public class Booking 
@@ -26,7 +27,14 @@ public class Booking
     private Venue venue;
     private User lecture;
     
-    public Booking() {}
+    public Booking() 
+    {
+        date = new Date();
+        unit = new Unit();
+        venue = new Venue();
+        lecture = new User();
+    }
+    
     public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture)
     {
         this.bookingID = id;
@@ -108,8 +116,10 @@ public class Booking
         this.lecture = lecture;
     }
     
+    /*
     public void generateAttendanceCode()
     {
         //TBD
     }
+*/
 }

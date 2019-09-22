@@ -9,29 +9,29 @@ package com.mysql.demo;
  *
  * @author Matthew MacLennan
  */
-public class SemesterTest 
+public class TypeTest 
 {
     public static void main(String args[])
     {
-        Semester a = new Semester();
+        Type a = new Type();
         display(a);
         
-        a.setSemID(1234);
+        a.setTypeID(1234);
         a.setDescription("test1");
         display(a);
         
-        Semester b = new Semester(4321, "test2");
+        Type b = new Type(4321, "test2");
         display(b);
         
-        b.setSemID(5678);
+        b.setTypeID(5678);
         b.setDescription("test3");
         display(b);
     }
     
-    public static void display(Semester s)
+    public static void display(Type t)
     {
-        System.out.println("Semseter ID: " + s.getSemID());
-        System.out.println("Description: " + s.getDescription());
+        System.out.println("Type ID: " + t.getTypeID());
+        System.out.println("Description: " + t.getDescription());
         System.out.println();
         System.out.println();
     }
