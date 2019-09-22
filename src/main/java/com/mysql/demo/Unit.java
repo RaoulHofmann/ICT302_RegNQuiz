@@ -9,8 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- *
- * @author Matthew MacLennan
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Contains unit information
  */
 @Entity
 public class Unit 

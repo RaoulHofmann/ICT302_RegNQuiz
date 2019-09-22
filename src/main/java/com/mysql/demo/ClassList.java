@@ -5,12 +5,18 @@
  */
 package com.mysql.demo;
 
+import javax.persistence.*;
+import java.util.Set;
 /**
- *
- * @author Matthew MacLennan
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Contains information about each class and student in it
  */
+@Entity
 public class ClassList 
 {
+    @Id
     private Integer classListID;
     private User student;
     private Booking booking;

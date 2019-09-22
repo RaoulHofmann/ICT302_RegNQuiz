@@ -6,8 +6,10 @@
 package com.mysql.demo;
 
 /**
- *
- * @author Matthew MacLennan
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Unit test for Semester
  */
 public class SemesterTest 
 {

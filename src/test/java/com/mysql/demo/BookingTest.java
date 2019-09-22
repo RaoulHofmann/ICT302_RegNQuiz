@@ -8,8 +8,10 @@ package com.mysql.demo;
 import java.util.Date;
 
 /**
- *
- * @author Matthew MacLennan
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Unit test for Booking
  */
 public class BookingTest 
 {

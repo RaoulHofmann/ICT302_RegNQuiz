@@ -9,9 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.Date;
 /**
- *
- * @author Matthew MacLennan
- * @version 1.1
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Contains booking information
  */
 @Entity
 public class Booking 

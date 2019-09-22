@@ -5,6 +5,12 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Contains user information
+ */
 @Entity // This tells Hibernate to make a table out of this class
 public class User 
 {
