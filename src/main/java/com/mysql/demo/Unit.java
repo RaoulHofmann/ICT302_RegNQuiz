@@ -25,7 +25,11 @@ public class Unit
     private Integer year;
     private User lecture;
     
-    public Unit() {}
+    public Unit() 
+    {
+        semester = new Semester();
+        lecture = new User();
+    }
     public Unit(Integer id, String unitCode, String unitName, Semester sem, Integer year, User lect)
     {
         this.unitID = id;
@@ -86,12 +90,12 @@ public class Unit
         this.year = year;
     }
     
-    public User getLectID()
+    public User getLecture()
     {
         return lecture;
     }
     
-    public void setLectID(User lect)
+    public void setLecture(User lect)
     {
         this.lecture = lect;
     }
