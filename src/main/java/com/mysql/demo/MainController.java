@@ -90,9 +90,8 @@ public class MainController {
         // @RequestParam means it is a parameter from the GET or POST request
 
         User n = new User();
-        n.setName(name);
-        n.setEmail(email);
-        System.out.println("Email: "+n.getEmail()+" \nName: "+n.getName());
+        n.setGivenName(name);
+        System.out.println("Name: "+n.getGivenName());
 
         try {
             userRepository.save(n);
@@ -104,13 +103,16 @@ public class MainController {
     }
 
     @PostMapping(path="/login")
-    public @ResponseBody List<Integer> login(@RequestParam int userid, @RequestParam int password) {
-        List<Integer> user_info = new ArrayList<>();
+    public @ResponseBody List<Object> login(@RequestParam int userid, @RequestParam int password) {
+        List<Object> user_info = new ArrayList<>();
         try {
-            if (userRepository.countByUserIDAndUserType_Password(userid, password) == 1) {
+            //if (userRepository.countByUserIDAndUserType_Password(userid, password) == 1) {
                 user_info.add(userTypeQueryRepository.getUserTypes(userid).getTypeID());
                 user_info.add(userRepository.findById(userid).get().getUserID());
-            }
+                user_info.add(userRepository.findById(userid).get().getGivenName());
+                user_info.add(userRepository.findById(userid).get().getLastName());
+                user_info.add(userRepository.findById(userid).get().getPrefName());
+            //}
         }catch(InvalidDataAccessResourceUsageException e){
             user_info.add(-2);
         }

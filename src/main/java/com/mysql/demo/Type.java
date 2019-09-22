@@ -22,7 +22,7 @@ public class Type {
         this.description = desc;
     }
 
-    public int getTypeID(){
+    public Integer getTypeID(){
         return this.typeID;
     }
 
