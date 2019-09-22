@@ -23,17 +23,17 @@ public class Unit
     private String unitName;
     private Semester semester;
     private Integer year;
-    private Integer lectureID;
+    private User lecture;
     
     public Unit() {}
-    public Unit(Integer id, String unitCode, String unitName, Semester sem, Integer year, Integer lectID)
+    public Unit(Integer id, String unitCode, String unitName, Semester sem, Integer year, User lect)
     {
         this.unitID = id;
         this.unitCode = unitCode;
         this.unitName = unitName;
         this.semester = sem;
         this.year = year;
-        this.lectureID = lectID;
+        this.lecture = lect;
     }
     
     public Integer getUnitID()
@@ -86,13 +86,13 @@ public class Unit
         this.year = year;
     }
     
-    public Integer getLectID()
+    public User getLectID()
     {
-        return lectureID;
+        return lecture;
     }
     
-    public void setLectID(Integer id)
+    public void setLectID(User lect)
     {
-        this.lectureID = id;
+        this.lecture = lect;
     }
 }
