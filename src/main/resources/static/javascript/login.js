@@ -23,8 +23,15 @@ function login()
         data: { userid: userName, password: password},
         success : function(data) {
             console.log(data);
-            var studentNo = data[1]; //asuming student number is the first element in json
-            document.getElementById("welcome").innerHTML = "Welcome " + studentNo;
+            var studentNo = data[1];
+            var firstName = data[2];
+            var lastName = data[3];
+            var prefName = data[4];
+            if(prefName != null){
+                document.getElementById("welcome").innerHTML = "Welcome " + prefName + " " + lastName + " your ID is " + studentNo;
+            }else{
+                document.getElementById("welcome").innerHTML = "Welcome " + firstName + " " + lastName + " your ID is " + studentNo;
+            }
             if(data[0] == 1){
                 document.getElementById("welcome").innerHTML += "<br><p style=\"color: red\">You are a Staff Member</p>";
             }else if(data[0] == 2){
