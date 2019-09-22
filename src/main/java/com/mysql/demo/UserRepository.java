@@ -7,6 +7,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
-    Long countByUserIDAndUserType_Password(Integer userid, Integer password);
-
+    //Long countByUserIDAndUserType_Password(Integer userid, Integer password);
 }

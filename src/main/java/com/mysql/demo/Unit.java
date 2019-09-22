@@ -21,9 +21,21 @@ public class Unit
     
     private String unitCode;
     private String unitName;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("semesterID")
+    @JoinColumn(name = "semesterID", referencedColumnName="semesterID")
     private Semester semester;
+
     private Integer year;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("lectureID")
+    @JoinColumn(name = "lectureID", referencedColumnName="userID")
     private User lecture;
+
+    @OneToMany(mappedBy = "unit")
+    private Set<Booking> bookings;
     
     public Unit() 
     {

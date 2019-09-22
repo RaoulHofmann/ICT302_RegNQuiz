@@ -18,7 +18,10 @@ public class Semester {
     private Integer semesterID;
     
     private String description;
-    
+
+    @OneToMany(mappedBy = "semester")
+    private Set<Unit> Unit;
+
     public Semester(){}
     public Semester(Integer id, String desc)
     {

@@ -1,7 +1,5 @@
 package com.mysql.demo;
 
-import org.springframework.data.rest.core.annotation.RestResource;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,6 +13,12 @@ public class User
     private String givenName;
     private String prefName;
     private String lastName;
+
+    @OneToMany(mappedBy = "lecture")
+    private Set<Unit> units;
+
+    @OneToMany(mappedBy = "lecture")
+    private Set<Booking> bookings;
     
     public User() {}
     public User(Integer id, String first, String pref, String last)

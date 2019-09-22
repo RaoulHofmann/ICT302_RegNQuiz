@@ -23,8 +23,20 @@ public class Booking
     private Date date;
     private Integer bookingLength;
     private String attendanceCode;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("unitID")
+    @JoinColumn(name = "unitID", referencedColumnName="unitID")
     private Unit unit;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("venueID")
+    @JoinColumn(name = "venueID", referencedColumnName="venueID")
     private Venue venue;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("lectureID")
+    @JoinColumn(name = "lectureID", referencedColumnName="userID")
     private User lecture;
     
     public Booking() 

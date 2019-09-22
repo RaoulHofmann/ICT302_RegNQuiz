@@ -3,6 +3,7 @@ package com.mysql.demo;
 //import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
+import java.util.Set;
 //import java.util.Set;
 
 
@@ -22,6 +23,9 @@ public class Venue {
     private int floor;
     private int room;
     private int capacity;
+
+    @OneToMany(mappedBy = "venue")
+    private Set<Booking> bookings;
     
     Venue()
     {
