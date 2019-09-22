@@ -28,9 +28,9 @@ function login()
             var lastName = data[3];
             var prefName = data[4];
             if(prefName != null){
-                document.getElementById("welcome").innerHTML = "Welcome " + prefName + " " + lastName + " your ID is" + studentNo;
+                document.getElementById("welcome").innerHTML = "Welcome " + prefName + " " + lastName + " your ID is " + studentNo;
             }else{
-                document.getElementById("welcome").innerHTML = "Welcome " + firstName + " " + lastName + " your ID is" + studentNo;
+                document.getElementById("welcome").innerHTML = "Welcome " + firstName + " " + lastName + " your ID is " + studentNo;
             }
             if(data[0] == 1){
                 document.getElementById("welcome").innerHTML += "<br><p style=\"color: red\">You are a Staff Member</p>";
@@ -48,9 +48,22 @@ function logout(){
     var welcome = document.getElementById("welcome_div");
     var login = document.getElementById("login_form");
     var logged_out_alert = document.getElementById("logged_out_alert");
+    var logged_out_danger = document.getElementById("logged_out_danger");
 
-    welcome.style.display = "none";
-    login.style.display = "block";
-    logged_out_alert.style.display = "block";
+    $.ajax({
+        type: "POST",
+        url : '/logout',
+        data: { },
+        success : function(data) {
+            if(data == 1){
+                welcome.style.display = "none";
+                login.style.display = "block";
+                logged_out_alert.style.display = "block";
+            }else{
+                logged_out_danger.style.display = "block";
+            }
+
+        }
+    });
 }
 

@@ -48,9 +48,22 @@ function logout(){
     var welcome = document.getElementById("welcome_div");
     var login = document.getElementById("login_form");
     var logged_out_alert = document.getElementById("logged_out_alert");
+    var logged_out_danger = document.getElementById("logged_out_danger");
 
-    welcome.style.display = "none";
-    login.style.display = "block";
-    logged_out_alert.style.display = "block";
+    $.ajax({
+        type: "POST",
+        url : '/logout',
+        data: { },
+        success : function(data) {
+            if(data == 1){
+                welcome.style.display = "none";
+                login.style.display = "block";
+                logged_out_alert.style.display = "block";
+            }else{
+                logged_out_danger.style.display = "block";
+            }
+
+        }
+    });
 }
 

@@ -16,8 +16,9 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -103,20 +104,41 @@ public class MainController {
     }
 
     @PostMapping(path="/login")
-    public @ResponseBody List<Object> login(@RequestParam int userid, @RequestParam int password) {
+    public @ResponseBody List<Object> login(@RequestParam int userid, @RequestParam int password, HttpServletRequest request) {
         List<Object> user_info = new ArrayList<>();
         try {
+            int userType = userTypeQueryRepository.getUserTypes(userid).getTypeID();
+            int userID = userRepository.findById(userid).get().getUserID();
             //if (userRepository.countByUserIDAndUserType_Password(userid, password) == 1) {
-                user_info.add(userTypeQueryRepository.getUserTypes(userid).getTypeID());
-                user_info.add(userRepository.findById(userid).get().getUserID());
+                HttpSession session = request.getSession();
+                session.setAttribute("sessionIdNo",session.getId());
+                session.setAttribute("userType",userType);
+                session.setAttribute("userID",userID);
+                user_info.add(userType);
+                user_info.add(userID);
                 user_info.add(userRepository.findById(userid).get().getGivenName());
                 user_info.add(userRepository.findById(userid).get().getLastName());
                 user_info.add(userRepository.findById(userid).get().getPrefName());
+                System.out.println("Session Login "+ session.getId());
+
             //}
         }catch(InvalidDataAccessResourceUsageException e){
             user_info.add(-2);
         }
         return user_info;
+    }
+
+    @PostMapping(path="/logout")
+    public @ResponseBody int logout(HttpServletRequest request) {
+
+        HttpSession session = request.getSession();
+
+        if(!session.getId().isEmpty()){
+            session.invalidate();
+            return 1;
+        }else{
+            return -1;
+        }
     }
 
     @GetMapping(path="/student")
