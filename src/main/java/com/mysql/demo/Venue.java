@@ -1,9 +1,9 @@
 package com.mysql.demo;
 
-import org.springframework.data.rest.core.annotation.RestResource;
+//import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
-import java.util.Set;
+//import java.util.Set;
 
 
 /**
@@ -15,7 +15,8 @@ import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Venue {
-   
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int venueID;
     private int building;
     private int floor;
