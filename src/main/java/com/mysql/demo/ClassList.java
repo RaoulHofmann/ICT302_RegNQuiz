@@ -23,7 +23,12 @@ public class ClassList
     private boolean internal;
     private boolean attendance;
     
-    public ClassList() {}
+    public ClassList() 
+    {
+        student = new User();
+        booking = new Booking();
+    }
+    
     public ClassList(Integer id, User student, Booking booking, boolean internal, boolean attendance)
     {
         this.classListID = id;
@@ -51,6 +56,16 @@ public class ClassList
     public void setStudent(User student)
     {
         this.student = student;
+    }
+    
+    public Booking getBooking()
+    {
+        return booking;
+    }
+    
+    public void setBooking(Booking booking)
+    {
+        this.booking = booking;
     }
     
     public boolean isInternal()
