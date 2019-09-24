@@ -24,7 +24,7 @@ public class UserType {
     public Integer getPassword() {
         return password;
     }
-
+    
     public void setPassword(int password) {
         this.password = password;
     }

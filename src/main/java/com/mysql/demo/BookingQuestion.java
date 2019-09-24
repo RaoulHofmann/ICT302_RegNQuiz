@@ -17,6 +17,7 @@ import java.util.Set;
 public class BookingQuestion 
 {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Booking booking;
     private Question question;
     

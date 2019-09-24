@@ -19,10 +19,12 @@ public class User
     private Integer userID;
 
     private String givenName;
+    @Column(name = "preferredName")
     private String prefName;
     private String lastName;
     
     public User() {}
+    
     public User(Integer id, String first, String pref, String last)
     {
         this.userID = id;

@@ -16,7 +16,7 @@ import java.util.Set;
 @Entity
 public class StudentAnswer 
 {
-    @Id // Not sure if this is correct?
+    @Id // This isn't right
     private User student;
     private Integer answer;
     
