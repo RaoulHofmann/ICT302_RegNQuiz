@@ -16,7 +16,12 @@ import java.util.Set;
 @Entity
 public class StudentAnswer 
 {
-    @Id // This isn't right
+    @EmbeddedId
+    StudentAnswerKey id;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("UserID")
+    @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User student;
     private Integer answer;
     

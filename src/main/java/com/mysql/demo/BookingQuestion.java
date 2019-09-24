@@ -16,9 +16,17 @@ import java.util.Set;
 @Entity
 public class BookingQuestion 
 {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @EmbeddedId
+    BookingQuestionKey id;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("BookingID")
+    @JoinColumn(name = "BookingID", referencedColumnName="bookingID")
     private Booking booking;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("QuestionID")
+    @JoinColumn(name = "QuestionID", referencedColumnName="questionID")
     private Question question;
     
     public BookingQuestion()

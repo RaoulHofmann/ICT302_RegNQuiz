@@ -21,10 +21,19 @@ public class Unit
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer unitID;
     
+    @Column(name = "code")
     private String unitCode;
     private String unitName;
-    private Semester semester;
     private Integer year;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("SemesterID")
+    @JoinColumn(name = "SemesterID", referencedColumnName="semesterID")
+    private Semester semester;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("UserID")
+    @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
     
     public Unit() 

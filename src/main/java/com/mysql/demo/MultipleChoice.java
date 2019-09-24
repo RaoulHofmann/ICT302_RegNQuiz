@@ -20,9 +20,13 @@ public class MultipleChoice
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer mcID;
-    private Question question;
     private Integer answer;
     private String description;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("QuestionID")
+    @JoinColumn(name = "QuestionID", referencedColumnName="questionID")
+    private Question question;
     
     public MultipleChoice()
     {

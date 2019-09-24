@@ -19,10 +19,19 @@ public class ClassList
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer classListID;
-    private User student;
-    private Booking booking;
     private boolean internal;
     private boolean attendance;
+    
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("UserID")
+    @JoinColumn(name = "UserID", referencedColumnName="userID")
+    private User student;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("BookingID")
+    @JoinColumn(name = "BookingID", referencedColumnName="bookingID")
+    private Booking booking;
     
     public ClassList() 
     {

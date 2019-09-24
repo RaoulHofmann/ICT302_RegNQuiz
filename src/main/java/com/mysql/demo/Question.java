@@ -22,8 +22,7 @@ public class Question
     private String description;
     private Integer time;
     private Integer answer;
-    
-    
+       
     public Question() {}
     public Question(String desc, Integer time, Integer answer)
     {

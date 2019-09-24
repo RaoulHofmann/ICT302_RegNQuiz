@@ -21,11 +21,25 @@ public class Booking
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer bookingID;
     
+    @Temporal(TemporalType.DATE)
     private Date date;
     private Integer bookingLength;
+    @Column(name = "accessCode")
     private String attendanceCode;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("UnitID")
+    @JoinColumn(name = "UnitID", referencedColumnName="unitID")
     private Unit unit;
+   
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("VenueID")
+    @JoinColumn(name = "VenueID", referencedColumnName="venueID")
     private Venue venue;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("UserID")
+    @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
     
     public Booking() 
