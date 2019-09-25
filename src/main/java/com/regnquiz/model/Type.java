@@ -1,4 +1,4 @@
-package com.regnquiz.classes;
+package com.regnquiz.model;
 
 import javax.persistence.*;
 import java.util.Set;

@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.regnquiz.classes;
+package com.regnquiz.model;
 
-import com.regnquiz.model.Venue;
-import com.regnquiz.model.VenueImport;
 import com.regnquiz.model.repositories.VenueRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

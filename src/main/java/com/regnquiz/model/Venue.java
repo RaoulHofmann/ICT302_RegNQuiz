@@ -1,4 +1,4 @@
-package com.regnquiz.classes;
+package com.regnquiz.model;
 
 //import org.springframework.data.rest.core.annotation.RestResource;
 

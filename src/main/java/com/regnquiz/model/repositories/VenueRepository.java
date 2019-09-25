@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.regnquiz.repositories;
+package com.regnquiz.model.repositories;
 
-import com.regnquiz.classes.Venue;
+import com.regnquiz.model.Venue;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

@@ -1,6 +1,6 @@
-package com.regnquiz.repositories;
+package com.regnquiz.model.repositories;
 
-import com.regnquiz.classes.UserType;
+import com.regnquiz.model.UserType;
 import org.springframework.data.repository.CrudRepository;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository

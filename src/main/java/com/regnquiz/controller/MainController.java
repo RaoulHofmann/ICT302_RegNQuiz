@@ -1,12 +1,12 @@
 
-package com.regnquiz;
+package com.regnquiz.controller;
 
-import com.regnquiz.classes.Type;
-import com.regnquiz.classes.User;
-import com.regnquiz.repositories.TypeRepository;
-import com.regnquiz.repositories.UserRepository;
-import com.regnquiz.repositories.UserTypeQueryRepository;
-import com.regnquiz.repositories.UserTypeRepository;
+import com.regnquiz.model.Type;
+import com.regnquiz.model.User;
+import com.regnquiz.model.repositories.TypeRepository;
+import com.regnquiz.model.repositories.UserRepository;
+import com.regnquiz.model.repositories.UserTypeQueryRepository;
+import com.regnquiz.model.repositories.UserTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;

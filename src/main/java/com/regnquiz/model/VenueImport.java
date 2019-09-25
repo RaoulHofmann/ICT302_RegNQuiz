@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.regnquiz.classes;
+package com.regnquiz.model;
 
 import java.io.IOException;
 
-import com.regnquiz.repositories.VenueRepository;
+import com.regnquiz.model.repositories.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import java.nio.file.Files;

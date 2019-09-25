@@ -1,7 +1,7 @@
-package com.regnquiz.repositories;
+package com.regnquiz.model.repositories;
 
-import com.regnquiz.classes.Type;
-import com.regnquiz.classes.UserType;
+import com.regnquiz.model.Type;
+import com.regnquiz.model.UserType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

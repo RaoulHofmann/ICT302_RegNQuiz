@@ -1,6 +1,6 @@
-package com.regnquiz.repositories;
+package com.regnquiz.model.repositories;
 
-import com.regnquiz.classes.User;
+import com.regnquiz.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
