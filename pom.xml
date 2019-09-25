@@ -8,11 +8,11 @@
 		<version>2.1.7.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.mysql</groupId>
-	<artifactId>demo</artifactId>
-	<version>0.0.1-DEMO_TESTING</version>
-	<name>com.mysql.demo</name>
-	<description>Demo project for Spring Boot</description>
+	<groupId>com.regnquiz</groupId>
+	<artifactId>REG_N_QUIZ</artifactId>
+	<version>1-REGNQUIZ</version>
+	<name>com.regnquiz</name>
+	<description>Class Registration and Quizes Project for ICT302</description>
 
 	<properties>
 		<java.version>11</java.version>
