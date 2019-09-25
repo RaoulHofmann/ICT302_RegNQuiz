@@ -16,6 +16,9 @@ public class User
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("UserID")
+    @JoinColumn(name = "UserID", referencedColumnName="userID")
     private Integer userID;
 
     private String givenName;

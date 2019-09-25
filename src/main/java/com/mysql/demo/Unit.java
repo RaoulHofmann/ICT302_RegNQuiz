@@ -19,6 +19,9 @@ public class Unit
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("unitID")
+    @JoinColumn(name = "unitID", referencedColumnName="unitID")
     private Integer unitID;
     
     @Column(name = "code")

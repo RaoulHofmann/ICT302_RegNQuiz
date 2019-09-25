@@ -19,6 +19,9 @@ public class Booking
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("bookingID")
+    @JoinColumn(name = "bookingID", referencedColumnName="bookingID")
     private Integer bookingID;
     
     @Temporal(TemporalType.DATE)
