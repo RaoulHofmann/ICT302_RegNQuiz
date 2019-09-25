@@ -5,7 +5,7 @@
  */
 package com.regnquiz.classes;
 
-import com.regnquiz.classes.Venue;
+import com.regnquiz.model.Venue;
 
 /**
  *

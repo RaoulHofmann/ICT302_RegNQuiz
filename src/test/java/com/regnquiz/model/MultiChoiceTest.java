@@ -5,8 +5,8 @@
  */
 package com.regnquiz.classes;
 
-import com.regnquiz.classes.MultipleChoice;
-import com.regnquiz.classes.Question;
+import com.regnquiz.model.MultipleChoice;
+import com.regnquiz.model.Question;
 
 /**
  * Author: Matthew MacLennan

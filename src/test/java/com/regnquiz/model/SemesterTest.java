@@ -5,7 +5,7 @@
  */
 package com.regnquiz.classes;
 
-import com.regnquiz.classes.Semester;
+import com.regnquiz.model.Semester;
 
 /**
  * Author: Matthew MacLennan

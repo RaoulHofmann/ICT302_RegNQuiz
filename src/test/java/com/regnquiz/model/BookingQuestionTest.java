@@ -5,7 +5,7 @@
  */
 package com.regnquiz.classes;
 
-import com.regnquiz.classes.*;
+import com.regnquiz.model.*;
 
 import java.util.Date;
 /**

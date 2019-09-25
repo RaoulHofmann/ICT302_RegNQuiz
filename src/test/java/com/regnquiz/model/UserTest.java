@@ -5,7 +5,7 @@
  */
 package com.regnquiz.classes;
 
-import com.regnquiz.classes.User;
+import com.regnquiz.model.User;
 
 /**
  * Author: Matthew MacLennan

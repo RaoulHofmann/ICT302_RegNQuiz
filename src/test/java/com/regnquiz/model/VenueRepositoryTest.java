@@ -5,8 +5,8 @@
  */
 package com.regnquiz.classes;
 
-import com.regnquiz.classes.Venue;
-import com.regnquiz.repositories.VenueRepository;
+import com.regnquiz.model.Venue;
+import com.regnquiz.model.repositories.VenueRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
