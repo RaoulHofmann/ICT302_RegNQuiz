@@ -1,0 +1,53 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.regnquiz.model;
+
+import javax.persistence.*;
+import java.util.Set;
+/**
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Contains semester data
+ */
+@Entity
+public class Semester {
+    @Id
+    @GeneratedValue (strategy=GenerationType.AUTO)
+    private Integer semesterID;
+    
+    private String description;
+
+    @OneToMany(mappedBy = "semester")
+    private Set<Unit> Unit;
+
+    public Semester(){}
+    public Semester(Integer id, String desc)
+    {
+        this.semesterID = id;
+        this.description = desc;
+    }
+    
+    public Integer getSemID()
+    {
+        return semesterID;
+    }
+    
+    public void setSemID(Integer id)
+    {
+        this.semesterID = id;
+    }
+    
+    public String getDescription()
+    {
+        return description;
+    }
+    
+    public void setDescription(String desc)
+    {
+        this.description = desc;
+    }
+}
