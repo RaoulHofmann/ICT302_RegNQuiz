@@ -11,6 +11,9 @@
     <script type="text/javascript" src="javascript/timer.js"></script>
   </head>
   <body>
+      <div>
+          <label class ="displayAccessCode" id="displayAccessCode">Access Code: </label>
+      </div>
  	<p class="timer">Time will end in <span class="js-timeout" id="js-timeout">2:00</span></p><br/>  
 	<form method="post"  action="" >
         <label name = "question" id = "question">Question topic displaying </label><br /><br/>
@@ -24,8 +27,10 @@
             </ul>
         </label>    
         <br/>
-		<input type ="submit" id="submitButton" value="Submit" />   <br/>
 	</form>
+        <div>
+            <label id="displayAnsweredNumber">Student answered: xx/ total </label>
+        </div>
  
  </body>
 </html>
