@@ -7,33 +7,37 @@ package com.mysql.demo;
 
 /**
  * Author: Matthew MacLennan
- * Date: 22/9/2019
+ * Date: 23/9/2019
  * Version: 1
- * Comment: Unit test for Semester
+ * Comment: Unit test for Question
  */
-public class SemesterTest 
+public class QuestionTest 
 {
     public static void main(String args[])
     {
-        Semester a = new Semester();
+        Question a = new Question();
         display(a);
         
-        a.setSemID(1234);
         a.setDescription("test1");
+        a.setTime(1234);
+        a.setAnswer(4321);
         display(a);
         
-        Semester b = new Semester(4321, "test2");
+        Question b = new Question("test2", 5678, 8765);
         display(b);
         
-        b.setSemID(5678);
         b.setDescription("test3");
+        b.setTime(9012);
+        b.setAnswer(2109);
         display(b);
     }
     
-    public static void display(Semester s)
+    public static void display(Question q)
     {
-        System.out.println("Semseter ID: " + s.getSemID());
-        System.out.println("Description: " + s.getDescription());
+        System.out.println("Question ID: " + q.getQID());
+        System.out.println("Description: " + q.getDescription());
+        System.out.println("Time: " + q.getTime());
+        System.out.println("Answer: " + q.getAnswer());
         System.out.println();
         System.out.println();
     }

@@ -9,8 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- *
- * @author Matthew MacLennan
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Contains unit information
  */
 @Entity
 public class Unit 
@@ -19,19 +21,19 @@ public class Unit
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer unitID;
     
+    @Column(name = "code")
     private String unitCode;
     private String unitName;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("semesterID")
-    @JoinColumn(name = "semesterID", referencedColumnName="semesterID")
-    private Semester semester;
-
     private Integer year;
-
+    
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("lectureID")
-    @JoinColumn(name = "lectureID", referencedColumnName="userID")
+    @MapsId("SemesterID")
+    @JoinColumn(name = "SemesterID", referencedColumnName="semesterID")
+    private Semester semester;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("UserID")
+    @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
 
     @OneToMany(mappedBy = "unit")

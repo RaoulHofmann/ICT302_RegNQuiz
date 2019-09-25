@@ -9,9 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.Date;
 /**
- *
- * @author Matthew MacLennan
- * @version 1.1
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Contains booking information
  */
 @Entity
 public class Booking 
@@ -20,23 +21,25 @@ public class Booking
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer bookingID;
     
+    @Temporal(TemporalType.DATE)
     private Date date;
     private Integer bookingLength;
+    @Column(name = "accessCode")
     private String attendanceCode;
-
+    
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("unitID")
-    @JoinColumn(name = "unitID", referencedColumnName="unitID")
+    @MapsId("UnitID")
+    @JoinColumn(name = "UnitID", referencedColumnName="unitID")
     private Unit unit;
-
+   
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("venueID")
-    @JoinColumn(name = "venueID", referencedColumnName="venueID")
+    @MapsId("VenueID")
+    @JoinColumn(name = "VenueID", referencedColumnName="venueID")
     private Venue venue;
-
+    
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("lectureID")
-    @JoinColumn(name = "lectureID", referencedColumnName="userID")
+    @MapsId("UserID")
+    @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
     
     public Booking() 

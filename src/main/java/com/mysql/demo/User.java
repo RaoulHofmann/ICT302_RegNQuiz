@@ -3,6 +3,12 @@ package com.mysql.demo;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Contains user information
+ */
 @Entity // This tells Hibernate to make a table out of this class
 public class User 
 {
@@ -11,6 +17,7 @@ public class User
     private Integer userID;
 
     private String givenName;
+    @Column(name = "preferredName")
     private String prefName;
     private String lastName;
 
@@ -21,6 +28,7 @@ public class User
     private Set<Booking> bookings;
     
     public User() {}
+    
     public User(Integer id, String first, String pref, String last)
     {
         this.userID = id;

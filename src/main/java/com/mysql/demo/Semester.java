@@ -8,8 +8,10 @@ package com.mysql.demo;
 import javax.persistence.*;
 import java.util.Set;
 /**
- *
- * @author Matthew MacLennan
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Contains semester data
  */
 @Entity
 public class Semester {
