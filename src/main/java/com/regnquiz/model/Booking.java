@@ -7,6 +7,7 @@ package com.regnquiz.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 /**
  * Author: Matthew MacLennan
  * Date: 22/9/2019
@@ -40,6 +41,9 @@ public class Booking
     @MapsId("UserID")
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
+
+    @OneToMany(mappedBy = "booking")
+    private Set<ClassList> classList;
     
     public Booking() 
     {

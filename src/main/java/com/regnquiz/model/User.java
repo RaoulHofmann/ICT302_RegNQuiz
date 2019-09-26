@@ -27,6 +27,15 @@ public class User
     @OneToMany(mappedBy = "lecture")
     private Set<Booking> bookings;
     
+    @OneToMany(mappedBy = "student")
+    private Set<ClassList> classList;
+    
+    @OneToMany(mappedBy = "student")
+    private Set<StudentAnswer> studentAnswer;
+    
+    @OneToMany(mappedBy = "user")
+    private Set<UserType> userType;
+    
     public User() {}
     
     public User(Integer id, String first, String pref, String last)
