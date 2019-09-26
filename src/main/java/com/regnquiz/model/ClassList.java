@@ -5,7 +5,11 @@
  */
 package com.regnquiz.model;
 
+import com.regnquiz.model.repositories.BookingRepository;
+import com.regnquiz.model.repositories.UserRepository;
+import java.util.Optional;
 import javax.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Author: Matthew MacLennan
@@ -16,6 +20,11 @@ import javax.persistence.*;
 @Entity
 public class ClassList 
 {
+    @Autowired
+    private UserRepository userRepository;
+   // @Autowired
+    //private BookingRepository bookingRepository;
+    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer classListID;
@@ -24,19 +33,20 @@ public class ClassList
     
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("UserID")
-    @JoinColumn(name = "UserID", referencedColumnName="userID")
+    @MapsId("studentID")
+    @JoinColumn(name = "studentID", referencedColumnName="userID")
     private User student;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("BookingID")
-    @JoinColumn(name = "BookingID", referencedColumnName="bookingID")
+    @MapsId("bookingID")
+    @JoinColumn(name = "bookingID", referencedColumnName="bookingID")
     private Booking booking;
     
     public ClassList() 
     {
         student = new User();
         booking = new Booking();
+        
     }
     
     public ClassList(Integer id, User student, Booking booking, boolean internal, boolean attendance)
@@ -46,6 +56,21 @@ public class ClassList
         this.booking = booking;
         this.internal = internal;
         this.attendance = attendance;
+        
+    }
+    
+    //This class is used with the findById repository call
+    public ClassList(Integer id, Integer student, Integer booking, boolean internal, boolean attendance)
+    {
+        this.classListID = id;
+        Optional<User> u = userRepository.findById(student);
+        //this.student = u.get();
+        //Optional<Booking> b = bookingRepository.findById(booking);
+        //this.booking = b.get();
+        
+        this.internal = internal;
+        this.attendance = attendance;
+        
     }
     
     public Integer getClassListID()
