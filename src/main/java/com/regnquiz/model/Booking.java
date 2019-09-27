@@ -11,8 +11,9 @@ import java.util.Set;
 /**
  * Author: Matthew MacLennan
  * Date: 22/9/2019
- * Version: 1
+ * Version: 1.1
  * Comment: Contains booking information
+ * Changes: Added classList, updated constructor, added gets+sets+adds
  */
 @Entity
 public class Booking 
@@ -53,7 +54,7 @@ public class Booking
         lecture = new User();
     }
     
-    public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture)
+    public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, Set<ClassList> classList)
     {
         this.bookingID = id;
         this. date = date;
@@ -62,6 +63,7 @@ public class Booking
         this.unit = unit;
         this.venue = venue;
         this.lecture = lecture;
+        this.classList = classList;
     }
     
     public Integer getBookingID()
@@ -132,6 +134,31 @@ public class Booking
     public void setLecture(User lecture)
     {
         this.lecture = lecture;
+    }
+    
+    public Set<ClassList> getClassList()
+    {
+        return classList;
+    }
+    
+    public void setClassList(Set<ClassList> classList)
+    {
+        this.classList = classList;
+    }
+    
+    public void addClass(ClassList c)
+    {
+        classList.add(c);
+    }
+    
+    public boolean classContains(ClassList c)
+    {
+        return classList.contains(c);
+    }
+    
+    public Integer classListSize()
+    {
+        return classList.size();
     }
     
     /*
