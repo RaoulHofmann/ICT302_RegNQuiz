@@ -20,8 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Entity
 public class ClassList 
 {
-    @Autowired
-    private UserRepository userRepository;
+    //@Autowired
+    //private UserRepository userRepository;
    // @Autowired
     //private BookingRepository bookingRepository;
     
@@ -63,7 +63,7 @@ public class ClassList
     public ClassList(Integer id, Integer student, Integer booking, boolean internal, boolean attendance)
     {
         this.classListID = id;
-        Optional<User> u = userRepository.findById(student);
+        //Optional<User> u = userRepository.findById(student);
         //this.student = u.get();
         //Optional<Booking> b = bookingRepository.findById(booking);
         //this.booking = b.get();

@@ -27,5 +27,21 @@ public class UserRepositoryTest {
     {
         User u = new User(0, "test", "Test", "Test");
         u = userRepository.save(u);
+        
+        Iterable<User> g = userRepository.findAll();
+        
+        for(User r : g)
+            display(r);
+    }
+    
+    public static void display(User u)
+    {
+        System.out.println("User ID: " + u.getUserID());
+        System.out.println("Given Name: " + u.getGivenName());
+        System.out.println("Last Name: " + u.getLastName());
+        System.out.println("Preferred Name: " + u.getPrefName());
+
+        System.out.println();
+        System.out.println();
     }
 }
