@@ -19,24 +19,24 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ClassListRepositoryTest {
-    //@Autowired
-    //private ClassListRepository classListRepository;
+    @Autowired
+    private ClassListRepository classListRepository;
     
     @Test
     public void TestClassReturn()
     {
         //ClassList[] g = classListRepository.getBookingClass(2);
-        
-        //for(ClassList v : g)
-         //   display(v);
+        Iterable<ClassList> g = classListRepository.findAll();
+        for(ClassList v : g)
+            display(v);
     }
     
         public void display(ClassList v)
     {
-        //System.out.println("ID: " + v.getClassListID());
+        System.out.println("ID: " + v.getClassListID());
         
         
-        //System.out.println("StudentID: " + v.getStudent().getUserID());
+        System.out.println("StudentID: " + v.getStudent().getUserID());
         //System.out.println("BookingID: " + v.getBooking().getBookingID());
         
         System.out.println("internal: " + v.isInternal());

@@ -13,14 +13,15 @@ import java.util.Set;
 public class User 
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer userID;
-
+    
+    //private String studentNo;
     private String givenName;
     @Column(name = "preferredName")
     private String prefName;
     private String lastName;
 
+    
     @OneToMany(mappedBy = "lecture")
     private Set<Unit> units;
 

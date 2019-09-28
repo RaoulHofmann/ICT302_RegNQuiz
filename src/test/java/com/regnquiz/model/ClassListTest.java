@@ -25,7 +25,7 @@ public class ClassListTest
         a.setStudent(new User(4321, "a", "a", "a"));
         a.setBooking(new Booking(5678, new Date(), 1, "a", new Unit(), new Venue(), new User()));
         a.setInternal(true);
-        a.setAttendance(true);
+       // a.setAttendance(true);
         display(a);
         
         ClassList b = new ClassList(3456, new User(9012, "a", "a", "a"), new Booking(2109, new Date(), 1, "a", new Unit(), new Venue(), new User()), true, true);
@@ -34,7 +34,7 @@ public class ClassListTest
         b.setStudent(new User(6543, "a", "a", "a"));
         b.setBooking(new Booking(7890, new Date(), 1, "a", new Unit(), new Venue(), new User()));
         b.setInternal(false);
-        b.setAttendance(false);
+       // b.setAttendance(false);
         display(b);
     }
     

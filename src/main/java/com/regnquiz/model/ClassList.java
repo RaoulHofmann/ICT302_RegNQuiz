@@ -10,6 +10,7 @@ import com.regnquiz.model.repositories.UserRepository;
 import java.util.Optional;
 import javax.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * Author: Matthew MacLennan
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Comment: Contains information about each class and student in it
  */
 @Entity
+//@EnableJpaRepositories(basePackages="com.regnquiz.model.repositories")
 public class ClassList 
 {
     //@Autowired
@@ -27,7 +29,7 @@ public class ClassList
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer classListID;
+    private int classListID;
     private boolean internal;
     private boolean attendance;
     
@@ -59,17 +61,22 @@ public class ClassList
         
     }
     
+    
     //This class is used with the findById repository call
     public ClassList(Integer id, Integer student, Integer booking, boolean internal, boolean attendance)
     {
+        System.out.println(id + " " + student + " " + booking + " " + internal + " " + attendance);
         this.classListID = id;
         //Optional<User> u = userRepository.findById(student);
         //this.student = u.get();
         //Optional<Booking> b = bookingRepository.findById(booking);
         //this.booking = b.get();
+        //UserRepository ur;
+        //Optional<User> u = ur.findById(student);
+        
         
         this.internal = internal;
-        this.attendance = attendance;
+        //this.attendance = attendance;
         
     }
     
@@ -118,8 +125,8 @@ public class ClassList
         return attendance;
     }
     
-    public void setAttendance(boolean attendance)
+    public void setAttendance()
     {
-        this.attendance = attendance;
+        this.attendance = true;
     }
 }

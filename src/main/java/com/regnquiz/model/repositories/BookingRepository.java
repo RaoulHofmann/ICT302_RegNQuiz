@@ -22,6 +22,6 @@ public interface BookingRepository extends CrudRepository<Booking, Integer>{
     //@Query("SELECT case when count(b.bookingID) = 0 then 0 else b.bookingID end FROM Booking b WHERE b.date= :date AND b.time=:time AND b.unitID=:unitID AND venueID=:venueID")
    // int findByBooking(@Param("date") Date date, @Param("time") Time time, @Param("unitID") int unitID, @Param("venueID") int venueID);
     
-    //@Query("SELECT b.accessCode FROM Booking b WHERE b.bookingID = : bID")
+    //@Query("SELECT accessCode FROM Booking b WHERE b.bookingID = : bID")
     //String getAccessCode(@Param("bID") int bookingID);
 }

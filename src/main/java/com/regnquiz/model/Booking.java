@@ -5,8 +5,11 @@
  */
 package com.regnquiz.model;
 
+import java.sql.Time;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 /**
  * Author: Matthew MacLennan
@@ -24,6 +27,7 @@ public class Booking
     
     @Temporal(TemporalType.DATE)
     private Date date;
+    private Time time;
     private Integer bookingLength;
     @Column(name = "accessCode")
     private String attendanceCode;
@@ -39,8 +43,8 @@ public class Booking
     private Venue venue;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("UserID")
-    @JoinColumn(name = "UserID", referencedColumnName="userID")
+    @MapsId("lectureID")
+    @JoinColumn(name = "lectureID", referencedColumnName="userID")
     private User lecture;
 
     @OneToMany(mappedBy = "booking")
@@ -136,6 +140,14 @@ public class Booking
         this.lecture = lecture;
     }
     
+<<<<<<< HEAD
+   public Set<ClassList> getClassList()
+   {
+       return classList;
+   }
+    
+
+=======
     public Set<ClassList> getClassList()
     {
         return classList;
@@ -160,6 +172,7 @@ public class Booking
     {
         return classList.size();
     }
+>>>>>>> 96bb1df84238a3779920b79cdb570a4b02025408
     
     /*
     public void generateAttendanceCode()

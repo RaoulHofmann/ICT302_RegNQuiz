@@ -25,7 +25,7 @@ public class UserRepositoryTest {
     @Test
     public void InsertData()
     {
-        User u = new User(0, "test", "Test", "Test");
+        User u = new User(785895, "test5", "Test", "Test");
         u = userRepository.save(u);
         
         Iterable<User> g = userRepository.findAll();
