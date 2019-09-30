@@ -20,5 +20,5 @@ import com.regnquiz.model.Unit;
 public interface SemesterRepository extends CrudRepository<Semester, Integer>
 {
     @Query("SELECT case when count(s.semesterID) = 0 then 0 else s.semesterID end FROM Semester s Where s.description = :description AND s.Unit = :Unit")
-    int findByLocation(@Param("description") String description, @Param("Unit") Set<Unit> Unit);
+    Semester getSem(@Param("description") String description, @Param("Unit") Set<Unit> Unit);
 }
