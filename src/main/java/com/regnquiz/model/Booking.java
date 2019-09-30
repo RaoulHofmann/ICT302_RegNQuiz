@@ -139,15 +139,7 @@ public class Booking
     {
         this.lecture = lecture;
     }
-    
-<<<<<<< HEAD
-   public Set<ClassList> getClassList()
-   {
-       return classList;
-   }
-    
-
-=======
+   
     public Set<ClassList> getClassList()
     {
         return classList;
@@ -172,7 +164,6 @@ public class Booking
     {
         return classList.size();
     }
->>>>>>> 96bb1df84238a3779920b79cdb570a4b02025408
     
     /*
     public void generateAttendanceCode()
