@@ -18,8 +18,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * Version: 1
  * Comment: Contains information about each class and student in it
  */
-@Entity
 //@EnableJpaRepositories(basePackages="com.regnquiz.model.repositories")
+@Entity
 public class ClassList 
 {
     //@Autowired
