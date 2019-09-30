@@ -37,7 +37,7 @@ public class ClassListRepositoryTest {
         
         
         System.out.println("StudentID: " + v.getStudent().getUserID());
-        //System.out.println("BookingID: " + v.getBooking().getBookingID());
+        System.out.println("BookingID: " + v.getBooking().getBookingID());
         
         System.out.println("internal: " + v.isInternal());
         System.out.println("attendance: " + v.isAttendance());

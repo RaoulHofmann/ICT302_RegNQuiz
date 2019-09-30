@@ -51,8 +51,10 @@ public class LectureRun {
     public void setAttendance(int studentID)
     {   
         //b.setStudentAttendance(studentID);
-        Set<ClassList> c = b.getClassList();
-           
+        //Set<ClassList> c = b.getClassList();
+        //int p = b.getClassList().size();
+        //System.out.println("IS null " + c.isEmpty());  
+        //System.out.println("NO " + c.size()); 
            /*
            for(ClassList t: c)
            {System.out.println("2");
