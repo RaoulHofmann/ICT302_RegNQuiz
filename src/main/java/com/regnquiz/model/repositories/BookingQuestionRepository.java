@@ -22,6 +22,6 @@ import com.regnquiz.model.Unit;
  */
 public interface BookingQuestionRepository extends CrudRepository<BookingQuestion, Integer>
 {
-    @Query("SELECT case when count(b.BookingQuestionID) = 0 then 0 else b.BookingQuestionID end FROM BookingQuestion b Where b.booking = :booking AND b.question = :question")
+    @Query("SELECT new BookingQuestion(b.booking, b.question) FROM BookingQuestion b WHERE b.id = id")
     Set<BookingQuestion> getBookingQuestions(@Param("booking") Booking booking, @Param("question") Question question);
 }
