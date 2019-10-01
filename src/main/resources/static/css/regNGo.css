@@ -1,6 +1,8 @@
 body{
     background-color: #cfcfae;
-    text-align: center;
+    text-align: right;
+    margin-right:25%;
+
 }
 h1 { 
     font-family:"Times New Roman", Times , serif ;
