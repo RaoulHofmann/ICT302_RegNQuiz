@@ -23,6 +23,24 @@
         </label><br /><br/>
         <label>Date and Time
         <input type="datetime-local" name="bdaytime">        </label><br /><br/><br/>
+        
+        <div class="uploadQuestion">
+            <label>Question Number</label> 
+            <select class = "QuestionNumber">
+              <option value="QuestionNumber">1</option>
+              <option value="QuestionNumber">2</option>
+              <option value="QuestionNumber">3</option>
+              <option value="QuestionNumber">4</option>
+              <option value="QuestionNumber">5</option>
+            </select><br/>
+            
+            <label> Question Topic</label> <input type="text" name="questionTopic" value="Question Topic here"><br> 
+            <label> Answer A: </label> <input type="text" name="answer A" value="Type anser A here"><br>  
+            <label> Answer B: </label> <input type="text" name="answer B" value="Type anser B here"><br>      	
+            <label> Answer C: </label> <input type="text" name="answer C" value="Type anser C here"><br>      	
+            <label> Answer D: </label> <input type="text" name="answer D" value="Type anser D here"><br>      	
+    	</div>
+
         <input type ="submit" value="Save" onclick="saveBooking();"/>        
         
 	</form>
