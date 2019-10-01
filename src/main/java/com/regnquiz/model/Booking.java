@@ -59,6 +59,18 @@ public class Booking
         this.venue = venue;
         this.lecture = lecture;
     }
+
+    public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture)
+    {
+        this.bookingID = id;
+        this. date = date;
+        this.bookingLength = bookingLen;
+        this.attendanceCode = attendanceCode;
+        this.unit = unit;
+        this.venue = venue;
+        this.lecture = lecture;
+        this.classList = classList;
+    }
     
     public Integer getBookingID()
     {

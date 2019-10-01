@@ -19,15 +19,15 @@ public class MultiChoiceTest
         display(a);
         
         a.setQuestion(new Question("test1", 1234, 4321));
-        a.setAnswer(5678);
+        //a.setAnswer(5678);
         a.setDescription("test2");
         display(a);
         
-        MultipleChoice b = new MultipleChoice(new Question("test3", 8765, 9012), 2109, "test4");
+        MultipleChoice b = new MultipleChoice(new Question("test3", 8765, 9012), "test4");
         display(b);
         
         b.setQuestion(new Question("test5", 3456, 6543));
-        b.setAnswer(7890);
+        //b.setAnswer(7890);
         b.setDescription("test6");
         display(b);
     }
@@ -36,7 +36,7 @@ public class MultiChoiceTest
     {
         System.out.println("MC ID: " + m.getMCID());
         System.out.println("Question ID: " + m.getQuestion().getDescription());
-        System.out.println("Answer: " + m.getAnswer());
+        //System.out.println("Answer: " + m.getAnswer());
         System.out.println("Description: " + m.getDescription());
         System.out.println();
         System.out.println();
