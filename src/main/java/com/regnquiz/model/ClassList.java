@@ -34,13 +34,13 @@ public class ClassList
     private boolean attendance;
     
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("studentID")
-    @JoinColumn(name = "studentID", referencedColumnName="userID")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //@MapsId("studentID")
+    @JoinColumn(name = "userID", referencedColumnName="userID")
     private User student;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("bookingID")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //@MapsId("bookingID")
     @JoinColumn(name = "bookingID", referencedColumnName="bookingID")
     private Booking booking;
     

@@ -14,7 +14,7 @@ package com.regnquiz.model;
 public class MultiChoiceTest 
 {
     public static void main(String args[])
-    {
+    {/*
         MultipleChoice a = new MultipleChoice();
         display(a);
         
@@ -27,16 +27,16 @@ public class MultiChoiceTest
         display(b);
         
         b.setQuestion(new Question("test5", 3456, 6543));
-        b.setAnswer(7890);
+       // b.setAnswer(7890);
         b.setDescription("test6");
-        display(b);
+        display(b);*/
     }
     
     public static void display(MultipleChoice m)
     {
         System.out.println("MC ID: " + m.getMCID());
         System.out.println("Question ID: " + m.getQuestion().getDescription());
-        System.out.println("Answer: " + m.getAnswer());
+        //System.out.println("Answer: " + m.getAnswer());
         System.out.println("Description: " + m.getDescription());
         System.out.println();
         System.out.println();

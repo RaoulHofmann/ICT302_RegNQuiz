@@ -19,6 +19,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface StudentAnswerRepository extends CrudRepository<StudentAnswer, Integer>
 {
-    @Query("SELECT new StudentAnswer(c.student, c.answer) FROM StudentAnswer s WHERE c.id = :id")
-    StudentAnswer getStudentAnswer(@Param("id") StudentAnswerKey id);
+    //@Query("SELECT new StudentAnswer(c.student, c.answer) FROM StudentAnswer s WHERE c.id = :id")
+    //StudentAnswer getStudentAnswer(@Param("id") StudentAnswerKey id);
 }

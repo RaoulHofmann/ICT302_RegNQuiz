@@ -25,14 +25,16 @@ public class Unit
     private String unitCode;
     private String unitName;
     private Integer year;
+   // @Column(name = "userID")
+    //private String userID;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("SemesterID")
-    @JoinColumn(name = "SemesterID", referencedColumnName="semesterID")
+    //@MapsId("semesterID")
+    @JoinColumn(name = "semesterID", referencedColumnName="semesterID")
     private Semester semester;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("UserID")
+    //@MapsId("lectureID")
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
 

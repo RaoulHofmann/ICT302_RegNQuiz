@@ -5,6 +5,7 @@
  */
 package com.regnquiz.model;
 
+import java.util.Set;
 import javax.persistence.*;
 
 /**
@@ -19,13 +20,16 @@ public class MultipleChoice
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer mcID;
+    private Integer answerID;
     private String description;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("QuestionID")
     @JoinColumn(name = "QuestionID", referencedColumnName="questionID")
     private Question question;
+    
+    @OneToMany(mappedBy = "answer")
+    private Set<StudentAnswer> studentAnswer;
     
     public MultipleChoice()
     {
@@ -40,7 +44,7 @@ public class MultipleChoice
     
     public Integer getMCID()
     {
-        return mcID;
+        return answerID;
     }
     
     public Question getQuestion()

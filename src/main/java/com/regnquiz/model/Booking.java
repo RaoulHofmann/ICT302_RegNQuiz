@@ -32,19 +32,17 @@ public class Booking
     @Column(name = "accessCode")
     private String attendanceCode;
     
+    
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("UnitID")
     @JoinColumn(name = "UnitID", referencedColumnName="unitID")
     private Unit unit;
    
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("VenueID")
     @JoinColumn(name = "VenueID", referencedColumnName="venueID")
     private Venue venue;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("lectureID")
-    @JoinColumn(name = "lectureID", referencedColumnName="userID")
+    @JoinColumn(name = "userID", referencedColumnName="userID")
     private User lecture;
 
     @OneToMany(mappedBy = "booking")
@@ -58,6 +56,18 @@ public class Booking
         lecture = new User();
     }
     
+    public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, ClassList classList)
+    {
+        this.bookingID = id;
+        this. date = date;
+        this.bookingLength = bookingLen;
+        this.attendanceCode = attendanceCode;
+        this.unit = unit;
+        this.venue = venue;
+        this.lecture = lecture;
+        this.classList.add(classList);
+    }
+    
     public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, Set<ClassList> classList)
     {
         this.bookingID = id;
@@ -68,6 +78,16 @@ public class Booking
         this.venue = venue;
         this.lecture = lecture;
         this.classList = classList;
+    }
+
+    Booking(int id, Date date, int bookingLen, String attendanceCode, Unit unit, Venue venue, User user) {
+        this.bookingID = id;
+        this. date = date;
+        this.bookingLength = bookingLen;
+        this.attendanceCode = attendanceCode;
+        this.unit = unit;
+        this.venue = venue;
+        this.lecture = user;
     }
     
     public Integer getBookingID()
@@ -163,6 +183,11 @@ public class Booking
     public Integer classListSize()
     {
         return classList.size();
+    }
+    
+    public void setTime(int time)
+    {
+        this.time = new Time(time);
     }
     
     /*

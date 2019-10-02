@@ -20,6 +20,6 @@ import java.util.Set;
  */
 public interface QuestionRepository extends CrudRepository<Question, Integer>
 {
-    @Query("SELECT case when count(q.QID) = 0 then 0 else q.QID end FROM Question q WHERE q.description = :description AND q.time = :time AND q.bookingQuestion = :bookingQuestion AND q.multipleChoice = :multipleChoice")
-    Question getQuestion(@Param("description") String description, @Param("time") Integer time, @Param("bookingQuestion") Set<BookingQuestion> bookingQuestion, @Param("multipleChoice") Set<MultipleChoice> multipleChoice);
+    //@Query("SELECT case when count(q.QID) = 0 then 0 else q.QID end FROM Question q WHERE q.description = :description AND q.time = :time AND q.bookingQuestion = :bookingQuestion AND q.multipleChoice = :multipleChoice")
+   // Question getQuestion(@Param("description") String description, @Param("time") Integer time, @Param("bookingQuestion") Set<BookingQuestion> bookingQuestion, @Param("multipleChoice") Set<MultipleChoice> multipleChoice);
 }

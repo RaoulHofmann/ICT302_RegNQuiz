@@ -20,6 +20,6 @@ import java.util.Set;
  */
 public interface MultipleChoiceRepository extends CrudRepository<MultipleChoice, Integer>
 {
-    @Query("SELECT case when count(m.mcID) = 0 then 0 else m.mcID end FROM MultipleChoice m WHERE m.description = :description AND m.question = :question")
+    @Query("SELECT case when count(m.answerID) = 0 then 0 else m.answerID end FROM MultipleChoice m WHERE m.description = :description AND m.question = :question")
     Set<MultipleChoice> getMC(@Param("description") String description, @Param("question") Question question);
 }
