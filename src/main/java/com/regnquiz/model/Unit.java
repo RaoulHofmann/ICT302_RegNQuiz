@@ -56,6 +56,16 @@ public class Unit
         this.lecture = lect;
     }
     
+    public Unit(Integer id, String UnitCode, String unitName, Integer sem, Integer year, User lect)
+    {
+        this.unitID = id;
+        this.unitCode = unitCode;
+        this.unitName = unitName;
+        this.semester = new Semester(sem);
+        this.year = year;
+        this.lecture = lect;
+    }
+    
     public Integer getUnitID()
     {
         return unitID;

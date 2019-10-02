@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.regnquiz.model.StudentImportTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.48 s <<< FAILURE! - in com.regnquiz.model.StudentImportTest
+TestStudent on TestStudent(com.regnquiz.model.StudentImportTest)(com.regnquiz.model.StudentImportTest)  Time elapsed: 0.005 s  <<< FAILURE!
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'com.regnquiz.model.StudentImportTest': Unsatisfied dependency expressed through field 'userRepo'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.regnquiz.model.repositories.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.regnquiz.model.repositories.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+
