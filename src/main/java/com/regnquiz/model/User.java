@@ -46,6 +46,13 @@ public class User
         this.prefName = pref;
         this.lastName = last;
     }
+    
+    public User(Integer id, String first, String last)
+    {
+        this.userID = id;
+        this.givenName = first;
+        this.lastName = last;
+    }
 
     public Integer getUserID() 
     {

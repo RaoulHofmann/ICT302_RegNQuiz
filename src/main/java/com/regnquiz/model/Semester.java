@@ -31,6 +31,11 @@ public class Semester {
         this.description = desc;
     }
     
+    public Semester(Integer id)
+    {
+        this.semesterID = id;
+    }
+    
     public Integer getSemID()
     {
         return semesterID;

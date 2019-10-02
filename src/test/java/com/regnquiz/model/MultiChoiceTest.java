@@ -5,6 +5,8 @@
  */
 package com.regnquiz.model;
 
+import com.regnquiz.model.MultipleChoice;
+
 /**
  * Author: Matthew MacLennan
  * Date: 23/9/2019
