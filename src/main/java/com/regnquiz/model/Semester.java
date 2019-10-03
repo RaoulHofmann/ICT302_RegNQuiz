@@ -5,7 +5,11 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 /**
  * Author: Matthew MacLennan
@@ -14,17 +18,18 @@ import java.util.Set;
  * Comment: Contains semester data
  */
 @Entity
-public class Semester {
+public class Semester implements Serializable {
     @Id
     @GeneratedValue (strategy=GenerationType.AUTO)
     private Integer semesterID;
-    
     private String description;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "semester")
     private Set<Unit> Unit;
 
     public Semester(){}
+
     public Semester(Integer id, String desc)
     {
         this.semesterID = id;
@@ -54,5 +59,12 @@ public class Semester {
     public void setDescription(String desc)
     {
         this.description = desc;
+    }
+
+    public Set<Unit> getUnit() {
+        return Unit;
+    }
+    public void setUnit(Set<Unit> unit) {
+        Unit = unit;
     }
 }

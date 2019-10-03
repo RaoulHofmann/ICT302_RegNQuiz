@@ -3,15 +3,52 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+function booking_info(){
+    console.log("Booking Info");
+    $("#booking_table tbody").empty();
+    $.ajax({
+        type: "POST",
+        url : '/getbooking',
+        success : function(data) {
+            data.forEach(function(element) {
+                console.log(element);
+                    var bookingId = element.bookingID;
+                    var date = element.date;
+                    var time = element.time;
+                    var accessCode = element.attendanceCode;
+                    var bookingLength = element.bookingLength;
+                    var unitId = element.unit.unitID;
+                    var venueId = element.venue.venueID;
+                    var userId = element.lecture.userID;
+                    $("#booking_table tbody").append(
+                      "<tr>" +
+                          "<td>"+bookingId+"</td>" +
+                          "<td>"+date+"</td>" +
+                          "<td>"+time+"</td>" +
+                          "<td>"+accessCode+"</td>" +
+                          "<td>"+bookingLength+"</td>" +
+                          "<td>"+unitId+"</td>" +
+                          "<td>"+venueId+"</td>" +
+                          "<td>"+userId+"</td>" +
+                      "</tr>"
+                    );
+                });
+            }
+    });
+}
+
 function login() 
 {
     var welcome = document.getElementById("welcome_div");
+    var staff_entry = document.getElementById("staff_entry");
     var login = document.getElementById("login_form");
     var userName = document.getElementById("userName").value;
     var password = document.getElementById("password").value;
     var logged_out_alert = document.getElementById("logged_out_alert");
 
     welcome.style.display = "none";
+    staff_entry.style.display = "none";
 
     if(logged_out_alert.value != null){
         logged_out_alert.style.display = "none";
@@ -32,12 +69,14 @@ function login()
             }else{
                 document.getElementById("welcome").innerHTML = "Welcome " + firstName + " " + lastName + " your ID is " + studentNo;
             }
-            if(data[0] == 1){
+            if(data[0] == 2){
                 document.getElementById("welcome").innerHTML += "<br><p style=\"color: red\">You are a Staff Member</p>";
-            }else if(data[0] == 2){
+                staff_entry.style.display = "block";
+                booking_info();
+            }else if(data[0] == 3){
                 document.getElementById("welcome").innerHTML += "<br><p style=\"color: green\">You are a Student</p>";
+                staff_entry.style.display = "none";
             }
-
             login.style.display = "none";
             welcome.style.display = "block";
         }
@@ -46,6 +85,7 @@ function login()
 
 function logout(){
     var welcome = document.getElementById("welcome_div");
+    var staff_entry = document.getElementById("staff_entry");
     var login = document.getElementById("login_form");
     var logged_out_alert = document.getElementById("logged_out_alert");
     var logged_out_danger = document.getElementById("logged_out_danger");
@@ -57,10 +97,11 @@ function logout(){
         success : function(data) {
             if(data == 1){
                 welcome.style.display = "none";
+                staff_entry.style.display = "none";
                 login.style.display = "block";
                 logged_out_alert.style.display = "block";
             }else{
-                logged_out_danger.style.display = "block";
+                logged_out_danger.style.display = "block";a
             }
 
         }

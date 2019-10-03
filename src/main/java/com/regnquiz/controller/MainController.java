@@ -1,12 +1,12 @@
 
 package com.regnquiz.controller;
 
+import com.regnquiz.model.Booking;
+import com.regnquiz.model.Semester;
 import com.regnquiz.model.Type;
 import com.regnquiz.model.User;
-import com.regnquiz.model.repositories.TypeRepository;
-import com.regnquiz.model.repositories.UserRepository;
-import com.regnquiz.model.repositories.UserTypeQueryRepository;
-import com.regnquiz.model.repositories.UserTypeRepository;
+import com.regnquiz.model.repositories.*;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
@@ -16,11 +16,13 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.*;
+import javax.transaction.Transactional;
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping(path="/") // This means URL's start with /demo (after Application path)
+@RequestMapping(path="/")
 public class MainController {
     @Autowired
     private UserRepository userRepository;
@@ -30,6 +32,8 @@ public class MainController {
     private UserTypeRepository userTypeRepository;
     @Autowired
     private UserTypeQueryRepository userTypeQueryRepository;
+    @Autowired
+    private BookingRepository BookingRepository;
 
     @GetMapping(path="/gettypes")
     public @ResponseBody Iterable<Type> getAllTypes() {
@@ -99,7 +103,7 @@ public class MainController {
     }
 
     @PostMapping(path="/login")
-    public @ResponseBody List<Object> login(@RequestParam int userid, @RequestParam int password, HttpServletRequest request) {
+    public @ResponseBody List<Object> login(@RequestParam int userid, @RequestParam int password, HttpServletRequest request, HttpServletResponse response) {
         List<Object> user_info = new ArrayList<>();
         try {
             int userType = userTypeQueryRepository.getUserTypes(userid).getTypeID();
@@ -115,8 +119,13 @@ public class MainController {
                 user_info.add(userRepository.findById(userid).get().getLastName());
                 user_info.add(userRepository.findById(userid).get().getPrefName());
                 System.out.println("Session Login "+ session.getId());
-
             //}
+
+            if(userID == 2){
+                gotoStudent(request, response);
+            }else if(userID == 3){
+                gotoStaff(request, response);
+            }
         }catch(InvalidDataAccessResourceUsageException e){
             user_info.add(-2);
         }
@@ -125,7 +134,6 @@ public class MainController {
 
     @PostMapping(path="/logout")
     public @ResponseBody int logout(HttpServletRequest request) {
-
         HttpSession session = request.getSession();
 
         if(!session.getId().isEmpty()){
@@ -136,14 +144,20 @@ public class MainController {
         }
     }
 
-    @GetMapping(path="/student")
-    public View gotoStudent(HttpServletRequest request, HttpServletResponse response) {
-        return new RedirectView("/student.html", true);
+    @PostMapping(path="/getbooking")
+    public @ResponseBody List<Booking> getbooking(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        //Hibernate.initialize(com.regnquiz.model.Semester.getUnit());
+        return BookingRepository.findByUserID((Integer)session.getAttribute("userID"));
     }
 
-    @GetMapping(path="/staff")
-    public View gotoStaff(HttpServletRequest request, HttpServletResponse response) {
-        return new RedirectView("/staff.html", true);
+    @GetMapping(path="student")
+    public String gotoStudent(HttpServletRequest request, HttpServletResponse response) {
+        return "forward:/student.html";
     }
 
+    @GetMapping(path="staff")
+    public String gotoStaff(HttpServletRequest request, HttpServletResponse response) {
+        return "forward:/staff.html";
+    }
 }

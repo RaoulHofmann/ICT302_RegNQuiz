@@ -1,5 +1,7 @@
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -13,12 +15,14 @@ public class UserType {
     @Column
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @MapsId("TypeID")
     @JoinColumn(name = "TypeID", referencedColumnName="typeID")
     private Type type;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @MapsId("UserID")
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User user;  

@@ -5,7 +5,12 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -15,7 +20,7 @@ import java.util.Set;
  * Comment: Contains unit information
  */
 @Entity
-public class Unit 
+public class Unit implements Serializable
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -25,19 +30,20 @@ public class Unit
     private String unitCode;
     private String unitName;
     private Integer year;
-   // @Column(name = "userID")
+    //@Column(name = "userID")
     //private String userID;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //@MapsId("semesterID")
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "semesterID", referencedColumnName="semesterID")
     private Semester semester;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //@MapsId("lectureID")
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "unit")
     private Set<Booking> bookings;
     
@@ -124,5 +130,13 @@ public class Unit
     public void setLecture(User lect)
     {
         this.lecture = lect;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

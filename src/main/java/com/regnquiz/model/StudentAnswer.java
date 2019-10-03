@@ -5,6 +5,8 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 /**
@@ -18,12 +20,15 @@ public class StudentAnswer
 {
     @EmbeddedId
     StudentAnswerKey id;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @MapsId("UserID")
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User student;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @MapsId("AnswerID")
     @JoinColumn(name = "AnswerID", referencedColumnName="answerID")
     private MultipleChoice answer;

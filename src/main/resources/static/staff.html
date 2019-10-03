@@ -6,21 +6,35 @@
      <link rel = "stylesheet" type="text/css"
 		 href="regNGo.css">
      </link>
+    <script type="text/javascript" src="javascript/booking.js"></script>
+
 
   </head>
-  <body>
+  <body onload="booking_info();">
  	<header>
  		<h1>Welcome STAFF</h1>
         </header>
 	
   	<br/> 
-	<p class="main">
-	<form method="post"  action="" >
-	</p>
-   
-   
-	
-	        
-  
+	<div class="main">
+        h3>Booking Info Table</h3>
+        <table id="booking_table">
+            <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>AccessCode</th>
+                <th>Booking Length</th>
+                <th>Unit ID</th>
+                <th>Venue ID</th>
+                <th>User ID</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+	</div>
  </body>
 </html>
