@@ -1,24 +1,29 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.regnquiz.model;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
-
-@Embeddable
-public class UserTypeKey implements Serializable {
-
+/**
+ *
+ * 
+ */
+public class UserIdent implements Serializable{
     @Column(name = "userID")
     private Integer UserID;
 
     @Column(name = "typeID")
     private Integer TypeID;
     
-    public UserTypeKey()
+    public UserIdent()
     {
         
     }
     
-    public UserTypeKey(int typeID, int userID)
+    public UserIdent(int typeID, int userID)
     {
         this.UserID = userID;
         this.TypeID = typeID;

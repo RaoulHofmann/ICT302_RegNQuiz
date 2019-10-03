@@ -93,4 +93,15 @@ public class User
     {
         this.lastName = name;
     }
+    
+    public void setUserType(UserType userType)
+    {
+        this.userType.add(userType);
+    }
+    
+    public Set<UserType> getUserType()
+    {
+        return this.userType;
+    }
+            
 }
