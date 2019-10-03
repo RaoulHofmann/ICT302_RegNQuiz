@@ -13,19 +13,29 @@ import java.util.Set;
 public class User 
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer userID;
-
+    
+    //private String studentNo;
     private String givenName;
     @Column(name = "preferredName")
     private String prefName;
     private String lastName;
 
+    
     @OneToMany(mappedBy = "lecture")
     private Set<Unit> units;
 
     @OneToMany(mappedBy = "lecture")
     private Set<Booking> bookings;
+    
+    @OneToMany(mappedBy = "student")
+    private Set<ClassList> classList;
+    
+    @OneToMany(mappedBy = "student")
+    private Set<StudentAnswer> studentAnswer;
+    
+    @OneToMany(mappedBy = "user")
+    private Set<UserType> userType;
     
     public User() {}
     
@@ -34,6 +44,13 @@ public class User
         this.userID = id;
         this.givenName = first;
         this.prefName = pref;
+        this.lastName = last;
+    }
+    
+    public User(Integer id, String first, String last)
+    {
+        this.userID = id;
+        this.givenName = first;
         this.lastName = last;
     }
 
@@ -76,4 +93,15 @@ public class User
     {
         this.lastName = name;
     }
+    
+    public void setUserType(UserType userType)
+    {
+        this.userType.add(userType);
+    }
+    
+    public Set<UserType> getUserType()
+    {
+        return this.userType;
+    }
+            
 }

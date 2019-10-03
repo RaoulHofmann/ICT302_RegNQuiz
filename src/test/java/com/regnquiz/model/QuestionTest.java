@@ -37,7 +37,7 @@ public class QuestionTest
         System.out.println("Question ID: " + q.getQID());
         System.out.println("Description: " + q.getDescription());
         System.out.println("Time: " + q.getTime());
-        System.out.println("Answer: " + q.getAnswer());
+        //System.out.println("Answer: " + q.getAnswer());
         System.out.println();
         System.out.println();
     }

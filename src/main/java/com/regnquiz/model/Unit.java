@@ -25,14 +25,16 @@ public class Unit
     private String unitCode;
     private String unitName;
     private Integer year;
+   // @Column(name = "userID")
+    //private String userID;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("SemesterID")
-    @JoinColumn(name = "SemesterID", referencedColumnName="semesterID")
+    //@MapsId("semesterID")
+    @JoinColumn(name = "semesterID", referencedColumnName="semesterID")
     private Semester semester;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("UserID")
+    //@MapsId("lectureID")
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
 
@@ -50,6 +52,16 @@ public class Unit
         this.unitCode = unitCode;
         this.unitName = unitName;
         this.semester = sem;
+        this.year = year;
+        this.lecture = lect;
+    }
+    
+    public Unit(Integer id, String UnitCode, String unitName, Integer sem, Integer year, User lect)
+    {
+        this.unitID = id;
+        this.unitCode = unitCode;
+        this.unitName = unitName;
+        this.semester = new Semester(sem);
         this.year = year;
         this.lecture = lect;
     }

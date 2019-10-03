@@ -23,14 +23,17 @@ public class StudentAnswer
     @MapsId("UserID")
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User student;
-    private Integer answer;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @MapsId("AnswerID")
+    @JoinColumn(name = "AnswerID", referencedColumnName="answerID")
+    private MultipleChoice answer;
     
     public StudentAnswer()
     {
         student = new User();
     }
     
-    public StudentAnswer(User student, Integer answer)
+    public StudentAnswer(User student, MultipleChoice answer)
     {
         this.student = student;
         this.answer = answer;
@@ -46,12 +49,12 @@ public class StudentAnswer
         this.student = student;
     }
     
-    public Integer getStudentAnswer()
+    public MultipleChoice getStudentAnswer()
     {
         return answer;
     }
     
-    public void setStudentAnswer(Integer ans)
+    public void setStudentAnswer(MultipleChoice ans)
     {
         this.answer = ans;
     }
