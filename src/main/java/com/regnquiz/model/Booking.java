@@ -19,12 +19,12 @@ import java.util.Set;
  * Changes: Added classList, updated constructor, added gets+sets+adds
  */
 @Entity
-public class Booking 
+public class Booking
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer bookingID;
-    
+
     @Temporal(TemporalType.DATE)
     private Date date;
     private Time time;
@@ -36,11 +36,11 @@ public class Booking
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "UnitID", referencedColumnName="unitID")
     private Unit unit;
-   
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "VenueID", referencedColumnName="venueID")
     private Venue venue;
-    
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "userID", referencedColumnName="userID")
     private User lecture;
@@ -94,67 +94,67 @@ public class Booking
     {
         return bookingID;
     }
-    
+
     public void setBookingID(Integer id)
     {
         this.bookingID = id;
     }
-    
+
     public Date getDate()
     {
         return date;
     }
-    
+
     public void setDate(Date date)
     {
         this.date = date;
     }
-    
+
     public Integer getBookingLength()
     {
         return bookingLength;
     }
-    
+
     public void setBookingLength(Integer len)
     {
         this.bookingLength = len;
     }
-    
+
     public String getAttendanceCode()
     {
         return attendanceCode;
     }
-    
+
     public void setAttendanceCode(String attcode)
     {
         this.attendanceCode = attcode;
     }
-    
+
     public Unit getUnit()
     {
         return unit;
     }
-    
+
     public void setUnit(Unit unit)
     {
         this.unit = unit;
     }
-    
+
     public Venue getVenue()
     {
         return venue;
     }
-    
+
     public void setVenue(Venue venue)
     {
         this.venue = venue;
     }
-    
+
     public User getLecture()
     {
         return lecture;
     }
-    
+
     public void setLecture(User lecture)
     {
         this.lecture = lecture;
