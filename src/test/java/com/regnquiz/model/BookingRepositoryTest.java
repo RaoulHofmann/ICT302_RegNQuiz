@@ -11,6 +11,7 @@ import com.regnquiz.model.repositories.UnitRepository;
 import com.regnquiz.model.repositories.UserRepository;
 import com.regnquiz.model.repositories.VenueRepository;
 import java.util.Date;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -77,9 +78,9 @@ public class BookingRepositoryTest {
         
         
         
-        Booking b = new Booking(9012, new Date(2019, 9, 23), 80, "test2", new Unit(2109, "a", "a", new Semester(), 0, new User()), new Venue(1, 1, 1, 1), new User(3456, "a", "a", "a"));
-        display(b);
-        bookingRepository.save(b);
+        //Booking b = new Booking(9012, new Date(2019, 9, 23), 80, "test2", new Unit(2109, "a", "a", new Semester(), 0, new User()), new Venue(1, 1, 1, 1), new User(3456, "a", "a", "a"));
+        //display(b);
+        //bookingRepository.save(b);
         
         /*
         b.setBookingID(6543);
@@ -92,11 +93,16 @@ public class BookingRepositoryTest {
         display(b);
         bookingRepository.save(b);*/
 
-        Booking c = new Booking();
-        Optional<Booking> booking = bookingRepository.findById(45);
-        
-        c = booking.get();
-        display(c);
+        try{
+            Booking c = new Booking();
+            Optional<Booking> booking = bookingRepository.findById(45);
+            c = booking.get();
+            display(c);
+        }
+        catch(NoSuchElementException e)
+        {
+            
+        }
     }
     
     public static void display(Booking b)
