@@ -80,14 +80,13 @@ public class Booking
         this.classList = classList;
     }
     
-    public Booking(Date date, Integer bookingLen, Unit unit, Venue venue, User lecture, Set<ClassList> classList)
+    public Booking(Date date, Integer bookingLen, Unit unit, Venue venue, User lecture)
     {
         this.date = date;
         this.bookingLength = bookingLen;
         this.unit = unit;
         this.venue = venue;
         this.lecture = lecture;
-        this.classList = classList;
     }
 
     Booking(int id, Date date, int bookingLen, String attendanceCode, Unit unit, Venue venue, User user) {
