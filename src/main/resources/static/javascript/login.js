@@ -7,11 +7,23 @@ function login()
 {
     var welcome = document.getElementById("welcome_div");
     var login = document.getElementById("login_form");
-    var userName = document.getElementById("userName").value;
+   // var userName = document.getElementById("userName").value;
+    var useName;
     var password = document.getElementById("password").value;
     var logged_out_alert = document.getElementById("logged_out_alert");
 
     welcome.style.display = "none";
+    //add user name validation; using if else;
+    var x;
+    x=document.getElementById("userName").value;
+      // If x is Not a Number or less than one or greater than 10
+    if (isNaN(x) || x < 1 || x > 39999999)
+    {
+        alert( "Input not valid");
+    } else 
+    {
+        userName =x;
+    }
 
     if(logged_out_alert.value != null){
         logged_out_alert.style.display = "none";
