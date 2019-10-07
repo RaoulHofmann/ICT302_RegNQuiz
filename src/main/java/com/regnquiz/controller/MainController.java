@@ -2,22 +2,19 @@
 package com.regnquiz.controller;
 
 import com.regnquiz.model.Booking;
-import com.regnquiz.model.Semester;
 import com.regnquiz.model.Type;
 import com.regnquiz.model.User;
 import com.regnquiz.model.repositories.*;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.*;
-import javax.transaction.Transactional;
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,29 +100,20 @@ public class MainController {
     }
 
     @PostMapping(path="/login")
-    public @ResponseBody List<Object> login(@RequestParam int userid, @RequestParam int password, HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody List<Object> login(@RequestParam int userid, @RequestParam int password) {
         List<Object> user_info = new ArrayList<>();
         try {
             int userType = userTypeQueryRepository.getUserTypes(userid).getTypeID();
             int userID = userRepository.findById(userid).get().getUserID();
-            //if (userRepository.countByUserIDAndUserType_Password(userid, password) == 1) {
-                HttpSession session = request.getSession();
-                session.setAttribute("sessionIdNo",session.getId());
-                session.setAttribute("userType",userType);
-                session.setAttribute("userID",userID);
-                user_info.add(userType);
-                user_info.add(userID);
-                user_info.add(userRepository.findById(userid).get().getGivenName());
-                user_info.add(userRepository.findById(userid).get().getLastName());
-                user_info.add(userRepository.findById(userid).get().getPrefName());
-                System.out.println("Session Login "+ session.getId());
-            //}
-
-            if(userID == 2){
-                gotoStudent(request, response);
-            }else if(userID == 3){
-                gotoStaff(request, response);
-            }
+            /*HttpSession session = request.getSession();
+            session.setAttribute("userType",userType);
+            session.setAttribute("userID",userID);
+            System.out.println("Session Login "+ session.getId());*/
+            user_info.add(userType);
+            user_info.add(userID);
+            user_info.add(userRepository.findById(userid).get().getGivenName());
+            user_info.add(userRepository.findById(userid).get().getLastName());
+            user_info.add(userRepository.findById(userid).get().getPrefName());
         }catch(InvalidDataAccessResourceUsageException e){
             user_info.add(-2);
         }
@@ -133,31 +121,35 @@ public class MainController {
     }
 
     @PostMapping(path="/logout")
-    public @ResponseBody int logout(HttpServletRequest request) {
+    public RedirectView logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-
-        if(!session.getId().isEmpty()){
+        System.out.println("LOGGED OUT");
+        if (!session.getId().isEmpty()) {
             session.invalidate();
-            return 1;
-        }else{
-            return -1;
         }
+        System.out.println("END!");
+        return new RedirectView("/");
     }
 
     @PostMapping(path="/getbooking")
     public @ResponseBody List<Booking> getbooking(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        //Hibernate.initialize(com.regnquiz.model.Semester.getUnit());
         return BookingRepository.findByUserID((Integer)session.getAttribute("userID"));
     }
 
-    @GetMapping(path="student")
+    @GetMapping(path="/student")
     public String gotoStudent(HttpServletRequest request, HttpServletResponse response) {
         return "forward:/student.html";
     }
 
-    @GetMapping(path="staff")
-    public String gotoStaff(HttpServletRequest request, HttpServletResponse response) {
-        return "forward:/staff.html";
+    @GetMapping(path="/staff")
+    public String gotoStaff(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) {
+        System.out.println("SADJASHDJAKSBDOAJSKD");
+        //redirectAttributes.addAttribute("user_info", user_info);
+        redirectAttributes.addFlashAttribute("user_info", "Something");
+        return "staff";
+        /*List<Object> user_info = new ArrayList<>();
+        user_info.add(request);
+        return  user_info;*/
     }
 }

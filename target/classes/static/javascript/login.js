@@ -18,9 +18,9 @@ function booking_info(){
                     var time = element.time;
                     var accessCode = element.attendanceCode;
                     var bookingLength = element.bookingLength;
-                    var unitId = element.unit.unitID;
-                    var venueId = element.venue.venueID;
-                    var userId = element.lecture.userID;
+                    var unitId = element.unit.unitCode;
+                    var venueId = element.venue.building+"."+element.venue.floor+"."+element.venue.room;
+                    var userId = element.lecture.givenName+" "+element.lecture.lastName;
                     $("#booking_table tbody").append(
                       "<tr>" +
                           "<td>"+bookingId+"</td>" +
@@ -38,8 +38,25 @@ function booking_info(){
     });
 }
 
-function login() 
-{
+function loginRe(){
+    var userName = document.getElementById("userName").value;
+    var password = document.getElementById("password").value;
+    $.ajax({
+        type: "POST",
+        url : '/login',
+        data: { userid: userName, password: password},
+        success : function(data) {
+            console.log("TEST1");
+            console.log(data);
+            console.log("TEST2");
+            //window.location = '/staff.html';
+        }
+    });
+}
+
+
+
+function login(){
     var welcome = document.getElementById("welcome_div");
     var staff_entry = document.getElementById("staff_entry");
     var login = document.getElementById("login_form");
@@ -59,7 +76,6 @@ function login()
         url : '/login',
         data: { userid: userName, password: password},
         success : function(data) {
-            console.log(data);
             var studentNo = data[1];
             var firstName = data[2];
             var lastName = data[3];
@@ -101,7 +117,7 @@ function logout(){
                 login.style.display = "block";
                 logged_out_alert.style.display = "block";
             }else{
-                logged_out_danger.style.display = "block";a
+                logged_out_danger.style.display = "block";
             }
 
         }
