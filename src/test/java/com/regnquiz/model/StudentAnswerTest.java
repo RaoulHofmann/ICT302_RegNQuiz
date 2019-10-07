@@ -14,7 +14,7 @@ package com.regnquiz.model;
 public class StudentAnswerTest 
 {
     public static void main(String args[])
-    {
+    {/*
         StudentAnswer a = new StudentAnswer();
         display(a);
         
@@ -27,7 +27,7 @@ public class StudentAnswerTest
         
         b.setStudent(new User(9012, "c", "c", "c"));
         b.setStudentAnswer(2109);
-        display(b);
+        display(b);*/
     }
     
     public static void display(StudentAnswer s)

@@ -5,6 +5,8 @@
  */
 package com.regnquiz.model;
 
+import com.regnquiz.model.MultipleChoice;
+
 /**
  * Author: Matthew MacLennan
  * Date: 23/9/2019
@@ -14,7 +16,7 @@ package com.regnquiz.model;
 public class MultiChoiceTest 
 {
     public static void main(String args[])
-    {
+    {/*
         MultipleChoice a = new MultipleChoice();
         display(a);
         
@@ -27,9 +29,9 @@ public class MultiChoiceTest
         display(b);
         
         b.setQuestion(new Question("test5", 3456, 6543));
-        //b.setAnswer(7890);
+       // b.setAnswer(7890);
         b.setDescription("test6");
-        display(b);
+        display(b);*/
     }
     
     public static void display(MultipleChoice m)

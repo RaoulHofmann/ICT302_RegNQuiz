@@ -5,6 +5,8 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 /**
@@ -18,19 +20,25 @@ public class StudentAnswer
 {
     @EmbeddedId
     StudentAnswerKey id;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @MapsId("UserID")
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User student;
-    private Integer answer;
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @MapsId("AnswerID")
+    @JoinColumn(name = "AnswerID", referencedColumnName="answerID")
+    private MultipleChoice answer;
     
     public StudentAnswer()
     {
         student = new User();
     }
     
-    public StudentAnswer(User student, Integer answer)
+    public StudentAnswer(User student, MultipleChoice answer)
     {
         this.student = student;
         this.answer = answer;
@@ -46,12 +54,12 @@ public class StudentAnswer
         this.student = student;
     }
     
-    public Integer getStudentAnswer()
+    public MultipleChoice getStudentAnswer()
     {
         return answer;
     }
     
-    public void setStudentAnswer(Integer ans)
+    public void setStudentAnswer(MultipleChoice ans)
     {
         this.answer = ans;
     }

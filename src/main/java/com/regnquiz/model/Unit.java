@@ -5,7 +5,12 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -15,7 +20,7 @@ import java.util.Set;
  * Comment: Contains unit information
  */
 @Entity
-public class Unit 
+public class Unit implements Serializable
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -25,17 +30,20 @@ public class Unit
     private String unitCode;
     private String unitName;
     private Integer year;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("SemesterID")
-    @JoinColumn(name = "SemesterID", referencedColumnName="semesterID")
+    //@Column(name = "userID")
+    //private String userID;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "semesterID", referencedColumnName="semesterID")
     private Semester semester;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("UserID")
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "unit")
     private Set<Booking> bookings;
     
@@ -50,6 +58,16 @@ public class Unit
         this.unitCode = unitCode;
         this.unitName = unitName;
         this.semester = sem;
+        this.year = year;
+        this.lecture = lect;
+    }
+    
+    public Unit(Integer id, String UnitCode, String unitName, Integer sem, Integer year, User lect)
+    {
+        this.unitID = id;
+        this.unitCode = unitCode;
+        this.unitName = unitName;
+        this.semester = new Semester(sem);
         this.year = year;
         this.lecture = lect;
     }
@@ -112,5 +130,13 @@ public class Unit
     public void setLecture(User lect)
     {
         this.lecture = lect;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

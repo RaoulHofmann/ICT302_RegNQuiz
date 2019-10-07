@@ -2,6 +2,9 @@ package com.regnquiz.model;
 
 //import org.springframework.data.rest.core.annotation.RestResource;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 //import java.util.Set;
@@ -24,6 +27,7 @@ public class Venue {
     private int room;
     private int capacity;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "venue")
     private Set<Booking> bookings;
     
@@ -116,7 +120,15 @@ public class Venue {
         
         return loc;
     }
-    
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
     @Override
     public String toString()
     {

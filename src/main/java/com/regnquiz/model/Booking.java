@@ -5,6 +5,12 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import java.io.Serializable;
 import java.sql.Time;
 import javax.persistence.*;
 import java.util.Date;
@@ -32,36 +38,61 @@ public class Booking
     @Column(name = "accessCode")
     private String attendanceCode;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("UnitID")
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "UnitID", referencedColumnName="unitID")
     private Unit unit;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("VenueID")
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "VenueID", referencedColumnName="venueID")
     private Venue venue;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("lectureID")
-    @JoinColumn(name = "lectureID", referencedColumnName="userID")
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "userID", referencedColumnName="userID")
     private User lecture;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "booking")
     private Set<ClassList> classList;
-
-    public Booking()
+    
+    public Booking() 
     {
         date = new Date();
         unit = new Unit();
         venue = new Venue();
         lecture = new User();
     }
+    
+    public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, ClassList classList)
+    {
+        this.bookingID = id;
+        this.date = date;
+        this.bookingLength = bookingLen;
+        this.attendanceCode = attendanceCode;
+        this.unit = unit;
+        this.venue = venue;
+        this.lecture = lecture;
+        this.classList.add(classList);
+    }
 
+    public Booking(Integer id, Date date, Time time, String attendanceCode, Integer bookingLen, Unit unit, Venue venue, User lecture)
+    {
+        this.bookingID = id;
+        this.date = date;
+        this.time = time;
+        this.bookingLength = bookingLen;
+        this.attendanceCode = attendanceCode;
+        this.unit = unit;
+        this.venue = venue;
+        this.lecture = lecture;
+    }
+    
     public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, Set<ClassList> classList)
     {
         this.bookingID = id;
-        this. date = date;
+        this.date = date;
         this.bookingLength = bookingLen;
         this.attendanceCode = attendanceCode;
         this.unit = unit;
@@ -69,18 +100,26 @@ public class Booking
         this.lecture = lecture;
         this.classList = classList;
     }
-
-    public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture)
+    
+    public Booking(Date date, Integer bookingLen, Unit unit, Venue venue, User lecture)
     {
-        this.bookingID = id;
-        this. date = date;
+        this.date = date;
         this.bookingLength = bookingLen;
-        this.attendanceCode = attendanceCode;
         this.unit = unit;
         this.venue = venue;
         this.lecture = lecture;
     }
 
+    Booking(int id, Date date, int bookingLen, String attendanceCode, Unit unit, Venue venue, User user) {
+        this.bookingID = id;
+        this.date = date;
+        this.bookingLength = bookingLen;
+        this.attendanceCode = attendanceCode;
+        this.unit = unit;
+        this.venue = venue;
+        this.lecture = user;
+    }
+    
     public Integer getBookingID()
     {
         return bookingID;
@@ -150,30 +189,40 @@ public class Booking
     {
         this.lecture = lecture;
     }
-
+   
     public Set<ClassList> getClassList()
     {
         return classList;
     }
-
+    
     public void setClassList(Set<ClassList> classList)
     {
         this.classList = classList;
     }
-
+    
     public void addClass(ClassList c)
     {
         classList.add(c);
     }
-
+    
     public boolean classContains(ClassList c)
     {
         return classList.contains(c);
     }
-
+    
     public Integer classListSize()
     {
         return classList.size();
+    }
+    
+    public void setTime(int time)
+    {
+        this.time = new Time(time);
+    }
+    
+    public Time getTime()
+    {
+        return time;
     }
     
     /*

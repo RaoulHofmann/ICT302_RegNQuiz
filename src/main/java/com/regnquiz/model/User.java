@@ -1,5 +1,8 @@
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,19 +16,33 @@ import java.util.Set;
 public class User 
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer userID;
-
+    
+    //private String studentNo;
     private String givenName;
     @Column(name = "preferredName")
     private String prefName;
     private String lastName;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "lecture")
     private Set<Unit> units;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "lecture")
     private Set<Booking> bookings;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "student")
+    private Set<ClassList> classList;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "student")
+    private Set<StudentAnswer> studentAnswer;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "user")
+    private Set<UserType> userType;
     
     public User() {}
     
@@ -34,6 +51,13 @@ public class User
         this.userID = id;
         this.givenName = first;
         this.prefName = pref;
+        this.lastName = last;
+    }
+    
+    public User(Integer id, String first, String last)
+    {
+        this.userID = id;
+        this.givenName = first;
         this.lastName = last;
     }
 
@@ -75,5 +99,51 @@ public class User
     public void setLastName(String name)
     {
         this.lastName = name;
+    }
+    
+    public void setUserType(UserType userType)
+    {
+        this.userType.add(userType);
+    }
+    
+    public Set<UserType> getUserType()
+    {
+        return this.userType;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public Set<ClassList> getClassList() {
+        return classList;
+    }
+
+    public Set<StudentAnswer> getStudentAnswer() {
+        return studentAnswer;
+    }
+
+    public Set<Unit> getUnits() {
+        return units;
+    }
+
+    public void setClassList(Set<ClassList> classList) {
+        this.classList = classList;
+    }
+
+    public void setStudentAnswer(Set<StudentAnswer> studentAnswer) {
+        this.studentAnswer = studentAnswer;
+    }
+
+    public void setUnits(Set<Unit> units) {
+        this.units = units;
+    }
+
+    public void setUserType(Set<UserType> userType) {
+        this.userType = userType;
     }
 }

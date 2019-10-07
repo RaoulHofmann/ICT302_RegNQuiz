@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title> QuizNGo</title>
+      <link rel = "stylesheet" type="text/css"
+            href="../css/regNGo.css">
+      </link>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <script type="text/javascript" th:href="@{javascript/login.js}"></script>
+      <script type="text/javascript" th:href="@{javascript/booking.js}"></script>
+  </head>
+  <body onload="booking_info();">
+ 	<header>
+ 		<h1>Welcome STAFF</h1>
+        <div class="alert alert-success alert-dismissible" id="logged_out_alert" style="display: none;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span>
+                <p>Logged Out</p>
+            </span>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible" id="logged_out_danger" style="display: none;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span>
+                <p>Error Logging out!!!</p>
+            </span>
+        </div>
+    </header>
+  	<br/>
+	<div class="main">
+        <div id="welcome_div" style="display: none;">
+            <p>
+                <label id = "welcome"> </label>
+            </p>
+        </div>
+
+        <h3>Booking Info Table</h3>
+        <table id="booking_table">
+            <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>AccessCode</th>
+                <th>Booking Length</th>
+                <th>Unit ID</th>
+                <th>Venue ID</th>
+                <th>User ID</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+	</div>
+    <input type ="submit" value="Logout" onclick="logout();"/>
+ </body>
+</html>

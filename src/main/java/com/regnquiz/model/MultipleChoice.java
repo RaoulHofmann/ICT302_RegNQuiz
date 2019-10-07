@@ -5,43 +5,51 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import java.util.Set;
 import javax.persistence.*;
 
 /**
  * Author: Matthew MacLennan
  * Date: 22/9/2019
- * Version: 1
+ * Version: 1.1
  * Comment: Contains multiple choice data for questions
+ * Changes: Removed Answer from this class
  */
 @Entity
 public class MultipleChoice 
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer mcID;
-    private Integer answer;
+    private Integer answerID;
     private String description;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @MapsId("QuestionID")
     @JoinColumn(name = "QuestionID", referencedColumnName="questionID")
     private Question question;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "answer")
+    private Set<StudentAnswer> studentAnswer;
     
     public MultipleChoice()
     {
         question = new Question();
     }
     
-    public MultipleChoice(Question question, Integer ans, String description)
+    public MultipleChoice(Question question, String description)
     {
         this.question = question;
-        this.answer = ans;
         this.description = description;
     }
     
     public Integer getMCID()
     {
-        return mcID;
+        return answerID;
     }
     
     public Question getQuestion()
@@ -52,16 +60,6 @@ public class MultipleChoice
     public void setQuestion(Question question)
     {
         this.question = question;
-    }
-    
-    public Integer getAnswer()
-    {
-        return answer;
-    }
-    
-    public void setAnswer(Integer ans)
-    {
-        this.answer = ans;
     }
     
     public String getDescription()
