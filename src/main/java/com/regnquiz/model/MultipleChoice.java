@@ -5,6 +5,9 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Set;
 import javax.persistence.*;
 
@@ -22,12 +25,14 @@ public class MultipleChoice
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer answerID;
     private String description;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @MapsId("QuestionID")
     @JoinColumn(name = "QuestionID", referencedColumnName="questionID")
     private Question question;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "answer")
     private Set<StudentAnswer> studentAnswer;
     

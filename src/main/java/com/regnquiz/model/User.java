@@ -1,5 +1,8 @@
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -21,19 +24,23 @@ public class User
     private String prefName;
     private String lastName;
 
-    
+    @JsonBackReference
     @OneToMany(mappedBy = "lecture")
     private Set<Unit> units;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "lecture")
     private Set<Booking> bookings;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "student")
     private Set<ClassList> classList;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "student")
     private Set<StudentAnswer> studentAnswer;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "user")
     private Set<UserType> userType;
     
@@ -103,5 +110,40 @@ public class User
     {
         return this.userType;
     }
-            
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public Set<ClassList> getClassList() {
+        return classList;
+    }
+
+    public Set<StudentAnswer> getStudentAnswer() {
+        return studentAnswer;
+    }
+
+    public Set<Unit> getUnits() {
+        return units;
+    }
+
+    public void setClassList(Set<ClassList> classList) {
+        this.classList = classList;
+    }
+
+    public void setStudentAnswer(Set<StudentAnswer> studentAnswer) {
+        this.studentAnswer = studentAnswer;
+    }
+
+    public void setUnits(Set<Unit> units) {
+        this.units = units;
+    }
+
+    public void setUserType(Set<UserType> userType) {
+        this.userType = userType;
+    }
 }

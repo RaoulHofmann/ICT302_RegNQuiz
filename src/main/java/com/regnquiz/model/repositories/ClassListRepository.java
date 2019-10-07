@@ -10,6 +10,8 @@ import com.regnquiz.model.ClassList;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 /**
  * Author: Stuart Hepburn
  * Date: 25/9/2019
@@ -18,5 +20,6 @@ import org.springframework.data.repository.query.Param;
 public interface ClassListRepository  extends CrudRepository<ClassList, Integer>{
     @Query("SELECT new ClassList(c.classListID, c.student.userID, c.booking.bookingID, c.internal, c.attendance) FROM ClassList c  WHERE c.booking.bookingID=:bID")
     ClassList[] getBookingClass(@Param("bID") int bID);
-    
+
+    List<ClassList> findByBooking(int bookingId);
 }

@@ -5,6 +5,12 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import java.io.Serializable;
 import java.sql.Time;
 import javax.persistence.*;
 import java.util.Date;
@@ -31,20 +37,23 @@ public class Booking
     private Integer bookingLength;
     @Column(name = "accessCode")
     private String attendanceCode;
-    
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "UnitID", referencedColumnName="unitID")
     private Unit unit;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "VenueID", referencedColumnName="venueID")
     private Venue venue;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "userID", referencedColumnName="userID")
     private User lecture;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "booking")
     private Set<ClassList> classList;
     
@@ -66,6 +75,18 @@ public class Booking
         this.venue = venue;
         this.lecture = lecture;
         this.classList.add(classList);
+    }
+
+    public Booking(Integer id, Date date, Time time, String attendanceCode, Integer bookingLen, Unit unit, Venue venue, User lecture)
+    {
+        this.bookingID = id;
+        this.date = date;
+        this.time = time;
+        this.bookingLength = bookingLen;
+        this.attendanceCode = attendanceCode;
+        this.unit = unit;
+        this.venue = venue;
+        this.lecture = lecture;
     }
     
     public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, Set<ClassList> classList)

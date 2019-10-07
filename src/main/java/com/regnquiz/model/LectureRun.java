@@ -36,10 +36,10 @@ public class LectureRun {
     public void OpenLecture(int bookingID)
     {
         Optional<Booking> booking = bookingRepository.findById(bookingID);
-        
+
         b = booking.get();
 
-        cl = classListRepository.findByBookingBookingID(bookingID);
+        cl = classListRepository.findByBooking(bookingID);
         /*for(ClassList c : cl)
         {
             System.out.println("########################################" );
