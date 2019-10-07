@@ -59,7 +59,7 @@ public class Booking
     public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, ClassList classList)
     {
         this.bookingID = id;
-        this. date = date;
+        this.date = date;
         this.bookingLength = bookingLen;
         this.attendanceCode = attendanceCode;
         this.unit = unit;
@@ -71,7 +71,7 @@ public class Booking
     public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, Set<ClassList> classList)
     {
         this.bookingID = id;
-        this. date = date;
+        this.date = date;
         this.bookingLength = bookingLen;
         this.attendanceCode = attendanceCode;
         this.unit = unit;
@@ -79,10 +79,19 @@ public class Booking
         this.lecture = lecture;
         this.classList = classList;
     }
+    
+    public Booking(Date date, Integer bookingLen, Unit unit, Venue venue, User lecture)
+    {
+        this.date = date;
+        this.bookingLength = bookingLen;
+        this.unit = unit;
+        this.venue = venue;
+        this.lecture = lecture;
+    }
 
     Booking(int id, Date date, int bookingLen, String attendanceCode, Unit unit, Venue venue, User user) {
         this.bookingID = id;
-        this. date = date;
+        this.date = date;
         this.bookingLength = bookingLen;
         this.attendanceCode = attendanceCode;
         this.unit = unit;
@@ -188,6 +197,11 @@ public class Booking
     public void setTime(int time)
     {
         this.time = new Time(time);
+    }
+    
+    public Time getTime()
+    {
+        return time;
     }
     
     /*
