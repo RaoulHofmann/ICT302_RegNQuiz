@@ -73,6 +73,148 @@
             </tbody>
         </table>
     </div>
+    <div id="mainOfStudent" style="display: none;">
+    	<h3 id="welcomStudent">Welcome XXXXXXX</h3>
+    	<form method="post"  action="" ><br/>
+			<input type ="submit" value="View Report" /><br/>
+			<input type ="submit" value = "Join a class">
+		</form>
+    </div>
+    
+	<div id="accessCodeEnter" style="display: none;">
+		<form method="post"  action="" ><br/>
+            <label>Access Code: 
+            <input type = "text" name = "accessCode" id="accessCode" onblur = "checkAccessCode()" />
+            </label><br /><br/>
+            <input type ="submit" value="Go" />
+            
+		</form>
+    </div>
+    
+    <div id="answerQuestion" style="display: none;">
+    <form method="post"  action="" >
+        <label name = "question" id = "question">Question topic displaying </label><br /><br/>
+        <label> Answer: 
+            <ul class = "listAnswerGroup" list-group-flush>
+                <li class="listAnswerItem"><input type="checkbox" name="answer1" value="answer1"> Answer1 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer2" value="answer2"> Answer2 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer3" value="answer3"> Answer3 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer4" value="answer4"> Answer4 text<br></li>
+            </ul>
+        </label>    
+        <br/>
+		<input type ="submit" id="submitButton" value="Submit" />   <br/>
+	</form>
+    </div>
+    
+    <div id="studentReport" style="display: none;">
+    	<form method=""  action="" >
+            <label for="unitSelect">Select Unit: 
+            <select id="unitSelect">
+            </select></label> <br/>
+            <label for="lectureWorkshopTime">Lecture/Workshop start time:
+            <select id="lectureWorkshopTime">
+                <option value ="time ">8:30</option>
+            </select></label><br/><br/>
+	        <input type="submit" value="Back to Main" onclick="backToMain()">
+	        <input type="submit" value="Search" onclick="search()">
+		</form>
+		<div>
+          <textArea cols="50 " rows="20">
+                        Showing Report here
+          </textArea>
+      	</div>
+
+    </div>
+    
+    <div id="mainOfLecture" style="display: none;">
+      <form method="post"  action="" >
+ 		<input type ="submit"  value="Report" onclick="lectureReport()"/>  <br/> <br/>
+        <input type ="submit"  value="Booking" onclick="booking()"/>   <br/><br/>       
+		<input type ="submit"  value="Display Question" onclick="displayQuestion()"/>  
+	  </form>
+    </div>
+    
+    <div id="displayQuestion" style="display: none;">
+        <label class ="displayAccessCode" id="displayAccessCode">Access Code: </label>
+ 		<p class="timer">Time will end in <span class="js-timeout" id="js-timeout">2:00</span></p><br/>  
+		<form method="post"  action="" >
+        		<label name = "question" id = "question">Question topic displaying </label><br /><br/>
+        		<label> Answer: 
+            	<ul class = "listAnswerGroup" list-group-flush>
+                <li class="listAnswerItem"><input type="checkbox" name="answer1" value="answer1"> Answer1 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer2" value="answer2"> Answer2 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer3" value="answer3"> Answer3 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer4" value="answer4"> Answer4 text<br></li>
+            </ul>
+        </label>    
+        <br/>
+          <input type ="button" id="nextQuestion" value="Next"  onclick="showNextQuestion()"/>  <br/>
+		</form>
+        <div>
+            <label id="displayAnsweredNumber">Student answered: xx/ total </label>
+        </div>
+ 
+    </div>
+    
+    <div id="booking" style="display: none;">
+    <input type="button" value ="Uploading Students Info" onclick="" />
+      <input type="button" value ="DownLoad File" onclick="" /><br/>
+
+	<form method="post"  action="" >
+        <label>Venue Name:
+        <input type = "text" name="venueName" id="venueName" onblur = ""  />
+        </label><br />
+        <label>Unit  Name:
+        <input type = "text" name="unitName" id="unitName" onblur = ""  />
+        </label><br /><br/>
+        <label>Hours 
+        	<input type = "text" name="duration" id="duration" /></label><br/>
+        <label>Date and Start Time
+        <input type="datetime-local" name="bdaytime" />        </label><br />
+        	
+        <div class="uploadQuestion">
+            <label>Question Number</label> 
+            <select class = "QuestionNumber">
+              <option value="QuestionNumber">1</option>
+              <option value="QuestionNumber">2</option>
+              <option value="QuestionNumber">3</option>
+              <option value="QuestionNumber">4</option>
+              <option value="QuestionNumber">5</option>
+            </select><br/>
+            
+            <label> Question Topic</label> <input type="text" name="questionTopic" value="Question Topic here"><br> 
+            <label> Answer A: </label> <input type="text" name="answer A" value="Type anser A here"><br>  
+            <label> Answer B: </label> <input type="text" name="answer B" value="Type anser B here"><br>      	
+            <label> Answer C: </label> <input type="text" name="answer C" value="Type anser C here"><br>      	
+            <label> Answer D: </label> <input type="text" name="answer D" value="Type anser D here"><br>      	
+    	</div>
+        <input type ="submit" value="Save" onclick="saveBooking();"/>        
+	</form>
+    </div>
+    <div id="lectureReport" style="display: none;">
+    	<form method=""  action="" >
+            <label>Venue Name: 
+            <select id="venueSelect">
+                <option value =" ">Venue Name</option>
+            </select></label> <br/>
+            <label>Unit Name:
+            <select id="unitSelect">
+                <option value =" ">Unit Name</option>
+            </select></label><br/>
+            <label>Student Number:
+            <select id="studentSelect">
+                <option value =" ">student Name</option>
+            </select></label>
+            
+            <br/>
+            <input type="submit" value="Search" onclick="search();">
+		</form>
+      <div>
+          Showing Report here
+      </div>
+    </div>
+
  </body>
 </html>
 
