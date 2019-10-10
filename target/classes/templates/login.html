@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> QuizNGo</title>
+    <link type="text/css" href="css/regNGo.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="javascript/login.js"></script>
+</head>
+<body>
+<div class="login" id="login_form">
+    <header>
+        <h1>Login </h1>
+    </header>
+    <br/>
+    <div class="alert alert-success alert-dismissible" id="logged_out_alert" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span>
+                <p>Logged Out</p>
+            </span>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible" id="logged_out_danger" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span>
+                <p>Error Logging out!!!</p>
+            </span>
+    </div>
+
+    <label>User Name:
+        <input type = "text" name = "userName" id="userName" onblur = "checkName()" />
+    </label><br />
+    <br/>
+    <label>Password :
+        <input type = "text" name="password" id="password" onblur = "checkPassword()"  />
+    </label><br />
+    <br/>
+    <input type ="submit" value="Login" onclick="loginRe();"/>
+    <br/>
+    <input type ="submit" value = "Import .csv File" />
+</div>
+
+</body>
+</html>
+

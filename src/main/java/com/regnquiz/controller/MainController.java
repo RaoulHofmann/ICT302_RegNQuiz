@@ -8,13 +8,19 @@ import com.regnquiz.model.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.*;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,16 +105,28 @@ public class MainController {
         return "Saved";
     }
 
+    /*@PostMapping(path="/login")
+    public ModelAndView login(@RequestParam int userid, @RequestParam int password, HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
+        //User user = UserDetailService.loadUserByUserid(auth.getName());
+        //modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+        modelAndView.setViewName("/");
+        System.out.println("ASDASDASD");
+        return modelAndView;
+    }*/
+
     @PostMapping(path="/login")
-    public @ResponseBody List<Object> login(@RequestParam int userid, @RequestParam int password) {
+    public @ResponseBody
+    ResponseEntity<Void> login(@RequestParam int userid, @RequestParam int password, HttpServletRequest request) {
         List<Object> user_info = new ArrayList<>();
         try {
             int userType = userTypeQueryRepository.getUserTypes(userid).getTypeID();
             int userID = userRepository.findById(userid).get().getUserID();
-            /*HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
             session.setAttribute("userType",userType);
             session.setAttribute("userID",userID);
-            System.out.println("Session Login "+ session.getId());*/
+            System.out.println("Session Login "+ session.getId());
             user_info.add(userType);
             user_info.add(userID);
             user_info.add(userRepository.findById(userid).get().getGivenName());
@@ -117,7 +135,17 @@ public class MainController {
         }catch(InvalidDataAccessResourceUsageException e){
             user_info.add(-2);
         }
-        return user_info;
+        //return user_info;
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentServletMapping().path("/user/{id}").build()
+                .expand(user_info.get(0)).toUri();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(location);
+
+        ResponseEntity<Void> entity = new ResponseEntity<Void>(headers,
+                HttpStatus.CREATED);
+        return entity;
+        //return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header(HttpHeaders.LOCATION, "/user").build();
     }
 
     @PostMapping(path="/logout")
@@ -143,13 +171,34 @@ public class MainController {
     }
 
     @GetMapping(path="/staff")
-    public String gotoStaff(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) {
+    public @ResponseBody String gotoStaff(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) {
         System.out.println("SADJASHDJAKSBDOAJSKD");
-        //redirectAttributes.addAttribute("user_info", user_info);
-        redirectAttributes.addFlashAttribute("user_info", "Something");
         return "staff";
-        /*List<Object> user_info = new ArrayList<>();
-        user_info.add(request);
-        return  user_info;*/
+    }
+
+    @GetMapping(path="/checksession")
+    public @ResponseBody String checkSession(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        if(session != null){
+            if(session.getAttribute("userType").equals(2)){
+                return "staff";
+            }else if(session.getAttribute("userType").equals(2)){
+                return "student";
+            }
+        }
+        return "inValid";
+    }
+
+    @GetMapping(path="/user/{id}")
+    public @ResponseBody String userCheck(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        if(session != null){
+            if(session.getAttribute("userType").equals(2)){
+                return "staff";
+            }else if(session.getAttribute("userType").equals(2)){
+                return "student";
+            }
+        }
+        return "inValid";
     }
 }

@@ -13,7 +13,7 @@ import java.util.Set;
  * Comment: Contains user information
  */
 @Entity // This tells Hibernate to make a table out of this class
-public class User 
+public class User
 {
     @Id
     private Integer userID;
