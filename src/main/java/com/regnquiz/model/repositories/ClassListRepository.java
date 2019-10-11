@@ -5,8 +5,9 @@
  */
 package com.regnquiz.model.repositories;
 
-import org.springframework.data.repository.CrudRepository;
 import com.regnquiz.model.ClassList;
+import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -18,5 +19,7 @@ import org.springframework.data.repository.query.Param;
 public interface ClassListRepository  extends CrudRepository<ClassList, Integer>{
     @Query("SELECT new ClassList(c.classListID, c.student.userID, c.booking.bookingID, c.internal, c.attendance) FROM ClassList c  WHERE c.booking.bookingID=:bID")
     ClassList[] getBookingClass(@Param("bID") int bID);
+    
+    List<ClassList> findByBookingBookingID(int bookingID);
     
 }

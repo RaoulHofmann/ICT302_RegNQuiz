@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
  *
  * @author Matthew MacLennan
  */
+@Service
 public class StudentImport 
 {
     @Autowired

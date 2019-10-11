@@ -17,8 +17,39 @@ import java.io.Serializable;
 public class BookingQuestionKey implements Serializable
 {
     @Column(name = "bookingID")
-    private Integer bookingID;
+    private Integer BookingID;
     
     @Column(name = "questionID")
-    private Integer questionID;
+    private Integer QuestionID;
+    
+    public BookingQuestionKey()
+    {
+        
+    }
+    
+    public BookingQuestionKey(int bookingID, int questionID)
+    {
+        this.BookingID = bookingID;
+        this.QuestionID = questionID;
+    }
+    
+    public int getBookingID()
+    {
+        return this.BookingID;
+    }
+    
+    public void setBookingID(int bookingID)
+    {
+        this.BookingID = bookingID;
+    }
+    
+    public int getQuestionID()
+    {
+        return QuestionID;
+    }
+    
+    public void setQuestionID(int questionID)
+    {
+        this.QuestionID = questionID;
+    }
 }

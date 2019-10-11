@@ -7,6 +7,7 @@ package com.regnquiz.model.repositories;
 
 import com.regnquiz.model.MultipleChoice;
 import com.regnquiz.model.Question;
+import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +21,7 @@ import java.util.Set;
  */
 public interface MultipleChoiceRepository extends CrudRepository<MultipleChoice, Integer>
 {
-    @Query("SELECT case when count(m.answerID) = 0 then 0 else m.answerID end FROM MultipleChoice m WHERE m.description = :description AND m.question = :question")
-    Set<MultipleChoice> getMC(@Param("description") String description, @Param("question") Question question);
+    //@Query("SELECT case when count(m.answerID) = 0 then 0 else m.answerID end FROM MultipleChoice m WHERE m.description = :description AND m.question = :question")
+    //Set<MultipleChoice> getMC(@Param("description") String description, @Param("question") Question question);
+    List<MultipleChoice>findByQuestion_QuestionID(Integer questionID);
 }

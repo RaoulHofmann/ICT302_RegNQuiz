@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author Matthew MacLennan
  */
 @RunWith(SpringRunner.class)
-//@SpringBootTest
+@SpringBootTest
 public class StudentImportTest 
 {
     @Autowired
@@ -28,7 +28,7 @@ public class StudentImportTest
     @Test
     public void TestStudent()
     {
-        si.ImportStudent("D:/CORS0213.csv");
+        //si.ImportStudent("D:/CORS0213.csv");
         Iterable<User> students = userRepo.findAll();
         
         for (User u : students)

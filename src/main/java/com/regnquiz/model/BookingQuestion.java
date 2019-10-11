@@ -60,4 +60,14 @@ public class BookingQuestion
     {
         this.question = question;
     }
+    
+    public void setBookingQuestionKey(BookingQuestionKey ID)
+    {
+        this.id = ID;
+    }
+    
+    public BookingQuestionKey getBookingQuestionKey()
+    {
+        return id;
+    }
 }

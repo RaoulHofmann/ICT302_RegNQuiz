@@ -10,6 +10,8 @@ import com.regnquiz.model.repositories.SemesterRepository;
 import com.regnquiz.model.repositories.UnitRepository;
 import com.regnquiz.model.repositories.UserRepository;
 import com.regnquiz.model.repositories.VenueRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -52,22 +54,27 @@ public class BookingRepositoryTest {
         unitRepository.save(un);
         Venue v = new Venue(134,1,1,1);
         venueRepository.save(v);
-        
-        a.setBookingID(1234);
-        a.setDate(new Date(2019, 9, 22));
-        a.setBookingLength(90);
-        a.setAttendanceCode("test1");
-        a.setTime(750);
-        //a.setUnit(new Unit(4321, "a", "a", new Semester(), 0, new User()));
-        //a.setUnit(new Unit(4321, "a", "a", new Semester(0, "T1"), 0, u));
-        a.setUnit(un);
-        //a.setVenue(new Venue(5678,1,1,1));
-        a.setVenue(v);
-        //a.setLecture(new User(8765, "a", "a", "a"));
-        a.setLecture(u);
-        display(a);
-        bookingRepository.save(a);
-        
+        try{
+            a.setBookingID(1234);
+            a.setDate(new SimpleDateFormat("yyyy/MM/dd").parse("2019/01/01"));
+            a.setBookingLength(90);
+            a.setAttendanceCode("test1");
+            a.setTime(750);
+            a.setAttendanceCode("uY65T");
+            //a.setUnit(new Unit(4321, "a", "a", new Semester(), 0, new User()));
+            //a.setUnit(new Unit(4321, "a", "a", new Semester(0, "T1"), 0, u));
+            a.setUnit(un);
+            //a.setVenue(new Venue(5678,1,1,1));
+            a.setVenue(v);
+            //a.setLecture(new User(8765, "a", "a", "a"));
+            a.setLecture(u);
+            display(a);
+            bookingRepository.save(a);
+        }
+        catch(ParseException e)
+        {
+            
+        }
         
         Iterable<Booking> g = bookingRepository.findAll();
         

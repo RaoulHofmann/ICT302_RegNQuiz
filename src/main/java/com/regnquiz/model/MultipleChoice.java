@@ -24,7 +24,6 @@ public class MultipleChoice
     private String description;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("QuestionID")
     @JoinColumn(name = "QuestionID", referencedColumnName="questionID")
     private Question question;
     

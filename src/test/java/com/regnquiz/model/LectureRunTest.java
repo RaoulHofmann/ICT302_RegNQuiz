@@ -35,7 +35,7 @@ public class LectureRunTest {
         System.out.println("Attendance Code " + lr.getAccessCode());
         
         
-        lr.setAttendance(4);
+        lr.setAttendance(5);
         
         lr.saveLecture();
         

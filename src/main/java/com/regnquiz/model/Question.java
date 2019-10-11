@@ -21,15 +21,14 @@ public class Question
     private Integer questionID;
     private String description;
     private Integer time;
-    //private Integer answer;
+    private Integer answerID;
     
     @OneToMany(mappedBy = "question")
     private Set<BookingQuestion> bookingQuestion;
     
     @OneToMany(mappedBy = "question")
     private Set<MultipleChoice> multipleChoice;
-    
-       
+        
     public Question() {}
     public Question(String desc, Integer time, Integer answer)
     {
@@ -62,14 +61,19 @@ public class Question
     {
         this.time = time;
     }
-    
-   // public Integer getAnswer()
-   // {
-   //     return answer;
-    //}
+
+    public Integer getAnswer()
+    {
+        return answerID;
+    }
     
     public void setAnswer(Integer answer)
     {
-    //    this.answer = answer;
+        this.answerID = answer;
+    }
+    
+    public Set<MultipleChoice> getMultipleChoice()
+    {
+        return multipleChoice;
     }
 }
