@@ -146,4 +146,29 @@ public class User
     public void setUserType(Set<UserType> userType) {
         this.userType = userType;
     }
+    
+    public void addUnit(Unit u)
+    {
+        units.add(u);
+    }
+    
+    public void addBooking(Booking b)
+    {
+        bookings.add(b);
+    }
+    
+    public void addClassList(ClassList cl)
+    {
+        classList.add(cl);
+    }
+    
+    public void addStudentAnswers(StudentAnswer sa)
+    {
+        studentAnswer.add(sa);
+    }
+    
+    public void addUserType(UserType ut)
+    {
+        userType.add(ut);
+    }
 }

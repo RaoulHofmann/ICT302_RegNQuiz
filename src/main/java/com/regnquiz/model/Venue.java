@@ -128,6 +128,11 @@ public class Venue {
     public Set<Booking> getBookings() {
         return bookings;
     }
+    
+    public void addBooking(Booking b)
+    {
+        bookings.add(b);
+    }
 
     @Override
     public String toString()

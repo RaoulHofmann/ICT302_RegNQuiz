@@ -17,13 +17,12 @@ public class UserTypeKey implements Serializable {
     {
         
     }
-    
+   
     public UserTypeKey(int typeID, int userID)
     {
         this.UserID = userID;
         this.TypeID = typeID;
     }
-    
     
     public void setType(int typeID)
     {
