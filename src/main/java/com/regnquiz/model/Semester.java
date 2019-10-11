@@ -67,4 +67,9 @@ public class Semester implements Serializable {
     public void setUnit(Set<Unit> unit) {
         Unit = unit;
     }
+    
+    public void addUnit(Unit unit)
+    {
+       Unit.add(unit);
+    }
 }
