@@ -21,4 +21,33 @@ public class BookingQuestionKey implements Serializable
     
     @Column(name = "questionID")
     private Integer questionID;
+    
+    public BookingQuestionKey()
+    {}
+    
+    public BookingQuestionKey(Integer bid, Integer qid)
+    {
+        this.bookingID = bid;
+        this.questionID = qid;
+    }
+    
+    public Integer getBookingID()
+    {
+        return bookingID;
+    }
+    
+    public void setBookingID(Integer bid)
+    {
+        this.bookingID = bid;
+    }
+    
+    public Integer getQuestionID()
+    {
+        return questionID;
+    }
+    
+    public void setQuestionID(Integer qid)
+    {
+        this.questionID = qid;
+    }
 }
