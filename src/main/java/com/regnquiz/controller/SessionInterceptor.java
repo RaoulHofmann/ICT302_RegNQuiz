@@ -20,7 +20,7 @@ public class SessionInterceptor implements HandlerInterceptor {
                     response.sendRedirect("/staff/"+session.getAttribute("userID"));
                 } else if ((Integer) session.getAttribute("userType") == 3) {
                     System.out.println("Student");
-                    //response.sendRedirect("/student.html");
+                    response.sendRedirect("/student/"+session.getAttribute("userID"));
                 }
             }catch (NullPointerException e){
                 response.sendRedirect("/login");

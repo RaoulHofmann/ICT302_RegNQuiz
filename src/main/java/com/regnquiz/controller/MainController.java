@@ -113,9 +113,11 @@ public class MainController {
 
     @PostMapping(value = "/login")
     public ModelAndView login(@Valid Login login, BindingResult result, ModelMap model, HttpServletRequest request) {
+        int userType = -1;
+        int userID = -1;
         try {
-            int userType = userTypeQueryRepository.getUserTypes(login.getUserID()).getTypeID();
-            int userID = userRepository.findById(login.getUserID()).get().getUserID();
+            userType = userTypeQueryRepository.getUserTypes(login.getUserID()).getTypeID();
+            userID = userRepository.findById(login.getUserID()).get().getUserID();
             HttpSession session = request.getSession();
             session.setAttribute("userType",userType);
             session.setAttribute("userID",userID);
@@ -125,7 +127,15 @@ public class MainController {
         }
 
         model.addAttribute("id", login.getUserID());
-        return new ModelAndView("redirect:/staff/{id}", model);
+
+        if(userType == 2){
+            return new ModelAndView("redirect:/staff/{id}", model);
+        }else if(userType == 3){
+            return new ModelAndView("redirect:/student/{id}", model);
+        }else{
+            return new ModelAndView("redirect:/");
+
+        }
         //return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header(HttpHeaders.LOCATION, "/user").build();
     }
 
@@ -151,11 +161,6 @@ public class MainController {
         return BookingRepository.findByUserID(2);
     }
 
-    @GetMapping(path="/student")
-    public String gotoStudent(HttpServletRequest request, HttpServletResponse response) {
-        return "forward:/student.html";
-    }
-
     @GetMapping(path="/staff/{id}")
     public String goToStaffIndex(@PathVariable("id") int id, Model model,HttpServletRequest request) {
         try {
@@ -163,6 +168,21 @@ public class MainController {
                 model.addAttribute("user", userRepository.findById(id).get());
                 System.out.println(model.toString());
                 return "staff";
+            } else {
+                return "redirect:/";
+            }
+        }catch(NullPointerException e){
+            return "redirect:/";
+        }
+    }
+
+    @GetMapping(path="/student/{id}")
+    public String goToStudentIndex(@PathVariable("id") int id, Model model,HttpServletRequest request) {
+        try {
+            if (request.getSession() != null && (Integer) request.getSession().getAttribute("userID") == id) {
+                model.addAttribute("user", userRepository.findById(id).get());
+                System.out.println(model.toString());
+                return "student";
             } else {
                 return "redirect:/";
             }
