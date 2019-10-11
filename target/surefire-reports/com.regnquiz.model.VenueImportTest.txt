@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.regnquiz.model.VenueImportTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.263 s <<< FAILURE! - in com.regnquiz.model.VenueImportTest
-TestVenue on TestVenue(com.regnquiz.model.VenueImportTest)(com.regnquiz.model.VenueImportTest)  Time elapsed: 0.005 s  <<< FAILURE!
-java.lang.NullPointerException
-	at com.regnquiz.model.VenueImportTest.TestVenue(VenueImportTest.java:30)
-

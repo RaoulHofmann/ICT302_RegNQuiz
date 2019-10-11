@@ -17,13 +17,13 @@ public class SessionInterceptor implements HandlerInterceptor {
             try{
                 if ((Integer) session.getAttribute("userType") == 2) {
                     System.out.println("Staff");
-                    //response.sendRedirect("/staff.html");
+                    response.sendRedirect("/staff/"+session.getAttribute("userID"));
                 } else if ((Integer) session.getAttribute("userType") == 3) {
                     System.out.println("Student");
                     //response.sendRedirect("/student.html");
                 }
             }catch (NullPointerException e){
-                System.out.println(e);
+                response.sendRedirect("/login");
             }
         }
         return true;
