@@ -5,8 +5,6 @@ function booking_info(){
         type: "POST",
         url : '/getbooking',
         success : function(data) {
-            console.log(data);
-
             data.forEach(function(element) {
                 console.log(element);
                     var bookingId = element.bookingID;
@@ -29,8 +27,8 @@ function booking_info(){
                           "<td>"+userId+"</td>" +
                           "<td>"+
                           "<a href=\"javascript: document.startBooking.submit()\" role=\"button\">Start Booking "+bookingId+"</a>"+
-                           "<form name=\"startBooking\" th:action=\"@{/startBooking/"+bookingId+"}\" method=\"get\" th:hidden=\"true\">"+
-                               "<input hidden type=\"submit\" value=\"Sign Out\"/>"+
+                           "<form name=\"startBooking\" th:action=\"@{/startBooking/2}\" method=\"get\" th:hidden=\"true\">"+
+                               "<input hidden type=\"submit\" value=\"Start Booking "+bookingId+"\"/>"+
                            "</form>"+
                           "</td>" +
                       "</tr>"

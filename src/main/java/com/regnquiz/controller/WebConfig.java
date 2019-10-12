@@ -1,5 +1,6 @@
 package com.regnquiz.controller;
 
+import com.regnquiz.model.Booking;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -15,6 +16,10 @@ import org.springframework.web.servlet.view.JstlView;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Configuration
 @Component
 @EnableWebMvc
@@ -22,6 +27,12 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Autowired
     SessionInterceptor sessionInterceptor;
+
+    @Bean
+    public Map<Integer, List<Booking>> bookings(){
+        Map<Integer, List<Booking>>  bookings = new HashMap<>();
+        return bookings;
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
