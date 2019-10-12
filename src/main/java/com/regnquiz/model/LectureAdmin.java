@@ -11,6 +11,7 @@ import com.regnquiz.model.repositories.ClassListRepository;
 import com.regnquiz.model.repositories.UserRepository;
 import com.regnquiz.model.repositories.QuestionRepository;
 import com.regnquiz.model.repositories.MultipleChoiceRepository;
+import com.regnquiz.model.repositories.UnitRepository;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -38,10 +39,12 @@ public class LectureAdmin {
     private QuestionRepository questionRepo;
     @Autowired
     private MultipleChoiceRepository mcRepo;
+    @Autowired
+    private UnitRepository unitRepository;
    
     
     private User u = new User();
-    private List<Booking> b;
+    //private List<Booking> b;
     
     @Transactional
     public void setUser(Integer userID)
@@ -59,7 +62,7 @@ public class LectureAdmin {
     @Transactional
     public List<Booking> getBooking()
     {
-        b =  bookingRepository.findByLecture(u);
+        List<Booking> b =  bookingRepository.findByLecture(u);
         return b;
     }
     
@@ -136,5 +139,12 @@ public class LectureAdmin {
         bqRepo.save(bc);
         
         return true;
+    }
+    
+    @Transactional
+    public List<Unit> getUnit()
+    {
+        List<Unit> ul =  unitRepository.findByLecture(u)  ;
+        return ul;
     }
 }

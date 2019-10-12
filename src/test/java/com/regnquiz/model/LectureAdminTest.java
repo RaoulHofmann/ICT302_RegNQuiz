@@ -7,6 +7,7 @@ package com.regnquiz.model;
 
 import com.regnquiz.model.repositories.MultipleChoiceRepository;
 import com.regnquiz.model.repositories.QuestionRepository;
+import com.regnquiz.model.repositories.SemesterRepository;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,16 +30,24 @@ public class LectureAdminTest {
     private MultipleChoiceRepository mcRepository;
     @Autowired
     private QuestionRepository qRepository;
+    @Autowired
+    private SemesterRepository semRepo;
+    
     
     @Test
     public void RunLectureAdmin()
     {
-        la.setUser(4);      //List<Booking> b =  la.getBooking();
+        la.setUser(2);      
         
         System.out.println("###############################");
         System.out.println("###############################");
         System.out.println("###############################");
         
+        List<Unit> ul = la.getUnit();
+        for(Unit ui: ul)
+            displayUnit(ui);
+        
+        /*
         List<Booking> bl = la.getBooking();
         
         for(Booking b : bl)
@@ -66,7 +75,7 @@ public class LectureAdminTest {
         List<BookingQuestion> bc = la.getBookingQuestion(2);
         for(BookingQuestion b:bc)
             displayQuestions(b);
-       
+       */
     }
     
         public static void display(Booking b)
@@ -117,6 +126,17 @@ public class LectureAdminTest {
         
         System.out.println("Answer: " + mcRepository.findById(q.getAnswer()).get().getDescription());
         System.out.println();
+        System.out.println();
+    }
+    
+    public void displayUnit(Unit u)
+    {
+        
+        System.out.println("Code: " + u.getUnitCode());
+        System.out.println("Unit Name: " + u.getUnitName());
+        System.out.println("Semester: " + u.getSemester().getDescription());
+        System.out.println("Year: " + u.getYear());
+        System.out.println("Lecture: " + u.getLecture().getGivenName());
         System.out.println();
     }
     

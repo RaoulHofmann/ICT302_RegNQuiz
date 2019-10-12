@@ -91,12 +91,7 @@ public class Question
     {
         bookingQuestion.add(bq);
     }
-    
-    public Set<MultipleChoice> getMultipleChoice()
-    {
-        return multipleChoice;
-    }
-    
+        
     public void setMultipleChoice(Set<MultipleChoice> multipleChoice)
     {
         this.multipleChoice = multipleChoice;
