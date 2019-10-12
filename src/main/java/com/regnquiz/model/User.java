@@ -1,5 +1,7 @@
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -21,19 +23,23 @@ public class User
     private String prefName;
     private String lastName;
 
-    
+    @JsonBackReference
     @OneToMany(mappedBy = "lecture")
     private Set<Unit> units;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "lecture")
     private Set<Booking> bookings;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "student")
     private Set<ClassList> classList;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "student")
     private Set<StudentAnswer> studentAnswer;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "user")
     private Set<UserType> userType;
     

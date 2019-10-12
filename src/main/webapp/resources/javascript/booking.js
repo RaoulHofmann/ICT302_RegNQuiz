@@ -5,6 +5,8 @@ function booking_info(){
         type: "POST",
         url : '/getbooking',
         success : function(data) {
+            console.log(data);
+
             data.forEach(function(element) {
                 console.log(element);
                     var bookingId = element.bookingID;

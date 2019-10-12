@@ -5,6 +5,8 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 /**
@@ -21,6 +23,7 @@ public class Semester {
     
     private String description;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "semester")
     private Set<Unit> Unit;
 

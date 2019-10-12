@@ -129,7 +129,7 @@ public class MainController {
             session.setAttribute("userID",userID);
             System.out.println("Session Login "+ session.getId());
         }catch(InvalidDataAccessResourceUsageException e){
-            return new ModelAndView("redirect:/redirectedUrl");
+            return new ModelAndView("redirect:/");
         }
 
         model.addAttribute("id", login.getUserID());
@@ -140,7 +140,6 @@ public class MainController {
             return new ModelAndView("redirect:/student/{id}", model);
         }else{
             return new ModelAndView("redirect:/");
-
         }
         //return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header(HttpHeaders.LOCATION, "/user").build();
     }
@@ -157,9 +156,6 @@ public class MainController {
         HttpSession session = request.getSession();
         if (!session.getId().isEmpty()) {
             session.invalidate();
-            return 1;
-        }else{
-            return -1;
         }
         return new ModelAndView("redirect:/login");
     }
@@ -167,7 +163,7 @@ public class MainController {
     @PostMapping(path="/getbooking")
     public @ResponseBody List<Booking> getbooking(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        return BookingRepository.findByUserID(2);
+        return bookingRepository.findByLecture_userID(2);
     }
 
     @GetMapping(path="/staff/{id}")
