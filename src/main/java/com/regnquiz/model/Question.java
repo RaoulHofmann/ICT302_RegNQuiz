@@ -5,6 +5,8 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 /**
@@ -22,10 +24,12 @@ public class Question
     private String description;
     private Integer time;
     private Integer answerID;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "question")
     private Set<BookingQuestion> bookingQuestion;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "question")
     private Set<MultipleChoice> multipleChoice;
         
@@ -90,11 +94,6 @@ public class Question
     public void addBookingQuestion(BookingQuestion bq)
     {
         bookingQuestion.add(bq);
-    }
-    
-    public Set<MultipleChoice> getMultipleChoice()
-    {
-        return multipleChoice;
     }
     
     public void setMultipleChoice(Set<MultipleChoice> multipleChoice)

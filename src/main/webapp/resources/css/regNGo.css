@@ -1,6 +1,6 @@
 body{
     background-color: #cfcfae;
-    text-align: right;
+    text-align: center;
     margin-right:25%;
 
 }
@@ -84,4 +84,14 @@ textarea {
     height: 50%;
     
     overflow: scroll;
+}
+
+table {
+  margin-left:auto;
+  margin-right:auto;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
 }

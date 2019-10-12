@@ -27,18 +27,18 @@ public class BookingQuestionKey implements Serializable
     
     public BookingQuestionKey(Integer bid, Integer qid)
     {
-        this.bookingID = bid;
+        this.BookingID = bid;
         this.questionID = qid;
     }
     
     public Integer getBookingID()
     {
-        return bookingID;
+        return BookingID;
     }
     
     public void setBookingID(Integer bid)
     {
-        this.bookingID = bid;
+        this.BookingID = bid;
     }
     
     public Integer getQuestionID()

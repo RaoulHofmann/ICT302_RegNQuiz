@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Logger;
 
-@Service
+//@Service
 public class BookingService {
 
     private static final Logger logger = (Logger) LoggerFactory.getLogger(BookingService.class);
@@ -24,8 +24,8 @@ public class BookingService {
     @Async
     public CompletableFuture<Booking> addAttendance(String attendanceCode, int userId, int bookingId) throws InterruptedException {
         logger.info("User "+userId+" attending class "+bookingId+" with Code"+ attendanceCode);
-        String url = String.format("https://api.github.com/users/%s", user);
-        Booking results = restTemplate.getForObject(url, User.class);
+        String url = String.format("https://api.github.com/users/%s");
+        Booking results = restTemplate.getForObject(url, Booking.class);
         // Artificial delay of 1s for demonstration purposes
         Thread.sleep(1000L);
         return CompletableFuture.completedFuture(results);

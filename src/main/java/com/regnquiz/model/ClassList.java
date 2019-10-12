@@ -5,6 +5,7 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.regnquiz.model.repositories.BookingRepository;
 import com.regnquiz.model.repositories.UserRepository;
 import java.util.Optional;
@@ -32,15 +33,14 @@ public class ClassList
     private int classListID;
     private boolean internal;
     private boolean attendance;
-    
-    
+
+    @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //@MapsId("studentID")
     @JoinColumn(name = "userID", referencedColumnName="userID")
     private User student;
-    
+
+    @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //@MapsId("bookingID")
     @JoinColumn(name = "bookingID", referencedColumnName="bookingID")
     private Booking booking;
     
