@@ -66,4 +66,20 @@ public class MultipleChoice
         this.description = desc;
     }
     
+    public Set<StudentAnswer> getStudentAnswers()
+    {
+        return studentAnswer;
+    }
+    
+    public void setStudentAnswers(Set<StudentAnswer> studentAnwser)
+    {
+        this.studentAnswer = studentAnswer;
+    }
+    
+    public void addStudentAnswer(StudentAnswer sa)
+    {
+        studentAnswer.add(sa);
+    }
+    
+    
 }

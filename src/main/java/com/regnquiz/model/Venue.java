@@ -116,7 +116,20 @@ public class Venue {
         
         return loc;
     }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
     
+    public void addBooking(Booking b)
+    {
+        bookings.add(b);
+    }
+
     @Override
     public String toString()
     {

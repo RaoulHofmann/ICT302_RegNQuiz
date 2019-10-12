@@ -76,4 +76,34 @@ public class Question
     {
         return multipleChoice;
     }
+    
+    public Set<BookingQuestion> getBookingQuestions()
+    {
+        return bookingQuestion;
+    }
+    
+    public void setBookingQuestions(Set<BookingQuestion> bookingQuestion)
+    {
+        this.bookingQuestion = bookingQuestion;
+    }
+    
+    public void addBookingQuestion(BookingQuestion bq)
+    {
+        bookingQuestion.add(bq);
+    }
+    
+    public Set<MultipleChoice> getMultipleChoice()
+    {
+        return multipleChoice;
+    }
+    
+    public void setMultipleChoice(Set<MultipleChoice> multipleChoice)
+    {
+        this.multipleChoice = multipleChoice;
+    }
+    
+    public void MultipleChoice(MultipleChoice mc)
+    {
+        multipleChoice.add(mc);
+    }
 }

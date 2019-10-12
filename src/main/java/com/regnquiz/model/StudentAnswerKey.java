@@ -21,4 +21,35 @@ public class StudentAnswerKey implements Serializable
     
     @Column(name = "answerID")
     private Integer answerID;
+    
+    public StudentAnswerKey()
+    {
+        
+    }
+    
+    public StudentAnswerKey(Integer uid, Integer aid)
+    {
+        this.UserID = uid;
+        this.answerID = aid;
+    }
+    
+    public Integer getUserID()
+    {
+        return UserID;
+    }
+    
+    public void setUserID(Integer id)
+    {
+        this.UserID = id;
+    }
+    
+    public Integer getAnswerID()
+    {
+        return answerID;
+    }
+    
+    public void setAnswerID(Integer id)
+    {
+        this.answerID = id;
+    }
 }

@@ -55,4 +55,16 @@ public class Semester {
     {
         this.description = desc;
     }
+
+    public Set<Unit> getUnit() {
+        return Unit;
+    }
+    public void setUnit(Set<Unit> unit) {
+        Unit = unit;
+    }
+    
+    public void addUnit(Unit unit)
+    {
+       Unit.add(unit);
+    }
 }

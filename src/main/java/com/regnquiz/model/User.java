@@ -103,5 +103,65 @@ public class User
     {
         return this.userType;
     }
-            
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public Set<ClassList> getClassList() {
+        return classList;
+    }
+
+    public Set<StudentAnswer> getStudentAnswer() {
+        return studentAnswer;
+    }
+
+    public Set<Unit> getUnits() {
+        return units;
+    }
+
+    public void setClassList(Set<ClassList> classList) {
+        this.classList = classList;
+    }
+
+    public void setStudentAnswer(Set<StudentAnswer> studentAnswer) {
+        this.studentAnswer = studentAnswer;
+    }
+
+    public void setUnits(Set<Unit> units) {
+        this.units = units;
+    }
+
+    public void setUserType(Set<UserType> userType) {
+        this.userType = userType;
+    }
+    
+    public void addUnit(Unit u)
+    {
+        units.add(u);
+    }
+    
+    public void addBooking(Booking b)
+    {
+        bookings.add(b);
+    }
+    
+    public void addClassList(ClassList cl)
+    {
+        classList.add(cl);
+    }
+    
+    public void addStudentAnswers(StudentAnswer sa)
+    {
+        studentAnswer.add(sa);
+    }
+    
+    public void addUserType(UserType ut)
+    {
+        userType.add(ut);
+    }
 }
