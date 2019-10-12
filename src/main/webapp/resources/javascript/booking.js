@@ -25,6 +25,12 @@ function booking_info(){
                           "<td>"+unitId+"</td>" +
                           "<td>"+venueId+"</td>" +
                           "<td>"+userId+"</td>" +
+                          "<td>"+
+                          "<a href=\"javascript: document.startBooking.submit()\" role=\"button\">Start Booking "+bookingId+"</a>"+
+                           "<form name=\"startBooking\" th:action=\"@{/startBooking/"+bookingId+"}\" method=\"get\" th:hidden=\"true\">"+
+                               "<input hidden type=\"submit\" value=\"Sign Out\"/>"+
+                           "</form>"+
+                          "</td>" +
                       "</tr>"
                     );
                 });

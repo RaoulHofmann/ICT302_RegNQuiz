@@ -189,7 +189,11 @@ public class Booking
     {
         this.time = new Time(time);
     }
-    
+
+    public Time getTime() {
+        return time;
+    }
+
     /*
     public void generateAttendanceCode()
     {

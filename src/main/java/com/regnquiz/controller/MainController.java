@@ -25,6 +25,7 @@ import javax.servlet.http.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -38,6 +39,10 @@ public class MainController {
     private UserTypeRepository userTypeRepository;
     @Autowired
     private UserTypeQueryRepository userTypeQueryRepository;
+    @Autowired
+    private BookingRepository bookingRepository;
+    @Autowired
+    private Map<Integer,List<Booking>> bookings;
 
     @GetMapping(path="/gettypes")
     public @ResponseBody Iterable<Type> getAllTypes() {
@@ -195,14 +200,25 @@ public class MainController {
         }
     }
 
-    @GetMapping(path="/checksession")
-    public @ResponseBody String checkSession(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        if(session != null){
-            if(session.getAttribute("userType").equals(2)){
-                return "staff";
-            }else if(session.getAttribute("userType").equals(2)){
-                return "student";
+    @GetMapping(path="/startBooking/{id}")
+    public Booking startBooking(@PathVariable("id") int id, Model model,HttpServletRequest request){
+
+        Booking booking = new Booking();
+        booking.setBookingID(id);
+        bookings.add(booking);
+
+        return booking;
+    }
+
+    @GetMapping(path="/booking/{id}")
+    public String booking(@PathVariable("id") int id, Model model,HttpServletRequest request) {
+        try {
+            if (request.getSession() != null && (Integer) request.getSession().getAttribute("userID") == id) {
+                model.addAttribute("user", userRepository.findById(id).get());
+                System.out.println(model.toString());
+                return "booking";
+            } else {
+                return "redirect:/";
             }
         }
         return "inValid";
