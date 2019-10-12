@@ -2,6 +2,8 @@ package com.regnquiz.model;
 
 //import org.springframework.data.rest.core.annotation.RestResource;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 //import java.util.Set;
@@ -24,6 +26,7 @@ public class Venue {
     private int room;
     private int capacity;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "venue")
     private Set<Booking> bookings;
     

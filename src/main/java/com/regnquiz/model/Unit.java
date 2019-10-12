@@ -5,6 +5,10 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -27,17 +31,18 @@ public class Unit
     private Integer year;
    // @Column(name = "userID")
     //private String userID;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //@MapsId("semesterID")
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "semesterID", referencedColumnName="semesterID")
     private Semester semester;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //@MapsId("lectureID")
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User lecture;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "unit")
     private Set<Booking> bookings;
     

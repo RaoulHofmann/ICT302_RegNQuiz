@@ -5,6 +5,9 @@
  */
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.sql.Time;
 import javax.persistence.*;
 import java.util.Date;
@@ -31,20 +34,23 @@ public class Booking
     private Integer bookingLength;
     @Column(name = "accessCode")
     private String attendanceCode;
-    
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "UnitID", referencedColumnName="unitID")
     private Unit unit;
-   
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "VenueID", referencedColumnName="venueID")
     private Venue venue;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "userID", referencedColumnName="userID")
     private User lecture;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "booking")
     private Set<ClassList> classList;
     
@@ -189,7 +195,11 @@ public class Booking
     {
         this.time = new Time(time);
     }
-    
+
+    public Time getTime() {
+        return time;
+    }
+
     /*
     public void generateAttendanceCode()
     {

@@ -1,5 +1,7 @@
 package com.regnquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ public class Type {
 
     private String description;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "type")
     private Set<UserType> userType;
 

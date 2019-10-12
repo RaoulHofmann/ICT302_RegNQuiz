@@ -5,11 +5,7 @@
   <head>
     <title> QuizNGo</title>
      <link rel = "stylesheet" type="text/css"
-<<<<<<< HEAD:target/classes/static/AccessCodeEnter.html
-		 href="regNGo.css">
-=======
 		 href="/resources/css/regNGo.css">
->>>>>>> 71ab1db... student and staff login:target/classes/templates/student.html
      </link>
 
   </head>
@@ -49,8 +45,12 @@
     <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
         <input hidden type="submit" value="Sign Out"/>
     </form>
-   
-	
+
+    <a href="javascript: document.getBooking.submit()" role="button">GetBooking</a>
+
+    <form name="getBooking" th:action="@{/booking/2}" method="get" th:hidden="true">
+        <input hidden type="submit" value="GetBooking"/>
+    </form>
 	        
   
  </body>
