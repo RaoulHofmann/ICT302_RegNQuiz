@@ -27,4 +27,6 @@ public interface UnitRepository extends CrudRepository<Unit, Integer>
     Set<Unit> getUnits(@Param("unitCode") String unitCode, @Param("unitName") String unitName, @Param("year") Integer year, @Param("semester") Semester semester, @Param("lecture") User lecture);
     
     List<Unit> findByLecture(User user);
+    List<Unit> findByLectureAndYear(User user, int year);
+    List<Unit> findByLectureAndYearAndSemester_SemesterID(User user, int year, int semester);
 }

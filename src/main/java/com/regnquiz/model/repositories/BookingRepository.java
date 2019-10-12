@@ -7,6 +7,7 @@ package com.regnquiz.model.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import com.regnquiz.model.Booking;
+import com.regnquiz.model.Unit;
 import com.regnquiz.model.User;
 import java.sql.Time;
 import java.util.Date;
@@ -30,4 +31,5 @@ public interface BookingRepository extends CrudRepository<Booking, Integer>{
     List<Booking> findByLecture_userID(Integer userID);
     List<Booking> findByLecture(User user);
     List<Booking> findByDate(Date day);
+    List<Booking> findByUnit_unitID(Integer unitID);
 }
