@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title> QuizNGo</title>
-    <link rel="stylesheet" href="/resources/css/regNGo.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/resources/javascript/login.js"></script>
+        <link rel = "stylesheet" type="text/css"
+            href="/resources/css/regNGo.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/resources/javascript/login.js"></script>
   </head>
   <body onload="booking_info();">
     <div id="welcome_div">
@@ -29,7 +30,7 @@
             </tr>
             </tbody>
         </table>
-        <a href="javascript: document.logoutForm.submit()" role="button"> Logout</a>
+        <a href="javascript: document.logoutForm.submit()" role="button" id="logoutButton"> Logout</a>
 
         <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
             <input hidden type="submit" value="Sign Out"/>
