@@ -25,6 +25,7 @@ function booking_info(){
                           "<td>"+unitId+"</td>" +
                           "<td>"+venueId+"</td>" +
                           "<td>"+userId+"</td>" +
+                          "<td><input type=\"button\" value=\"Start Booking "+bookingId+"\"></td>" +
                       "</tr>"
                     );
                 });

@@ -41,10 +41,10 @@ public class MainController {
         return typeRepository.findAll();
     }
 
-    @PostMapping(path="/usertypes")
+    /**@PostMapping(path="/usertypes")
     public @ResponseBody Type getUserTypes(@RequestParam int userid) {
         return userTypeQueryRepository.getUserTypes(userid);
-    }
+    }*/
 
     @GetMapping(path="/getuser")
     public @ResponseBody Iterable<User> getAllUsers() {
@@ -114,7 +114,7 @@ public class MainController {
         int userType = -1;
         int userID = -1;
         try {
-            userType = userTypeQueryRepository.getUserTypes(login.getUserID()).getTypeID();
+            userType = userTypeQueryRepository.getUserTypes(login.getUserID(), login.getPassword()).getTypeID();
             userID = userRepository.findById(login.getUserID()).get().getUserID();
             HttpSession session = request.getSession();
             session.setAttribute("userType",userType);
@@ -192,6 +192,21 @@ public class MainController {
         }
     }
 
+    @GetMapping(path="/booking/{id}")
+    public String booking(@PathVariable("id") int id, Model model,HttpServletRequest request) {
+        try {
+            if (request.getSession() != null && (Integer) request.getSession().getAttribute("userID") == id) {
+                model.addAttribute("user", userRepository.findById(id).get());
+                System.out.println(model.toString());
+                return "booking";
+            } else {
+                return "redirect:/";
+            }
+        }catch(NullPointerException e){
+            return "redirect:/";
+        }
+    }
+
     @GetMapping(path="/checksession")
     public @ResponseBody String checkSession(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -205,17 +220,4 @@ public class MainController {
         return "inValid";
     }
 
-    /*@GetMapping(path="/staff/{id}")
-    public @ResponseBody String userCheck(HttpServletRequest request) {
-        System.out.println("/staff/{id}");
-        HttpSession session = request.getSession();
-        if(session != null){
-            if(session.getAttribute("userType").equals(2)){
-                return "staff";
-            }else if(session.getAttribute("userType").equals(2)){
-                return "student";
-            }
-        }
-        return "inValid";
-    }*/
 }

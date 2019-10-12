@@ -45,7 +45,7 @@ input[type=datetime-local], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-input[type=submit] {
+input[type=submit], #logoutButton {
     width: 25%;
     background-color: #a3a35f;
     color: black;
@@ -57,8 +57,8 @@ input[type=submit] {
     border-radius: 4px;
     cursor: pointer;
 }
-input[type=button], #logoutButton {
-    width: 20%;
+input[type=button] {
+    width: 10%;
     background-color: #a3a35f;
     color: black;
     font-weight:bold;
