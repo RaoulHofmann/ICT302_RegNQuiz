@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.HashSet;
 /**
  * Author: Matthew MacLennan
  * Date: 22/9/2019
@@ -27,11 +28,17 @@ public class Semester {
     @OneToMany(mappedBy = "semester")
     private Set<Unit> Unit;
 
-    public Semester(){}
+    public Semester()
+    {
+        Unit = new HashSet<>();
+    }
+    
     public Semester(Integer id, String desc)
     {
         this.semesterID = id;
         this.description = desc;
+        
+        Unit = new HashSet<>();
     }
     
     public Semester(Integer id)
@@ -62,8 +69,8 @@ public class Semester {
     public Set<Unit> getUnit() {
         return Unit;
     }
-    public void setUnit(Set<Unit> unit) {
-        Unit = unit;
+    public void setUnit(Set<Unit> u) {
+        Unit = u;
     }
     
     public void addUnit(Unit unit)
