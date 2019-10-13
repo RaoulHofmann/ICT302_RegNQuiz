@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.HashSet;
 //import java.util.Set;
 
 
@@ -32,6 +33,7 @@ public class Venue {
     
     Venue()
     {
+        bookings = new HashSet<>();
     }
     
     Venue(int building, int floor, int room, int capacity)
@@ -39,7 +41,9 @@ public class Venue {
         this.building = building;
         this.floor = floor;
         this.room = room;
-        this.capacity = capacity;        
+        this.capacity = capacity;   
+        
+        bookings = new HashSet<>();
     }
     
     Venue(String location, int capacity)
@@ -48,7 +52,9 @@ public class Venue {
         this.building = locSplit[0];
         this.floor = locSplit[1];
         this.room = locSplit[2];
-        this.capacity = capacity;        
+        this.capacity = capacity;     
+        
+        bookings = new HashSet<>();
     }
     
     public int getVenueID()
@@ -120,8 +126,8 @@ public class Venue {
         return loc;
     }
 
-    public void setBookings(Set<Booking> bookings) {
-        this.bookings = bookings;
+    public void setBookings(Set<Booking> b) {
+        this.bookings = b;
     }
 
     public Set<Booking> getBookings() {
