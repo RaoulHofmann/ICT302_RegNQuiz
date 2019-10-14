@@ -33,17 +33,7 @@ public class MainController {
     @Autowired
     private BookingRepository bookingRepository;
 
-    private Map<Integer, Booking> bookings;
-    @Autowired
-    public void setBookingMap(Map<Integer, Booking> bookings) {
-        this.bookings = bookings;
-    }
 
-    private Map<Integer, Integer> runningBookings;
-    @Autowired
-    public void setRunningBookingsMap(Map<Integer, Integer> running) {
-        this.runningBookings = running;
-    }
 
     @GetMapping(path = "/gettypes")
     public @ResponseBody
@@ -190,28 +180,6 @@ public class MainController {
                 return "redirect:/";
             }
         } catch (NullPointerException e) {
-            return "redirect:/";
-        }
-    }
-
-    @GetMapping(path = "/startbooking/{id}")
-    public String startBooking(@PathVariable("id") int id, Model model, HttpServletRequest request) {
-        System.out.println("START BOOKING "+id);
-        Booking booking = bookingRepository.findById(id).get();
-        bookings.put(id, booking);
-        runningBookings.put(Integer.parseInt(booking.getAttendanceCode()), id);
-        model.addAttribute("booking", bookings.get(id));
-        return "booking";
-    }
-
-    @GetMapping(path="/booking/")
-    public String booking(@ModelAttribute("command") AccessCode code, Model model, HttpServletRequest request) {
-        System.out.println("TESTING BOOKING"+bookings.size());
-        try {
-            int bookingID = runningBookings.get(code.getAccessCode());
-            model.addAttribute("booking", bookings.get(bookingID));
-            return "attendBooking";
-        }catch (NullPointerException e){
             return "redirect:/";
         }
     }

@@ -1,0 +1,25 @@
+
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title> QuizNGo</title>
+     <link rel = "stylesheet" type="text/css"
+		 href="/resources/css/regNGo.css">
+     </link>
+
+  </head>
+  <body>
+	<p class="main">
+    <form action="#" name="accessCode" method="get" th:action="@{/booking/attend}" th:object="${accessCode}" >
+	<br/>
+        <label>Access Code: 
+        <input type="text" name = "accessCode" id="accessCode" onblur = "checkAccessCode()"/>
+        </label><br /><br/>
+        <input type ="submit" value="Go" />
+        <br/>
+	</form>
+    <input type ="submit"  value="Back" onclick="location.href='/'"/>  <br/> <br/>
+    </p>
+ </body>
+</html>

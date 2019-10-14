@@ -22,22 +22,22 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LectureRun {
-    
+
     @Autowired
     private BookingRepository bookingRepository;
     
     @Autowired
     private ClassListRepository classListRepository;
 
-    private Booking b = new Booking();
+    private Booking b = null;
     List<ClassList> cl;
-    
+
+    private int attendanceCounter = 0;
+
     @Transactional
     public void OpenLecture(int bookingID)
     {
-        Optional<Booking> booking = bookingRepository.findById(bookingID);
-        
-        b = booking.get();
+        b = bookingRepository.findById(bookingID).get();
 
         cl = classListRepository.findByBookingBookingID(bookingID);
         /*for(ClassList c : cl)
@@ -60,16 +60,23 @@ public class LectureRun {
     public boolean setAttendance(int studentID)
     {   
         boolean enrolled = false;
-        
+        System.out.println("DAFUQ");
+
         for(ClassList c : cl)
             if(c.getStudent().getUserID()==studentID)
             {
                 c.setAttendance();
                 classListRepository.save(c);
                 enrolled = true;
+                this.attendanceCounter++;
             }
         
         return enrolled;
+    }
+
+    @Transactional
+    public int getAttendanceCount(){
+        return this.attendanceCounter;
     }
     
     @Transactional
@@ -77,7 +84,16 @@ public class LectureRun {
     {
         bookingRepository.save(b);
     }
-       
 
-    
+    @Transactional
+    public Booking getBooking(){ return this.b; }
+
+    @Transactional
+    public int isActive(){
+        if(!this.b.equals(null)){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }

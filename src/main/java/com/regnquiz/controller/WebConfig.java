@@ -1,6 +1,7 @@
 package com.regnquiz.controller;
 
 import com.regnquiz.model.Booking;
+import com.regnquiz.model.LectureRun;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -29,14 +30,14 @@ public class WebConfig implements WebMvcConfigurer {
     SessionInterceptor sessionInterceptor;
 
     @Bean
-    public Map<Integer, Booking> bookings(){
-        Map<Integer, Booking>  bookings = new HashMap<>();
+    public HashMap<Integer, LectureRun> bookings(){
+        HashMap<Integer, LectureRun>  bookings = new HashMap<>();
         return bookings;
     }
 
     @Bean
-    public Map<Integer, Integer> runningBookings(){
-        Map<Integer, Integer>  runningBookings = new HashMap<>();
+    public HashMap<String, Integer> runningBookings(){
+        HashMap<String, Integer>  runningBookings = new HashMap<>();
         return runningBookings;
     }
 

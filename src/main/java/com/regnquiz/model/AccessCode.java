@@ -1,13 +1,13 @@
 package com.regnquiz.model;
 
 public class AccessCode {
-    private int accessCode;
+    private String accessCode;
 
-    public int getAccessCode() {
+    public String getAccessCode() {
         return accessCode;
     }
 
-    public void setAccessCode(int accessCode) {
+    public void setAccessCode(String accessCode) {
         this.accessCode = accessCode;
     }
 }

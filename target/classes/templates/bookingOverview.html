@@ -12,13 +12,30 @@
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
 </head>
 <body onload="booking_info();">
-    <h1>Attendance Code:</h1>
-    <h3 th:text="${booking.attendanceCode}"></h3>
-    <form method="post"  action="" >
-        <input type ="submit"  value="Display Question" onclick="displayQuestion();"/>
-    </form>
-    <h4 id="attendance_count"></h4>
-    <input type="button"  onclick="location.href='/booking/'" value="Back" >
+    <div id="bookings">
+        <h3>Booking Info Table</h3>
+        <table id="booking_table">
+            <thead>
+            <tr>
+                <th>Status</th>
+                <th>Booking ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>AccessCode</th>
+                <th>Booking Length</th>
+                <th>Unit ID</th>
+                <th>Venue ID</th>
+                <th>User ID</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <input type="button"  onclick="location.href='/'" value="Back" >
 </body>
 </html>
 

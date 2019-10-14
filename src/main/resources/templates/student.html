@@ -1,57 +1,31 @@
-
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title> QuizNGo</title>
      <link rel = "stylesheet" type="text/css"
-		 href="/resources/css/regNGo.css">
+		   href="/resources/css/regNGo.css">
      </link>
 
   </head>
   <body>
+ 	<header>
+ 		<h1 th:if= "${user.prefName != null}" th:text="'(' + ${user.prefName}  + ') ' + ${user.givenName} + ' ' + ${user.lastName}"></h1>
+		<h1 th:text="${user.givenName} + ' ' + ${user.lastName}"></h1>
+	</header>
+  	<br/> 
 	<p class="main">
-
-        <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Prefname</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td th:text="${user.userID}"></td>
-            <td th:text="${user.givenName}"></td>
-            <td th:text="${user.lastName}"></td>
-            <td th:text="${user.prefName}"></td>
-        </tr>
-        </tbody>
-        </table>
-
-    <form action="#" name="accessCode" method="get" th:action="@{/booking/}" th:object="${accessCode}" >
+	<form method="post"  action="" >
 	<br/>
-        <label>Access Code: 
-        <input type = "text" name = "accessCode" id="accessCode" onblur = "checkAccessCode()" />
-        </label><br /><br/>
-        <input type ="submit" value="Go" />
-        <br/>
+	<input type ="submit" value="View Report" />
+	<br/>
+	</form>
+	<input type ="submit"  value="Join a class" onclick="location.href='/booking/join/'"/>   <br/><br/>
+
+	<a href="javascript: document.logoutForm.submit()" role="   button" id="logoutButton"> Logout</a>
+	<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+		<input hidden type="submit" value="Sign Out"/>
 	</form>
 	</p>
-    <a href="javascript: document.logoutForm.submit()" role="button" id="logoutButton"> Logout</a>
-
-    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-        <input hidden type="submit" value="Sign Out"/>
-    </form>
-
-    <a href="javascript: document.getBooking.submit()" role="button">GetBooking</a>
-
-    <form name="getBooking" th:action="@{/booking/2}" method="get" th:hidden="true">
-        <input hidden type="submit" value="GetBooking"/>
-    </form>
-	        
-  
  </body>
 </html>

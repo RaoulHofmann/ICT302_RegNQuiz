@@ -26,6 +26,17 @@ public class SessionInterceptor implements HandlerInterceptor {
                 response.sendRedirect("/login");
             }
         }
+
+        if(request.getRequestURI().equals("/staff")) {
+            try{
+                if ((Integer) session.getAttribute("userType") == 2) {
+                    System.out.println("Staff");
+                    response.sendRedirect("/staff/"+session.getAttribute("userID"));
+                }
+            }catch (NullPointerException e){
+                response.sendRedirect("/login");
+            }
+        }
         return true;
     }
     /*@Override
