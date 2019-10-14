@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.HashSet;
 /**
  * Author: Matthew MacLennan
  * Date: 22/9/2019
@@ -33,12 +34,20 @@ public class Question
     @OneToMany(mappedBy = "question")
     private Set<MultipleChoice> multipleChoice;
         
-    public Question() {}
+    public Question() 
+    {
+        bookingQuestion = new HashSet<>();
+        multipleChoice = new HashSet<>();
+    }
+    
     public Question(String desc, Integer time, Integer answer)
     {
         this.description = desc;
         this.time = time;
         //this.answer = answer;
+        
+        bookingQuestion = new HashSet<>();
+        multipleChoice = new HashSet<>();
     }
     
     public Integer getQID()
@@ -86,9 +95,9 @@ public class Question
         return bookingQuestion;
     }
     
-    public void setBookingQuestions(Set<BookingQuestion> bookingQuestion)
+    public void setBookingQuestions(Set<BookingQuestion> bq)
     {
-        this.bookingQuestion = bookingQuestion;
+        this.bookingQuestion = bq;
     }
     
     public void addBookingQuestion(BookingQuestion bq)
@@ -96,12 +105,12 @@ public class Question
         bookingQuestion.add(bq);
     }
 
-    public void setMultipleChoice(Set<MultipleChoice> multipleChoice)
+    public void setMultipleChoice(Set<MultipleChoice> mc)
     {
-        this.multipleChoice = multipleChoice;
+        this.multipleChoice = mc;
     }
     
-    public void MultipleChoice(MultipleChoice mc)
+    public void addMultipleChoice(MultipleChoice mc)
     {
         multipleChoice.add(mc);
     }

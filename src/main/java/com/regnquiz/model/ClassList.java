@@ -48,6 +48,7 @@ public class ClassList
     {
         student = new User();
         booking = new Booking();
+        attendance = false;
         
     }
     

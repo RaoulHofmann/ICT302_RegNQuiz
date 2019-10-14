@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Author: Matthew MacLennan
@@ -43,7 +44,14 @@ public class User
     @OneToMany(mappedBy = "user")
     private Set<UserType> userType;
     
-    public User() {}
+    public User() 
+    {
+        units = new HashSet<>();
+        bookings = new HashSet<>();
+        classList = new HashSet<>();
+        studentAnswer = new HashSet<>();
+        userType = new HashSet<>();
+    }
     
     public User(Integer id, String first, String pref, String last)
     {
@@ -51,6 +59,12 @@ public class User
         this.givenName = first;
         this.prefName = pref;
         this.lastName = last;
+        
+        units = new HashSet<>();
+        bookings = new HashSet<>();
+        classList = new HashSet<>();
+        studentAnswer = new HashSet<>();
+        userType = new HashSet<>();
     }
     
     public User(Integer id, String first, String last)
@@ -58,6 +72,12 @@ public class User
         this.userID = id;
         this.givenName = first;
         this.lastName = last;
+        
+        units = new HashSet<>();
+        bookings = new HashSet<>();
+        classList = new HashSet<>();
+        studentAnswer = new HashSet<>();
+        userType = new HashSet<>();
     }
 
     public Integer getUserID() 
@@ -114,8 +134,8 @@ public class User
         return bookings;
     }
 
-    public void setBookings(Set<Booking> bookings) {
-        this.bookings = bookings;
+    public void setBookings(Set<Booking> b) {
+        this.bookings = b;
     }
 
     public Set<ClassList> getClassList() {
@@ -130,20 +150,20 @@ public class User
         return units;
     }
 
-    public void setClassList(Set<ClassList> classList) {
-        this.classList = classList;
+    public void setClassList(Set<ClassList> cl) {
+        this.classList = cl;
     }
 
-    public void setStudentAnswer(Set<StudentAnswer> studentAnswer) {
-        this.studentAnswer = studentAnswer;
+    public void setStudentAnswer(Set<StudentAnswer> sa) {
+        this.studentAnswer = sa;
     }
 
-    public void setUnits(Set<Unit> units) {
-        this.units = units;
+    public void setUnits(Set<Unit> u) {
+        this.units = u;
     }
 
-    public void setUserType(Set<UserType> userType) {
-        this.userType = userType;
+    public void setUserType(Set<UserType> ut) {
+        this.userType = ut;
     }
     
     public void addUnit(Unit u)

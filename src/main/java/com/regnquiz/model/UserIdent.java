@@ -23,29 +23,29 @@ public class UserIdent implements Serializable{
         
     }
     
-    public UserIdent(int typeID, int userID)
+    public UserIdent(Integer typeID, Integer userID)
     {
         this.UserID = userID;
         this.TypeID = typeID;
     }
     
     
-    public void setType(int typeID)
+    public void setType(Integer typeID)
     {
         this.TypeID = typeID;
     }
     
-    public int getType()
+    public Integer getType()
     {
         return TypeID;
     }
     
-    public void setUser(int userID)
+    public void setUser(Integer userID)
     {
         this.UserID = userID;
     }
     
-    public int getUser()
+    public Integer getUser()
     {
         return UserID;
     }

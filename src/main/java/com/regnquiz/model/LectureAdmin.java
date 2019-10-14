@@ -12,6 +12,7 @@ import com.regnquiz.model.repositories.UserRepository;
 import com.regnquiz.model.repositories.QuestionRepository;
 import com.regnquiz.model.repositories.MultipleChoiceRepository;
 import com.regnquiz.model.repositories.UnitRepository;
+import com.regnquiz.model.repositories.SemesterRepository;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -41,10 +42,10 @@ public class LectureAdmin {
     private MultipleChoiceRepository mcRepo;
     @Autowired
     private UnitRepository unitRepository;
-   
+    @Autowired 
+    private SemesterRepository semRepo;
     
     private User u = new User();
-    //private List<Booking> b;
     
     @Transactional
     public void setUser(Integer userID)
@@ -63,6 +64,13 @@ public class LectureAdmin {
     public List<Booking> getBooking()
     {
         List<Booking> b =  bookingRepository.findByLecture(u);
+        return b;
+    }
+    
+    @Transactional
+    public List<Booking> getBooking(int unitID)
+    {
+        List<Booking> b =  bookingRepository.findByUnit_unitID(unitID);
         return b;
     }
     
@@ -146,5 +154,26 @@ public class LectureAdmin {
     {
         List<Unit> ul =  unitRepository.findByLecture(u)  ;
         return ul;
+    }
+    
+    @Transactional
+    public List<Unit> getUnit(int year)
+    {
+        List<Unit> ul =  unitRepository.findByLectureAndYear(u, year)  ;
+        return ul;
+    }
+    
+    @Transactional
+    public List<Unit> getUnit(int year, int semesterID)
+    {
+        List<Unit> ul =  unitRepository.findByLectureAndYearAndSemester_SemesterID(u, year, semesterID)  ;
+        return ul;
+    }
+    
+    @Transactional
+    public Iterable<Semester> getSemester()
+    {
+        Iterable<Semester> s =  semRepo.findAll()  ;
+        return s;
     }
 }

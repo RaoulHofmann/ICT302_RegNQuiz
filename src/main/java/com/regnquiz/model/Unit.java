@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Author: Matthew MacLennan
@@ -50,6 +51,8 @@ public class Unit
     {
         semester = new Semester();
         lecture = new User();
+        
+        bookings = new HashSet<>();
     }
     public Unit(Integer id, String unitCode, String unitName, Semester sem, Integer year, User lect)
     {
@@ -59,6 +62,8 @@ public class Unit
         this.semester = sem;
         this.year = year;
         this.lecture = lect;
+        
+        bookings = new HashSet<>();
     }
     
     public Unit(Integer id, String UnitCode, String unitName, Integer sem, Integer year, User lect)
@@ -69,6 +74,8 @@ public class Unit
         this.semester = new Semester(sem);
         this.year = year;
         this.lecture = lect;
+        
+        bookings = new HashSet<>();
     }
     
     public Integer getUnitID()
@@ -129,5 +136,20 @@ public class Unit
     public void setLecture(User lect)
     {
         this.lecture = lect;
+    }
+    
+    public Set<Booking> getBookings()
+    {
+        return bookings;
+    }
+    
+    public void setBookings(Set<Booking> b)
+    {
+        bookings = b;
+    }
+    
+    public void addBooking(Booking b)
+    {
+        bookings.add(b);
     }
 }

@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package com.regnquiz.model;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  *
@@ -22,6 +24,10 @@ public class VenueTest {
         a.setCapacity(30);
         a.setVenueID(3);
         
+        Set<Booking> book = new HashSet<>();
+        book.add(new Booking());
+        a.setBookings(book);
+        
         display(a);
         a.setLocation("545.1.1");
         display(a);
@@ -35,6 +41,7 @@ public class VenueTest {
         b.setRoom(26);
         b.setCapacity(150);
         b.setVenueID(6);
+        b.setBookings(book);
         display(b);
         
         Venue c = new Venue("221.4.100", 89);
@@ -45,9 +52,11 @@ public class VenueTest {
         c.setRoom(2);
         c.setCapacity(1000);
         c.setVenueID(7);
+        c.setBookings(book);
         display(c);
         
         c.setLocation("333.2.99");
+        c.addBooking(new Booking());
         display(c);
         
         
@@ -61,6 +70,7 @@ public class VenueTest {
         System.out.println("Capacity: " + v.getCapacity());
         System.out.println("Venue ID: " + v.getVenueID());
         System.out.println("to String: " +  v.toString());
+        System.out.println("Bookings Size: " + v.getBookings().size());
         System.out.println();
         System.out.println();
     }

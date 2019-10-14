@@ -36,6 +36,7 @@ public class StudentAnswer
     public StudentAnswer()
     {
         student = new User();
+        answer = new MultipleChoice();
     }
     
     public StudentAnswer(User student, MultipleChoice answer)

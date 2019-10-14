@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package com.regnquiz.model;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Author: Matthew MacLennan
@@ -20,6 +22,11 @@ public class SemesterTest
         
         a.setSemID(1234);
         a.setDescription("test1");
+        
+        Set<Unit> u = new HashSet<>();
+        u.add(new Unit());
+        
+        a.setUnit(u);
         display(a);
         
         Semester b = new Semester(4321, "test2");
@@ -27,6 +34,10 @@ public class SemesterTest
         
         b.setSemID(5678);
         b.setDescription("test3");
+        b.setUnit(u);
+        display(b);
+        
+        b.addUnit(new Unit());
         display(b);
     }
     
@@ -34,6 +45,7 @@ public class SemesterTest
     {
         System.out.println("Semseter ID: " + s.getSemID());
         System.out.println("Description: " + s.getDescription());
+        System.out.println("Unit Size: " + s.getUnit().size());
         System.out.println();
         System.out.println();
     }

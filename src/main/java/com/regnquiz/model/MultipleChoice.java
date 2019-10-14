@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Set;
 import javax.persistence.*;
+import java.util.HashSet;
 
 /**
  * Author: Matthew MacLennan
@@ -38,12 +39,14 @@ public class MultipleChoice
     public MultipleChoice()
     {
         question = new Question();
+        studentAnswer = new HashSet<>();
     }
     
     public MultipleChoice(Question question, String description)
     {
         this.question = question;
         this.description = description;
+        studentAnswer = new HashSet<>();
     }
     
     public Integer getMCID()
@@ -76,15 +79,13 @@ public class MultipleChoice
         return studentAnswer;
     }
     
-    public void setStudentAnswers(Set<StudentAnswer> studentAnwser)
+    public void setStudentAnswers(Set<StudentAnswer> sa)
     {
-        this.studentAnswer = studentAnswer;
+        this.studentAnswer = sa;
     }
     
     public void addStudentAnswer(StudentAnswer sa)
     {
         studentAnswer.add(sa);
     }
-    
-    
 }
