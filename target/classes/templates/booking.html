@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8">
+    <title> QuizNGo</title>
+        <link rel = "stylesheet" type="text/css"
+            href="/resources/css/regNGo.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/resources/javascript/login.js"></script>
+        <script type="text/javascript" src="/resources/javascript/booking.js"></script>
+  </head>
+  <body>
+    <div id="welcome_div">
+        <table>
+            <thead>
+            <tr>
+                <th>Attendance Code</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${booking.attendanceCode}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+ </body>
+</html>
+

@@ -29,9 +29,15 @@ public class WebConfig implements WebMvcConfigurer {
     SessionInterceptor sessionInterceptor;
 
     @Bean
-    public Map<Integer, List<Booking>> bookings(){
-        Map<Integer, List<Booking>>  bookings = new HashMap<>();
+    public Map<Integer, Booking> bookings(){
+        Map<Integer, Booking>  bookings = new HashMap<>();
         return bookings;
+    }
+
+    @Bean
+    public Map<Integer, Integer> runningBookings(){
+        Map<Integer, Integer>  runningBookings = new HashMap<>();
+        return runningBookings;
     }
 
     @Override

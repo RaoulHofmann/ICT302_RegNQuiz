@@ -14,6 +14,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 /**
  * Author: Stuart Hepburn
  * Date: 25/9/2019
@@ -26,7 +28,7 @@ public interface BookingRepository extends CrudRepository<Booking, Integer>{
     
     //@Query("SELECT accessCode FROM Booking b WHERE b.bookingID = : bID")
     //String getAccessCode(@Param("bID") int bookingID);
-    
+
     List<Booking> findByLecture_userID(Integer userID);
     List<Booking> findByLecture(User user);
     List<Booking> findByDate(Date day);

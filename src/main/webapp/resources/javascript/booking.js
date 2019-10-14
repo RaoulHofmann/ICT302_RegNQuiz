@@ -26,10 +26,7 @@ function booking_info(){
                           "<td>"+venueId+"</td>" +
                           "<td>"+userId+"</td>" +
                           "<td>"+
-                          "<a href=\"javascript: document.startBooking.submit()\" role=\"button\">Start Booking "+bookingId+"</a>"+
-                           "<form name=\"startBooking\" th:action=\"@{/startBooking/2}\" method=\"get\" th:hidden=\"true\">"+
-                               "<input hidden type=\"submit\" value=\"Start Booking "+bookingId+"\"/>"+
-                           "</form>"+
+                          "<input type=\"button\"  onclick=\"location.href='/startbooking/"+bookingId+"'\" value=\"Start Booking\" >"+
                           "</td>" +
                       "</tr>"
                     );

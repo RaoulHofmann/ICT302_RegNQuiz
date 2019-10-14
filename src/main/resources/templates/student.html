@@ -31,7 +31,7 @@
         </tbody>
         </table>
 
-    <form method="post"  action="" >
+    <form action="#" name="accessCode" method="get" th:action="@{/booking/}" th:object="${accessCode}" >
 	<br/>
         <label>Access Code: 
         <input type = "text" name = "accessCode" id="accessCode" onblur = "checkAccessCode()" />
