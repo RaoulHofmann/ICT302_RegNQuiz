@@ -1,0 +1,263 @@
+!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" >
+  <head>
+    <meta charset="UTF-8">
+    <title> QuizNGo</title>
+    <link rel="stylesheet" href="/resources/css/regNGo.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/resources/javascript/login.js"></script>
+  </head>
+  <body>
+    <div class="login" id="login_form">
+        <header>
+            <h1>Login </h1>
+        </header>
+        <br/>
+        <div class="alert alert-success alert-dismissible" id="logged_out_alert" style="display: none;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span>
+                <p>Logged Out</p>
+            </span>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible" id="logged_out_danger" style="display: none;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span>
+                <p>Error Logging out!!!</p>
+            </span>
+        </div>
+      <form action="#" th:action="@{/login}" th:object="${login}" method="post">
+        <label>User Name:
+        <input type = "text" name = "userName" id="userName" onblur = "checkName()" />
+        </label><br />
+        <br/>
+        <label>Password :
+        <input type = "text" name="password" id="password" onblur = "checkPassword()"  />
+        </label><br />
+        <br/>
+        <input type ="submit" value="Login" onclick="login();"/>
+        <br/>
+        <input type ="submit" value = "Import .csv File" />
+      </form>
+    </div>
+
+    <div id="welcome_div" style="display: none;">
+      <form action="#" th:action="@{/logout}" th:object="${logout}" method="post">
+        <p>
+            <label id = "welcome"> </label>
+        </p>
+        <input type ="submit" value="Logout" onclick="logout();"/>
+      </form>
+    </div>
+
+    <div id="staff_entry" style="display: none;">
+        <h3>Booking Info Table</h3>
+        <table id="booking_table">
+            <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>AccessCode</th>
+                <th>Booking Length</th>
+                <th>Unit ID</th>
+                <th>Venue ID</th>
+                <th>User ID</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="mainOfStudent" style="display: none;">
+    	<h3 id="welcomStudent">Welcome XXXXXXX</h3>
+    	<form method="post"  action="" ><br/>
+            <input type ="submit" value="View Report"  th:value/><br/>
+            <input type ="submit" value = "Join a class">
+		</form>
+    </div>
+    
+	<div id="accessCodeEnter" style="display: none;">
+		<form method="post"  action="" ><br/>
+            <label>Access Code: 
+            <input type = "text" name = "accessCode" id="accessCode" onblur = "checkAccessCode()" />
+            </label><br /><br/>
+            <input type ="submit" value="Go" />
+            
+		</form>
+    </div>
+    
+    <div id="answerQuestion" style="display: none;">
+      <p class="timer">Time will end in <span class="js-timeout" id="js-timeout">2:00</span></p><br/>  
+
+      <form method="post"  action="" >
+        <label name = "question" id = "question">Question topic displaying </label><br /><br/>
+        <label> Answer: 
+            <ul class = "listAnswerGroup" list-group-flush>
+                <li class="listAnswerItem"><input type="checkbox" name="answer1" value="answer1"> Answer1 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer2" value="answer2"> Answer2 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer3" value="answer3"> Answer3 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer4" value="answer4"> Answer4 text<br></li>
+            </ul>
+        </label>    
+        <br/>
+		<input type ="submit" id="submitButton" value="Submit" />   <br/>
+	</form>
+    </div>
+    
+    <div id="studentReport" style="display: none;">
+    	<form method=""  action="" >
+            <label for="unitSelect">Select Unit: 
+            <select id="unitSelect">
+            </select></label> <br/>
+            <label for="lectureWorkshopTime">Lecture/Workshop start time:
+            <select id="lectureWorkshopTime">
+                <option value ="time ">8:30</option>
+            </select></label><br/><br/>
+	        <input type="submit" value="Back to Main" onclick="backToMain()">
+	        <input type="submit" value="Search" onclick="search()">
+		</form>
+		<div>
+          <textArea cols="50 " rows="20">
+                        Showing Report here
+          </textArea>
+      	</div>
+
+    </div>
+    
+    <div id="mainOfLecture" style="display: none;">
+      <form method="post"  action="" >
+ 		<input type ="submit"  value="Report" onclick="lectureReport()"/>  <br/> <br/>
+        <input type ="submit"  value="Booking" onclick="booking()"/>   <br/><br/>       
+		<input type ="submit"  value="Display Question" onclick="displayQuestion()"/>  
+	  </form>
+    </div>
+    
+    <div id="displayQuestion" style="display: none;">
+        <p class ="displayAccessCode" id="displayAccessCode">Access Code: </p>
+ 	<p class="timer">Time will end in <span class="js-timeout" id="js-timeout">2:00</span></p><br/>  
+	<form method="post"  action="" >
+          <div id = "questionSelectCondition" >
+            <label>Semester Number</label> 
+            <select class = "SemesterNumber">
+              <option value="SemesterNumber">1</option>
+              <option value="SemesterNumber">2</option>
+            </select><br/>
+
+            <label>Unit  Name:
+            <select th:field="${unit.unitID}"  id="unitDropDownList">
+            <option value=" ">select unit name</option>
+            <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitName}"></option>
+            </select>        </label><br />
+
+            <label>Lecture/workshop Date and Start Time
+            <select th:field="${booking.date}"  id="bookingTimesList">
+            <option value=" ">select date and start time</option>
+            <option th:each="dateTime : ${dateTimes}" th:value="${time.dateTime}" th:text="${time.dateTime}"></option>
+            </select>        </label><br />
+    	</div>
+
+          <label name = "question" id = "question">Question topic displaying </label><br /><br/>
+          <label> Answer: 
+            	<ul class = "listAnswerGroup" list-group-flush>
+                <li class="listAnswerItem"><input type="checkbox" name="answer1" value="answer1"> Answer1 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer2" value="answer2"> Answer2 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer3" value="answer3"> Answer3 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer4" value="answer4"> Answer4 text<br></li>
+            </ul>
+        </label>    
+        <br/>
+          <input type ="button" id="nextQuestion" value="Next"  onclick="showNextQuestion()"/>  <br/>
+		</form>
+        <div>
+            <label id="displayAnsweredNumber">Student answered: xx/ total </label>
+        </div>
+ 
+    </div>
+    
+    <div id="booking" style="display: none;">
+      <form method="post"  action="/saveQuestion" >
+      	<div id = "questionSelectCondition" >
+      	  <label>Semester Number</label> 
+          <select class = "SemesterNumber">
+              <option value="SemesterNumber">1</option>
+              <option value="SemesterNumber">2</option>
+           </select><br/>
+
+            <label>Unit  Name:
+            <select th:field="${unit.unitID}"  id="unitDropDownList">
+            <option value=" ">select unit name</option>
+            <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitName}"></option>
+            </select>        </label><br />
+
+            <label>Lecture/workshop Date and Start Time
+            <select th:field="${booking.date}"  id="bookingTimesList">
+            <option value=" ">select date and start time</option>
+            <option th:each="dateTime : ${dateTimes}" th:value="${time.dateTime}" th:text="${time.dateTime}"></option>
+            </select>        </label><br />
+    	</div>
+            <div id="uploadQuestion"><br/>
+            <label>Question Number</label> 
+            <select class = "QuestionNumber">
+              <option value="QuestionNumber">1</option>
+              <option value="QuestionNumber">2</option>
+              <option value="QuestionNumber">3</option>
+              <option value="QuestionNumber">4</option>
+              <option value="QuestionNumber">5</option>
+            </select><br/>
+            
+            <label> Question Topic</label> <input type="text" name="questionTopic" placeholder="Question Topic here"><br/> <br/>
+            <label> Question type:</label> <input type="radio" name="questionType" value="True/false"> True/false
+            <input type="radio" name="questionType" value="textType"> Text<br><br/>
+            
+            <div id="textAnswer">
+                <label> Answer A: </label> <input type="text" name="answer A" placeholder="Type anser A here"><br/>  
+                <label> Answer B: </label> <input type="text" name="answer B" placeholder="Type anser B here"><br/>      	
+                <label> Answer C: </label> <input type="text" name="answer C" placeholder="Type anser C here"><br/>      	
+                <label> Answer D: </label> <input type="text" name="answer D" placeholder="Type anser D here"><br/>     <br/>
+            </div>
+            <label> Correct Answer : </label> <br/>
+            <div id="textCorrectAnswer" >	
+                <input type="checkbox" name="answerA" value="A">A
+                <input type="checkbox" name="answerB" value="B">B
+                <input type="checkbox" name="answerC" value="C"> C
+                <input type="checkbox" name="answerD" value="D"> D <br/><br/>
+            </div>
+            <div id="tOFAnswer">
+                <input type="radio" name="answerTrue" value="True"> True
+                <input type="radio" name="answerFalse" value="False"> False <br/><br/>
+            </div>
+	<input type ="submit" value="Add" onclick="addQuestion()"/> 
+        <input type ="submit" value="Save" onclick="saveQuestion()"/>        
+        
+	</form>
+    </div>
+    <div id="lectureReport" style="display: none;">
+    	<form method=""  action="" >
+            <label>Venue Name: 
+            <select id="venueSelect">
+                <option value =" ">Venue Name</option>
+            </select></label> <br/>
+            <label>Unit Name:
+            <select id="unitSelect">
+                <option value =" ">Unit Name</option>
+            </select></label><br/>
+            <label>Student Number:
+            <select id="studentSelect">
+                <option value =" ">student Name</option>
+            </select></label>
+            
+            <br/>
+            <input type="submit" value="Search" onclick="search();">
+		</form>
+      <div>
+          Showing Report here
+      </div>
+    </div>
+
+ </body>
+</html>
+

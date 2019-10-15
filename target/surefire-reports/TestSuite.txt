@@ -1,0 +1,23 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 8.078 s <<< FAILURE! - in TestSuite
+RunLectureAdmin on RunLectureAdmin(com.regnquiz.model.LectureAdminTest)(com.regnquiz.model.LectureAdminTest)  Time elapsed: 0.042 s  <<< FAILURE!
+java.util.NoSuchElementException: No value present
+	at com.regnquiz.model.LectureAdminTest.RunLectureAdmin(LectureAdminTest.java:40)
+
+Start on Start(com.regnquiz.model.LectureRunTest)(com.regnquiz.model.LectureRunTest)  Time elapsed: 0.012 s  <<< FAILURE!
+java.util.NoSuchElementException: No value present
+	at com.regnquiz.model.LectureRunTest.Start(LectureRunTest.java:29)
+
+TestVenue on TestVenue(com.regnquiz.model.VenueRepositoryTest)(com.regnquiz.model.VenueRepositoryTest)  Time elapsed: 0.058 s  <<< FAILURE!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at com.regnquiz.model.VenueRepositoryTest.saveData(VenueRepositoryTest.java:71)
+	at com.regnquiz.model.VenueRepositoryTest.TestVenue(VenueRepositoryTest.java:42)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at com.regnquiz.model.VenueRepositoryTest.saveData(VenueRepositoryTest.java:71)
+	at com.regnquiz.model.VenueRepositoryTest.TestVenue(VenueRepositoryTest.java:42)
+Caused by: java.sql.SQLSyntaxErrorException: In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'regngo.venue0_.venueID'; this is incompatible with sql_mode=only_full_group_by
+	at com.regnquiz.model.VenueRepositoryTest.saveData(VenueRepositoryTest.java:71)
+	at com.regnquiz.model.VenueRepositoryTest.TestVenue(VenueRepositoryTest.java:42)
+
