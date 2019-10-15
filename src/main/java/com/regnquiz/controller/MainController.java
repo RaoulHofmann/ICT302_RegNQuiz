@@ -33,18 +33,10 @@ public class MainController {
     @Autowired
     private BookingRepository bookingRepository;
 
-
-
     @GetMapping(path = "/gettypes")
     public @ResponseBody
     Iterable<Type> getAllTypes() {
         return typeRepository.findAll();
-    }
-
-    @PostMapping(path = "/usertypes")
-    public @ResponseBody
-    Type getUserTypes(@RequestParam int userid) {
-        return userTypeQueryRepository.getUserTypes(userid);
     }
 
     @GetMapping(path = "/getuser")
@@ -118,15 +110,28 @@ public class MainController {
     public ModelAndView login(@Valid Login login, BindingResult result, ModelMap model, HttpServletRequest request) {
         int userType = -1;
         int userID = -1;
+
+        if (result.hasErrors()) {
+            model.addAttribute("error", 1);
+            return new ModelAndView("/login");
+        }
+
+        try{
+            userType = userTypeQueryRepository.getUserTypes(login.getUserID(),login.getPassword()).getTypeID();
+        }catch (NullPointerException e){
+            model.addAttribute("error", 1);
+            return new ModelAndView("/login");
+        }
+        userID = login.getUserID();
+
         try {
-            userType = userTypeQueryRepository.getUserTypes(login.getUserID()).getTypeID();
-            userID = userRepository.findById(login.getUserID()).get().getUserID();
             HttpSession session = request.getSession();
             session.setAttribute("userType", userType);
             session.setAttribute("userID", userID);
             System.out.println("Session Login " + session.getId());
-        } catch (InvalidDataAccessResourceUsageException e) {
-            return new ModelAndView("redirect:/");
+        } catch (NullPointerException e) {
+            model.addAttribute("error", 1);
+            return new ModelAndView("/login");
         }
 
         model.addAttribute("id", login.getUserID());
@@ -136,18 +141,25 @@ public class MainController {
         } else if (userType == 3) {
             return new ModelAndView("redirect:/student/{id}", model);
         } else {
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("/login");
         }
         //return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header(HttpHeaders.LOCATION, "/user").build();
     }
 
     @PostMapping(path = "/logout")
-    public ModelAndView logout(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        if (!session.getId().isEmpty()) {
-            session.invalidate();
+    public ModelAndView logout(HttpServletRequest request, Model model) {
+        try {
+            HttpSession session = request.getSession();
+            if (!session.getId().isEmpty()) {
+                session.invalidate();
+            }
+        }catch (NullPointerException e){
+            model.addAttribute("logout_err", 1);
+            return new ModelAndView("/login");
         }
-        return new ModelAndView("redirect:/login");
+
+        model.addAttribute("logout", 1);
+        return new ModelAndView("/login");
     }
 
     @PostMapping(path = "/getbooking")

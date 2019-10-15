@@ -5,6 +5,7 @@
  */
 package com.regnquiz.model;
 
+import com.regnquiz.model.repositories.BookingQuestionRepository;
 import com.regnquiz.model.repositories.BookingRepository;
 import com.regnquiz.model.repositories.ClassListRepository;
 import java.util.List;
@@ -29,10 +30,14 @@ public class LectureRun {
     @Autowired
     private ClassListRepository classListRepository;
 
-    private Booking b = null;
-    List<ClassList> cl;
+    @Autowired
+    private BookingQuestionRepository bookingQuestionRepository;
 
+    private Booking b = null;
     private int attendanceCounter = 0;
+    private int activeQuestion = -1;
+    List<BookingQuestion> bq = null;
+    List<ClassList> cl;
 
     @Transactional
     public void OpenLecture(int bookingID)
@@ -40,6 +45,8 @@ public class LectureRun {
         b = bookingRepository.findById(bookingID).get();
 
         cl = classListRepository.findByBookingBookingID(bookingID);
+
+        bq = bookingQuestionRepository.findByBooking_BookingID(bookingID);
         /*for(ClassList c : cl)
         {
             System.out.println("########################################" );
@@ -95,5 +102,19 @@ public class LectureRun {
         }else{
             return 0;
         }
+    }
+
+     @Transactional
+    public Question startQuestion(){
+        activeQuestion = 0;
+
+        return bq.get(activeQuestion).getQuestion();
+    }
+
+    @Transactional
+    public Question nextQuestion(){
+        activeQuestion++;
+
+        return bq.get(activeQuestion).getQuestion();
     }
 }

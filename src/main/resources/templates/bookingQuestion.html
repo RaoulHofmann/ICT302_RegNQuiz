@@ -27,7 +27,7 @@
         </label><br />
         <label>Please select booking information:location, date and start time: <br/>
             <select th:field="${bookings}"  id="bookingTimesList" size=4 >
-                <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="'Room: '+${booking.venue.building} + '.' + ${booking.venue.floor} + '.' + ${booking.venue.room} + ' - Time:' + ${booking.date} + ' ' + ${booking.time}"></option>
+                <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="'Room: '+${booking.venue.building} + '.' + ${booking.venue.floor} + '.' + ${booking.venue.room} + ' - Time: ' + ${booking.date} + ' ' + ${booking.time}"></option>
             </select>
         </label><br />
     </div>

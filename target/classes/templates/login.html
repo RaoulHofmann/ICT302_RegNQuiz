@@ -15,17 +15,24 @@
         <h1>Login </h1>
     </header>
     <br/>
-    <div class="alert alert-success alert-dismissible" id="logged_out_alert" style="display: none;">
+    <div th:if= "${logout!= null}" class="alert alert-success alert-dismissible" id="logged_out_alert">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <span>
                 <p>Logged Out</p>
             </span>
     </div>
 
-    <div class="alert alert-danger alert-dismissible" id="logged_out_danger" style="display: none;">
+    <div th:if= "${logout_err != null}" class="alert alert-danger alert-dismissible" id="logged_out_danger">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <span>
                 <p>Error Logging out!!!</p>
+            </span>
+    </div>
+
+    <div th:if= "${error != null}" class="alert alert-danger alert-dismissible" id="log_in_error">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span>
+                <p>Error Logging in!!!</p>
             </span>
     </div>
 

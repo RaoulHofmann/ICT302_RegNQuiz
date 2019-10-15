@@ -3,6 +3,7 @@ package com.regnquiz.controller;
 import com.regnquiz.model.AccessCode;
 import com.regnquiz.model.Booking;
 import com.regnquiz.model.LectureRun;
+import com.regnquiz.model.repositories.BookingQuestionRepository;
 import com.regnquiz.model.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,14 @@ public class BookingController {
 
     @GetMapping(path = "/join")
     public String joinBooking(Model model, HttpServletRequest request) {
-        return "accessBooking";
+        HttpSession session = request.getSession(false);
+
+        try {
+            model.addAttribute("booking", bookings.get(session.getAttribute("booking")).getBooking());
+            return "attendBooking";
+        }catch (NullPointerException e){
+            return "accessBooking";
+        }
     }
 
     @PostMapping(path = "/status")
@@ -65,16 +73,21 @@ public class BookingController {
 
     @GetMapping(path="/attend")
     public String attendBooking(@ModelAttribute("accessCode") AccessCode code, Model model, HttpServletRequest request) {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
         int bookingID = runningBookings.get(code.getAccessCode());
-        bookings.get(bookingID).setAttendance((Integer)session.getAttribute("userID"));
+        bookings.get(bookingID).setAttendance((Integer) session.getAttribute("userID"));
+        session.setAttribute("booking", bookingID);
         model.addAttribute("booking", bookings.get(bookingID).getBooking());
         return "attendBooking";
     }
 
     @PostMapping(path="/getattendance")
     public @ResponseBody int attendanceCount(@RequestParam int bookingID, Model model, HttpServletRequest request) {
-        return bookings.get(bookingID).getAttendanceCount();
+        try{
+            return bookings.get(bookingID).getAttendanceCount();
+        }catch (NullPointerException e){
+            return -1;
+        }
     }
 
     @GetMapping(path = "/addquestion")
