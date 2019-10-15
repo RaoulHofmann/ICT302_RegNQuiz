@@ -12,10 +12,16 @@
   </head>
   <body>
       <div>
-          <label class ="displayAccessCode" id="displayAccessCode">Access Code: </label>
+          <label id="displayAccessCode">Access Code: XXXXXX </label>
       </div>
  	<p class="timer">Time will end in <span class="js-timeout" id="js-timeout">2:00</span></p><br/>  
 	<form method="post"  action="" >
+			<label>Unit  Name:
+            <input type = "text" name="unitName" id="unitName" onblur = ""  />
+            </label><br />
+            <label>Lecture  :
+        <input type = "text" name="lecture" id="lectureID" onblur = ""  />
+        </label><br />
         <label name = "question" id = "question">Question topic displaying </label><br /><br/>
         <label> Answer: 
             <ul class = "listAnswerGroup" list-group-flush>
@@ -27,10 +33,13 @@
             </ul>
         </label>    
         <br/>
+        	<input type ="button" id="nextQuestion" value="Next"  onclick="showNextQuestion()"/>  <br/>
+
 	</form>
         <div>
             <label id="displayAnsweredNumber">Student answered: xx/ total </label>
         </div>
  
+
  </body>
 </html>

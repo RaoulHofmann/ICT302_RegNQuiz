@@ -19,63 +19,6 @@
     </form>
     <h4 id="attendance_count"></h4>
     <input type="button"  onclick="location.href='/booking/'" value="Back" >
-        
-    <form method="post"  action="/saveQuestion" >
-      	<div id = "questionSelectCondition" >
-      	  <label>Semester Number</label> 
-        	  <select class = "SemesterNumber">
-              <option value="SemesterNumber">1</option>
-              <option value="SemesterNumber">2</option>
-            </select><br/>
-
-        <label>Unit  Name:
-        <select th:field="${unit.unitID}"  id="unitDropDownList">
-    	<option value=" ">select unit name</option>
-    	<option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitName}"></option>
-    	</select>        </label><br />
-    
-        <label>Lecture/workshop Date and Start Time
-		<select th:field="${booking.date}"  id="bookingTimesList">
-    	<option value=" ">select date and start time</option>
-    	<option th:each="dateTime : ${dateTimes}" th:value="${time.dateTime}" th:text="${time.dateTime}"></option>
-    		</select>        </label><br />
-    	</div>
-            <div id="uploadQuestion"><br/>
-            <label>Question Number</label> 
-            <select class = "QuestionNumber">
-              <option value="QuestionNumber">1</option>
-              <option value="QuestionNumber">2</option>
-              <option value="QuestionNumber">3</option>
-              <option value="QuestionNumber">4</option>
-              <option value="QuestionNumber">5</option>
-            </select><br/>
-            
-            <label> Question Topic</label> <input type="text" name="questionTopic" placeholder="Question Topic here"><br/> <br/>
-            <label> Question type:</label> <input type="radio" name="questionType" value="True/false"> True/false
-			<input type="radio" name="questionType" value="textType"> Text<br><br/>
-			<div id="textAnswer">
-            <label> Answer A: </label> <input type="text" name="answer A" placeholder="Type anser A here"><br/>  
-            <label> Answer B: </label> <input type="text" name="answer B" placeholder="Type anser B here"><br/>      	
-            <label> Answer C: </label> <input type="text" name="answer C" placeholder="Type anser C here"><br/>      	
-            <label> Answer D: </label> <input type="text" name="answer D" placeholder="Type anser D here"><br/>     <br/>
-            	</div>
-            <label> Correct Answer : </label> <br/>
-            <div id="textCorrectAnswer" >	
-            <input type="checkbox" name="answerA" value="A">A
-  			<input type="checkbox" name="answerB" value="B">B
-  			<input type="checkbox" name="answerC" value="C"> C
-  			<input type="checkbox" name="answerD" value="D"> D <br/><br/>
-  			</div>
-  			<div id="tOFAnswer">
-  			<input type="radio" name="answerTrue" value="True"> True
-  			<input type="radio" name="answerFalse" value="False"> False <br/><br/>
-  			</div>
-		<input type ="submit" value="Add" onclick="addQuestion()"/> 
-
-        <input type ="submit" value="Save" onclick="saveQuestion()"/>        
-        
-	</form>
-
 </body>
 </html>
 

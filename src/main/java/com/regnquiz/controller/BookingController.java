@@ -76,4 +76,11 @@ public class BookingController {
     public @ResponseBody int attendanceCount(@RequestParam int bookingID, Model model, HttpServletRequest request) {
         return bookings.get(bookingID).getAttendanceCount();
     }
+
+    @GetMapping(path = "/addquestion")
+    public String addQuestion(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        model.addAttribute("bookings", bookingRepository.findByLecture_userID((Integer)session.getAttribute("userID")));
+        return "bookingQuestion";
+    }
 }
