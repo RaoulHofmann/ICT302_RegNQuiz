@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="8.078" tests="10" errors="0" skipped="0" failures="3">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="6.882" tests="10" errors="0" skipped="0" failures="2">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -17,7 +17,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="AU"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib"/>
-    <property name="sun.java.command" value="/Users/Connie/2019Semester2/ICT302_RegNQuiz/target/surefire/surefirebooter548972411551307616.jar /Users/Connie/2019Semester2/ICT302_RegNQuiz/target/surefire 2019-10-15T10-21-01_480-jvmRun1 surefire1775514122462784368tmp surefire_07349267821302756370tmp"/>
+    <property name="sun.java.command" value="/Users/Connie/2019Semester2/ICT302_RegNQuiz/target/surefire/surefirebooter2582473455944037243.jar /Users/Connie/2019Semester2/ICT302_RegNQuiz/target/surefire 2019-10-15T16-46-54_360-jvmRun1 surefire7329462738824724030tmp surefire_03003243930213301150tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="surefire.test.class.path" value="/Users/Connie/2019Semester2/ICT302_RegNQuiz/target/test-classes:/Users/Connie/2019Semester2/ICT302_RegNQuiz/target/classes:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/2.1.7.RELEASE/spring-boot-starter-data-jpa-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-aop/2.1.7.RELEASE/spring-boot-starter-aop-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/2.1.7.RELEASE/spring-boot-starter-jdbc-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/com/zaxxer/HikariCP/3.2.0/HikariCP-3.2.0.jar:/Users/Connie/.m2/repository/org/springframework/spring-jdbc/5.1.9.RELEASE/spring-jdbc-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/javax/transaction/javax.transaction-api/1.3/javax.transaction-api-1.3.jar:/Users/Connie/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar:/Users/Connie/.m2/repository/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar:/Users/Connie/.m2/repository/org/hibernate/hibernate-core/5.3.10.Final/hibernate-core-5.3.10.Final.jar:/Users/Connie/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar:/Users/Connie/.m2/repository/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar:/Users/Connie/.m2/repository/org/javassist/javassist/3.23.2-GA/javassist-3.23.2-GA.jar:/Users/Connie/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/Users/Connie/.m2/repository/org/jboss/jandex/2.0.5.Final/jandex-2.0.5.Final.jar:/Users/Connie/.m2/repository/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar:/Users/Connie/.m2/repository/org/dom4j/dom4j/2.1.1/dom4j-2.1.1.jar:/Users/Connie/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.0.4.Final/hibernate-commons-annotations-5.0.4.Final.jar:/Users/Connie/.m2/repository/org/springframework/spring-aspects/5.1.9.RELEASE/spring-aspects-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/data/spring-data-jpa/2.1.10.RELEASE/spring-data-jpa-2.1.10.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/data/spring-data-commons/2.1.10.RELEASE/spring-data-commons-2.1.10.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-orm/5.1.9.RELEASE/spring-orm-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-context/5.1.9.RELEASE/spring-context-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-expression/5.1.9.RELEASE/spring-expression-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-aop/5.1.9.RELEASE/spring-aop-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-tx/5.1.9.RELEASE/spring-tx-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-beans/5.1.9.RELEASE/spring-beans-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-core/5.1.9.RELEASE/spring-core-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/aspectj/aspectjrt/1.9.4/aspectjrt-1.9.4.jar:/Users/Connie/.m2/repository/org/slf4j/slf4j-api/1.7.26/slf4j-api-1.7.26.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-web/2.1.7.RELEASE/spring-boot-starter-web-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter/2.1.7.RELEASE/spring-boot-starter-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.1.7.RELEASE/spring-boot-starter-logging-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/Users/Connie/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/Users/Connie/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.11.2/log4j-to-slf4j-2.11.2.jar:/Users/Connie/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.2/log4j-api-2.11.2.jar:/Users/Connie/.m2/repository/org/slf4j/jul-to-slf4j/1.7.26/jul-to-slf4j-1.7.26.jar:/Users/Connie/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar:/Users/Connie/.m2/repository/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.1.7.RELEASE/spring-boot-starter-json-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.9/jackson-datatype-jdk8-2.9.9.jar:/Users/Connie/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.9/jackson-datatype-jsr310-2.9.9.jar:/Users/Connie/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.9/jackson-module-parameter-names-2.9.9.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/2.1.7.RELEASE/spring-boot-starter-tomcat-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.22/tomcat-embed-core-9.0.22.jar:/Users/Connie/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/9.0.22/tomcat-embed-el-9.0.22.jar:/Users/Connie/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.22/tomcat-embed-websocket-9.0.22.jar:/Users/Connie/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.17.Final/hibernate-validator-6.0.17.Final.jar:/Users/Connie/.m2/repository/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar:/Users/Connie/.m2/repository/org/springframework/spring-web/5.1.9.RELEASE/spring-web-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-webmvc/5.1.9.RELEASE/spring-webmvc-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-thymeleaf/2.1.7.RELEASE/spring-boot-starter-thymeleaf-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/thymeleaf/thymeleaf-spring5/3.0.11.RELEASE/thymeleaf-spring5-3.0.11.RELEASE.jar:/Users/Connie/.m2/repository/org/thymeleaf/thymeleaf/3.0.11.RELEASE/thymeleaf-3.0.11.RELEASE.jar:/Users/Connie/.m2/repository/org/attoparser/attoparser/2.0.5.RELEASE/attoparser-2.0.5.RELEASE.jar:/Users/Connie/.m2/repository/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar:/Users/Connie/.m2/repository/org/thymeleaf/extras/thymeleaf-extras-java8time/3.0.4.RELEASE/thymeleaf-extras-java8time-3.0.4.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-data-rest/2.1.7.RELEASE/spring-boot-starter-data-rest-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/session/spring-session-core/2.1.8.RELEASE/spring-session-core-2.1.8.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-jcl/5.1.9.RELEASE/spring-jcl-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/data/spring-data-rest-webmvc/3.1.10.RELEASE/spring-data-rest-webmvc-3.1.10.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/data/spring-data-rest-core/3.1.10.RELEASE/spring-data-rest-core-3.1.10.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/hateoas/spring-hateoas/0.25.2.RELEASE/spring-hateoas-0.25.2.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.jar:/Users/Connie/.m2/repository/org/atteo/evo-inflector/1.2.2/evo-inflector-1.2.2.jar:/Users/Connie/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.9.9/jackson-databind-2.9.9.jar:/Users/Connie/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.9/jackson-core-2.9.9.jar:/Users/Connie/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-devtools/2.1.7.RELEASE/spring-boot-devtools-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot/2.1.7.RELEASE/spring-boot-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.1.7.RELEASE/spring-boot-autoconfigure-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-starter-test/2.1.7.RELEASE/spring-boot-starter-test-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-test/2.1.7.RELEASE/spring-boot-test-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/com/jayway/jsonpath/json-path/2.4.0/json-path-2.4.0.jar:/Users/Connie/.m2/repository/net/minidev/json-smart/2.3/json-smart-2.3.jar:/Users/Connie/.m2/repository/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar:/Users/Connie/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar:/Users/Connie/.m2/repository/org/assertj/assertj-core/3.11.1/assertj-core-3.11.1.jar:/Users/Connie/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/Connie/.m2/repository/org/skyscreamer/jsonassert/1.5.0/jsonassert-1.5.0.jar:/Users/Connie/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/Connie/.m2/repository/org/xmlunit/xmlunit-core/2.6.3/xmlunit-core-2.6.3.jar:/Users/Connie/.m2/repository/org/springframework/restdocs/spring-restdocs-mockmvc/2.0.3.RELEASE/spring-restdocs-mockmvc-2.0.3.RELEASE.jar:/Users/Connie/.m2/repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar:/Users/Connie/.m2/repository/org/springframework/restdocs/spring-restdocs-core/2.0.3.RELEASE/spring-restdocs-core-2.0.3.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/2.1.7.RELEASE/spring-boot-test-autoconfigure-2.1.7.RELEASE.jar:/Users/Connie/.m2/repository/org/springframework/spring-test/5.1.9.RELEASE/spring-test-5.1.9.RELEASE.jar:/Users/Connie/.m2/repository/org/mockito/mockito-core/2.23.4/mockito-core-2.23.4.jar:/Users/Connie/.m2/repository/net/bytebuddy/byte-buddy/1.9.16/byte-buddy-1.9.16.jar:/Users/Connie/.m2/repository/net/bytebuddy/byte-buddy-agent/1.9.16/byte-buddy-agent-1.9.16.jar:/Users/Connie/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/Users/Connie/.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar:/Users/Connie/.m2/repository/org/testng/testng/7.0.0/testng-7.0.0.jar:/Users/Connie/.m2/repository/com/beust/jcommander/1.72/jcommander-1.72.jar:/Users/Connie/.m2/repository/junit/junit/4.12/junit-4.12.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/Connie/2019Semester2/ICT302_RegNQuiz/target/surefire/surefirebooter548972411551307616.jar"/>
+    <property name="surefire.real.class.path" value="/Users/Connie/2019Semester2/ICT302_RegNQuiz/target/surefire/surefirebooter2582473455944037243.jar"/>
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
@@ -62,19 +62,33 @@
     <property name="java.class.version" value="52.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="TestAnswers on TestAnswers(com.regnquiz.model.StudentQuestionReviewTest)" classname="com.regnquiz.model.StudentQuestionReviewTest" time="0.139"/>
-  <testcase name="RunLectureAdmin on RunLectureAdmin(com.regnquiz.model.LectureAdminTest)" classname="com.regnquiz.model.LectureAdminTest" time="0.042">
-    <failure message="No value present" type="java.util.NoSuchElementException">java.util.NoSuchElementException: No value present
-	at com.regnquiz.model.LectureAdminTest.RunLectureAdmin(LectureAdminTest.java:40)
+  <testcase name="TestAnswers on TestAnswers(com.regnquiz.model.StudentQuestionReviewTest)" classname="com.regnquiz.model.StudentQuestionReviewTest" time="0.146"/>
+  <testcase name="RunLectureAdmin on RunLectureAdmin(com.regnquiz.model.LectureAdminTest)" classname="com.regnquiz.model.LectureAdminTest" time="0.043"/>
+  <testcase name="TestStudent on TestStudent(com.regnquiz.model.StudentImportTest)" classname="com.regnquiz.model.StudentImportTest" time="0.015"/>
+  <testcase name="TestBooking on TestBooking(com.regnquiz.model.BookingRepositoryTest)" classname="com.regnquiz.model.BookingRepositoryTest" time="0.07">
+    <failure message="could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
 </failure>
-    <system-out><![CDATA[2019-10-15 10:21:09.408  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.regnquiz.model.LectureAdminTest], using SpringBootContextLoader
-2019-10-15 10:21:09.409  INFO 4838 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.regnquiz.model.LectureAdminTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2019-10-15 10:21:09.409  INFO 4838 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.regnquiz.model.LectureAdminTest]: LectureAdminTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2019-10-15 10:21:09.410  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.regnquiz.Application for test class com.regnquiz.model.LectureAdminTest
-2019-10-15 10:21:09.411  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2019-10-15 10:21:09.412  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@434b2e0c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@214e3185, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@75345e47, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@36f40d72, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2c557eee, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7c47b0f8, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2b561f51, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3d5f08d4, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3afaa39f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7b7b1448, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@60cc20e1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@25109d84]
-2019-10-15 10:21:09.429 DEBUG 4838 --- [           main] org.hibernate.SQL                        : 
-    select
+    <system-out><![CDATA[2019-10-15 16:47:01.265  INFO 6061 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.regnquiz.model.BookingRepositoryTest], using SpringBootContextLoader
+2019-10-15 16:47:01.265  INFO 6061 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.regnquiz.model.BookingRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-10-15 16:47:01.265  INFO 6061 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.regnquiz.model.BookingRepositoryTest]: BookingRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2019-10-15 16:47:01.266  INFO 6061 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.regnquiz.Application for test class com.regnquiz.model.BookingRepositoryTest
+2019-10-15 16:47:01.267  INFO 6061 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-10-15 16:47:01.267  INFO 6061 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@42e4431, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e198c40, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@dcdb883, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@39420d59, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4fbbd98c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5dd227b7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3d3b852e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@14ba7f15, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@55cb3b7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@497fd334, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@280c3dc0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6f89ad03]
+Booking ID: null
+Date: Tue Oct 15 16:47:01 AWST 2019
+Booking Length: null
+Unit ID: null
+Venue ID: 0
+Lecture ID: null
+
+
+2019-10-15 16:47:01.278 DEBUG 6061 --- [           main] org.hibernate.SQL                        : 
+    /* load com.regnquiz.model.User */ select
         user0_.userID as userID1_9_0_,
         user0_.givenName as givenNam2_9_0_,
         user0_.lastName as lastName3_9_0_,
@@ -84,7 +98,7 @@
     where
         user0_.userID=?
 Hibernate: 
-    select
+    /* load com.regnquiz.model.User */ select
         user0_.userID as userID1_9_0_,
         user0_.givenName as givenNam2_9_0_,
         user0_.lastName as lastName3_9_0_,
@@ -93,129 +107,99 @@ Hibernate:
         User user0_ 
     where
         user0_.userID=?
-2019-10-15 10:21:09.430 TRACE 4838 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [2]
+2019-10-15 16:47:01.278 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [8766]
+2019-10-15 16:47:01.292 DEBUG 6061 --- [           main] org.hibernate.SQL                        : 
+    /* insert com.regnquiz.model.User
+        */ insert 
+        into
+            User
+            (givenName, lastName, preferredName, userID) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* insert com.regnquiz.model.User
+        */ insert 
+        into
+            User
+            (givenName, lastName, preferredName, userID) 
+        values
+            (?, ?, ?, ?)
+2019-10-15 16:47:01.293 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [a]
+2019-10-15 16:47:01.293 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [b]
+2019-10-15 16:47:01.293 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [b]
+2019-10-15 16:47:01.293 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [INTEGER] - [8766]
+2019-10-15 16:47:01.301 DEBUG 6061 --- [           main] org.hibernate.SQL                        : 
+    /* load com.regnquiz.model.Semester */ select
+        semester0_.semesterID as semester1_5_0_,
+        semester0_.description as descript2_5_0_ 
+    from
+        Semester semester0_ 
+    where
+        semester0_.semesterID=?
+Hibernate: 
+    /* load com.regnquiz.model.Semester */ select
+        semester0_.semesterID as semester1_5_0_,
+        semester0_.description as descript2_5_0_ 
+    from
+        Semester semester0_ 
+    where
+        semester0_.semesterID=?
+2019-10-15 16:47:01.301 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [0]
+2019-10-15 16:47:01.306 DEBUG 6061 --- [           main] org.hibernate.SQL                        : 
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            
+Hibernate: 
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            
+2019-10-15 16:47:01.307 DEBUG 6061 --- [           main] org.hibernate.SQL                        : 
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?
+Hibernate: 
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?
+2019-10-15 16:47:01.309 DEBUG 6061 --- [           main] org.hibernate.SQL                        : 
+    /* insert com.regnquiz.model.Semester
+        */ insert 
+        into
+            Semester
+            (description, semesterID) 
+        values
+            (?, ?)
+Hibernate: 
+    /* insert com.regnquiz.model.Semester
+        */ insert 
+        into
+            Semester
+            (description, semesterID) 
+        values
+            (?, ?)
+2019-10-15 16:47:01.310 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [T1]
+2019-10-15 16:47:01.310 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [INTEGER] - [1]
+2019-10-15 16:47:01.327  WARN 6061 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2019-10-15 16:47:01.327 ERROR 6061 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry '1' for key 'PRIMARY'
+2019-10-15 16:47:01.328 ERROR 6061 --- [           main] o.h.i.ExceptionMapperStandardImpl        : HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
 ]]></system-out>
   </testcase>
-  <testcase name="TestStudent on TestStudent(com.regnquiz.model.StudentImportTest)" classname="com.regnquiz.model.StudentImportTest" time="0.042"/>
-  <testcase name="TestBooking on TestBooking(com.regnquiz.model.BookingRepositoryTest)" classname="com.regnquiz.model.BookingRepositoryTest" time="0.172"/>
   <testcase name="TestQuestion on TestQuestion(com.regnquiz.model.BookingQuestionRepositoryTest)" classname="com.regnquiz.model.BookingQuestionRepositoryTest" time="0.002"/>
-  <testcase name="TestClassReturn on TestClassReturn(com.regnquiz.model.ClassListRepositoryTest)" classname="com.regnquiz.model.ClassListRepositoryTest" time="0.011"/>
-  <testcase name="TestVenue on TestVenue(com.regnquiz.model.VenueImportTest)" classname="com.regnquiz.model.VenueImportTest" time="0.025"/>
-  <testcase name="Start on Start(com.regnquiz.model.LectureRunTest)" classname="com.regnquiz.model.LectureRunTest" time="0.012">
-    <failure message="No value present" type="java.util.NoSuchElementException">java.util.NoSuchElementException: No value present
-	at com.regnquiz.model.LectureRunTest.Start(LectureRunTest.java:29)
-</failure>
-    <system-out><![CDATA[2019-10-15 10:21:09.752  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.regnquiz.model.LectureRunTest], using SpringBootContextLoader
-2019-10-15 10:21:09.753  INFO 4838 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.regnquiz.model.LectureRunTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2019-10-15 10:21:09.753  INFO 4838 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.regnquiz.model.LectureRunTest]: LectureRunTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2019-10-15 10:21:09.755  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.regnquiz.Application for test class com.regnquiz.model.LectureRunTest
-2019-10-15 10:21:09.757  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2019-10-15 10:21:09.757  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@669daa93, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@39a30d1a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@670ae31f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1958524b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@129aaac1, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3370be55, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3d2b13f, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@58c36104, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1fc8047f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@29fc83c5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3fb1948c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7c39193f]
-2019-10-15 10:21:09.767 DEBUG 4838 --- [           main] org.hibernate.SQL                        : 
-    select
-        booking0_.bookingID as bookingI1_0_0_,
-        booking0_.accessCode as accessCo2_0_0_,
-        booking0_.bookingLength as bookingL3_0_0_,
-        booking0_.date as date4_0_0_,
-        booking0_.userID as userID6_0_0_,
-        booking0_.time as time5_0_0_,
-        booking0_.UnitID as UnitID7_0_0_,
-        booking0_.VenueID as VenueID8_0_0_,
-        user1_.userID as userID1_9_1_,
-        user1_.givenName as givenNam2_9_1_,
-        user1_.lastName as lastName3_9_1_,
-        user1_.preferredName as preferre4_9_1_,
-        unit2_.unitID as unitID1_8_2_,
-        unit2_.UserID as UserID5_8_2_,
-        unit2_.semesterID as semester6_8_2_,
-        unit2_.code as code2_8_2_,
-        unit2_.unitName as unitName3_8_2_,
-        unit2_.year as year4_8_2_,
-        user3_.userID as userID1_9_3_,
-        user3_.givenName as givenNam2_9_3_,
-        user3_.lastName as lastName3_9_3_,
-        user3_.preferredName as preferre4_9_3_,
-        semester4_.semesterID as semester1_5_4_,
-        semester4_.description as descript2_5_4_,
-        venue5_.venueID as venueID1_11_5_,
-        venue5_.building as building2_11_5_,
-        venue5_.capacity as capacity3_11_5_,
-        venue5_.floor as floor4_11_5_,
-        venue5_.room as room5_11_5_ 
-    from
-        Booking booking0_ 
-    left outer join
-        User user1_ 
-            on booking0_.userID=user1_.userID 
-    left outer join
-        Unit unit2_ 
-            on booking0_.UnitID=unit2_.unitID 
-    left outer join
-        User user3_ 
-            on unit2_.UserID=user3_.userID 
-    left outer join
-        Semester semester4_ 
-            on unit2_.semesterID=semester4_.semesterID 
-    left outer join
-        Venue venue5_ 
-            on booking0_.VenueID=venue5_.venueID 
-    where
-        booking0_.bookingID=?
-Hibernate: 
-    select
-        booking0_.bookingID as bookingI1_0_0_,
-        booking0_.accessCode as accessCo2_0_0_,
-        booking0_.bookingLength as bookingL3_0_0_,
-        booking0_.date as date4_0_0_,
-        booking0_.userID as userID6_0_0_,
-        booking0_.time as time5_0_0_,
-        booking0_.UnitID as UnitID7_0_0_,
-        booking0_.VenueID as VenueID8_0_0_,
-        user1_.userID as userID1_9_1_,
-        user1_.givenName as givenNam2_9_1_,
-        user1_.lastName as lastName3_9_1_,
-        user1_.preferredName as preferre4_9_1_,
-        unit2_.unitID as unitID1_8_2_,
-        unit2_.UserID as UserID5_8_2_,
-        unit2_.semesterID as semester6_8_2_,
-        unit2_.code as code2_8_2_,
-        unit2_.unitName as unitName3_8_2_,
-        unit2_.year as year4_8_2_,
-        user3_.userID as userID1_9_3_,
-        user3_.givenName as givenNam2_9_3_,
-        user3_.lastName as lastName3_9_3_,
-        user3_.preferredName as preferre4_9_3_,
-        semester4_.semesterID as semester1_5_4_,
-        semester4_.description as descript2_5_4_,
-        venue5_.venueID as venueID1_11_5_,
-        venue5_.building as building2_11_5_,
-        venue5_.capacity as capacity3_11_5_,
-        venue5_.floor as floor4_11_5_,
-        venue5_.room as room5_11_5_ 
-    from
-        Booking booking0_ 
-    left outer join
-        User user1_ 
-            on booking0_.userID=user1_.userID 
-    left outer join
-        Unit unit2_ 
-            on booking0_.UnitID=unit2_.unitID 
-    left outer join
-        User user3_ 
-            on unit2_.UserID=user3_.userID 
-    left outer join
-        Semester semester4_ 
-            on unit2_.semesterID=semester4_.semesterID 
-    left outer join
-        Venue venue5_ 
-            on booking0_.VenueID=venue5_.venueID 
-    where
-        booking0_.bookingID=?
-2019-10-15 10:21:09.767 TRACE 4838 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [3]
-]]></system-out>
-  </testcase>
-  <testcase name="InsertData on InsertData(com.regnquiz.model.UserRepositoryTest)" classname="com.regnquiz.model.UserRepositoryTest" time="0.122"/>
-  <testcase name="TestVenue on TestVenue(com.regnquiz.model.VenueRepositoryTest)" classname="com.regnquiz.model.VenueRepositoryTest" time="0.058">
+  <testcase name="TestClassReturn on TestClassReturn(com.regnquiz.model.ClassListRepositoryTest)" classname="com.regnquiz.model.ClassListRepositoryTest" time="0.029"/>
+  <testcase name="TestVenue on TestVenue(com.regnquiz.model.VenueImportTest)" classname="com.regnquiz.model.VenueImportTest" time="0.012"/>
+  <testcase name="Start on Start(com.regnquiz.model.LectureRunTest)" classname="com.regnquiz.model.LectureRunTest" time="0.048"/>
+  <testcase name="InsertData on InsertData(com.regnquiz.model.UserRepositoryTest)" classname="com.regnquiz.model.UserRepositoryTest" time="0.142"/>
+  <testcase name="TestVenue on TestVenue(com.regnquiz.model.VenueRepositoryTest)" classname="com.regnquiz.model.VenueRepositoryTest" time="0.029">
     <failure message="could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet" type="org.springframework.dao.InvalidDataAccessResourceUsageException">org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
 	at com.regnquiz.model.VenueRepositoryTest.saveData(VenueRepositoryTest.java:71)
 	at com.regnquiz.model.VenueRepositoryTest.TestVenue(VenueRepositoryTest.java:42)
@@ -226,13 +210,13 @@ Caused by: java.sql.SQLSyntaxErrorException: In aggregated query without GROUP B
 	at com.regnquiz.model.VenueRepositoryTest.saveData(VenueRepositoryTest.java:71)
 	at com.regnquiz.model.VenueRepositoryTest.TestVenue(VenueRepositoryTest.java:42)
 </failure>
-    <system-out><![CDATA[2019-10-15 10:21:09.901  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.regnquiz.model.VenueRepositoryTest], using SpringBootContextLoader
-2019-10-15 10:21:09.902  INFO 4838 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.regnquiz.model.VenueRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2019-10-15 10:21:09.902  INFO 4838 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.regnquiz.model.VenueRepositoryTest]: VenueRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2019-10-15 10:21:09.903  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.regnquiz.Application for test class com.regnquiz.model.VenueRepositoryTest
-2019-10-15 10:21:09.904  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2019-10-15 10:21:09.904  INFO 4838 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4714f447, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3c1df0e9, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4b7a4c83, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@768e40af, org.springframework.test.context.support.DirtiesContextTestExecutionListener@165824f5, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4511146f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5c16561a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5819ee0f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@f310675, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@424ec990, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2c06e145, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3b780b5c]
-2019-10-15 10:21:09.941 DEBUG 4838 --- [           main] org.hibernate.SQL                        : 
+    <system-out><![CDATA[2019-10-15 16:47:01.602  INFO 6061 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.regnquiz.model.VenueRepositoryTest], using SpringBootContextLoader
+2019-10-15 16:47:01.602  INFO 6061 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.regnquiz.model.VenueRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-10-15 16:47:01.602  INFO 6061 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.regnquiz.model.VenueRepositoryTest]: VenueRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2019-10-15 16:47:01.603  INFO 6061 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.regnquiz.Application for test class com.regnquiz.model.VenueRepositoryTest
+2019-10-15 16:47:01.604  INFO 6061 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-10-15 16:47:01.604  INFO 6061 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@bd09a26, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5020b59f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@75db328e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@46d18a33, org.springframework.test.context.support.DirtiesContextTestExecutionListener@495f3965, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1c06f19c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3065efd0, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7aaf6bfd, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4a8bf1dc, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@61aa6300, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7e2e0b8a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7f5f7731]
+2019-10-15 16:47:01.630 DEBUG 6061 --- [           main] org.hibernate.SQL                        : 
     /* SELECT
         case 
             when count(v.venueID) = 0 then 0 
@@ -276,11 +260,11 @@ Hibernate:
             venue0_.building=? 
             and venue0_.floor=? 
             and venue0_.room=?
-2019-10-15 10:21:09.942 TRACE 4838 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [100]
-2019-10-15 10:21:09.942 TRACE 4838 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [INTEGER] - [2]
-2019-10-15 10:21:09.942 TRACE 4838 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [23]
-2019-10-15 10:21:09.959  WARN 4838 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1140, SQLState: 42000
-2019-10-15 10:21:09.959 ERROR 4838 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'regngo.venue0_.venueID'; this is incompatible with sql_mode=only_full_group_by
+2019-10-15 16:47:01.630 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [100]
+2019-10-15 16:47:01.630 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [INTEGER] - [2]
+2019-10-15 16:47:01.630 TRACE 6061 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [23]
+2019-10-15 16:47:01.631  WARN 6061 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1140, SQLState: 42000
+2019-10-15 16:47:01.631 ERROR 6061 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'regngo.venue0_.venueID'; this is incompatible with sql_mode=only_full_group_by
 ]]></system-out>
   </testcase>
 </testsuite>

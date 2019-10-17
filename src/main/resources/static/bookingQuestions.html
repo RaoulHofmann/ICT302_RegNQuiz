@@ -14,10 +14,14 @@
       	<form method="post"  action="/saveQuestion" >
       	<div id = "questionSelectCondition" >
       	  <label>Year Semester</label> 
-        	  <select th:field="${booking}"  id="yearSemesterList">
-    			<option value=" ">select year and semester</option>
-    			<option th:each="yearSemester : ${yearSemesters}" th:value="${}" th:text="${yearSemester.yearSemesterName}"></option>
-    		</select>        </label><br />
+        	  <select th:field="${booking}"  id="yearDropdownList">
+    			<option value=" ">select year</option>
+    			<option th:each="year : ${years}" th:value="${}" th:text="${year.year}"></option>
+    		</select>  
+    		<select th:field="${booking}"  id="semesterDropDownList">
+    			<option value=" ">select semester</option>
+    			<option th:each="semester : ${years}" th:value="${}" th:text="${semester.semester}"></option>
+    		</select>          </label><br />
         		<label>Unit  Name:
         		<select th:field="${booking.unitID}"  id="unitDropDownList">
     			<option value=" ">select unit name</option>

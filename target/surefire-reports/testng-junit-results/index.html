@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">10 methods, 3 failed,   7 passed</span>
+                    <span class="method-stats">10 methods, 2 failed,   8 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -102,12 +102,7 @@
                     <div class="method-list-content failed suite-Surefire_suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Surefire_suite" title="com.regnquiz.model.LectureAdminTest" hash-for-method="RunLectureAdmin">RunLectureAdmin</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Surefire_suite" title="com.regnquiz.model.LectureRunTest" hash-for-method="Start">Start</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Surefire_suite" title="com.regnquiz.model.BookingRepositoryTest" hash-for-method="TestBooking">TestBooking</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -131,12 +126,17 @@
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Surefire_suite" title="com.regnquiz.model.StudentQuestionReviewTest" hash-for-method="TestAnswers">TestAnswers</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Surefire_suite" title="com.regnquiz.model.LectureAdminTest" hash-for-method="RunLectureAdmin">RunLectureAdmin</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Surefire_suite" title="com.regnquiz.model.BookingRepositoryTest" hash-for-method="TestBooking">TestBooking</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Surefire_suite" title="com.regnquiz.model.LectureRunTest" hash-for-method="Start">Start</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Surefire_suite" title="com.regnquiz.model.StudentQuestionReviewTest" hash-for-method="TestAnswers">TestAnswers</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -174,27 +174,37 @@
           <div class="suite-Surefire_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.regnquiz.model.LectureAdminTest</span>
+              <span class="class-name">com.regnquiz.model.BookingRepositoryTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="RunLectureAdmin">
-                  </a> <!-- RunLectureAdmin -->
-                  <span class="method-name">RunLectureAdmin</span>
-                  <div class="stack-trace">java.util.NoSuchElementException: No value present
-	at java.util.Optional.get(Optional.java:135)
-	at com.regnquiz.model.LectureAdmin.setUser(LectureAdmin.java:54)
-	at com.regnquiz.model.LectureAdmin$$FastClassBySpringCGLIB$$7c3fe8e8.invoke(&lt;generated&gt;)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295)
+                  <a name="TestBooking">
+                  </a> <!-- TestBooking -->
+                  <span class="method-name">TestBooking</span>
+                  <div class="stack-trace">org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:296)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:253)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:536)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:746)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:534)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:305)
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.regnquiz.model.LectureAdmin$$EnhancerBySpringCGLIB$$daf76b0b.setUser(&lt;generated&gt;)
-	at com.regnquiz.model.LectureAdminTest.RunLectureAdmin(LectureAdminTest.java:40)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:144)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$ExposeRepositoryInvocationInterceptor.invoke(CrudMethodMetadataPostProcessor.java:364)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy129.save(Unknown Source)
+	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
@@ -219,60 +229,43 @@
 	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
 	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
 	at java.util.ArrayList.forEach(ArrayList.java:1257)
-... Removed 28 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Surefire_suite-class-failed -->
-          <div class="suite-Surefire_suite-class-failed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">com.regnquiz.model.LectureRunTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="Start">
-                  </a> <!-- Start -->
-                  <span class="method-name">Start</span>
-                  <div class="stack-trace">java.util.NoSuchElementException: No value present
-	at java.util.Optional.get(Optional.java:135)
-	at com.regnquiz.model.LectureRun.OpenLecture(LectureRun.java:40)
-	at com.regnquiz.model.LectureRun$$FastClassBySpringCGLIB$$52fa3264.invoke(&lt;generated&gt;)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at com.regnquiz.model.LectureRun$$EnhancerBySpringCGLIB$$3cb214ff.OpenLecture(&lt;generated&gt;)
-	at com.regnquiz.model.LectureRunTest.Start(LectureRunTest.java:29)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
-	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
-	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
-	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
-	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
-	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
-	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
-	at java.util.ArrayList.forEach(ArrayList.java:1257)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:59)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:178)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3176)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3690)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:90)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:604)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:478)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:356)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:39)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1454)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:511)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:3290)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2486)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:473)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:178)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:39)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:271)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:532)
+	... 71 more
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry &apos;1&apos; for key &apos;PRIMARY&apos;
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1340)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:175)
+	... 88 more
 ... Removed 28 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -392,6 +385,21 @@ Caused by: java.sql.SQLSyntaxErrorException: In aggregated query without GROUP B
           <div class="suite-Surefire_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
+              <span class="class-name">com.regnquiz.model.LectureAdminTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="RunLectureAdmin">
+                  </a> <!-- RunLectureAdmin -->
+                  <span class="method-name">RunLectureAdmin</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-passed -->
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
               <span class="class-name">com.regnquiz.model.UserRepositoryTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -437,14 +445,14 @@ Caused by: java.sql.SQLSyntaxErrorException: In aggregated query without GROUP B
           <div class="suite-Surefire_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">com.regnquiz.model.BookingRepositoryTest</span>
+              <span class="class-name">com.regnquiz.model.LectureRunTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="TestBooking">
-                  </a> <!-- TestBooking -->
-                  <span class="method-name">TestBooking</span>
+                  <a name="Start">
+                  </a> <!-- Start -->
+                  <span class="method-name">Start</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -559,38 +567,38 @@ data.addRows(10);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'TestAnswers')
 data.setCell(0, 2, 'com.regnquiz.model.StudentQuestionReviewTest')
-data.setCell(0, 3, 6657);
+data.setCell(0, 3, 5718);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'TestBooking')
-data.setCell(1, 2, 'com.regnquiz.model.BookingRepositoryTest')
-data.setCell(1, 3, 177);
+data.setCell(1, 1, 'InsertData')
+data.setCell(1, 2, 'com.regnquiz.model.UserRepositoryTest')
+data.setCell(1, 3, 145);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'InsertData')
-data.setCell(2, 2, 'com.regnquiz.model.UserRepositoryTest')
-data.setCell(2, 3, 124);
+data.setCell(2, 1, 'TestBooking')
+data.setCell(2, 2, 'com.regnquiz.model.BookingRepositoryTest')
+data.setCell(2, 3, 66);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'TestVenue')
-data.setCell(3, 2, 'com.regnquiz.model.VenueRepositoryTest')
-data.setCell(3, 3, 58);
+data.setCell(3, 1, 'Start')
+data.setCell(3, 2, 'com.regnquiz.model.LectureRunTest')
+data.setCell(3, 3, 50);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'TestStudent')
-data.setCell(4, 2, 'com.regnquiz.model.StudentImportTest')
-data.setCell(4, 3, 45);
+data.setCell(4, 1, 'RunLectureAdmin')
+data.setCell(4, 2, 'com.regnquiz.model.LectureAdminTest')
+data.setCell(4, 3, 47);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'RunLectureAdmin')
-data.setCell(5, 2, 'com.regnquiz.model.LectureAdminTest')
-data.setCell(5, 3, 38);
+data.setCell(5, 1, 'TestClassReturn')
+data.setCell(5, 2, 'com.regnquiz.model.ClassListRepositoryTest')
+data.setCell(5, 3, 30);
 data.setCell(6, 0, 6)
 data.setCell(6, 1, 'TestVenue')
-data.setCell(6, 2, 'com.regnquiz.model.VenueImportTest')
-data.setCell(6, 3, 26);
+data.setCell(6, 2, 'com.regnquiz.model.VenueRepositoryTest')
+data.setCell(6, 3, 29);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'TestClassReturn')
-data.setCell(7, 2, 'com.regnquiz.model.ClassListRepositoryTest')
-data.setCell(7, 3, 15);
+data.setCell(7, 1, 'TestStudent')
+data.setCell(7, 2, 'com.regnquiz.model.StudentImportTest')
+data.setCell(7, 3, 18);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'Start')
-data.setCell(8, 2, 'com.regnquiz.model.LectureRunTest')
+data.setCell(8, 1, 'TestVenue')
+data.setCell(8, 2, 'com.regnquiz.model.VenueImportTest')
 data.setCell(8, 3, 14);
 data.setCell(9, 0, 9)
 data.setCell(9, 1, 'TestQuestion')
@@ -600,7 +608,7 @@ window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 7 seconds</span>
+              <span class="suite-total-time">Total running time: 6 seconds</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -635,61 +643,59 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.regnquiz.model.LectureAdminTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">RunLectureAdmin</span>
-                <span class="method-start">6663 ms</span>
+                <span class="method-start">5722 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.regnquiz.model.StudentImportTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">TestStudent</span>
-                <span class="method-start">6713 ms</span>
+                <span class="method-start">5773 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.regnquiz.model.BookingRepositoryTest</div> <!-- chronological-class-name -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">TestBooking</span>
-                <span class="method-start">6763 ms</span>
+                <span class="method-start">5795 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.regnquiz.model.BookingQuestionRepositoryTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">TestQuestion</span>
-                <span class="method-start">6945 ms</span>
+                <span class="method-start">5871 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.regnquiz.model.ClassListRepositoryTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">TestClassReturn</span>
-                <span class="method-start">6955 ms</span>
+                <span class="method-start">5878 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.regnquiz.model.VenueImportTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">TestVenue</span>
-                <span class="method-start">6976 ms</span>
+                <span class="method-start">5912 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.regnquiz.model.LectureRunTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">Start</span>
-                <span class="method-start">7008 ms</span>
+                <span class="method-start">5929 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.regnquiz.model.UserRepositoryTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">InsertData</span>
-                <span class="method-start">7027 ms</span>
+                <span class="method-start">5983 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
@@ -698,7 +704,7 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">TestVenue</span>
-                <span class="method-start">7156 ms</span>
+                <span class="method-start">6131 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
