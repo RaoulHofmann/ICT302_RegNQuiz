@@ -48,7 +48,11 @@ public class MultipleChoice
         this.description = description;
         studentAnswer = new HashSet<>();
     }
-    
+
+    public Integer getAnswerID() {
+        return answerID;
+    }
+
     public Integer getMCID()
     {
         return answerID;

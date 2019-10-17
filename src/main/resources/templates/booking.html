@@ -18,13 +18,13 @@
         <th:block th:if="${finished == null}">
             <th:block th:if= "${questions == null}">
                 <a href="javascript: document.startQuestions.submit()" role="button" id="startQuestions">Display Question</a>
-                <form name="startQuestions" th:action="@{/booking/{id}/start(id=${booking.bookingID})}" method="post" th:hidden="true">
+                <form name="startQuestions" th:action="@{/booking/{id}/question(id=${booking.bookingID})}" method="post" th:hidden="true">
                     <input hidden type="submit" value="Display Question"/>
                 </form>
             </th:block>
             <th:block th:if= "${questions != null}">
                 <a href="javascript: document.nextQuestions.submit()" role="button" id="nextQuestions">Next Question</a>
-                <form name="nextQuestions" th:action="@{/booking/{id}/next/{qid}(id=${booking.bookingID}, qid=${questionid})}" method="post" th:hidden="true">
+                <form name="nextQuestions" th:action="@{/booking/{id}/question/{qid}(id=${booking.bookingID}, qid=${questionid})}" method="post" th:hidden="true">
                     <input hidden type="submit" value="nextQuestions"/>
                 </form>
             </th:block>
@@ -58,8 +58,7 @@
                         [/]
                     },
                 success: function (data) {
-                    console.log(data);
-                    $('#attendance_count').html(data);
+                    $('#attendance_count').html("Attending: "+data);
                     interval = setTimeout(getAttendance, 1000);
                 }
             });

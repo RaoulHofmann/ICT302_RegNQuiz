@@ -44,8 +44,9 @@
                 type: "POST",
                 url : '/booking/getquestion',
                 success: function (data) {
-                    console.log(data);
-                    $('#questions').html(data);
+                    if ($(data).filter('#waiting').length == 0) {
+                        $('#questions').html(data);
+                    }
                     interval = setTimeout(getQuestion, 1000);
                 }
             });
@@ -56,15 +57,20 @@
     <div id="questions" th:fragment="questionList">
         <th:block th:if= "${questions != null}">
             <span th:text="${questions.description}"></span>
-            <table id="questionList">
-                <th:block th:each="multipleChoice : ${multipleChoices}">
-                    <tr>
-                        <td th:text="${multipleChoice.description}"></td>
-                    </tr>
-                </th:block>
-            </table>
+            <form action="#" th:action="@{/booking/answer}" th:object="${answer}" method="post">
+                <table id="questionList">
+                    <th:block th:each="multipleChoice : ${multipleChoices}">
+                        <tr>
+                            <td th:text="${multipleChoice.description}"></td>
+                            <td><input type="checkbox" th:field="*{answerID}" th:value="${multipleChoice.answerID}"/></td>
+                        </tr>
+                    </th:block>
+                </table>
+                <input type="submit" value="submit"/>
+            </form>
         </th:block>
     </div>
+    <span id="waiting" th:fragment="waitingForChange"></span>
  </body>
 </html>
 

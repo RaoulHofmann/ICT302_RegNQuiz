@@ -5,14 +5,13 @@
  */
 package com.regnquiz.model;
 
-import com.regnquiz.model.repositories.BookingQuestionRepository;
-import com.regnquiz.model.repositories.BookingRepository;
-import com.regnquiz.model.repositories.ClassListRepository;
+import com.regnquiz.model.repositories.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 
-import com.regnquiz.model.repositories.MultipleChoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,13 +37,20 @@ public class LectureRun {
     @Autowired
     private MultipleChoiceRepository multipleChoiceRepository;
 
+    @Autowired
+    private StudentAnswerRepository studentAnswerRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
     private Booking b = null;
     private int attendanceCounter = 0;
     private int activeQuestion = -1;
     private boolean quizFinished = false;
     List<BookingQuestion> bq = null;
-    List<ClassList> cl;
-    List<MultipleChoice> mc;
+    List<ClassList> cl = null;
+    List<MultipleChoice> mc = null;
+    List<StudentAnswer> sa = new ArrayList<StudentAnswer>();
 
     @Transactional
     public void OpenLecture(int bookingID)
@@ -98,6 +104,9 @@ public class LectureRun {
     public void saveLecture()
     {
         bookingRepository.save(b);
+        classListRepository.saveAll(cl);
+        bookingQuestionRepository.saveAll(bq);
+        studentAnswerRepository.saveAll(sa);
     }
 
     @Transactional
@@ -113,18 +122,28 @@ public class LectureRun {
     }
 
     @Transactional
+    public void setStudentAnswer(int answerID, int studentID){
+        StudentAnswer studentAnswer = new StudentAnswer();
+        studentAnswer.setStudent(userRepository.findById(studentID).get());
+        studentAnswer.setStudentAnswer(multipleChoiceRepository.findByAnswerID(answerID));
+        this.sa.add(studentAnswer);
+    }
+
+    @Transactional
     public void startQuestion(){
         activeQuestion = 0;
+        mc = multipleChoiceRepository.findByQuestion_QuestionID(bq.get(0).getQuestion().getQID());
     }
 
     @Transactional
     public void nextQuestion(){
         activeQuestion += 1;
+        mc = multipleChoiceRepository.findByQuestion_QuestionID(bq.get(activeQuestion).getQuestion().getQID());
     }
 
     @Transactional
     public int getActiveQuestion(){
-        if(this.activeQuestion == bq.size()){
+        if(this.activeQuestion == bq.size()-1){
             this.quizFinished = true;
         }
         return this.activeQuestion;
@@ -157,7 +176,7 @@ public class LectureRun {
     }
 
     @Transactional
-    public List<MultipleChoice> getMultipleChoice(int questionID){
-        return multipleChoiceRepository.findByQuestion_QuestionID(questionID);
+    public List<MultipleChoice> getMultipleChoice(){
+        return this.mc;
     }
 }
