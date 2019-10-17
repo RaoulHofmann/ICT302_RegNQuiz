@@ -36,6 +36,35 @@
             </tbody>
         </table>
     </div>
+
+    <script th:inline="javascript" th:if="${booking != null}">
+        var interval;
+        function getQuestion() {
+            $.ajax({
+                type: "POST",
+                url : '/booking/getquestion',
+                success: function (data) {
+                    console.log(data);
+                    $('#questions').html(data);
+                    interval = setTimeout(getQuestion, 1000);
+                }
+            });
+        }
+        getQuestion();
+    </script>
+
+    <div id="questions" th:fragment="questionList">
+        <th:block th:if= "${questions != null}">
+            <span th:text="${questions.description}"></span>
+            <table id="questionList">
+                <th:block th:each="multipleChoice : ${multipleChoices}">
+                    <tr>
+                        <td th:text="${multipleChoice.description}"></td>
+                    </tr>
+                </th:block>
+            </table>
+        </th:block>
+    </div>
  </body>
 </html>
 

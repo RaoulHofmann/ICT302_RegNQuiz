@@ -49,7 +49,11 @@ public class Question
         bookingQuestion = new HashSet<>();
         multipleChoice = new HashSet<>();
     }
-    
+
+    public Integer getQuestionID() {
+        return questionID;
+    }
+
     public Integer getQID()
     {
         return questionID;
