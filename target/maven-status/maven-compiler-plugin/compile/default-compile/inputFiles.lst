@@ -13,7 +13,6 @@
 /Users/Connie/2019Semester2/ICT302_RegNQuiz/src/main/java/com/regnquiz/model/repositories/UserRepository.java
 /Users/Connie/2019Semester2/ICT302_RegNQuiz/src/main/java/com/regnquiz/controller/SessionInterceptor.java
 /Users/Connie/2019Semester2/ICT302_RegNQuiz/src/main/java/com/regnquiz/model/repositories/SemesterRepository.java
-/Users/Connie/2019Semester2/ICT302_RegNQuiz/src/main/java/com/regnquiz/controller/service/BookingService.java
 /Users/Connie/2019Semester2/ICT302_RegNQuiz/src/main/java/com/regnquiz/model/UnitImport.java
 /Users/Connie/2019Semester2/ICT302_RegNQuiz/src/main/java/com/regnquiz/model/LectureRun.java
 /Users/Connie/2019Semester2/ICT302_RegNQuiz/src/main/java/com/regnquiz/model/StudentImport.java

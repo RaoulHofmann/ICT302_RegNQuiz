@@ -1,16 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 8.078 s <<< FAILURE! - in TestSuite
-RunLectureAdmin on RunLectureAdmin(com.regnquiz.model.LectureAdminTest)(com.regnquiz.model.LectureAdminTest)  Time elapsed: 0.042 s  <<< FAILURE!
-java.util.NoSuchElementException: No value present
-	at com.regnquiz.model.LectureAdminTest.RunLectureAdmin(LectureAdminTest.java:40)
+Tests run: 10, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 6.882 s <<< FAILURE! - in TestSuite
+TestBooking on TestBooking(com.regnquiz.model.BookingRepositoryTest)(com.regnquiz.model.BookingRepositoryTest)  Time elapsed: 0.07 s  <<< FAILURE!
+org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
 
-Start on Start(com.regnquiz.model.LectureRunTest)(com.regnquiz.model.LectureRunTest)  Time elapsed: 0.012 s  <<< FAILURE!
-java.util.NoSuchElementException: No value present
-	at com.regnquiz.model.LectureRunTest.Start(LectureRunTest.java:29)
-
-TestVenue on TestVenue(com.regnquiz.model.VenueRepositoryTest)(com.regnquiz.model.VenueRepositoryTest)  Time elapsed: 0.058 s  <<< FAILURE!
+TestVenue on TestVenue(com.regnquiz.model.VenueRepositoryTest)(com.regnquiz.model.VenueRepositoryTest)  Time elapsed: 0.029 s  <<< FAILURE!
 org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
 	at com.regnquiz.model.VenueRepositoryTest.saveData(VenueRepositoryTest.java:71)
 	at com.regnquiz.model.VenueRepositoryTest.TestVenue(VenueRepositoryTest.java:42)

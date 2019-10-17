@@ -1,37 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="3" ignored="0" total="10" passed="7">
+<testng-results skipped="0" failed="2" ignored="0" total="10" passed="8">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="7713" started-at="2019-10-15T10:21:02 AWST" finished-at="2019-10-15T10:21:09 AWST">
+  <suite name="Surefire suite" duration-ms="6529" started-at="2019-10-15T16:46:55 AWST" finished-at="2019-10-15T16:47:01 AWST">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="7713" started-at="2019-10-15T10:21:02 AWST" finished-at="2019-10-15T10:21:09 AWST">
+    <test name="Surefire test" duration-ms="6529" started-at="2019-10-15T16:46:55 AWST" finished-at="2019-10-15T16:47:01 AWST">
       <class name="com.regnquiz.model.VenueImportTest">
-        <test-method status="PASS" signature="TestVenue()" name="TestVenue" duration-ms="26" started-at="2019-10-15T10:21:09 AWST" finished-at="2019-10-15T10:21:09 AWST">
+        <test-method status="PASS" signature="TestVenue()" name="TestVenue" duration-ms="14" started-at="2019-10-15T16:47:01 AWST" finished-at="2019-10-15T16:47:01 AWST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestVenue -->
       </class> <!-- com.regnquiz.model.VenueImportTest -->
       <class name="com.regnquiz.model.LectureAdminTest">
-        <test-method status="FAIL" signature="RunLectureAdmin()" name="RunLectureAdmin" duration-ms="38" started-at="2019-10-15T10:21:09 AWST" finished-at="2019-10-15T10:21:09 AWST">
-          <exception class="java.util.NoSuchElementException">
+        <test-method status="PASS" signature="RunLectureAdmin()" name="RunLectureAdmin" duration-ms="47" started-at="2019-10-15T16:47:01 AWST" finished-at="2019-10-15T16:47:01 AWST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RunLectureAdmin -->
+      </class> <!-- com.regnquiz.model.LectureAdminTest -->
+      <class name="com.regnquiz.model.UserRepositoryTest">
+        <test-method status="PASS" signature="InsertData()" name="InsertData" duration-ms="145" started-at="2019-10-15T16:47:01 AWST" finished-at="2019-10-15T16:47:01 AWST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InsertData -->
+      </class> <!-- com.regnquiz.model.UserRepositoryTest -->
+      <class name="com.regnquiz.model.ClassListRepositoryTest">
+        <test-method status="PASS" signature="TestClassReturn()" name="TestClassReturn" duration-ms="30" started-at="2019-10-15T16:47:01 AWST" finished-at="2019-10-15T16:47:01 AWST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestClassReturn -->
+      </class> <!-- com.regnquiz.model.ClassListRepositoryTest -->
+      <class name="com.regnquiz.model.BookingQuestionRepositoryTest">
+        <test-method status="PASS" signature="TestQuestion()" name="TestQuestion" duration-ms="4" started-at="2019-10-15T16:47:01 AWST" finished-at="2019-10-15T16:47:01 AWST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestQuestion -->
+      </class> <!-- com.regnquiz.model.BookingQuestionRepositoryTest -->
+      <class name="com.regnquiz.model.BookingRepositoryTest">
+        <test-method status="FAIL" signature="TestBooking()" name="TestBooking" duration-ms="66" started-at="2019-10-15T16:47:01 AWST" finished-at="2019-10-15T16:47:01 AWST">
+          <exception class="org.springframework.dao.DataIntegrityViolationException">
             <message>
-              <![CDATA[No value present]]>
+              <![CDATA[could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.util.NoSuchElementException: No value present
-at java.util.Optional.get(Optional.java:135)
-at com.regnquiz.model.LectureAdmin.setUser(LectureAdmin.java:54)
-at com.regnquiz.model.LectureAdmin$$FastClassBySpringCGLIB$$7c3fe8e8.invoke(<generated>)
-at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295)
+              <![CDATA[org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:296)
+at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:253)
+at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:536)
+at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:746)
+at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:534)
+at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:305)
 at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
 at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-at com.regnquiz.model.LectureAdmin$$EnhancerBySpringCGLIB$$daf76b0b.setUser(<generated>)
-at com.regnquiz.model.LectureAdminTest.RunLectureAdmin(LectureAdminTest.java:40)
+at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:144)
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$ExposeRepositoryInvocationInterceptor.invoke(CrudMethodMetadataPostProcessor.java:364)
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93)
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61)
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+at com.sun.proxy.$Proxy129.save(Unknown Source)
+at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -84,33 +118,52 @@ at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader
 at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
 at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
 at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:59)
+at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:178)
+at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3176)
+at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3690)
+at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:90)
+at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:604)
+at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:478)
+at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:356)
+at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:39)
+at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1454)
+at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:511)
+at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:3290)
+at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2486)
+at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:473)
+at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:178)
+at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:39)
+at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:271)
+at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
+at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:532)
+... 71 more
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
+at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
+at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1340)
+at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
+at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:175)
+... 88 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.util.NoSuchElementException -->
+          </exception> <!-- org.springframework.dao.DataIntegrityViolationException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- RunLectureAdmin -->
-      </class> <!-- com.regnquiz.model.LectureAdminTest -->
-      <class name="com.regnquiz.model.UserRepositoryTest">
-        <test-method status="PASS" signature="InsertData()" name="InsertData" duration-ms="124" started-at="2019-10-15T10:21:09 AWST" finished-at="2019-10-15T10:21:09 AWST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- InsertData -->
-      </class> <!-- com.regnquiz.model.UserRepositoryTest -->
-      <class name="com.regnquiz.model.ClassListRepositoryTest">
-        <test-method status="PASS" signature="TestClassReturn()" name="TestClassReturn" duration-ms="15" started-at="2019-10-15T10:21:09 AWST" finished-at="2019-10-15T10:21:09 AWST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TestClassReturn -->
-      </class> <!-- com.regnquiz.model.ClassListRepositoryTest -->
-      <class name="com.regnquiz.model.BookingQuestionRepositoryTest">
-        <test-method status="PASS" signature="TestQuestion()" name="TestQuestion" duration-ms="4" started-at="2019-10-15T10:21:09 AWST" finished-at="2019-10-15T10:21:09 AWST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TestQuestion -->
-      </class> <!-- com.regnquiz.model.BookingQuestionRepositoryTest -->
+        </test-method> <!-- TestBooking -->
+      </class> <!-- com.regnquiz.model.BookingRepositoryTest -->
       <class name="com.regnquiz.model.VenueRepositoryTest">
-        <test-method status="FAIL" signature="TestVenue()" name="TestVenue" duration-ms="58" started-at="2019-10-15T10:21:09 AWST" finished-at="2019-10-15T10:21:09 AWST">
+        <test-method status="FAIL" signature="TestVenue()" name="TestVenue" duration-ms="29" started-at="2019-10-15T16:47:01 AWST" finished-at="2019-10-15T16:47:01 AWST">
           <exception class="org.springframework.dao.InvalidDataAccessResourceUsageException">
             <message>
               <![CDATA[could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet]]>
@@ -249,98 +302,19 @@ at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetRetur
         </test-method> <!-- TestVenue -->
       </class> <!-- com.regnquiz.model.VenueRepositoryTest -->
       <class name="com.regnquiz.model.StudentImportTest">
-        <test-method status="PASS" signature="TestStudent()" name="TestStudent" duration-ms="45" started-at="2019-10-15T10:21:09 AWST" finished-at="2019-10-15T10:21:09 AWST">
+        <test-method status="PASS" signature="TestStudent()" name="TestStudent" duration-ms="18" started-at="2019-10-15T16:47:01 AWST" finished-at="2019-10-15T16:47:01 AWST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestStudent -->
       </class> <!-- com.regnquiz.model.StudentImportTest -->
-      <class name="com.regnquiz.model.BookingRepositoryTest">
-        <test-method status="PASS" signature="TestBooking()" name="TestBooking" duration-ms="177" started-at="2019-10-15T10:21:09 AWST" finished-at="2019-10-15T10:21:09 AWST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TestBooking -->
-      </class> <!-- com.regnquiz.model.BookingRepositoryTest -->
       <class name="com.regnquiz.model.LectureRunTest">
-        <test-method status="FAIL" signature="Start()" name="Start" duration-ms="14" started-at="2019-10-15T10:21:09 AWST" finished-at="2019-10-15T10:21:09 AWST">
-          <exception class="java.util.NoSuchElementException">
-            <message>
-              <![CDATA[No value present]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.util.NoSuchElementException: No value present
-at java.util.Optional.get(Optional.java:135)
-at com.regnquiz.model.LectureRun.OpenLecture(LectureRun.java:40)
-at com.regnquiz.model.LectureRun$$FastClassBySpringCGLIB$$52fa3264.invoke(<generated>)
-at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295)
-at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
-at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-at com.regnquiz.model.LectureRun$$EnhancerBySpringCGLIB$$3cb214ff.OpenLecture(<generated>)
-at com.regnquiz.model.LectureRunTest.Start(LectureRunTest.java:29)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
-at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
-at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
-at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
-at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
-at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
-at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
-at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
-at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
-at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
-at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
-at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
-at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:74)
-at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:65)
-at org.testng.TestRunner$1.run(TestRunner.java:656)
-at java.util.ArrayList.forEach(ArrayList.java:1257)
-at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:847)
-at org.testng.TestRunner.privateRunJUnit(TestRunner.java:685)
-at org.testng.TestRunner.run(TestRunner.java:589)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
-at org.testng.SuiteRunner.run(SuiteRunner.java:304)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
-at org.testng.TestNG.runSuites(TestNG.java:1032)
-at org.testng.TestNG.run(TestNG.java:1000)
-at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:135)
-at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:198)
-at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
-at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:146)
-at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
-at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
-at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
-at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.util.NoSuchElementException -->
+        <test-method status="PASS" signature="Start()" name="Start" duration-ms="50" started-at="2019-10-15T16:47:01 AWST" finished-at="2019-10-15T16:47:01 AWST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Start -->
       </class> <!-- com.regnquiz.model.LectureRunTest -->
       <class name="com.regnquiz.model.StudentQuestionReviewTest">
-        <test-method status="PASS" signature="TestAnswers()" name="TestAnswers" duration-ms="6657" started-at="2019-10-15T10:21:02 AWST" finished-at="2019-10-15T10:21:09 AWST">
+        <test-method status="PASS" signature="TestAnswers()" name="TestAnswers" duration-ms="5718" started-at="2019-10-15T16:46:55 AWST" finished-at="2019-10-15T16:47:01 AWST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestAnswers -->

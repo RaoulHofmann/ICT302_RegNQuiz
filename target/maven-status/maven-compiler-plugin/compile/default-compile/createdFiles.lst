@@ -6,7 +6,6 @@ com/regnquiz/model/Booking.class
 com/regnquiz/controller/MainController.class
 com/regnquiz/model/repositories/MultipleChoiceRepository.class
 com/regnquiz/model/StudentAnswer.class
-com/regnquiz/controller/service/BookingService.class
 com/regnquiz/model/UserIdent.class
 com/regnquiz/model/User.class
 com/regnquiz/controller/BookingController.class
