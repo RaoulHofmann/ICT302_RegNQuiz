@@ -13,6 +13,12 @@
 	<p class="main">
     <form action="#" name="accessCode" method="get" th:action="@{/booking/attend}" th:object="${accessCode}" >
 	<br/>
+        <div th:if= "${nobooking != null}" class="alert alert-success alert-dismissible" id="nobooking">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span>
+                <p>No Booking Found</p>
+            </span>
+        </div>
         <label>Access Code: 
         <input type="text" name = "accessCode" id="accessCode" onblur = "checkAccessCode()"/>
         </label><br /><br/>

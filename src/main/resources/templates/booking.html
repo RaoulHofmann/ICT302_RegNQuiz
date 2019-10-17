@@ -10,16 +10,63 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/resources/javascript/login.js"></script>
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
-    <script type="text/javascript" src="/resources/javascript/attendance.js"></script>
-    <script type="text/javascript" src="/resources/javascript/question.js"></script>
 </head>
 <body onload="booking_info();">
-    <h1>Attendance Code:</h1>
-    <h3 th:text="${booking.attendanceCode}"></h3>
-    <input type ="button"  value="Display Question" onclick="displayQuestion();"/>
-    <div id="questions">
-
+    <th:block th:if= "${booking != null}">
+        <h1>Attendance Code:</h1>
+        <h3 th:text="${booking.attendanceCode}"></h3>
+        <th:block th:if="${finished == null}">
+            <th:block th:if= "${questions == null}">
+                <a href="javascript: document.startQuestions.submit()" role="button" id="startQuestions">Display Question</a>
+                <form name="startQuestions" th:action="@{/booking/{id}/start(id=${booking.bookingID})}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="Display Question"/>
+                </form>
+            </th:block>
+            <th:block th:if= "${questions != null}">
+                <a href="javascript: document.nextQuestions.submit()" role="button" id="nextQuestions">Next Question</a>
+                <form name="nextQuestions" th:action="@{/booking/{id}/next/{qid}(id=${booking.bookingID}, qid=${questionid})}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="nextQuestions"/>
+                </form>
+            </th:block>
+        </th:block>
+    </th:block>
+    <div id="questions" th:if= "${questions != null}">
+        <span th:text="${questions.description}"></span>
+        <table>
+            <th:block th:each="multipleChoice : ${multipleChoices}">
+                <tr>
+                    <td th:text="${multipleChoice.description}"></td>
+                </tr>
+            </th:block>
+        </table>
     </div>
+    <th:block th:if="${finished != null}">
+        <span>
+            Quiz Finished
+        </span>
+    </th:block>
+
+    <script th:inline="javascript" th:if="${booking != null}">
+        var interval;
+        function getAttendance() {
+            $.ajax({
+                type: "POST",
+                url : '/booking/getattendance',
+                data: { bookingID:
+                        [# th:if="${booking != null }"]
+                            /*[[${booking.bookingID}]]*/ 'bookingID'
+                        [/]
+                    },
+                success: function (data) {
+                    console.log(data);
+                    $('#attendance_count').html(data);
+                    interval = setTimeout(getAttendance, 1000);
+                }
+            });
+        }
+        getAttendance();
+    </script>
+
     <h4 id="attendance_count"></h4>
     <input type="button"  onclick="location.href='/booking/'" value="Back" >
 </body>

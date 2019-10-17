@@ -11,6 +11,8 @@ import com.regnquiz.model.repositories.ClassListRepository;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
+
+import com.regnquiz.model.repositories.MultipleChoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +35,16 @@ public class LectureRun {
     @Autowired
     private BookingQuestionRepository bookingQuestionRepository;
 
+    @Autowired
+    private MultipleChoiceRepository multipleChoiceRepository;
+
     private Booking b = null;
     private int attendanceCounter = 0;
     private int activeQuestion = -1;
+    private boolean quizFinished = false;
     List<BookingQuestion> bq = null;
     List<ClassList> cl;
+    List<MultipleChoice> mc;
 
     @Transactional
     public void OpenLecture(int bookingID)
@@ -47,6 +54,7 @@ public class LectureRun {
         cl = classListRepository.findByBookingBookingID(bookingID);
 
         bq = bookingQuestionRepository.findByBooking_BookingID(bookingID);
+
         /*for(ClassList c : cl)
         {
             System.out.println("########################################" );
@@ -104,17 +112,52 @@ public class LectureRun {
         }
     }
 
-     @Transactional
-    public Question startQuestion(){
+    @Transactional
+    public void startQuestion(){
         activeQuestion = 0;
-
-        return bq.get(activeQuestion).getQuestion();
     }
 
     @Transactional
-    public Question nextQuestion(){
-        activeQuestion++;
+    public void nextQuestion(){
+        activeQuestion += 1;
+    }
 
-        return bq.get(activeQuestion).getQuestion();
+    @Transactional
+    public int getActiveQuestion(){
+        if(this.activeQuestion == bq.size()){
+            this.quizFinished = true;
+        }
+        return this.activeQuestion;
+    }
+
+    @Transactional
+    public boolean getQuizFinished() {
+        return this.quizFinished;
+    }
+
+    @Transactional
+    public List<ClassList> getClassList(){
+        return this.cl;
+    }
+
+    @Transactional
+    public ClassList getStudent(int studentID){
+        ClassList student = null;
+        for(int i=0; i<cl.size(); i++){
+            if(cl.get(i).getStudent().getUserID() == studentID){
+                student = cl.get(i);
+            }
+        }
+        return student;
+    }
+
+    @Transactional
+    public List<BookingQuestion> getBookingQuestions(){
+         return this.bq;
+    }
+
+    @Transactional
+    public List<MultipleChoice> getMultipleChoice(int questionID){
+        return multipleChoiceRepository.findByQuestion_QuestionID(questionID);
     }
 }

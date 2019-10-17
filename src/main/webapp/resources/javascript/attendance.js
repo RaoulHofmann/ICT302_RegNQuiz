@@ -7,7 +7,7 @@ function getAttendance() {
         success: function (data) {
             console.log(data);
             $('#attendance_count').html(data);
-            interval = setTimeout(getAttendance, 30000);
+            interval = setTimeout(getAttendance, 1000);
         }
     });
 }
