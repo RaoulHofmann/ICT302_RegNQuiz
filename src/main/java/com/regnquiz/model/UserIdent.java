@@ -11,6 +11,7 @@ import java.io.Serializable;
  *
  * 
  */
+@Embeddable
 public class UserIdent implements Serializable{
     @Column(name = "userID")
     private Integer UserID;

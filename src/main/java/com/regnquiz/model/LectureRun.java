@@ -8,6 +8,7 @@ package com.regnquiz.model;
 import com.regnquiz.model.repositories.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -48,9 +49,10 @@ public class LectureRun {
     private int activeQuestion = -1;
     private boolean quizFinished = false;
     List<BookingQuestion> bq = null;
-    List<ClassList> cl = null;
-    List<MultipleChoice> mc = null;
-    List<StudentAnswer> sa = new ArrayList<StudentAnswer>();
+    List<ClassList> cl;
+    List<MultipleChoice> mc;
+    List<StudentAnswer> sa = new ArrayList<>();
+    HashMap<Integer, Integer> answerCounter;
 
     @Transactional
     public void OpenLecture(int bookingID)
@@ -81,16 +83,23 @@ public class LectureRun {
     public boolean setAttendance(int studentID)
     {   
         boolean enrolled = false;
-        System.out.println("DAFUQ");
 
-        for(ClassList c : cl)
+        for(int i = 0; i<cl.size(); i++){
+            if(cl.get(i).getStudent().getUserID() == studentID){
+                cl.get(i).setAttendance();
+                enrolled = true;
+                this.attendanceCounter++;
+            }
+        }
+
+        /*for(ClassList c : cl)
             if(c.getStudent().getUserID()==studentID)
             {
                 c.setAttendance();
                 classListRepository.save(c);
                 enrolled = true;
                 this.attendanceCounter++;
-            }
+            }*/
         
         return enrolled;
     }
@@ -104,9 +113,11 @@ public class LectureRun {
     public void saveLecture()
     {
         bookingRepository.save(b);
-        classListRepository.saveAll(cl);
         bookingQuestionRepository.saveAll(bq);
-        studentAnswerRepository.saveAll(sa);
+        classListRepository.saveAll(cl);
+        for(int i=0; i<sa.size(); i++){
+            studentAnswerRepository.insertStudentAnswer(sa.get(i).getId().getAnswerID(), sa.get(i).getId().getUserID());
+        }
     }
 
     @Transactional
@@ -124,21 +135,33 @@ public class LectureRun {
     @Transactional
     public void setStudentAnswer(int answerID, int studentID){
         StudentAnswer studentAnswer = new StudentAnswer();
-        studentAnswer.setStudent(userRepository.findById(studentID).get());
-        studentAnswer.setStudentAnswer(multipleChoiceRepository.findByAnswerID(answerID));
-        this.sa.add(studentAnswer);
+        studentAnswer.setId(new StudentAnswerKey(studentID, answerID));
+        sa.add(studentAnswer);
+    }
+
+    @Transactional
+    public List<StudentAnswer> getStudentAnswer(){
+        return this.sa;
     }
 
     @Transactional
     public void startQuestion(){
         activeQuestion = 0;
         mc = multipleChoiceRepository.findByQuestion_QuestionID(bq.get(0).getQuestion().getQID());
+        answerCounter = new HashMap<>();
+        for (int i=0; i<mc.size(); i++){
+            answerCounter.put(mc.get(i).getAnswerID(), 0);
+        }
     }
 
     @Transactional
     public void nextQuestion(){
         activeQuestion += 1;
         mc = multipleChoiceRepository.findByQuestion_QuestionID(bq.get(activeQuestion).getQuestion().getQID());
+        answerCounter.clear();
+        for (int i=0; i<mc.size(); i++){
+            answerCounter.put(mc.get(i).getAnswerID(), 0);
+        }
     }
 
     @Transactional
@@ -178,5 +201,20 @@ public class LectureRun {
     @Transactional
     public List<MultipleChoice> getMultipleChoice(){
         return this.mc;
+    }
+
+    @Transactional
+    public HashMap<Integer, Integer> getAnswerCounter(){
+        return this.answerCounter;
+    }
+
+    @Transactional
+    public void setAnswerCounter(int aID){
+        answerCounter.put(aID, answerCounter.get(aID)+1);
+    }
+
+    @Transactional
+    public Integer getQuestionTimer(){
+        return bq.get(activeQuestion).getQuestion().getTime();
     }
 }

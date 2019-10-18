@@ -30,7 +30,26 @@
             </th:block>
         </th:block>
     </th:block>
+    <script th:inline="javascript" th:if="${timer != null}">
+        var x = setInterval( function()
+       {
+          var timer = $('.js-timeout').html();
+          var seconds = timer;
+          if(seconds > 0){
+            seconds -= 1;
+          }
+
+          $('.js-timeout').html(seconds);
+
+          if (seconds <= 0)
+          {
+            clearInterval(x);
+          }
+      }, 1000);
+    </script>
+
     <div id="questions" th:if= "${questions != null}">
+        <p class="timer" th:if="${timer != null}">Time will end in <span class="js-timeout" id="js-timeout" th:text="${timer}"></span></p><br/>
         <span th:text="${questions.description}"></span>
         <table>
             <th:block th:each="multipleChoice : ${multipleChoices}">
@@ -66,7 +85,39 @@
         getAttendance();
     </script>
 
+    <script th:inline="javascript" th:if="${booking != null}">
+        var studentAnswerInt;
+        function getStudentAnswers() {
+            $.ajax({
+                type: "POST",
+                url : '/booking/getstudentanswers',
+                data: { bookingID:
+                        [# th:if="${booking != null }"]
+                            /*[[${booking.bookingID}]]*/ 'bookingID'
+                        [/]
+                    },
+                success: function (data) {
+                    if(data.length != 0){
+                        $('#answerCounter').html(data);
+                    }
+                    studentAnswerInt = setTimeout(getStudentAnswers, 1000);
+                }
+            });
+        }
+        getStudentAnswers();
+    </script>
+
     <h4 id="attendance_count"></h4>
+    <div id="answerCounter" th:fragment="studentAnswer">
+        <table>
+            <th:block >
+                <tr th:each="studentAnswer : ${studentAnswers}">
+                    <th th:text="${studentAnswer.value}"></th>
+                    <td th:text="${studentAnswer.key}"></td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
     <input type="button"  onclick="location.href='/booking/'" value="Back" >
 </body>
 </html>

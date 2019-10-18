@@ -72,7 +72,6 @@ public class BookingController {
         if(bookings.get(id).getQuizFinished()){
             model.addAttribute("finished", 1);
         }
-        System.out.println("Size "+runningBookings.size());
         return "booking";
     }
 
@@ -84,6 +83,7 @@ public class BookingController {
         model.addAttribute("questions", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion());
         model.addAttribute("multipleChoices", lectureRun.getMultipleChoice());
         model.addAttribute("questionid", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion().getQID());
+        model.addAttribute("timer", lectureRun.getQuestionTimer());
         return "booking";
     }
 
@@ -96,35 +96,12 @@ public class BookingController {
             model.addAttribute("questions", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion());
             model.addAttribute("multipleChoices", lectureRun.getMultipleChoice());
             model.addAttribute("questionid", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion().getQID());
+            model.addAttribute("timer", lectureRun.getQuestionTimer());
         }else{
+            //lectureRun.saveLecture();
             model.addAttribute("finished", 1);
         }
         return "booking";
-    }
-
-    @PostMapping(path = "/getquestion")
-    public ModelAndView getQuestions(Model model, HttpServletRequest request){
-        HttpSession session = request.getSession(false);
-        ModelAndView mv= new ModelAndView("attendBooking::questionList");
-
-        LectureRun lectureRun = bookings.get(session.getAttribute("booking"));
-        mv.addObject("booking", lectureRun.getBooking());
-        mv.addObject("answer", new Answer());
-
-        try{
-            if(lectureRun.getActiveQuestion() >= 0 && lectureRun.getActiveQuestion() > ((Integer)session.getAttribute("lastQuestion"))) {
-                mv.addObject("questions", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion());
-                mv.addObject("multipleChoices", lectureRun.getMultipleChoice());
-                session.setAttribute("lastQuestion", lectureRun.getActiveQuestion());
-            }else{
-                model.addAttribute("waiting", 1);
-                return new ModelAndView("attendBooking::waitingForChange");
-            }
-        }catch (NullPointerException e){
-            session.setAttribute("lastQuestion", -1);
-        }
-
-        return mv;
     }
 
     @GetMapping(path="/attend")
@@ -148,6 +125,32 @@ public class BookingController {
         return "attendBooking";
     }
 
+    @PostMapping(path = "/getquestion")
+    public ModelAndView getQuestions(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        ModelAndView mv= new ModelAndView("attendBooking::questionList");
+
+        LectureRun lectureRun = bookings.get(session.getAttribute("booking"));
+        mv.addObject("booking", lectureRun.getBooking());
+        mv.addObject("answer", new Answer());
+
+        try{
+            if(lectureRun.getActiveQuestion() >= 0 && lectureRun.getActiveQuestion() > ((Integer)session.getAttribute("lastQuestion"))) {
+                mv.addObject("questions", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion());
+                mv.addObject("multipleChoices", lectureRun.getMultipleChoice());
+                mv.addObject("timer", lectureRun.getQuestionTimer());
+                session.setAttribute("lastQuestion", lectureRun.getActiveQuestion());
+            }else{
+                model.addAttribute("waiting", 1);
+                return new ModelAndView("attendBooking::waitingForChange");
+            }
+        }catch (NullPointerException e){
+            session.setAttribute("lastQuestion", -1);
+        }
+
+        return mv;
+    }
+
     @PostMapping(path="/getattendance")
     public @ResponseBody int attendanceCount(@RequestParam int bookingID, Model model, HttpServletRequest request) {
         try{
@@ -155,6 +158,12 @@ public class BookingController {
         }catch (NullPointerException e){
             return -1;
         }
+    }
+
+    @PostMapping(path="/getstudentanswers")
+    public ModelAndView studentAnswer(@RequestParam int bookingID, Model model, HttpServletRequest request) {
+        model.addAttribute("studentAnswers", bookings.get(bookingID).getAnswerCounter());
+        return new ModelAndView("booking::studentAnswer");
     }
 
     @GetMapping(path = "/addquestion")
@@ -165,16 +174,15 @@ public class BookingController {
     }
 
     @PostMapping(value = "/answer")
-    public ModelAndView studentAnswer(@Valid Answer answer, BindingResult result, ModelMap model, HttpServletRequest request) {
+    public String studentAnswer(@Valid Answer answer, BindingResult result, ModelMap model, HttpServletRequest request) {
         HttpSession session = request.getSession();
 
         LectureRun lectureRun = bookings.get(session.getAttribute("booking"));
         lectureRun.setStudentAnswer(answer.getAnswerID(), (Integer)session.getAttribute("userID"));
-        System.out.println("ANSWER!!! "+answer.getAnswerID());
-
+        lectureRun.setAnswerCounter(answer.getAnswerID());
         model.addAttribute("booking", lectureRun.getBooking());
         model.addAttribute("waiting", 1);
         lectureRun.saveLecture();
-        return new ModelAndView("attendBooking::waitingForChange");
+        return "attendBooking";
     }
 }

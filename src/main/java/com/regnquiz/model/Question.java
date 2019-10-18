@@ -54,6 +54,10 @@ public class Question
         return questionID;
     }
 
+    public void setQuestionID(Integer questionID) {
+        this.questionID = questionID;
+    }
+
     public Integer getQID()
     {
         return questionID;

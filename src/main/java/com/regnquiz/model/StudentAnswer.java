@@ -44,6 +44,11 @@ public class StudentAnswer
         this.student = student;
         this.answer = answer;
     }
+
+    public StudentAnswer(StudentAnswerKey sta)
+    {
+        this.id = sta;
+    }
     
     public User getStudent()
     {
@@ -64,4 +69,17 @@ public class StudentAnswer
     {
         this.answer = ans;
     }
+
+    public void setAnswer(MultipleChoice answer) {
+        this.answer = answer;
+    }
+
+    public void setId(StudentAnswerKey id) {
+        this.id = id;
+    }
+
+    public StudentAnswerKey getId() {
+        return id;
+    }
+
 }
