@@ -14,10 +14,11 @@ import java.io.Serializable;
  * Version: 1
  * Comment: Key for StudentAnswers class
  */
+@Embeddable
 public class StudentAnswerKey implements Serializable
 {
-    @Column(name = "UserID")
-    private Integer UserID;
+    @Column(name = "userID")
+    private Integer userID;
     
     @Column(name = "answerID")
     private Integer answerID;
@@ -29,18 +30,18 @@ public class StudentAnswerKey implements Serializable
     
     public StudentAnswerKey(Integer uid, Integer aid)
     {
-        this.UserID = uid;
+        this.userID = uid;
         this.answerID = aid;
     }
     
     public Integer getUserID()
     {
-        return UserID;
+        return userID;
     }
     
     public void setUserID(Integer id)
     {
-        this.UserID = id;
+        this.userID = id;
     }
     
     public Integer getAnswerID()

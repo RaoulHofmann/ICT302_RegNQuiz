@@ -13,8 +13,8 @@ public interface UserTypeQueryRepository extends JpaRepository<UserType, UserIde
 
     @Query("SELECT new Type(t.typeID AS TYPEID, t.description AS DESCRIPTION) FROM UserType ut "+
             "JOIN ut.type t " +
-            "JOIN ut.user u WHERE u.userID LIKE :userid")
-    Type getUserTypes(@Param("userid") Integer userid);
+            "JOIN ut.user u WHERE u.userID = :userid AND ut.password = :password")
+    Type getUserTypes(@Param("userid") Integer userid, @Param("password") String password);
     
     
     //List<UserType> findByUserId(Integer UserID);

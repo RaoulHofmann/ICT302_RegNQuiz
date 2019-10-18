@@ -24,4 +24,5 @@ public interface MultipleChoiceRepository extends CrudRepository<MultipleChoice,
     //@Query("SELECT case when count(m.answerID) = 0 then 0 else m.answerID end FROM MultipleChoice m WHERE m.description = :description AND m.question = :question")
     //Set<MultipleChoice> getMC(@Param("description") String description, @Param("question") Question question);
     List<MultipleChoice>findByQuestion_QuestionID(Integer questionID);
+    MultipleChoice findByAnswerID(Integer answerID);
 }

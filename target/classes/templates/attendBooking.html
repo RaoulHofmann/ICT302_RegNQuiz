@@ -36,6 +36,60 @@
             </tbody>
         </table>
     </div>
+
+    <script th:inline="javascript" th:if="${booking != null}">
+        var interval;
+        function getQuestion() {
+            $.ajax({
+                type: "POST",
+                url : '/booking/getquestion',
+                success: function (data) {
+                    if ($(data).filter('#waiting').length == 0) {
+                        $('#questions').html(data);
+                        var x = setInterval( function()
+                           {
+                              var timer = $('.js-timeout').html();
+                              var seconds = timer;
+                              if(seconds > 0){
+                                seconds -= 1;
+                              }
+
+                              $('.js-timeout').html(seconds);
+
+                              if (seconds <= 0)
+                              {
+                                clearInterval(x);
+                                document.getElementById("submitButton").disabled = true;
+                              }
+                          }, 1000);
+                          console.log(x)
+                    }
+                    interval = setTimeout(getQuestion, 1000);
+                }
+            });
+        }
+        getQuestion();
+
+    </script>
+
+    <div id="questions" th:fragment="questionList">
+        <p class="timer" th:if="${timer != null}">Time will end in <span class="js-timeout" id="js-timeout" th:text="${timer}"></span></p><br/>
+        <th:block th:if= "${questions != null}">
+            <span th:text="${questions.description}"></span>
+            <form action="#" th:action="@{/booking/answer}" th:object="${answer}" method="post">
+                <table id="questionList">
+                    <th:block th:each="multipleChoice : ${multipleChoices}">
+                        <tr>
+                            <td th:text="${multipleChoice.description}"></td>
+                            <td><input type="checkbox" th:field="*{answerID}" th:value="${multipleChoice.answerID}"/></td>
+                        </tr>
+                    </th:block>
+                </table>
+                <input type="submit" value="submit" id="submitButton"/>
+            </form>
+        </th:block>
+    </div>
+    <span id="waiting" th:fragment="waitingForChange"></span>
  </body>
 </html>
 
