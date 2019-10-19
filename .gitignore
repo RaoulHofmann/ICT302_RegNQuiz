@@ -2,3 +2,4 @@
 spring_java_demo/.idea/
 
 .idea/
+src/main/resources/application.properties

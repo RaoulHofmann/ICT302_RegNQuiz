@@ -1,14 +1,22 @@
 package com.regnquiz.model;
 
 public class Login {
-    private int userID;
+    private Integer userID;
     private String password;
 
-    public void setUserID(int userID) {
+    public Login() {}
+    
+    public Login(Integer uid, String pw)
+    {
+        this.userID = uid;
+        this.password = pw;
+    }
+    
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 
-    public int getUserID() {
+    public Integer getUserID() {
         return userID;
     }
 

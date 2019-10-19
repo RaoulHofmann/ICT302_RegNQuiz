@@ -10,6 +10,7 @@ import com.regnquiz.model.repositories.SemesterRepository;
 import com.regnquiz.model.repositories.UnitRepository;
 import com.regnquiz.model.repositories.UserRepository;
 import com.regnquiz.model.repositories.VenueRepository;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -58,8 +59,9 @@ public class BookingRepositoryTest {
             a.setBookingID(1234);
             a.setDate(new SimpleDateFormat("yyyy/MM/dd").parse("2019/01/01"));
             a.setBookingLength(90);
-            a.setAttendanceCode("test1");
-            a.setTime(750);
+            //a.setAttendanceCode("test1");
+            //a.setTime(750);
+            a.setTime(Time.valueOf("10:59:00"));
             a.setAttendanceCode("uY65T");
             //a.setUnit(new Unit(4321, "a", "a", new Semester(), 0, new User()));
             //a.setUnit(new Unit(4321, "a", "a", new Semester(0, "T1"), 0, u));
@@ -77,7 +79,6 @@ public class BookingRepositoryTest {
         }
         
         Iterable<Booking> g = bookingRepository.findAll();
-        
         for(Booking r : g)
             display(r);
         
@@ -99,12 +100,12 @@ public class BookingRepositoryTest {
         b.setLecture(new User(987, "a", "a", "a"));
         display(b);
         bookingRepository.save(b);*/
-
         try{
             Booking c = new Booking();
-            Optional<Booking> booking = bookingRepository.findById(45);
+            Optional<Booking> booking = bookingRepository.findById(1234);
             c = booking.get();
             display(c);
+            
         }
         catch(NoSuchElementException e)
         {
@@ -120,6 +121,7 @@ public class BookingRepositoryTest {
         System.out.println("Unit ID: " + b.getUnit().getUnitID());
         System.out.println("Venue ID: " + b.getVenue().getVenueID());
         System.out.println("Lecture ID: " + b.getLecture().getUserID());
+        System.out.println("Time: " + b.getTime().toString());
         System.out.println();
         System.out.println();
     }

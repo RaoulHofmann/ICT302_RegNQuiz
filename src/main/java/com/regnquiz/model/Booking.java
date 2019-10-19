@@ -9,11 +9,13 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.sql.Time;
+import java.time.LocalTime;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.HashSet;
 /**
  * Author: Matthew MacLennan
  * Date: 22/9/2019
@@ -60,18 +62,29 @@ public class Booking
         unit = new Unit();
         venue = new Venue();
         lecture = new User();
+        
+        classList = new HashSet<>();
+        unit = new Unit();
+        venue = new Venue();
+        lecture = new User();
+        
+        time = Time.valueOf("00:00:00");
+        
     }
     
     public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, ClassList classList)
     {
+        this.classList = new HashSet<>();
+        
         this.bookingID = id;
-        this. date = date;
+        this.date = date;
         this.bookingLength = bookingLen;
         this.attendanceCode = attendanceCode;
         this.unit = unit;
         this.venue = venue;
         this.lecture = lecture;
         this.classList.add(classList);
+        this.time = Time.valueOf("00:00:00");
     }
     
     public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, Set<ClassList> classList)
@@ -84,6 +97,7 @@ public class Booking
         this.venue = venue;
         this.lecture = lecture;
         this.classList = classList;
+       this.time = Time.valueOf("00:00:00");
     }
 
     Booking(int id, Date date, int bookingLen, String attendanceCode, Unit unit, Venue venue, User user) {
@@ -94,6 +108,9 @@ public class Booking
         this.unit = unit;
         this.venue = venue;
         this.lecture = user;
+        
+        classList = new HashSet<>();
+        this.time = Time.valueOf("00:00:00");
     }
     
     public Integer getBookingID()
@@ -194,6 +211,11 @@ public class Booking
     public void setTime(int time)
     {
         this.time = new Time(time);
+    }
+    
+    public void setTime(Time t)
+    {
+        this.time = t;
     }
 
     public Time getTime() {
