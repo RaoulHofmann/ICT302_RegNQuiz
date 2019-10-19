@@ -14,6 +14,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -116,7 +117,11 @@ public class LectureRun {
         bookingQuestionRepository.saveAll(bq);
         classListRepository.saveAll(cl);
         for(int i=0; i<sa.size(); i++){
-            studentAnswerRepository.insertStudentAnswer(sa.get(i).getId().getAnswerID(), sa.get(i).getId().getUserID());
+            try{
+                studentAnswerRepository.insertStudentAnswer(sa.get(i).getId().getAnswerID(), sa.get(i).getId().getUserID());
+            }catch(DataIntegrityViolationException e){
+                System.out.println(e);
+            }
         }
     }
 
