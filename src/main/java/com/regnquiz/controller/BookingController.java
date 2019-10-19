@@ -135,14 +135,16 @@ public class BookingController {
         mv.addObject("answer", new Answer());
 
         try{
-            if(lectureRun.getActiveQuestion() >= 0 && lectureRun.getActiveQuestion() > ((Integer)session.getAttribute("lastQuestion"))) {
+            if(lectureRun.getActiveQuestion() >= 0 && lectureRun.getActiveQuestion() > ((Integer)session.getAttribute("lastQuestion")) && !lectureRun.getQuizFinished()) {
                 mv.addObject("questions", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion());
                 mv.addObject("multipleChoices", lectureRun.getMultipleChoice());
                 mv.addObject("timer", lectureRun.getQuestionTimer());
                 session.setAttribute("lastQuestion", lectureRun.getActiveQuestion());
+            }else if(lectureRun.getQuizFinished()) {
+                session.removeAttribute("lastQuestion");
             }else{
-                model.addAttribute("waiting", 1);
-                return new ModelAndView("attendBooking::waitingForChange");
+                    model.addAttribute("waiting", 1);
+                    return new ModelAndView("attendBooking::waitingForChange");
             }
         }catch (NullPointerException e){
             session.setAttribute("lastQuestion", -1);
