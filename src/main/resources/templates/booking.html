@@ -44,6 +44,15 @@
           if (seconds <= 0)
           {
             clearInterval(x);
+            $.ajax({
+                type: "POST",
+                url : '/booking/settimeout',
+                data: { timer: 1, bookingID:
+                        [# th:if="${booking != null }"]
+                            /*[[${booking.bookingID}]]*/ 'bookingID'
+                        [/]
+                        }
+            });
           }
       }, 1000);
     </script>

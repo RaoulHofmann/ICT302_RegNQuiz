@@ -49,6 +49,7 @@ public class LectureRun {
     private int attendanceCounter = 0;
     private int activeQuestion = -1;
     private boolean quizFinished = false;
+    private boolean timeout = false;
     List<BookingQuestion> bq = null;
     List<ClassList> cl;
     List<MultipleChoice> mc;
@@ -161,6 +162,7 @@ public class LectureRun {
 
     @Transactional
     public void nextQuestion(){
+        timeout = false;
         activeQuestion += 1;
         mc = multipleChoiceRepository.findByQuestion_QuestionID(bq.get(activeQuestion).getQuestion().getQID());
         answerCounter.clear();
@@ -221,5 +223,15 @@ public class LectureRun {
     @Transactional
     public Integer getQuestionTimer(){
         return bq.get(activeQuestion).getQuestion().getTime();
+    }
+
+    @Transactional
+    public void setTimeout(){
+        this.timeout = true;
+    }
+
+    @Transactional
+    public boolean getTimeout(){
+        return this.timeout;
     }
 }

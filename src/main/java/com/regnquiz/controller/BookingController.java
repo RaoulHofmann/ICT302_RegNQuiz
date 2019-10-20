@@ -184,7 +184,28 @@ public class BookingController {
         lectureRun.setAnswerCounter(answer.getAnswerID());
         model.addAttribute("booking", lectureRun.getBooking());
         model.addAttribute("waiting", 1);
-        lectureRun.saveLecture();
         return "attendBooking";
+    }
+
+    @PostMapping(value ="/settimeout")
+    public @ResponseBody void setTimeout(@RequestParam int timer, @RequestParam int bookingID, Model model, HttpServletRequest request){
+        if(timer == 1){
+            HttpSession session = request.getSession();
+
+            LectureRun lectureRun = bookings.get(bookingID);
+            lectureRun.setTimeout();
+        }
+    }
+
+    @PostMapping(value ="/gettimeout")
+    public @ResponseBody int getTimeout(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+
+        LectureRun lectureRun = bookings.get(session.getAttribute("booking"));
+        if(lectureRun.getTimeout() == true){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }
