@@ -56,7 +56,8 @@ public class BookingRepositoryTest {
         Venue v = new Venue(134,1,1,1);
         venueRepository.save(v);
         try{
-            a.setBookingID(1234);
+            a.setBookingID(12345);
+            //a.setDate(new Date(2019, 1, 1));
             a.setDate(new SimpleDateFormat("yyyy/MM/dd").parse("2019/01/01"));
             a.setBookingLength(90);
             //a.setAttendanceCode("test1");
@@ -70,12 +71,14 @@ public class BookingRepositoryTest {
             a.setVenue(v);
             //a.setLecture(new User(8765, "a", "a", "a"));
             a.setLecture(u);
+            
             display(a);
             bookingRepository.save(a);
+
         }
         catch(ParseException e)
         {
-            
+            System.out.print("Element failed to save.");
         }
         
         Iterable<Booking> g = bookingRepository.findAll();
@@ -101,15 +104,16 @@ public class BookingRepositoryTest {
         display(b);
         bookingRepository.save(b);*/
         try{
-            Booking c = new Booking();
-            Optional<Booking> booking = bookingRepository.findById(1234);
-            c = booking.get();
-            display(c);
+            //Booking c = new Booking();
+            Optional<Booking> booking = bookingRepository.findById(12345);
+            //c = booking.get();
+            //display(c);
+            display(booking.get());
             
         }
         catch(NoSuchElementException e)
         {
-            
+            System.out.println("No booking found with that id");
         }
     }
     

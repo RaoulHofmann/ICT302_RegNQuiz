@@ -37,12 +37,14 @@ public class BookingQuestion
     {
         booking = new Booking();
         question = new Question();
+        id = new BookingQuestionKey(booking.getBookingID(), question.getQID());
     }
     
     public BookingQuestion(Booking booking, Question question)
     {
         this.booking = booking;
         this.question = question;
+        id = new BookingQuestionKey(booking.getBookingID(), question.getQID());
     }
     
     public Booking getBooking()

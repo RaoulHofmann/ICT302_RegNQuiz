@@ -16,7 +16,7 @@ import java.util.HashSet;
 public class User 
 {
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     private Integer userID;
     
     //private String studentNo;
