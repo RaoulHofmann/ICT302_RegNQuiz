@@ -131,6 +131,8 @@ public class UserRepositoryTest {
         
         for(UserType r:x)
             displayAll(r);
+        
+        display(userRepository.findById(11).get());
     }
     
     public void display(User u)

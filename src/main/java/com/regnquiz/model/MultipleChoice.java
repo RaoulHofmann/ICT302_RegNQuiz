@@ -23,7 +23,7 @@ import java.util.HashSet;
 public class MultipleChoice 
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    //@GeneratedValue(strategy=GenerationType.AUTO)
     private Integer answerID;
     private String description;
 
@@ -49,6 +49,11 @@ public class MultipleChoice
         studentAnswer = new HashSet<>();
     }
 
+    public void setAnswerID(Integer id)
+    {
+        answerID = id;
+    }
+    
     public Integer getAnswerID() {
         return answerID;
     }

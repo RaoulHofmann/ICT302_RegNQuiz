@@ -5,8 +5,10 @@
  */
 package com.regnquiz.model.repositories;
 
+import com.regnquiz.model.MultipleChoice;
 import com.regnquiz.model.StudentAnswer;
 import com.regnquiz.model.StudentAnswerKey;
+import java.util.List;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -28,4 +30,6 @@ public interface StudentAnswerRepository extends CrudRepository<StudentAnswer, S
     @Modifying
     @Query(value= "INSERT INTO StudentAnswer (answerID, userID) VALUES (:answerID, :userID)",nativeQuery = true)
     int insertStudentAnswer(@Param("answerID") int answerID, @Param("userID") int userID);
+    
+    List<StudentAnswer>findByStudent_userID(Integer userID);
 }

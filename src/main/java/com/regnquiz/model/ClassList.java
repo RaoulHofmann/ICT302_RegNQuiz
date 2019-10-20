@@ -29,8 +29,8 @@ public class ClassList
     //private BookingRepository bookingRepository;
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int classListID;
+    //@GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer classListID;
     private boolean internal;
     private boolean attendance;
 

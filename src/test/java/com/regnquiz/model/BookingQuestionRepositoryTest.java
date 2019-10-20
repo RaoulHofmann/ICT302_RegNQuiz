@@ -60,18 +60,21 @@ public class BookingQuestionRepositoryTest {
         }
         
         // Retrieve from db
-        List<BookingQuestion> example = bookingQuestionRepo.findByBooking_BookingID(3);
+        Iterable<BookingQuestion> example = bookingQuestionRepo.findAll();
         
-        for(int i = 0; i < example.size(); i++)
+        for(BookingQuestion b : example)
         {
-            display(example.get(i));
+            display(b);
         }
     }
     
     public static void display(BookingQuestion q)
     {
-        System.out.println("Booking ID: " + q.getBooking().getBookingID());
-        System.out.println("Question ID: " + q.getQuestion().getQID());
+        int bid, qid;
+        bid = q.getBooking().getBookingID();
+        qid = q.getQuestion().getQID();
+        System.out.println("Booking ID: " + bid);
+        System.out.println("Question ID: " + qid);
         System.out.println();
         System.out.println();
     }

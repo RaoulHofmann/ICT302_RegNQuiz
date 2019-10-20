@@ -37,12 +37,14 @@ public class StudentAnswer
     {
         student = new User();
         answer = new MultipleChoice();
+        id = new StudentAnswerKey(student.getUserID(), answer.getMCID());
     }
     
     public StudentAnswer(User student, MultipleChoice answer)
     {
         this.student = student;
         this.answer = answer;
+        this.id = new StudentAnswerKey(this.student.getUserID(), this.answer.getMCID());
     }
 
     public StudentAnswer(StudentAnswerKey sta)
@@ -58,6 +60,7 @@ public class StudentAnswer
     public void setStudent(User student)
     {
         this.student = student;
+        this.id.setUserID(this.student.getUserID());
     }
     
     public MultipleChoice getStudentAnswer()
@@ -68,10 +71,12 @@ public class StudentAnswer
     public void setStudentAnswer(MultipleChoice ans)
     {
         this.answer = ans;
+        this.id.setUserID(this.answer.getMCID());
     }
 
     public void setAnswer(MultipleChoice answer) {
         this.answer = answer;
+        this.id.setUserID(this.answer.getMCID());
     }
 
     public void setId(StudentAnswerKey id) {

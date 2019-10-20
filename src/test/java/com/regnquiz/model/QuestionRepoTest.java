@@ -34,6 +34,12 @@ public class QuestionRepoTest
         questionRepo.save(question);
         
         display(questionRepo.findById(1).get());
+        
+        Iterable<Question> q = questionRepo.findAll();
+        for(Question a : q)
+        {
+            display(a);
+        }
     }   
     
     public static void display(Question q)

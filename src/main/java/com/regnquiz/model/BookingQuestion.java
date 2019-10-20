@@ -55,6 +55,7 @@ public class BookingQuestion
     public void setBooking(Booking booking)
     {
         this.booking = booking;
+        this.id.setBookingID(this.booking.getBookingID());
     }
     
     public Question getQuestion()
@@ -65,6 +66,7 @@ public class BookingQuestion
     public void setQuestion(Question question)
     {
         this.question = question;
+        this.id.setQuestionID(this.question.getQID());
     }
     
     public void setBookingQuestionKey(BookingQuestionKey ID)
