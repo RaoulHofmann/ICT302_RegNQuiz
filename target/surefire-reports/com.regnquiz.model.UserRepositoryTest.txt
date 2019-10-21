@@ -1,11 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.regnquiz.model.UserRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.49 s <<< FAILURE! - in com.regnquiz.model.UserRepositoryTest
-InsertData on InsertData(com.regnquiz.model.UserRepositoryTest)(com.regnquiz.model.UserRepositoryTest)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainController': Unsatisfied dependency expressed through field 'userTypeRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userTypeRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.regnquiz.model.repositories.UserTypeRepository.findByUserID(int)! No property ID found for type User! Traversed path: UserType.user.
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userTypeRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.regnquiz.model.repositories.UserTypeRepository.findByUserID(int)! No property ID found for type User! Traversed path: UserType.user.
-Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.regnquiz.model.repositories.UserTypeRepository.findByUserID(int)! No property ID found for type User! Traversed path: UserType.user.
-Caused by: org.springframework.data.mapping.PropertyReferenceException: No property ID found for type User! Traversed path: UserType.user.
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.121 s - in com.regnquiz.model.UserRepositoryTest

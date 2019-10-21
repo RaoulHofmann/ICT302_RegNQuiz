@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2019-10-21T17:24:08 AWST" name="Surefire suite" finished-at="2019-10-21T17:24:16 AWST" duration-ms="8005">
+  <suite started-at="2019-10-21T11:25:10 AWST" name="Surefire suite" finished-at="2019-10-21T11:25:16 AWST" duration-ms="5632">
     <groups>
     </groups>
-    <test started-at="2019-10-21T17:24:08 AWST" name="Surefire test" finished-at="2019-10-21T17:24:16 AWST" duration-ms="8005">
-      <class name="com.regnquiz.model.UserTypeRepositoryTest">
-        <test-method signature="testUserType()" started-at="2019-10-21T17:24:08 AWST" name="testUserType" finished-at="2019-10-21T17:24:16 AWST" duration-ms="7513" status="PASS">
+    <test started-at="2019-10-21T11:25:10 AWST" name="Surefire test" finished-at="2019-10-21T11:25:16 AWST" duration-ms="5632">
+      <class name="com.regnquiz.model.SemesterRepoTest">
+        <test-method signature="testSem()" started-at="2019-10-21T11:25:10 AWST" name="testSem" finished-at="2019-10-21T11:25:16 AWST" duration-ms="5299" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testUserType -->
-      </class> <!-- com.regnquiz.model.UserTypeRepositoryTest -->
+        </test-method> <!-- testSem -->
+      </class> <!-- com.regnquiz.model.SemesterRepoTest -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->
 </testng-results>

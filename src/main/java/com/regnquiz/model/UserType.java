@@ -27,23 +27,6 @@ public class UserType {
     @JoinColumn(name = "UserID", referencedColumnName="userID")
     private User user;  
     
-    public UserType()
-    {
-        type = new Type();
-        user = new User();
-        
-        id = new UserIdent(type.getTypeID(), user.getUserID());
-    }
-    
-    public UserType(Type t, User u, String pw)
-    {
-        this.type = t;
-        this.user = u;
-        this.password = pw;
-        
-        this.id = new UserIdent(this.type.getTypeID(), this.user.getUserID());
-    }
-    
     public String getPassword() {
         return password;
     }
@@ -55,7 +38,6 @@ public class UserType {
     public void setType(Type t)
     {
         this.type = t;
-        id.setType(this.type.getTypeID());
     }
     
     public Type getType()
@@ -65,8 +47,7 @@ public class UserType {
     
     public void setUser(User u)
     {
-        this.user = u;
-        id.setUser(this.user.getUserID());
+        this.user = u;        
     }
     
     public User getUser()
