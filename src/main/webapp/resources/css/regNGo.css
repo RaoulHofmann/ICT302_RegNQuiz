@@ -92,6 +92,19 @@ table {
   border-collapse: collapse;
 }
 
+
 table, th, td {
   border: 1px solid black;
+  background-color: #cfcfae;
+
+}
+
+#booking_table th{
+    background-color: #cfcfae;
+}
+#booking_table button{
+    width: 40 px;
+    margin: 0;
+    padding: 0;
+    
 }

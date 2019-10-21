@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.regnquiz.model.LectureAdminTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 6.311 s <<< FAILURE! - in com.regnquiz.model.LectureAdminTest
-RunLectureAdmin on RunLectureAdmin(com.regnquiz.model.LectureAdminTest)(com.regnquiz.model.LectureAdminTest)  Time elapsed: 0.145 s  <<< FAILURE!
-java.util.NoSuchElementException: No value present
-	at com.regnquiz.model.LectureAdminTest.RunLectureAdmin(LectureAdminTest.java:40)
-
