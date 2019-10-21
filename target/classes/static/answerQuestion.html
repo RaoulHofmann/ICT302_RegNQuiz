@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title> QuizNGo</title>
+     <link rel = "stylesheet" type="text/css"
+		 href="css/regNGo.css">
+     </link>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascript/timer.js"></script>
+  </head>
+  <body>
+ 	<p class="timer">Time will end in <span class="js-timeout" id="js-timeout">2:00</span></p><br/>  
+	<form method="post"  action="" >
+        <label name = "question" id = "question">Question topic displaying </label><br /><br/>
+        <label> Answer: 
+            <ul class = "listAnswerGroup" list-group-flush>
+                <li class="listAnswerItem"><input type="checkbox" name="answer1" value="answer1"> Answer1 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer2" value="answer2"> Answer2 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer3" value="answer3"> Answer3 text<br></li>
+                <li class="listAnswerItem"><input type="checkbox" name="answer4" value="answer4"> Answer4 text<br></li>
+
+            </ul>
+        </label>    
+        <br/>
+		<input type ="submit" id="submitButton" value="Submit" />   <br/>
+	</form>
+ 
+ </body>
+</html>

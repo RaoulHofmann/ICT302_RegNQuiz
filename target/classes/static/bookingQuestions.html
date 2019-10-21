@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title> QuizNGo</title>
+     <link rel = "stylesheet" type="text/css"
+		 href="css/regNGo.css">
+     </link>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascript/timer.js"></script>
+  </head>
+  <body>
+      	<form method="post"  action="/saveQuestion" >
+      	<div id = "questionSelectCondition" >
+      	  <label>Year Semester</label> 
+        	  <select th:field="${booking}"  id="yearDropdownList">
+    			<option value=" ">select year</option>
+    			<option th:each="year : ${years}" th:value="${}" th:text="${year.year}"></option>
+    		</select>  
+    		<select th:field="${booking}"  id="semesterDropDownList">
+    			<option value=" ">select semester</option>
+    			<option th:each="semester : ${years}" th:value="${}" th:text="${semester.semester}"></option>
+    		</select>          </label><br />
+        		<label>Unit  Name:
+        		<select th:field="${booking.unitID}"  id="unitDropDownList">
+    			<option value=" ">select unit name</option>
+    			<option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitName}"></option>
+    		</select>        </label><br />
+    
+        		<label>Please select one booking information:location, date and start time: <br/>
+			<select th:field="${booking}"  id="bookingTimesList" size=4 >
+    			<option value=" ">Booing information:</option>
+    			<option th:each="bookingInfo : ${bookingInfos}" th:value="${bookingInfo.bookingID}" th:text="${bookingInfo.venueDateTime}"></option>
+    		</select>        </label><br />
+    	</div>
+            <div id="uploadQuestion"><br/>
+            <label>Question Number</label> 
+            <select class = "QuestionNumber">
+              <option value="QuestionNumber">1</option>
+              <option value="QuestionNumber">2</option>
+              <option value="QuestionNumber">3</option>
+              <option value="QuestionNumber">4</option>
+              <option value="QuestionNumber">5</option>
+            </select><br/>
+            
+            <label> Question Topic</label> <input type="text" name="questionTopic" placeholder="Question Topic here"><br/> <br/>
+            <label> Question type:</label> <input type="radio" name="questionType" value="True/false"> True/false
+			<input type="radio" name="questionType" value="textType"> Text<br><br/>
+			<div id="textAnswer">
+            <label> Answer A: </label> <input type="text" name="answer A" placeholder="Type anser A here"><br/>  
+            <label> Answer B: </label> <input type="text" name="answer B" placeholder="Type anser B here"><br/>      	
+            <label> Answer C: </label> <input type="text" name="answer C" placeholder="Type anser C here"><br/>      	
+            <label> Answer D: </label> <input type="text" name="answer D" placeholder="Type anser D here"><br/>     <br/>
+            	</div>
+            <label> Correct Answer : </label> <br/>
+            <div id="textCorrectAnswer" >	
+            <input type="checkbox" name="answerA" value="A">A
+  			<input type="checkbox" name="answerB" value="B">B
+  			<input type="checkbox" name="answerC" value="C"> C
+  			<input type="checkbox" name="answerD" value="D"> D <br/><br/>
+  			</div>
+  			<div id="tOFAnswer">
+  			<input type="radio" name="answerTrue" value="True"> True
+  			<input type="radio" name="answerFalse" value="False"> False <br/><br/>
+  			</div>
+		<input type ="submit" value="Add" onclick="addQuestion()"/> 
+
+        <input type ="submit" value="Save" onclick="saveQuestion()"/>        
+        
+	</form>
+ 
+ </body>
+</html>
