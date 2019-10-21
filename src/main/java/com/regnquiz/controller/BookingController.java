@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -208,4 +209,17 @@ public class BookingController {
             return 0;
         }
     }
+
+    @PostMapping(path="/getanswerattendance")
+    public @ResponseBody List<Integer> attendanceAnswerCount(@RequestParam int bookingID, Model model, HttpServletRequest request) {
+        List<Integer> answerAttendance = new ArrayList<>();
+        try{
+            answerAttendance.add(bookings.get(bookingID).getAttendanceCount());
+            answerAttendance.add(bookings.get(bookingID).getAttendanceCount());
+        }catch (NullPointerException e){
+            answerAttendance.add(-1);
+        }
+        return answerAttendance;
+    }
+
 }

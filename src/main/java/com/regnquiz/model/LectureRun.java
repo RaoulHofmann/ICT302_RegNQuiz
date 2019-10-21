@@ -165,7 +165,6 @@ public class LectureRun {
         timeout = false;
         activeQuestion += 1;
         mc = multipleChoiceRepository.findByQuestion_QuestionID(bq.get(activeQuestion).getQuestion().getQID());
-        answerCounter.clear();
         for (int i=0; i<mc.size(); i++){
             answerCounter.put(mc.get(i).getAnswerID(), 0);
         }
