@@ -70,6 +70,51 @@
         <span>
             Quiz Finished
         </span>
+        <script th:inline="javascript" th:if="${booking_id != null}">
+            $.ajax({
+                type: "POST",
+                url : '/booking/getquestionoverview',
+                data: { bookingID:
+                        [# th:if="${booking_id != null }"]
+                            /*[[${booking_id}]]*/
+                        [/]
+                    },
+                success: function (data) {
+                    $.each( data, function(index,value){
+                        console.log(value);
+                        console.log(Object.keys(value).length);
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('string', '');
+                            data.addColumn('number', '');
+                            data.addColumn({ type: 'string', role: 'style' });
+                            data.addRows(Object.keys(value).length);
+                            var counter = 0;
+                            $.each( value, function(vindex,vvalue){
+                                data.setValue(counter, 1, vvalue);
+                                counter++;
+                            })
+                            counter = 0;
+
+
+                            var options = {
+                                title: 'index',
+                                backgroundColor: { fill:'transparent' },
+                                legend: 'none',
+                            };
+
+                            var div_element = document.createElement("div");
+                            div_element.setAttribute("id", index+"_chart");
+                            var chart = new google.visualization.ColumnChart(document.getElementById(index+"_chart"));
+                            chart.draw(data, options);
+                        }
+                    })
+                }
+            });
+        </script>
     </th:block>
 
     <script th:inline="javascript" th:if="${booking != null}">
@@ -92,7 +137,7 @@
         getAttendance();
     </script>
 
-    <script th:inline="javascript" th:if="${booking != null}">
+    <script th:inline="javascript" th:if="${finished == null}">
         var studentAnswerInt;
         function getStudentAnswers() {
             $.ajax({
@@ -122,16 +167,15 @@
             google.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                //var data = google.visualization.arrayToDataTable();
-                // Create our data table out of JSON data loaded from server.
-                //var data = new google.visualization.DataTable(/*[[${studentAnswers}]]*/);
                 var data = new google.visualization.DataTable();
                 data.addColumn('string', 'Quiz Answers');
-                data.addColumn('number', 'Amount of Answers');
-                data.addRows([
-                  ['Attending', 0],
-                  ['Answers', 0]
-                ]);
+                data.addColumn('number', 'Attending');
+                data.addColumn({ type: 'string', role: 'style' });
+                data.addRows(2);
+                data.setValue(0, 0, 'Attending');
+                data.setValue(0, 2, 'rgb(200, 20, 60)');
+                data.setValue(1, 0, 'Answers');
+
 
                 var interval;
                 function getAttendance() {
@@ -144,9 +188,9 @@
                                 [/]
                             },
                         success: function (value) {
-                            console.log(value)
                             if(value[0] > 0){
-                                data.setValue(0, 1, value[0]);
+                                data.setValue(0, 1, value[0], 'Attending');
+                                data.setValue(1, 1, value[1]);
                                 chart.draw(data, options);
                             }
                             interval = setTimeout(getAttendance, 1000);
@@ -158,17 +202,16 @@
 
                 var options = {
                     title: 'Attending vs Answers',
-                    is3D: true,
-                    sliceVisibilityThreshold: .2,
-                    pieSliceText: 'value',
-                    backgroundColor: { fill:'transparent' }
+                    backgroundColor: { fill:'transparent' },
+                    legend: 'none',
                 };
 
-                // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
                 chart.draw(data, options);
             }
     </script>
+
+
 
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
 
@@ -177,8 +220,11 @@
         <table>
             <th:block >
                 <tr th:each="studentAnswer : ${studentAnswers}">
-                    <th th:text="${studentAnswer.value}"></th>
                     <td th:text="${studentAnswer.key}"></td>
+                    <td th:each="answer : ${studentAnswer}">
+                        <p th:text="${answer.key}"></p>
+                        <p th:text="${answer.value}"></p>
+                    </td>
                 </tr>
             </th:block>
         </table>

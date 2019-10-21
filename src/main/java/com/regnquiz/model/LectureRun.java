@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,11 +51,12 @@ public class LectureRun {
     private int activeQuestion = -1;
     private boolean quizFinished = false;
     private boolean timeout = false;
+    private int answerCounter = 0;
     List<BookingQuestion> bq = null;
     List<ClassList> cl;
     List<MultipleChoice> mc;
     List<StudentAnswer> sa = new ArrayList<>();
-    HashMap<Integer, Integer> answerCounter;
+    HashMap<String, HashMap<String, Integer>> questionAnswerCounter;
 
     @Transactional
     public void OpenLecture(int bookingID)
@@ -153,26 +155,32 @@ public class LectureRun {
     @Transactional
     public void startQuestion(){
         activeQuestion = 0;
-        mc = multipleChoiceRepository.findByQuestion_QuestionID(bq.get(0).getQuestion().getQID());
-        answerCounter = new HashMap<>();
+        mc = multipleChoiceRepository.findByQuestion_QuestionID(bq.get(activeQuestion).getQuestion().getQID());
+        questionAnswerCounter = new HashMap<>();
+        HashMap<String, Integer> answerMap = new HashMap<>();
         for (int i=0; i<mc.size(); i++){
-            answerCounter.put(mc.get(i).getAnswerID(), 0);
+            answerMap.put(mc.get(i).getDescription(), 0);
         }
+        questionAnswerCounter.put(bq.get(activeQuestion).getQuestion().getDescription(),answerMap);
+
     }
 
     @Transactional
     public void nextQuestion(){
         timeout = false;
+        answerCounter = 0;
         activeQuestion += 1;
         mc = multipleChoiceRepository.findByQuestion_QuestionID(bq.get(activeQuestion).getQuestion().getQID());
+        HashMap<String, Integer> answerMap = new HashMap<>();
         for (int i=0; i<mc.size(); i++){
-            answerCounter.put(mc.get(i).getAnswerID(), 0);
+            answerMap.put(mc.get(i).getDescription(), 0);
         }
+        questionAnswerCounter.put(bq.get(activeQuestion).getQuestion().getDescription(),answerMap);
     }
 
     @Transactional
     public int getActiveQuestion(){
-        if(this.activeQuestion == bq.size()-1){
+        if(this.activeQuestion == bq.size()){
             this.quizFinished = true;
         }
         return this.activeQuestion;
@@ -210,13 +218,17 @@ public class LectureRun {
     }
 
     @Transactional
-    public HashMap<Integer, Integer> getAnswerCounter(){
-        return this.answerCounter;
+    public HashMap<String, HashMap<String, Integer>> getQuestionAnswerCounter(){
+        return this.questionAnswerCounter;
     }
 
     @Transactional
-    public void setAnswerCounter(int aID){
-        answerCounter.put(aID, answerCounter.get(aID)+1);
+    public void setQuestionAnswerCounter(int aID){
+        answerCounter++;
+        HashMap<String, Integer> answerMap = questionAnswerCounter.get(bq.get(activeQuestion).getQuestion().getDescription());
+        MultipleChoice multipleChoice = multipleChoiceRepository.findByAnswerID(aID);
+        answerMap.put(multipleChoice.getDescription(), answerMap.get(multipleChoice.getDescription())+1);
+        questionAnswerCounter.put(bq.get(activeQuestion).getQuestion().getDescription(), answerMap);
     }
 
     @Transactional
@@ -227,6 +239,11 @@ public class LectureRun {
     @Transactional
     public void setTimeout(){
         this.timeout = true;
+    }
+
+    @Transactional
+    public int getAnswerCounter(){
+        return answerCounter;
     }
 
     @Transactional

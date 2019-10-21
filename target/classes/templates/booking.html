@@ -5,25 +5,14 @@
     <title> QuizNGo</title>
     <link rel = "stylesheet" type="text/css"
           href="/resources/css/regNGo.css">
-<<<<<<< HEAD
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-=======
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
->>>>>>> parent of 545255a... add colour to table in css file
     <script type="text/javascript" src="/resources/javascript/login.js"></script>
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
 </head>
 <body onload="booking_info();">
     <th:block th:if= "${booking != null}">
-<<<<<<< HEAD
         <h1 th:text="'Attendance Code: '+${booking.attendanceCode}"></h1>
-=======
-        <h1>Attendance Code:</h1>
-        <h3 th:text="${booking.attendanceCode}"></h3>
->>>>>>> parent of 545255a... add colour to table in css file
         <th:block th:if="${finished == null}">
             <th:block th:if= "${questions == null}">
                 <a href="javascript: document.startQuestions.submit()" role="button" id="startQuestions">Display Question</a>
@@ -81,6 +70,51 @@
         <span>
             Quiz Finished
         </span>
+        <script th:inline="javascript" th:if="${booking_id != null}">
+            $.ajax({
+                type: "POST",
+                url : '/booking/getquestionoverview',
+                data: { bookingID:
+                        [# th:if="${booking_id != null }"]
+                            /*[[${booking_id}]]*/
+                        [/]
+                    },
+                success: function (data) {
+                    $.each( data, function(index,value){
+                        console.log(value);
+                        console.log(Object.keys(value).length);
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('string', '');
+                            data.addColumn('number', '');
+                            data.addColumn({ type: 'string', role: 'style' });
+                            data.addRows(Object.keys(value).length);
+                            var counter = 0;
+                            $.each( value, function(vindex,vvalue){
+                                data.setValue(counter, 1, vvalue);
+                                counter++;
+                            })
+                            counter = 0;
+
+
+                            var options = {
+                                title: 'index',
+                                backgroundColor: { fill:'transparent' },
+                                legend: 'none',
+                            };
+
+                            var div_element = document.createElement("div");
+                            div_element.setAttribute("id", index+"_chart");
+                            var chart = new google.visualization.ColumnChart(document.getElementById(index+"_chart"));
+                            chart.draw(data, options);
+                        }
+                    })
+                }
+            });
+        </script>
     </th:block>
 
     <script th:inline="javascript" th:if="${booking != null}">
@@ -103,7 +137,7 @@
         getAttendance();
     </script>
 
-    <script th:inline="javascript" th:if="${booking != null}">
+    <script th:inline="javascript" th:if="${finished == null}">
         var studentAnswerInt;
         function getStudentAnswers() {
             $.ajax({
@@ -126,7 +160,6 @@
     </script>
 
     <h4 id="attendance_count"></h4>
-<<<<<<< HEAD
 
 
     <script th:inline="javascript" th:if="${booking != null}">
@@ -134,16 +167,15 @@
             google.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                //var data = google.visualization.arrayToDataTable();
-                // Create our data table out of JSON data loaded from server.
-                //var data = new google.visualization.DataTable(/*[[${studentAnswers}]]*/);
                 var data = new google.visualization.DataTable();
                 data.addColumn('string', 'Quiz Answers');
-                data.addColumn('number', 'Amount of Answers');
-                data.addRows([
-                  ['Attending', 0],
-                  ['Answers', 0]
-                ]);
+                data.addColumn('number', 'Attending');
+                data.addColumn({ type: 'string', role: 'style' });
+                data.addRows(2);
+                data.setValue(0, 0, 'Attending');
+                data.setValue(0, 2, 'rgb(200, 20, 60)');
+                data.setValue(1, 0, 'Answers');
+
 
                 var interval;
                 function getAttendance() {
@@ -156,9 +188,9 @@
                                 [/]
                             },
                         success: function (value) {
-                            console.log(value)
                             if(value[0] > 0){
-                                data.setValue(0, 1, value[0]);
+                                data.setValue(0, 1, value[0], 'Attending');
+                                data.setValue(1, 1, value[1]);
                                 chart.draw(data, options);
                             }
                             interval = setTimeout(getAttendance, 1000);
@@ -170,31 +202,29 @@
 
                 var options = {
                     title: 'Attending vs Answers',
-                    is3D: true,
-                    sliceVisibilityThreshold: .2,
-                    pieSliceText: 'value',
-                    backgroundColor: { fill:'transparent' }
+                    backgroundColor: { fill:'transparent' },
+                    legend: 'none',
                 };
 
-                // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
                 chart.draw(data, options);
-                console.log(data)
             }
     </script>
+
+
 
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
 
     <div id="answerCounter" th:fragment="studentAnswer">
 
-=======
-    <div id="answerCounter" th:fragment="studentAnswer">
->>>>>>> parent of 545255a... add colour to table in css file
         <table>
             <th:block >
                 <tr th:each="studentAnswer : ${studentAnswers}">
-                    <th th:text="${studentAnswer.value}"></th>
                     <td th:text="${studentAnswer.key}"></td>
+                    <td th:each="answer : ${studentAnswer}">
+                        <p th:text="${answer.key}"></p>
+                        <p th:text="${answer.value}"></p>
+                    </td>
                 </tr>
             </th:block>
         </table>
