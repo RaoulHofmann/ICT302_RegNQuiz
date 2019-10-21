@@ -30,7 +30,7 @@ public class Unit
     private String unitCode;
     private String unitName;
     private Integer year;
-    //@Column(name = "userID")
+   // @Column(name = "userID")
     //private String userID;
 
     @JsonIgnore
@@ -69,7 +69,7 @@ public class Unit
     public Unit(Integer id, String UnitCode, String unitName, Integer sem, Integer year, User lect)
     {
         this.unitID = id;
-        this.unitCode = UnitCode;
+        this.unitCode = unitCode;
         this.unitName = unitName;
         this.semester = new Semester(sem);
         this.year = year;

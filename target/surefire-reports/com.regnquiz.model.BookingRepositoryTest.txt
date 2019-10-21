@@ -2,6 +2,7 @@
 Test set: com.regnquiz.model.BookingRepositoryTest
 -------------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.522 s <<< FAILURE! - in com.regnquiz.model.BookingRepositoryTest
 TestBooking on TestBooking(com.regnquiz.model.BookingRepositoryTest)(com.regnquiz.model.BookingRepositoryTest)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.IllegalStateException: Failed to load ApplicationContext
@@ -13,3 +14,6 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 =======
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.292 s - in com.regnquiz.model.BookingRepositoryTest
 >>>>>>> parent of 545255a... add colour to table in css file
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.292 s - in com.regnquiz.model.BookingRepositoryTest
+>>>>>>> develop
