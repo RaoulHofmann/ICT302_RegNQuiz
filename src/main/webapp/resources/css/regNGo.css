@@ -7,11 +7,21 @@ body{
 h1 { 
     font-family:"Times New Roman", Times , serif ;
     color: black;
+    size: A4;
 	}
 header{	 
 	 
     text-align: center;
 	 }
+div#login_form {
+    width: 80%;
+    background-color: #cfcfae;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
 
 #js-timeout {
     font-size: 500%; 
@@ -64,7 +74,6 @@ input[type=button], #logoutButton {
     font-weight:bold;
     padding: 14px 20px;
     margin: 8px 0;
-    margin-left: 60px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -102,9 +111,21 @@ table, th, td {
 #booking_table th{
     background-color: #cfcfae;
 }
-#booking_table button{
-    width: 40 px;
-    margin: 0;
-    padding: 0;
-    
+
+td, th {
+    padding: 5px;
+    height: 55px;
+}
+h3:{
+   font-size: 32px; 
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    width: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    margin-top: 2%;
 }

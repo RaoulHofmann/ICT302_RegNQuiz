@@ -5,16 +5,14 @@
     <title> QuizNGo</title>
     <link rel = "stylesheet" type="text/css"
           href="/resources/css/regNGo.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/resources/javascript/login.js"></script>
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
 </head>
 <body onload="booking_info();">
     <th:block th:if= "${booking != null}">
         <h1>Attendance Code:</h1>
-        <h3 th:text="${booking.attendanceCode}"></h3>
+        <h1 th:text="${booking.attendanceCode}"></h1>
         <th:block th:if="${finished == null}">
             <th:block th:if= "${questions == null}">
                 <a href="javascript: document.startQuestions.submit()" role="button" id="startQuestions">Display Question</a>
