@@ -9,15 +9,22 @@ import com.regnquiz.model.repositories.BookingRepository;
 import com.regnquiz.model.repositories.UnitRepository;
 import com.regnquiz.model.repositories.VenueRepository;
 import com.regnquiz.model.repositories.UserRepository;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Date;
 import java.util.Set;
 import java.sql.Time;
@@ -42,18 +49,28 @@ public class BookingImport
     private UserRepository userRepo;
     
     @Transactional
-    public void ImportBooking(String filename)//, Unit unit, Venue venue, User lecture)
+    //public void ImportBooking(String filename)//, Unit unit, Venue venue, User lecture)
+    public void ImportBooking(MultipartFile filename)
     {
-        Path myPath = Paths.get(filename);
+        //Path myPath = Paths.get(filename);
         
-        try
-        {
-            List<String> lines = Files.readAllLines(myPath);
-            lines.remove(0);
-            for(String line: lines)
+        //try
+        //{
+            //List<String> lines = Files.readAllLines(myPath);
+            //lines.remove(0);
+
+        BufferedReader br = null;
+        try {
+            InputStream is = filename.getInputStream();
+            br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            br.readLine(); //Read First Line
+
+            //for(String line: lines)
+            String line = null;
+            while ((line = br.readLine()) != null)
             {
                 String[] lineSplit = line.split(",");
-                
+                System.out.println("ASDASDASD"+lineSplit[0]);
                 Booking b = new Booking(); // missing constructors from git -- fix later
                 String[] dateSplit = lineSplit[0].split("/");
                 b.setDate(new Date(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[0])));

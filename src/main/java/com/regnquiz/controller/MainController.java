@@ -12,11 +12,16 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.*;
 import javax.validation.Valid;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 @Controller
@@ -136,7 +141,9 @@ public class MainController {
 
         model.addAttribute("id", login.getUserID());
 
-        if (userType == 2) {
+        if (userType == 1) {
+            return new ModelAndView("redirect:/admin/{id}", model);
+        } else if (userType == 2) {
             return new ModelAndView("redirect:/staff/{id}", model);
         } else if (userType == 3) {
             return new ModelAndView("redirect:/student/{id}", model);
@@ -194,5 +201,28 @@ public class MainController {
         } catch (NullPointerException e) {
             return "redirect:/";
         }
+    }
+
+    @GetMapping(path = "/admin/{id}")
+    public String goToAdminIndex(@PathVariable("id") int id, Model model, HttpServletRequest request) {
+        try {
+            if (request.getSession() != null && (Integer) request.getSession().getAttribute("userID") == id) {
+                model.addAttribute("user", userRepository.findById(id).get());
+                return "admin";
+            } else {
+                return "redirect:/";
+            }
+        } catch (NullPointerException e) {
+            return "redirect:/";
+        }
+    }
+    @PostMapping(path = "/admin/{id}/upload")
+    public String uploadCSV(@RequestParam("file") MultipartFile fileChooser, @PathVariable("id") int id, Model model, HttpServletRequest request) throws IOException {
+        System.out.println("ASDAUISDGASIUDBASODN");
+        BookingImport bookingImport = new BookingImport();
+        bookingImport.ImportBooking(fileChooser);
+        model.addAttribute("user", userRepository.findById(id).get());
+
+        return "redirect:/admin/"+id;
     }
 }
