@@ -10,24 +10,27 @@
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
 </head>
 <body onload="booking_info();">
-    <th:block th:if= "${booking != null}">
-        <h1>Attendance Code:</h1>
-        <h1 th:text="${booking.attendanceCode}"></h1>
-        <th:block th:if="${finished == null}">
-            <th:block th:if= "${questions == null}">
-                <a href="javascript: document.startQuestions.submit()" role="button" id="startQuestions">Display Question</a>
-                <form name="startQuestions" th:action="@{/booking/{id}/question(id=${booking.bookingID})}" method="post" th:hidden="true">
-                    <input hidden type="submit" value="Display Question"/>
-                </form>
-            </th:block>
-            <th:block th:if= "${questions != null}">
-                <a href="javascript: document.nextQuestions.submit()" role="button" id="nextQuestions">Next Question</a>
-                <form name="nextQuestions" th:action="@{/booking/{id}/question/{qid}(id=${booking.bookingID}, qid=${questionid})}" method="post" th:hidden="true">
-                    <input hidden type="submit" value="nextQuestions"/>
-                </form>
+    <header id="bookingPart">
+      <section>
+        <th:block th:if= "${booking != null}">
+           <h1>Attendance Code:</h1>
+                <h1 th:text="${booking.attendanceCode}"></h1>
+            <th:block th:if="${finished == null}">
+                <th:block th:if= "${questions == null}">
+                    <a href="javascript: document.startQuestions.submit()" role="button" id="startQuestions">Display Question</a>
+                    <form name="startQuestions" th:action="@{/booking/{id}/question(id=${booking.bookingID})}" method="post" th:hidden="true">
+                        <input hidden type="submit" value="Display Question"/>
+                    </form>
+                </th:block>
+                <th:block th:if= "${questions != null}">
+                    <a href="javascript: document.nextQuestions.submit()" role="button" id="nextQuestions">Next Question</a>
+                    <form name="nextQuestions" th:action="@{/booking/{id}/question/{qid}(id=${booking.bookingID}, qid=${questionid})}" method="post" th:hidden="true">
+                        <input hidden type="submit" value="nextQuestions"/>
+                    </form>
+                </th:block>
             </th:block>
         </th:block>
-    </th:block>
+    </section>
     <script th:inline="javascript" th:if="${timer != null}">
         var x = setInterval( function()
        {
@@ -54,9 +57,12 @@
           }
       }, 1000);
     </script>
-
-    <div id="questions" th:if= "${questions != null}">
+    <section>
         <p class="timer" th:if="${timer != null}">Time will end in <span class="js-timeout" id="js-timeout" th:text="${timer}"></span></p><br/>
+    </section>
+    </header>
+  
+    <div id="questions" th:if= "${questions != null}">
         <span th:text="${questions.description}"></span>
         <table>
             <th:block th:each="multipleChoice : ${multipleChoices}">
