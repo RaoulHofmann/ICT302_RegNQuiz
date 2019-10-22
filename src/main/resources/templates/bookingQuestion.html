@@ -8,28 +8,63 @@
     </link>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="javascript/timer.js"></script>
 </head>
 <body>
-<form method="post"  action="/saveQuestion" >
+<form maction="#" th:action="@{/booking/savequestion}" th:object="${question}" method="post" >
     <div id = "questionSelectCondition" >
-        <!--<label>Year Semester</label>
-            <select th:field="${booking}"  id="yearSemesterList">
-                <option value=" ">select year and semester</option>
-                <option th:each="yearSemester : ${yearSemesters}" th:value="${}" th:text="${yearSemester.yearSemesterName}"></option>
-            </select>
-        </label><br />-->
-        <label>Unit  Name:
-            <select th:field="${bookings}"  id="unitDropDownList">
-                <option value=" ">select unit name</option>
-                <option th:each="booking : ${bookings}" th:value="${booking.unit.unitID}" th:text="${booking.unit.unitName}"></option>
+        <script th:inline="javascript">
+            function getYear() {
+                $.ajax({
+                    type: "POST",
+                    url : '/booking/addquestion/getyear',
+                    data: { semesterID: $("#semesterList option:selected").index() },
+                    success: function (data) {
+                        $('#year').html(data);
+                    }
+                });
+            }
+        </script>
+        <label>Semester</label>
+            <select id="semesterList" onchange="getYear();">
+                <option value=" ">select semester</option>
+                <option th:each="semester : ${semesters}" th:value="${semester.semesterID}" th:text="${semester.description}"></option>
             </select>
         </label><br />
-        <label>Please select booking information:location, date and start time: <br/>
-            <select th:field="${bookings}"  id="bookingTimesList" size=4 >
-                <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="'Room: '+${booking.venue.building} + '.' + ${booking.venue.floor} + '.' + ${booking.venue.room} + ' - Time: ' + ${booking.date} + ' ' + ${booking.time}"></option>
-            </select>
-        </label><br />
+
+
+        <script th:inline="javascript">
+            function getBooking() {
+                $.ajax({
+                    type: "POST",
+                    url : '/booking/addquestion/getbooking',
+                    data: { semesterID: $("#yearList option:selected").index() },
+                    success: function (data) {
+                        console.log(data);
+                        $('#booking').html(data);
+                    }
+                });
+            }
+        </script>
+        <div id="year" th:fragment="yearSelect">
+            <th:block th:if="${years != null}">
+                <label>Unit  Name:
+                    <select id="yearList">
+                        <option value=" ">select unit name</option>
+                        <option th:each="year : ${years}" th:value="${year.year}" th:text="${year.year}"></option>
+                    </select>
+                </label><br />
+            </th:block>
+        </div>
+
+        <div id="booking" th:fragment="bookingSelect">
+            <th:block th:if="${bookings != null}">
+                <label>Please select booking information:location, date and start time: <br/>
+                    <select id="bookingList" size=4 >
+                        <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="'Room: '+${booking.venue.building} + '.' + ${booking.venue.floor} + '.' + ${booking.venue.room} + ' - Time: ' + ${booking.date} + ' ' + ${booking.time}"></option>
+                    </select>
+                </label><br />
+            </th:block>
+        </div>
     </div>
     <div id="uploadQuestion"><br/>
         <label>Question Number</label>

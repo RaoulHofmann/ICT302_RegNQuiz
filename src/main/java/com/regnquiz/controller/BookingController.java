@@ -1,8 +1,7 @@
 package com.regnquiz.controller;
 
 import com.regnquiz.model.*;
-import com.regnquiz.model.repositories.BookingQuestionRepository;
-import com.regnquiz.model.repositories.BookingRepository;
+import com.regnquiz.model.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +22,15 @@ import java.util.List;
 public class BookingController {
     @Autowired
     private BookingRepository bookingRepository;
+
+    @Autowired
+    private SemesterRepository semesterRepository;
+
+    @Autowired
+    private UnitRepository unitRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private LectureRun lectureRun;
@@ -72,6 +80,11 @@ public class BookingController {
         if(bookings.get(id).getQuizFinished()){
             model.addAttribute("finished", 1);
         }else{
+            if(bookings.get(id).getBookingQuestions().size() > 0){
+                model.addAttribute("availableQ", 1);
+            }else{
+                model.addAttribute("availableQ", 0);
+            }
             model.addAttribute("booking", bookings.get(id).getBooking());
         }
         return "booking";
@@ -178,8 +191,29 @@ public class BookingController {
     @GetMapping(path = "/addquestion")
     public String addQuestion(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        model.addAttribute("bookings", bookingRepository.findByLecture_userID((Integer)session.getAttribute("userID")));
+        model.addAttribute("semesters", semesterRepository.findAll());
         return "bookingQuestion";
+    }
+
+    @PostMapping(path = "/addquestion/getyear")
+    public ModelAndView getYear(@RequestParam int semesterID, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        model.addAttribute("semesters", semesterRepository.findAll());
+        model.addAttribute("years",unitRepository.findByLectureAndSemester_SemesterID(userRepository.findById((Integer)session.getAttribute("userID")).get(), semesterID));
+        return new ModelAndView("bookingQuestion::yearSelect");
+    }
+
+    @PostMapping(path = "/addquestion/getbooking")
+    public ModelAndView getBooking(@RequestParam int unitID, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        model.addAttribute("bookings", bookingRepository.findByUnit_unitID(unitID));
+        model.addAttribute("semesters", semesterRepository.findAll());
+        return new ModelAndView("bookingQuestion::bookingSelect");
+    }
+
+    @PostMapping(path = "/savequestion")
+    public @ResponseBody String saveQuestion(@Valid Question answer, BindingResult result, ModelMap model, HttpServletRequest request){
+        return "Test";
     }
 
     @PostMapping(value = "/answer")

@@ -70,7 +70,7 @@ public class BookingImport
             while ((line = br.readLine()) != null)
             {
                 String[] lineSplit = line.split(",");
-                System.out.println("ASDASDASD"+lineSplit[0]);
+
                 Booking b = new Booking(); // missing constructors from git -- fix later
                 String[] dateSplit = lineSplit[0].split("/");
                 b.setDate(new Date(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[0])));

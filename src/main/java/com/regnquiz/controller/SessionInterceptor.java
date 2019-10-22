@@ -16,13 +16,10 @@ public class SessionInterceptor implements HandlerInterceptor {
         if(request.getRequestURI().equals("/")) {
             try{
                 if ((Integer) session.getAttribute("userType") == 1) {
-                    System.out.println("Admin");
                     response.sendRedirect("/admin/"+session.getAttribute("userID"));
                 } else if ((Integer) session.getAttribute("userType") == 2) {
-                    System.out.println("Staff");
                     response.sendRedirect("/staff/"+session.getAttribute("userID"));
                 } else if ((Integer) session.getAttribute("userType") == 3) {
-                    System.out.println("Student");
                     response.sendRedirect("/student/"+session.getAttribute("userID"));
                 }
             }catch (NullPointerException e){

@@ -217,7 +217,6 @@ public class MainController {
     }
     @PostMapping(path = "/admin/{id}/upload")
     public String uploadCSV(@RequestParam("file") MultipartFile fileChooser, @PathVariable("id") int id, Model model, HttpServletRequest request) throws IOException {
-        System.out.println("ASDAUISDGASIUDBASODN");
         BookingImport bookingImport = new BookingImport();
         bookingImport.ImportBooking(fileChooser);
         model.addAttribute("user", userRepository.findById(id).get());

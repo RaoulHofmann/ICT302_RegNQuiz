@@ -83,4 +83,8 @@ public class Semester {
     {
        Unit.add(unit);
     }
+
+    public Integer getSemesterID() {
+        return semesterID;
+    }
 }
