@@ -70,6 +70,8 @@
         <span>
             Quiz Finished
         </span>
+        <div id="charts_target"></div>
+
         <script th:inline="javascript" th:if="${booking_id != null}">
             $.ajax({
                 type: "POST",
@@ -81,8 +83,6 @@
                     },
                 success: function (data) {
                     $.each( data, function(index,value){
-                        console.log(value);
-                        console.log(Object.keys(value).length);
                         google.charts.load('current', {'packages':['corechart']});
                         google.setOnLoadCallback(drawChart);
 
@@ -94,6 +94,7 @@
                             data.addRows(Object.keys(value).length);
                             var counter = 0;
                             $.each( value, function(vindex,vvalue){
+                                data.setValue(counter, 0, vindex);
                                 data.setValue(counter, 1, vvalue);
                                 counter++;
                             })
@@ -101,13 +102,14 @@
 
 
                             var options = {
-                                title: 'index',
+                                title: index,
                                 backgroundColor: { fill:'transparent' },
                                 legend: 'none',
                             };
 
                             var div_element = document.createElement("div");
-                            div_element.setAttribute("id", index+"_chart");
+                            div_element.id = index+"_chart";
+                            document.getElementById("charts_target").append(div_element);
                             var chart = new google.visualization.ColumnChart(document.getElementById(index+"_chart"));
                             chart.draw(data, options);
                         }
