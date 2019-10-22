@@ -100,13 +100,14 @@ table {
   margin-left:auto;
   margin-right:auto;
   border-collapse: collapse;
+  width: 70%;
 }
 
 
 table, th, td {
   border: 1px solid black;
   background-color: #cfcfae;
-
+  width: 70%;
 }
 
 #booking_table th{
