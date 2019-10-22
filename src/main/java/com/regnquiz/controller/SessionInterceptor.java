@@ -15,7 +15,10 @@ public class SessionInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession(true);
         if(request.getRequestURI().equals("/")) {
             try{
-                if ((Integer) session.getAttribute("userType") == 2) {
+                if ((Integer) session.getAttribute("userType") == 1) {
+                    System.out.println("Admin");
+                    response.sendRedirect("/admin/"+session.getAttribute("userID"));
+                } else if ((Integer) session.getAttribute("userType") == 2) {
                     System.out.println("Staff");
                     response.sendRedirect("/staff/"+session.getAttribute("userID"));
                 } else if ((Integer) session.getAttribute("userType") == 3) {

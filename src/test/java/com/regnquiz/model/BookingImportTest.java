@@ -41,7 +41,7 @@ public class BookingImportTest
     @Test
     public void TestBooking()
     {
-        bi.ImportBooking("D:/Desktop/BookingExample.csv");//, unitRepo.findById(1).get(), venueRepo.findById(2).get(), userRepo.findById(1).get());
+        //bi.ImportBooking("D:/Desktop/BookingExample.csv");//, unitRepo.findById(1).get(), venueRepo.findById(2).get(), userRepo.findById(1).get());
     }
     
     public static void display(Booking b)

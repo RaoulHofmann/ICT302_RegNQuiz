@@ -150,7 +150,6 @@ public class MainController {
         } else {
             return new ModelAndView("/login");
         }
-        //return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header(HttpHeaders.LOCATION, "/user").build();
     }
 
     @PostMapping(path = "/logout")
