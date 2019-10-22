@@ -1,12 +1,10 @@
 function booking_info(){
-    console.log("Booking Info");
     $("#booking_table tbody").empty();
     $.ajax({
         type: "POST",
         url : '/getbooking',
         success : function(data) {
             data.forEach(function(element) {
-                console.log(element);
                     var bookingId = element.bookingID;
                     var date = element.date;
                     var time = element.time;

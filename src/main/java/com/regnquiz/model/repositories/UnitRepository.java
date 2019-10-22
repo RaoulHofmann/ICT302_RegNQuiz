@@ -30,4 +30,5 @@ public interface UnitRepository extends CrudRepository<Unit, Integer>
     List<Unit> findByLectureAndYear(User user, int year);
     List<Unit> findByLectureAndYearAndSemester_SemesterID(User user, int year, int semester);
     List<Unit> findByLectureAndSemester_SemesterID(User user, int semester);
+    List<Unit> findByYear(int year);
 }

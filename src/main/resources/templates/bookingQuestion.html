@@ -10,14 +10,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form maction="#" th:action="@{/booking/savequestion}" th:object="${question}" method="post" >
+<form maction="#" th:action="@{/booking/savequestion}" th:object="${questionAdd}" method="post" >
     <div id = "questionSelectCondition" >
         <script th:inline="javascript">
             function getYear() {
                 $.ajax({
                     type: "POST",
                     url : '/booking/addquestion/getyear',
-                    data: { semesterID: $("#semesterList option:selected").index() },
+                    data: { semesterID: $("#semesterList option:selected").val() },
                     success: function (data) {
                         $('#year').html(data);
                     }
@@ -33,24 +33,46 @@
 
 
         <script th:inline="javascript">
-            function getBooking() {
+            function getUnit() {
                 $.ajax({
                     type: "POST",
-                    url : '/booking/addquestion/getbooking',
-                    data: { semesterID: $("#yearList option:selected").index() },
+                    url : '/booking/addquestion/getunit',
+                    data: { year: $("#yearList option:selected").val() },
                     success: function (data) {
-                        console.log(data);
-                        $('#booking').html(data);
+                        $('#unit').html(data);
                     }
                 });
             }
         </script>
         <div id="year" th:fragment="yearSelect">
             <th:block th:if="${years != null}">
-                <label>Unit  Name:
-                    <select id="yearList">
-                        <option value=" ">select unit name</option>
+                <label>Year:
+                    <select id="yearList" onchange="getUnit();">
+                        <option value=" ">select year</option>
                         <option th:each="year : ${years}" th:value="${year.year}" th:text="${year.year}"></option>
+                    </select>
+                </label><br />
+            </th:block>
+        </div>
+
+        <script th:inline="javascript">
+            function getBooking() {
+                $.ajax({
+                    type: "POST",
+                    url : '/booking/addquestion/getbooking',
+                    data: { unitID: $("#unitList option:selected").val() },
+                    success: function (data) {
+                        $('#booking').html(data);
+                    }
+                });
+            }
+        </script>
+        <div id="unit" th:fragment="unitSelect">
+            <th:block th:if="${units != null}">
+                <label>Unit  Name:
+                    <select id="unitList" onchange="getBooking();">
+                        <option value=" ">select unit name</option>
+                        <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitCode}+' '+${unit.unitName}"></option>
                     </select>
                 </label><br />
             </th:block>
@@ -67,14 +89,14 @@
         </div>
     </div>
     <div id="uploadQuestion"><br/>
-        <label>Question Number</label>
+        <!--<label>Question Number</label>
         <select class = "QuestionNumber">
             <option value="QuestionNumber">1</option>
             <option value="QuestionNumber">2</option>
             <option value="QuestionNumber">3</option>
             <option value="QuestionNumber">4</option>
             <option value="QuestionNumber">5</option>
-        </select><br/>
+        </select><br/>-->
 
         <label> Question Topic</label> <input type="text" name="questionTopic" placeholder="Question Topic here"><br/> <br/>
         <label> Question type:</label> <input type="radio" name="questionType" value="True/false"> True/false

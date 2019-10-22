@@ -127,17 +127,17 @@ public class BookingController {
         int bookingID = -1;
         try{
             bookingID = runningBookings.get(code.getAccessCode());
+
+            if(bookings.get(bookingID).getStudent((Integer) session.getAttribute("userID")).isAttendance() == false) {
+                bookings.get(bookingID).setAttendance((Integer) session.getAttribute("userID"));
+            }
+            session.setAttribute("booking", bookingID);
+            model.addAttribute("booking", bookings.get(bookingID).getBooking());
+            model.addAttribute("answer", new Answer());
         }catch (NullPointerException e){
             model.addAttribute("nobooking", 1);
             return "accessBooking";
         }
-
-        if(bookings.get(bookingID).getStudent((Integer) session.getAttribute("userID")).isAttendance() == false) {
-            bookings.get(bookingID).setAttendance((Integer) session.getAttribute("userID"));
-        }
-        session.setAttribute("booking", bookingID);
-        model.addAttribute("booking", bookings.get(bookingID).getBooking());
-        model.addAttribute("answer", new Answer());
 
         return "attendBooking";
     }
@@ -203,11 +203,17 @@ public class BookingController {
         return new ModelAndView("bookingQuestion::yearSelect");
     }
 
+    @PostMapping(path = "/addquestion/getunit")
+    public ModelAndView getUnit(@RequestParam int year, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        model.addAttribute("units", unitRepository.findByLectureAndYear(userRepository.findById((Integer)session.getAttribute("userID")).get(), year));
+        return new ModelAndView("bookingQuestion::unitSelect");
+    }
+
     @PostMapping(path = "/addquestion/getbooking")
     public ModelAndView getBooking(@RequestParam int unitID, Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         model.addAttribute("bookings", bookingRepository.findByUnit_unitID(unitID));
-        model.addAttribute("semesters", semesterRepository.findAll());
         return new ModelAndView("bookingQuestion::bookingSelect");
     }
 
