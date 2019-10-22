@@ -6,6 +6,7 @@
 package com.regnquiz.model;
 
 import com.regnquiz.model.repositories.UnitRepository;
+import com.regnquiz.model.repositories.UserRepository;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -26,8 +27,11 @@ public class UnitImport
     @Autowired
     private UnitRepository unitRepo;
     
+    @Autowired
+    private UserRepository userRepo;
+    
     @Transactional
-    public void ImportUnit(String filename, User lecture)
+    public void ImportUnit(String filename)
     {
         Path myPath = Paths.get(filename);
         
@@ -39,7 +43,13 @@ public class UnitImport
             {
                 String[] lineSplit = line.split(",");
                 // id, unitcode, unitname, sem, year, lecture
-                Unit u = new Unit(Integer.parseInt(lineSplit[0]), lineSplit[1], lineSplit[2], Integer.parseInt(lineSplit[3]), Integer.parseInt(lineSplit[4]), lecture);
+                //Unit u = new Unit(Integer.parseInt(lineSplit[0]), lineSplit[1], lineSplit[2], Integer.parseInt(lineSplit[3]), Integer.parseInt(lineSplit[4]), lecture);
+                Unit u = new Unit();
+                u.setUnitCode(lineSplit[0]);
+                u.setUnitName(lineSplit[1]);
+                u.setYear(Integer.parseInt(lineSplit[2]));
+                u.setSemester(new Semester(lineSplit[3]));
+                u.setLecture(userRepo.findById(Integer.parseInt(lineSplit[4])).get());
                 
                 try
                 {

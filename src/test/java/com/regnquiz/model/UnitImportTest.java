@@ -17,16 +17,14 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ClassListImportTest 
+public class UnitImportTest 
 {
     @Autowired
-    private ClassListImport clImport;
+    private UnitImport ui;
     
     @Test
-    public void TestCL()
+    public void TestUnit()
     {
-        //System.out.println("sdfgsd");
-        clImport.ImportClassList("D:/Desktop/ClassList Example.csv");
-        //System.out.println("sdfgsd");
+        ui.ImportUnit("D:/Desktop/UnitExample.csv");
     }
 }
