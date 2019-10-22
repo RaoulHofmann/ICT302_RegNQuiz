@@ -14,7 +14,7 @@
     <th:block th:if= "${booking != null}">
         <h1 th:text="'Attendance Code: '+${booking.attendanceCode}"></h1>
         <th:block th:if="${finished == null}">
-            <th:block th:if= "${questions == null}">
+            <th:block th:if= "${questions == null and availableQ == 1}">
                 <a href="javascript: document.startQuestions.submit()" role="button" id="startQuestions">Display Question</a>
                 <form name="startQuestions" th:action="@{/booking/{id}/question(id=${booking.bookingID})}" method="post" th:hidden="true">
                     <input hidden type="submit" value="Display Question"/>
@@ -131,6 +131,7 @@
                         [/]
                     },
                 success: function (data) {
+                    console.log(data);
                     $('#attendance_count').html("Attending: "+data);
                     interval = setTimeout(getAttendance, 1000);
                 }
@@ -218,18 +219,6 @@
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
 
     <div id="answerCounter" th:fragment="studentAnswer">
-
-        <table>
-            <th:block >
-                <tr th:each="studentAnswer : ${studentAnswers}">
-                    <td th:text="${studentAnswer.key}"></td>
-                    <td th:each="answer : ${studentAnswer}">
-                        <p th:text="${answer.key}"></p>
-                        <p th:text="${answer.value}"></p>
-                    </td>
-                </tr>
-            </th:block>
-        </table>
     </div>
     <input type="button"  onclick="location.href='/booking/'" value="Back" >
 </body>

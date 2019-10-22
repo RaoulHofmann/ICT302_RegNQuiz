@@ -192,6 +192,7 @@ public class BookingController {
     public String addQuestion(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         model.addAttribute("semesters", semesterRepository.findAll());
+        model.addAttribute("questionAdd", new QuestionAdd());
         return "bookingQuestion";
     }
 
@@ -218,8 +219,9 @@ public class BookingController {
     }
 
     @PostMapping(path = "/savequestion")
-    public @ResponseBody String saveQuestion(@Valid Question answer, BindingResult result, ModelMap model, HttpServletRequest request){
-        return "Test";
+    public @ResponseBody String saveQuestion(@ModelAttribute("questionAdd") QuestionAdd questionAdd, BindingResult result, ModelMap model, HttpServletRequest request){
+        System.out.println(questionAdd.getQuestionTopic());
+        return "error";
     }
 
     @PostMapping(value = "/answer")

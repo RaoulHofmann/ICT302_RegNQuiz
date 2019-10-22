@@ -8,58 +8,115 @@
     </link>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="javascript/timer.js"></script>
 </head>
 <body>
-<form method="post"  action="/saveQuestion" >
+<form maction="#" th:action="@{/booking/savequestion}" th:object="${questionAdd}" method="post" >
     <div id = "questionSelectCondition" >
-        <!--<label>Year Semester</label>
-            <select th:field="${booking}"  id="yearSemesterList">
-                <option value=" ">select year and semester</option>
-                <option th:each="yearSemester : ${yearSemesters}" th:value="${}" th:text="${yearSemester.yearSemesterName}"></option>
-            </select>
-        </label><br />-->
-        <label>Unit  Name:
-            <select th:field="${bookings}"  id="unitDropDownList">
-                <option value=" ">select unit name</option>
-                <option th:each="booking : ${bookings}" th:value="${booking.unit.unitID}" th:text="${booking.unit.unitName}"></option>
+        <script th:inline="javascript">
+            function getYear() {
+                $.ajax({
+                    type: "POST",
+                    url : '/booking/addquestion/getyear',
+                    data: { semesterID: $("#semesterList option:selected").val() },
+                    success: function (data) {
+                        $('#year').html(data);
+                    }
+                });
+            }
+        </script>
+        <label>Semester</label>
+            <select id="semesterList" onchange="getYear();">
+                <option value=" ">select semester</option>
+                <option th:each="semester : ${semesters}" th:value="${semester.semesterID}" th:text="${semester.description}"></option>
             </select>
         </label><br />
-        <label>Please select booking information:location, date and start time: <br/>
-            <select th:field="${bookings}"  id="bookingTimesList" size=4 >
-                <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="'Room: '+${booking.venue.building} + '.' + ${booking.venue.floor} + '.' + ${booking.venue.room} + ' - Time: ' + ${booking.date} + ' ' + ${booking.time}"></option>
-            </select>
-        </label><br />
+
+
+        <script th:inline="javascript">
+            function getUnit() {
+                $.ajax({
+                    type: "POST",
+                    url : '/booking/addquestion/getunit',
+                    data: { year: $("#yearList option:selected").val() },
+                    success: function (data) {
+                        $('#unit').html(data);
+                    }
+                });
+            }
+        </script>
+        <div id="year" th:fragment="yearSelect">
+            <th:block th:if="${years != null}">
+                <label>Year:
+                    <select id="yearList" onchange="getUnit();">
+                        <option value=" ">select year</option>
+                        <option th:each="year : ${years}" th:value="${year.year}" th:text="${year.year}"></option>
+                    </select>
+                </label><br />
+            </th:block>
+        </div>
+
+        <script th:inline="javascript">
+            function getBooking() {
+                $.ajax({
+                    type: "POST",
+                    url : '/booking/addquestion/getbooking',
+                    data: { unitID: $("#unitList option:selected").val() },
+                    success: function (data) {
+                        $('#booking').html(data);
+                    }
+                });
+            }
+        </script>
+        <div id="unit" th:fragment="unitSelect">
+            <th:block th:if="${units != null}">
+                <label>Unit  Name:
+                    <select id="unitList" onchange="getBooking();">
+                        <option value=" ">select unit name</option>
+                        <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitCode}+' '+${unit.unitName}"></option>
+                    </select>
+                </label><br />
+            </th:block>
+        </div>
+
+        <div id="booking" th:fragment="bookingSelect">
+            <th:block th:if="${bookings != null}">
+                <label>Please select booking information:location, date and start time: <br/>
+                    <select th:field="*{bookingID}" id="bookingList" size=4 >
+                        <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="'Room: '+${booking.venue.building} + '.' + ${booking.venue.floor} + '.' + ${booking.venue.room} + ' - Time: ' + ${booking.date} + ' ' + ${booking.time}"></option>
+                    </select>
+                </label><br />
+            </th:block>
+        </div>
     </div>
     <div id="uploadQuestion"><br/>
-        <label>Question Number</label>
+        <!--<label>Question Number</label>
         <select class = "QuestionNumber">
             <option value="QuestionNumber">1</option>
             <option value="QuestionNumber">2</option>
             <option value="QuestionNumber">3</option>
             <option value="QuestionNumber">4</option>
             <option value="QuestionNumber">5</option>
-        </select><br/>
+        </select><br/>-->
 
-        <label> Question Topic</label> <input type="text" name="questionTopic" placeholder="Question Topic here"><br/> <br/>
-        <label> Question type:</label> <input type="radio" name="questionType" value="True/false"> True/false
-        <input type="radio" name="questionType" value="textType"> Text<br><br/>
+        <label> Question Topic</label> <input th:field="*{questionTopic}" type="text" name="questionTopic" placeholder="Question Topic here"><br/> <br/>
+        <label> Question type:</label> <input th:field="*{questionType}" type="radio" name="questionType" value="True/false"> True/false
+        <input th:field="*{questionType}" type="radio" name="questionType" value="textType"> Text<br><br/>
         <div id="textAnswer">
-            <label> Answer A: </label> <input type="text" name="answer A" placeholder="Type anser A here"><br/>
-            <label> Answer B: </label> <input type="text" name="answer B" placeholder="Type anser B here"><br/>
-            <label> Answer C: </label> <input type="text" name="answer C" placeholder="Type anser C here"><br/>
-            <label> Answer D: </label> <input type="text" name="answer D" placeholder="Type anser D here"><br/>     <br/>
+            <label> Answer A: </label> <input th:field="*{answerA}" type="text" name="answerA" placeholder="Type answer A here"><br/>
+            <label> Answer B: </label> <input th:field="*{answerB}" type="text" name="answerB" placeholder="Type answer B here"><br/>
+            <label> Answer C: </label> <input th:field="*{answerC}" type="text" name="answerC" placeholder="Type answer C here"><br/>
+            <label> Answer D: </label> <input th:field="*{answerD}" type="text" name="answerD" placeholder="Type answer D here"><br/>     <br/>
         </div>
         <label> Correct Answer : </label> <br/>
         <div id="textCorrectAnswer" >
-            <input type="checkbox" name="answerA" value="A">A
-            <input type="checkbox" name="answerB" value="B">B
-            <input type="checkbox" name="answerC" value="C"> C
-            <input type="checkbox" name="answerD" value="D"> D <br/><br/>
+            <input th:field="*{correctAnswerA}" type="checkbox" name="correctAnswerA" value="A">A
+            <input th:field="*{correctAnswerB}" type="checkbox" name="correctAnswerB" value="B">B
+            <input th:field="*{correctAnswerC}" type="checkbox" name="correctAnswerC" value="C">C
+            <input th:field="*{correctAnswerD}" type="checkbox" name="correctAnswerD" value="D"> D <br/><br/>
         </div>
         <div id="tOFAnswer">
-            <input type="radio" name="answerTrue" value="True"> True
-            <input type="radio" name="answerFalse" value="False"> False <br/><br/>
+            <input th:field="*{answerTrue}" type="radio" name="answerTrue" value="True"> True
+            <input th:field="*{answerFalse}" type="radio" name="answerFalse" value="False"> False <br/><br/>
         </div>
         <input type ="submit" value="Add" onclick="addQuestion()"/>
 
