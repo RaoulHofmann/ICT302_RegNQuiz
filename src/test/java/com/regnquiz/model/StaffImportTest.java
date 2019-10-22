@@ -18,20 +18,20 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class StudentImportTest 
+public class StaffImportTest 
 {
     @Autowired
     private UserRepository userRepo;
     @Autowired
-    private StudentImport si;
+    private StaffImport si;
     
     @Test
     public void TestStudent()
     {
-        si.ImportStudent("D:/Desktop/CORS0213.csv");
-        Iterable<User> students = userRepo.findAll();
+        si.ImportStaff("D:/Desktop/StaffExample.csv");
+        Iterable<User> staff = userRepo.findAll();
         
-        for (User u : students)
+        for (User u : staff)
         {
             display(u);
         }
@@ -39,7 +39,7 @@ public class StudentImportTest
     
     public void display(User u)
     {
-        System.out.println("Student Number: " + u.getUserID());
+        System.out.println("Staff Number: " + u.getUserID());
         System.out.println("Given Name: " + u.getGivenName());
         System.out.println("Last Name: " + u.getLastName());
         System.out.println();

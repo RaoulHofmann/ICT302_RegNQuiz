@@ -6,6 +6,9 @@
 package com.regnquiz.model;
 
 import com.regnquiz.model.repositories.BookingRepository;
+import com.regnquiz.model.repositories.UnitRepository;
+import com.regnquiz.model.repositories.VenueRepository;
+import com.regnquiz.model.repositories.UserRepository;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -17,6 +20,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Set;
+import java.sql.Time;
 
 /**
  *
@@ -28,8 +32,17 @@ public class BookingImport
     @Autowired
     private BookingRepository bookingRepo;
     
+    @Autowired
+    private UnitRepository unitRepo;
+    
+    @Autowired
+    private VenueRepository venueRepo;
+    
+    @Autowired 
+    private UserRepository userRepo;
+    
     @Transactional
-    public void ImportBooking(String filename, Unit unit, Venue venue, User lecture)
+    public void ImportBooking(String filename)//, Unit unit, Venue venue, User lecture)
     {
         Path myPath = Paths.get(filename);
         
@@ -42,6 +55,20 @@ public class BookingImport
                 String[] lineSplit = line.split(",");
                 
                 Booking b = new Booking(); // missing constructors from git -- fix later
+                String[] dateSplit = lineSplit[0].split("/");
+                b.setDate(new Date(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[0])));
+                b.setBookingLength(Integer.parseInt(lineSplit[1]));
+                b.setTime(Time.valueOf(lineSplit[2]));
+                b.setUnit(unitRepo.findById(Integer.parseInt(lineSplit[3])).get());
+                b.setVenue(venueRepo.findById(Integer.parseInt(lineSplit[4])).get());
+                b.setLecture(userRepo.findById(Integer.parseInt(lineSplit[5])).get());
+                b.setAttendanceCode(lineSplit[6]);
+                
+                //b.setUnit(unit);
+                //b.setVenue(venue);
+                //b.setLecture(lecture);
+                
+                /*
                 b.setDate(new Date (lineSplit[0]));
                 b.setBookingLength(Integer.parseInt(lineSplit[1]));
                 //b.setBookingID(bookingRepo.findByBooking(b.getDate(), b.getTime(), b.getUnit().getUnitID(), b.getVenue().getVenueID()));
@@ -49,7 +76,7 @@ public class BookingImport
                 b.setUnit(unit);
                 b.setVenue(venue);
                 b.setLecture(lecture);
-                
+                */
                 try
                 {
                     b = bookingRepo.save(b);

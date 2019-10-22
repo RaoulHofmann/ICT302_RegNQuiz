@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2019-10-22T09:22:04 AWST" name="Surefire suite" finished-at="2019-10-22T09:22:11 AWST" duration-ms="6727">
+  <suite started-at="2019-10-22T10:51:21 AWST" name="Surefire suite" finished-at="2019-10-22T10:51:28 AWST" duration-ms="6077">
     <groups>
     </groups>
-    <test started-at="2019-10-22T09:22:04 AWST" name="Surefire test" finished-at="2019-10-22T09:22:11 AWST" duration-ms="6727">
-      <class name="com.regnquiz.model.TypeRepositoryTest">
-        <test-method signature="testType()" started-at="2019-10-22T09:22:04 AWST" name="testType" finished-at="2019-10-22T09:22:11 AWST" duration-ms="6304" status="PASS">
+    <test started-at="2019-10-22T10:51:21 AWST" name="Surefire test" finished-at="2019-10-22T10:51:28 AWST" duration-ms="6077">
+      <class name="com.regnquiz.model.BookingImportTest">
+        <test-method signature="TestBooking()" started-at="2019-10-22T10:51:22 AWST" name="TestBooking" finished-at="2019-10-22T10:51:28 AWST" duration-ms="5722" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testType -->
-      </class> <!-- com.regnquiz.model.TypeRepositoryTest -->
+        </test-method> <!-- TestBooking -->
+      </class> <!-- com.regnquiz.model.BookingImportTest -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->
 </testng-results>

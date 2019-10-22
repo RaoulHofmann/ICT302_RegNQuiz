@@ -41,6 +41,12 @@ public class Semester {
         Unit = new HashSet<>();
     }
     
+    public Semester(String desc)
+    {
+        this.description = desc;
+        Unit = new HashSet<>();
+    }
+    
     public Semester(Integer id)
     {
         this.semesterID = id;
