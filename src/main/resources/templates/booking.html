@@ -5,11 +5,16 @@
     <title> QuizNGo</title>
     <link rel = "stylesheet" type="text/css"
           href="/resources/css/regNGo.css">
+<<<<<<< HEAD
+=======
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+>>>>>>> origin/develop
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="/resources/javascript/login.js"></script>
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
 </head>
 <body onload="booking_info();">
+<<<<<<< HEAD
     <header id="bookingPart">
       <section>
         <th:block th:if= "${booking != null}">
@@ -28,6 +33,22 @@
                         <input hidden type="submit" value="nextQuestions"/>
                     </form>
                 </th:block>
+=======
+    <th:block th:if= "${booking != null}">
+        <h1 th:text="'Attendance Code: '+${booking.attendanceCode}"></h1>
+        <th:block th:if="${finished == null}">
+            <th:block th:if= "${questions == null and availableQ == 1}">
+                <a href="javascript: document.startQuestions.submit()" role="button" id="startQuestions">Display Question</a>
+                <form name="startQuestions" th:action="@{/booking/{id}/question(id=${booking.bookingID})}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="Display Question"/>
+                </form>
+            </th:block>
+            <th:block th:if= "${questions != null}">
+                <a href="javascript: document.nextQuestions.submit()" role="button" id="nextQuestions">Next Question</a>
+                <form name="nextQuestions" th:action="@{/booking/{id}/question/{qid}(id=${booking.bookingID}, qid=${questionid})}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="nextQuestions"/>
+                </form>
+>>>>>>> origin/develop
             </th:block>
         </th:block>
     </section>
@@ -76,6 +97,53 @@
         <span>
             Quiz Finished
         </span>
+        <div id="charts_target"></div>
+
+        <script th:inline="javascript" th:if="${booking_id != null}">
+            $.ajax({
+                type: "POST",
+                url : '/booking/getquestionoverview',
+                data: { bookingID:
+                        [# th:if="${booking_id != null }"]
+                            /*[[${booking_id}]]*/
+                        [/]
+                    },
+                success: function (data) {
+                    $.each( data, function(index,value){
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('string', '');
+                            data.addColumn('number', '');
+                            data.addColumn({ type: 'string', role: 'style' });
+                            data.addRows(Object.keys(value).length);
+                            var counter = 0;
+                            $.each( value, function(vindex,vvalue){
+                                data.setValue(counter, 0, vindex);
+                                data.setValue(counter, 1, vvalue);
+                                counter++;
+                            })
+                            counter = 0;
+
+
+                            var options = {
+                                title: index,
+                                backgroundColor: { fill:'transparent' },
+                                legend: 'none',
+                            };
+
+                            var div_element = document.createElement("div");
+                            div_element.id = index+"_chart";
+                            document.getElementById("charts_target").append(div_element);
+                            var chart = new google.visualization.ColumnChart(document.getElementById(index+"_chart"));
+                            chart.draw(data, options);
+                        }
+                    })
+                }
+            });
+        </script>
     </th:block>
 
     <script th:inline="javascript" th:if="${booking != null}">
@@ -90,6 +158,7 @@
                         [/]
                     },
                 success: function (data) {
+                    console.log(data);
                     $('#attendance_count').html("Attending: "+data);
                     interval = setTimeout(getAttendance, 1000);
                 }
@@ -98,7 +167,7 @@
         getAttendance();
     </script>
 
-    <script th:inline="javascript" th:if="${booking != null}">
+    <script th:inline="javascript" th:if="${finished == null}">
         var studentAnswerInt;
         function getStudentAnswers() {
             $.ajax({
@@ -121,15 +190,62 @@
     </script>
 
     <h4 id="attendance_count"></h4>
+
+
+    <script th:inline="javascript" th:if="${booking != null}">
+            google.charts.load('current', {'packages':['corechart']});
+            google.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Quiz Answers');
+                data.addColumn('number', 'Attending');
+                data.addColumn({ type: 'string', role: 'style' });
+                data.addRows(2);
+                data.setValue(0, 0, 'Attending');
+                data.setValue(0, 2, 'rgb(200, 20, 60)');
+                data.setValue(1, 0, 'Answers');
+
+
+                var interval;
+                function getAttendance() {
+                    $.ajax({
+                        type: "POST",
+                        url : '/booking/getanswerattendance',
+                        data: { bookingID:
+                                [# th:if="${booking != null }"]
+                                    /*[[${booking.bookingID}]]*/ 'bookingID'
+                                [/]
+                            },
+                        success: function (value) {
+                            if(value[0] > 0){
+                                data.setValue(0, 1, value[0], 'Attending');
+                                data.setValue(1, 1, value[1]);
+                                chart.draw(data, options);
+                            }
+                            interval = setTimeout(getAttendance, 1000);
+                        }
+                    });
+                }
+                getAttendance();
+
+
+                var options = {
+                    title: 'Attending vs Answers',
+                    backgroundColor: { fill:'transparent' },
+                    legend: 'none',
+                };
+
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+            }
+    </script>
+
+
+
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
     <div id="answerCounter" th:fragment="studentAnswer">
-        <table>
-            <th:block >
-                <tr th:each="studentAnswer : ${studentAnswers}">
-                    <th th:text="${studentAnswer.value}"></th>
-                    <td th:text="${studentAnswer.key}"></td>
-                </tr>
-            </th:block>
-        </table>
     </div>
     <input type="button"  onclick="location.href='/booking/'" value="Back" >
 </body>

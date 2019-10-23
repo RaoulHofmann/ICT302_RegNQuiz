@@ -15,11 +15,11 @@ public class SessionInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession(true);
         if(request.getRequestURI().equals("/")) {
             try{
-                if ((Integer) session.getAttribute("userType") == 2) {
-                    System.out.println("Staff");
+                if ((Integer) session.getAttribute("userType") == 1) {
+                    response.sendRedirect("/admin/"+session.getAttribute("userID"));
+                } else if ((Integer) session.getAttribute("userType") == 2) {
                     response.sendRedirect("/staff/"+session.getAttribute("userID"));
                 } else if ((Integer) session.getAttribute("userType") == 3) {
-                    System.out.println("Student");
                     response.sendRedirect("/student/"+session.getAttribute("userID"));
                 }
             }catch (NullPointerException e){

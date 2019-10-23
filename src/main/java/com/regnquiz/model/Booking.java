@@ -62,7 +62,6 @@ public class Booking
         unit = new Unit();
         venue = new Venue();
         lecture = new User();
-        
         classList = new HashSet<>();
         unit = new Unit();
         venue = new Venue();
@@ -102,7 +101,7 @@ public class Booking
 
     Booking(int id, Date date, int bookingLen, String attendanceCode, Unit unit, Venue venue, User user) {
         this.bookingID = id;
-        this. date = date;
+        this.date = date;
         this.bookingLength = bookingLen;
         this.attendanceCode = attendanceCode;
         this.unit = unit;

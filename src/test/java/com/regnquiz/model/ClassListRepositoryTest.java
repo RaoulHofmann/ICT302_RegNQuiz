@@ -23,8 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ClassListRepositoryTest {
     @Autowired
     private ClassListRepository classListRepository;
-    
-
+   
     @Autowired
     private UserRepository userRepo;
     
@@ -36,9 +35,9 @@ public class ClassListRepositoryTest {
     {
         ClassList cl = new ClassList();
         cl.setStudent(userRepo.findById(11).get()); // Only works if ID exists in db
-        System.out.println("userid: " + cl.getStudent().getUserID());
-        cl.setBooking(bookingRepo.findById(2).get());
-        System.out.println("bookingid: " + cl.getBooking().getBookingID());
+        //System.out.println("userid: " + cl.getStudent().getUserID());
+        cl.setBooking(bookingRepo.findById(3).get());
+        //System.out.println("bookingid: " + cl.getBooking().getBookingID());
         cl.setInternal(true);
         cl.setAttendance();
         cl.setClassListID(10);

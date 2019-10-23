@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.regnquiz.model.ClassListRepositoryTest" time="5.88" tests="1" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="12"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="D:\UOSA2\ICT302_RegNQuiz\target\test-classes;D:\UOSA2\ICT302_RegNQuiz\target\classes;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\2.1.7.RELEASE\spring-boot-starter-data-jpa-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-aop\2.1.7.RELEASE\spring-boot-starter-aop-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\aspectj\aspectjweaver\1.9.4\aspectjweaver-1.9.4.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\2.1.7.RELEASE\spring-boot-starter-jdbc-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\com\zaxxer\HikariCP\3.2.0\HikariCP-3.2.0.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-jdbc\5.1.9.RELEASE\spring-jdbc-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\transaction\javax.transaction-api\1.3\javax.transaction-api-1.3.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hibernate\hibernate-core\5.3.10.Final\hibernate-core-5.3.10.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\org\jboss\logging\jboss-logging\3.3.2.Final\jboss-logging-3.3.2.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\javassist\javassist\3.23.2-GA\javassist-3.23.2-GA.jar;C:\Users\Matthew MacLennan\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\Matthew MacLennan\.m2\repository\org\jboss\jandex\2.0.5.Final\jandex-2.0.5.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\classmate\1.4.0\classmate-1.4.0.jar;C:\Users\Matthew MacLennan\.m2\repository\org\dom4j\dom4j\2.1.1\dom4j-2.1.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.0.4.Final\hibernate-commons-annotations-5.0.4.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-aspects\5.1.9.RELEASE\spring-aspects-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\data\spring-data-jpa\2.1.10.RELEASE\spring-data-jpa-2.1.10.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\data\spring-data-commons\2.1.10.RELEASE\spring-data-commons-2.1.10.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-orm\5.1.9.RELEASE\spring-orm-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-context\5.1.9.RELEASE\spring-context-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-expression\5.1.9.RELEASE\spring-expression-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-aop\5.1.9.RELEASE\spring-aop-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-tx\5.1.9.RELEASE\spring-tx-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-beans\5.1.9.RELEASE\spring-beans-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-core\5.1.9.RELEASE\spring-core-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\aspectj\aspectjrt\1.9.4\aspectjrt-1.9.4.jar;C:\Users\Matthew MacLennan\.m2\repository\org\slf4j\slf4j-api\1.7.26\slf4j-api-1.7.26.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-web\2.1.7.RELEASE\spring-boot-starter-web-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter\2.1.7.RELEASE\spring-boot-starter-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-logging\2.1.7.RELEASE\spring-boot-starter-logging-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\ch\qos\logback\logback-classic\1.2.3\logback-classic-1.2.3.jar;C:\Users\Matthew MacLennan\.m2\repository\ch\qos\logback\logback-core\1.2.3\logback-core-1.2.3.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.11.2\log4j-to-slf4j-2.11.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\logging\log4j\log4j-api\2.11.2\log4j-api-2.11.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\slf4j\jul-to-slf4j\1.7.26\jul-to-slf4j-1.7.26.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\yaml\snakeyaml\1.23\snakeyaml-1.23.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-json\2.1.7.RELEASE\spring-boot-starter-json-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.9.9\jackson-datatype-jdk8-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.9.9\jackson-datatype-jsr310-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.9.9\jackson-module-parameter-names-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\2.1.7.RELEASE\spring-boot-starter-tomcat-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\9.0.22\tomcat-embed-core-9.0.22.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\9.0.22\tomcat-embed-el-9.0.22.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\9.0.22\tomcat-embed-websocket-9.0.22.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hibernate\validator\hibernate-validator\6.0.17.Final\hibernate-validator-6.0.17.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\validation\validation-api\2.0.1.Final\validation-api-2.0.1.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-web\5.1.9.RELEASE\spring-web-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-webmvc\5.1.9.RELEASE\spring-webmvc-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-thymeleaf\2.1.7.RELEASE\spring-boot-starter-thymeleaf-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\thymeleaf\thymeleaf-spring5\3.0.11.RELEASE\thymeleaf-spring5-3.0.11.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\thymeleaf\thymeleaf\3.0.11.RELEASE\thymeleaf-3.0.11.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\attoparser\attoparser\2.0.5.RELEASE\attoparser-2.0.5.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\thymeleaf\extras\thymeleaf-extras-java8time\3.0.4.RELEASE\thymeleaf-extras-java8time-3.0.4.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-data-rest\2.1.7.RELEASE\spring-boot-starter-data-rest-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\session\spring-session-core\2.1.8.RELEASE\spring-session-core-2.1.8.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-jcl\5.1.9.RELEASE\spring-jcl-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\data\spring-data-rest-webmvc\3.1.10.RELEASE\spring-data-rest-webmvc-3.1.10.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\data\spring-data-rest-core\3.1.10.RELEASE\spring-data-rest-core-3.1.10.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\hateoas\spring-hateoas\0.25.2.RELEASE\spring-hateoas-0.25.2.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\plugin\spring-plugin-core\1.2.0.RELEASE\spring-plugin-core-1.2.0.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\atteo\evo-inflector\1.2.2\evo-inflector-1.2.2.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.9.9\jackson-databind-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.9.9\jackson-core-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-devtools\2.1.7.RELEASE\spring-boot-devtools-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot\2.1.7.RELEASE\spring-boot-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\2.1.7.RELEASE\spring-boot-autoconfigure-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\com\opencsv\opencsv\4.1\opencsv-4.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\commons\commons-lang3\3.8.1\commons-lang3-3.8.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\commons\commons-text\1.1\commons-text-1.1.jar;C:\Users\Matthew MacLennan\.m2\repository\commons-beanutils\commons-beanutils\1.9.3\commons-beanutils-1.9.3.jar;C:\Users\Matthew MacLennan\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Matthew MacLennan\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\Matthew MacLennan\.m2\repository\mysql\mysql-connector-java\8.0.17\mysql-connector-java-8.0.17.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-test\2.1.7.RELEASE\spring-boot-starter-test-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-test\2.1.7.RELEASE\spring-boot-test-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\com\jayway\jsonpath\json-path\2.4.0\json-path-2.4.0.jar;C:\Users\Matthew MacLennan\.m2\repository\net\minidev\json-smart\2.3\json-smart-2.3.jar;C:\Users\Matthew MacLennan\.m2\repository\net\minidev\accessors-smart\1.2\accessors-smart-1.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\ow2\asm\asm\5.0.4\asm-5.0.4.jar;C:\Users\Matthew MacLennan\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Matthew MacLennan\.m2\repository\org\skyscreamer\jsonassert\1.5.0\jsonassert-1.5.0.jar;C:\Users\Matthew MacLennan\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\xmlunit\xmlunit-core\2.6.3\xmlunit-core-2.6.3.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\restdocs\spring-restdocs-mockmvc\2.0.3.RELEASE\spring-restdocs-mockmvc-2.0.3.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\restdocs\spring-restdocs-core\2.0.3.RELEASE\spring-restdocs-core-2.0.3.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\2.1.7.RELEASE\spring-boot-test-autoconfigure-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-test\5.1.9.RELEASE\spring-test-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\mockito\mockito-core\2.23.4\mockito-core-2.23.4.jar;C:\Users\Matthew MacLennan\.m2\repository\net\bytebuddy\byte-buddy\1.9.16\byte-buddy-1.9.16.jar;C:\Users\Matthew MacLennan\.m2\repository\net\bytebuddy\byte-buddy-agent\1.9.16\byte-buddy-agent-1.9.16.jar;C:\Users\Matthew MacLennan\.m2\repository\org\objenesis\objenesis\2.6\objenesis-2.6.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hamcrest\hamcrest-library\1.3\hamcrest-library-1.3.jar;C:\Users\Matthew MacLennan\.m2\repository\org\testng\testng\7.0.0\testng-7.0.0.jar;C:\Users\Matthew MacLennan\.m2\repository\com\beust\jcommander\1.72\jcommander-1.72.jar;C:\Users\Matthew MacLennan\.m2\repository\junit\junit\4.12\junit-4.12.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Australia/Perth"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="12"/>
+    <property name="user.country" value="AU"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-12\bin"/>
+    <property name="sun.java.command" value="C:\Users\MATTHE~1\AppData\Local\Temp\surefire9309569566439736670\surefirebooter7916290623534281929.jar C:\Users\Matthew MacLennan\AppData\Local\Temp\surefire9309569566439736670 2019-10-22T11-16-04_353-jvmRun1 surefire5521343464129938913tmp surefire_014774605718736596160tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="com.regnquiz.model.ClassListRepositoryTest"/>
+    <property name="surefire.test.class.path" value="D:\UOSA2\ICT302_RegNQuiz\target\test-classes;D:\UOSA2\ICT302_RegNQuiz\target\classes;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\2.1.7.RELEASE\spring-boot-starter-data-jpa-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-aop\2.1.7.RELEASE\spring-boot-starter-aop-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\aspectj\aspectjweaver\1.9.4\aspectjweaver-1.9.4.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\2.1.7.RELEASE\spring-boot-starter-jdbc-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\com\zaxxer\HikariCP\3.2.0\HikariCP-3.2.0.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-jdbc\5.1.9.RELEASE\spring-jdbc-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\transaction\javax.transaction-api\1.3\javax.transaction-api-1.3.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hibernate\hibernate-core\5.3.10.Final\hibernate-core-5.3.10.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\org\jboss\logging\jboss-logging\3.3.2.Final\jboss-logging-3.3.2.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\javassist\javassist\3.23.2-GA\javassist-3.23.2-GA.jar;C:\Users\Matthew MacLennan\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\Matthew MacLennan\.m2\repository\org\jboss\jandex\2.0.5.Final\jandex-2.0.5.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\classmate\1.4.0\classmate-1.4.0.jar;C:\Users\Matthew MacLennan\.m2\repository\org\dom4j\dom4j\2.1.1\dom4j-2.1.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.0.4.Final\hibernate-commons-annotations-5.0.4.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-aspects\5.1.9.RELEASE\spring-aspects-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\data\spring-data-jpa\2.1.10.RELEASE\spring-data-jpa-2.1.10.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\data\spring-data-commons\2.1.10.RELEASE\spring-data-commons-2.1.10.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-orm\5.1.9.RELEASE\spring-orm-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-context\5.1.9.RELEASE\spring-context-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-expression\5.1.9.RELEASE\spring-expression-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-aop\5.1.9.RELEASE\spring-aop-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-tx\5.1.9.RELEASE\spring-tx-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-beans\5.1.9.RELEASE\spring-beans-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-core\5.1.9.RELEASE\spring-core-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\aspectj\aspectjrt\1.9.4\aspectjrt-1.9.4.jar;C:\Users\Matthew MacLennan\.m2\repository\org\slf4j\slf4j-api\1.7.26\slf4j-api-1.7.26.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-web\2.1.7.RELEASE\spring-boot-starter-web-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter\2.1.7.RELEASE\spring-boot-starter-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-logging\2.1.7.RELEASE\spring-boot-starter-logging-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\ch\qos\logback\logback-classic\1.2.3\logback-classic-1.2.3.jar;C:\Users\Matthew MacLennan\.m2\repository\ch\qos\logback\logback-core\1.2.3\logback-core-1.2.3.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.11.2\log4j-to-slf4j-2.11.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\logging\log4j\log4j-api\2.11.2\log4j-api-2.11.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\slf4j\jul-to-slf4j\1.7.26\jul-to-slf4j-1.7.26.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\yaml\snakeyaml\1.23\snakeyaml-1.23.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-json\2.1.7.RELEASE\spring-boot-starter-json-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.9.9\jackson-datatype-jdk8-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.9.9\jackson-datatype-jsr310-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.9.9\jackson-module-parameter-names-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\2.1.7.RELEASE\spring-boot-starter-tomcat-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\9.0.22\tomcat-embed-core-9.0.22.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\9.0.22\tomcat-embed-el-9.0.22.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\9.0.22\tomcat-embed-websocket-9.0.22.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hibernate\validator\hibernate-validator\6.0.17.Final\hibernate-validator-6.0.17.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\validation\validation-api\2.0.1.Final\validation-api-2.0.1.Final.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-web\5.1.9.RELEASE\spring-web-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-webmvc\5.1.9.RELEASE\spring-webmvc-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-thymeleaf\2.1.7.RELEASE\spring-boot-starter-thymeleaf-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\thymeleaf\thymeleaf-spring5\3.0.11.RELEASE\thymeleaf-spring5-3.0.11.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\thymeleaf\thymeleaf\3.0.11.RELEASE\thymeleaf-3.0.11.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\attoparser\attoparser\2.0.5.RELEASE\attoparser-2.0.5.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\thymeleaf\extras\thymeleaf-extras-java8time\3.0.4.RELEASE\thymeleaf-extras-java8time-3.0.4.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-data-rest\2.1.7.RELEASE\spring-boot-starter-data-rest-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\session\spring-session-core\2.1.8.RELEASE\spring-session-core-2.1.8.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-jcl\5.1.9.RELEASE\spring-jcl-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\data\spring-data-rest-webmvc\3.1.10.RELEASE\spring-data-rest-webmvc-3.1.10.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\data\spring-data-rest-core\3.1.10.RELEASE\spring-data-rest-core-3.1.10.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\hateoas\spring-hateoas\0.25.2.RELEASE\spring-hateoas-0.25.2.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\plugin\spring-plugin-core\1.2.0.RELEASE\spring-plugin-core-1.2.0.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\atteo\evo-inflector\1.2.2\evo-inflector-1.2.2.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.9.9\jackson-databind-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.9.9\jackson-core-2.9.9.jar;C:\Users\Matthew MacLennan\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-devtools\2.1.7.RELEASE\spring-boot-devtools-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot\2.1.7.RELEASE\spring-boot-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\2.1.7.RELEASE\spring-boot-autoconfigure-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\com\opencsv\opencsv\4.1\opencsv-4.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\commons\commons-lang3\3.8.1\commons-lang3-3.8.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\apache\commons\commons-text\1.1\commons-text-1.1.jar;C:\Users\Matthew MacLennan\.m2\repository\commons-beanutils\commons-beanutils\1.9.3\commons-beanutils-1.9.3.jar;C:\Users\Matthew MacLennan\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Matthew MacLennan\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\Matthew MacLennan\.m2\repository\mysql\mysql-connector-java\8.0.17\mysql-connector-java-8.0.17.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-starter-test\2.1.7.RELEASE\spring-boot-starter-test-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-test\2.1.7.RELEASE\spring-boot-test-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\com\jayway\jsonpath\json-path\2.4.0\json-path-2.4.0.jar;C:\Users\Matthew MacLennan\.m2\repository\net\minidev\json-smart\2.3\json-smart-2.3.jar;C:\Users\Matthew MacLennan\.m2\repository\net\minidev\accessors-smart\1.2\accessors-smart-1.2.jar;C:\Users\Matthew MacLennan\.m2\repository\org\ow2\asm\asm\5.0.4\asm-5.0.4.jar;C:\Users\Matthew MacLennan\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Matthew MacLennan\.m2\repository\org\skyscreamer\jsonassert\1.5.0\jsonassert-1.5.0.jar;C:\Users\Matthew MacLennan\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\xmlunit\xmlunit-core\2.6.3\xmlunit-core-2.6.3.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\restdocs\spring-restdocs-mockmvc\2.0.3.RELEASE\spring-restdocs-mockmvc-2.0.3.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\restdocs\spring-restdocs-core\2.0.3.RELEASE\spring-restdocs-core-2.0.3.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\2.1.7.RELEASE\spring-boot-test-autoconfigure-2.1.7.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\springframework\spring-test\5.1.9.RELEASE\spring-test-5.1.9.RELEASE.jar;C:\Users\Matthew MacLennan\.m2\repository\org\mockito\mockito-core\2.23.4\mockito-core-2.23.4.jar;C:\Users\Matthew MacLennan\.m2\repository\net\bytebuddy\byte-buddy\1.9.16\byte-buddy-1.9.16.jar;C:\Users\Matthew MacLennan\.m2\repository\net\bytebuddy\byte-buddy-agent\1.9.16\byte-buddy-agent-1.9.16.jar;C:\Users\Matthew MacLennan\.m2\repository\org\objenesis\objenesis\2.6\objenesis-2.6.jar;C:\Users\Matthew MacLennan\.m2\repository\org\hamcrest\hamcrest-library\1.3\hamcrest-library-1.3.jar;C:\Users\Matthew MacLennan\.m2\repository\org\testng\testng\7.0.0\testng-7.0.0.jar;C:\Users\Matthew MacLennan\.m2\repository\com\beust\jcommander\1.72\jcommander-1.72.jar;C:\Users\Matthew MacLennan\.m2\repository\junit\junit\4.12\junit-4.12.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Matthew MacLennan"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2019-03-19"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-12"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\UOSA2\ICT302_RegNQuiz"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\MATTHE~1\AppData\Local\Temp\surefire9309569566439736670\surefirebooter7916290623534281929.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="12+33"/>
+    <property name="user.name" value="Matthew MacLennan"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="D:\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
+    <property name="localRepository" value="C:\Users\Matthew MacLennan\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\MATTHE~1\AppData\Local\Temp\"/>
+    <property name="java.version" value="12"/>
+    <property name="user.dir" value="D:\UOSA2\ICT302_RegNQuiz"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-12\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\Matthew MacLennan\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Matthew MacLennan\AppData\Local\Microsoft\WindowsApps;C:\Users\Matthew MacLennan\AppData\Local\GitHubDesktop\bin;C:\Users\Matthew MacLennan\AppData\Local\Microsoft\WindowsApps;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="12+33"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="56.0"/>
+  </properties>
+  <testcase name="TestClassReturn on TestClassReturn(com.regnquiz.model.ClassListRepositoryTest)" classname="com.regnquiz.model.ClassListRepositoryTest" time="0.263">
+    <failure message="could not execute statement; SQL [n/a]; constraint [bookingID_UNIQUE]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [bookingID_UNIQUE]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.regnquiz.model.ClassListRepositoryTest.TestClassReturn(ClassListRepositoryTest.java:45)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.regnquiz.model.ClassListRepositoryTest.TestClassReturn(ClassListRepositoryTest.java:45)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '3-11' for key 'bookingID_UNIQUE'
+	at com.regnquiz.model.ClassListRepositoryTest.TestClassReturn(ClassListRepositoryTest.java:45)
+</failure>
+    <system-out><![CDATA[11:16:05.555 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.558 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+11:16:05.563 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+11:16:05.576 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.regnquiz.model.ClassListRepositoryTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+11:16:05.583 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.regnquiz.model.ClassListRepositoryTest], using SpringBootContextLoader
+11:16:05.585 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.regnquiz.model.ClassListRepositoryTest]: class path resource [com/regnquiz/model/ClassListRepositoryTest-context.xml] does not exist
+11:16:05.586 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.regnquiz.model.ClassListRepositoryTest]: class path resource [com/regnquiz/model/ClassListRepositoryTestContext.groovy] does not exist
+11:16:05.586 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.regnquiz.model.ClassListRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+11:16:05.586 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.regnquiz.model.ClassListRepositoryTest]: ClassListRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:16:05.612 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.725 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\UOSA2\ICT302_RegNQuiz\target\classes\com\regnquiz\Application.class]
+11:16:05.726 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.regnquiz.Application for test class com.regnquiz.model.ClassListRepositoryTest
+11:16:05.785 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.regnquiz.model.ClassListRepositoryTest]: using defaults.
+11:16:05.785 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+11:16:05.796 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6e15fe2, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@68f1b17f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1722011b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@57ad2aa7, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5b3f61ff, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3e2059ae, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@398dada8, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7cb502c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@275bf9b3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1b8a29df, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4fbe37eb, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@12a94400]
+11:16:05.806 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.806 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.807 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.807 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.807 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.807 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.810 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@302f7971 testClass = ClassListRepositoryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@332729ad testClass = ClassListRepositoryTest, locations = '{}', classes = '{class com.regnquiz.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2d2ffcb7, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@424e1977, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@2118cddf, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@574b560f], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+11:16:05.810 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.810 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.regnquiz.model.ClassListRepositoryTest]
+11:16:05.826 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.7.RELEASE)
+
+2019-10-22 11:16:06.042  INFO 8096 --- [           main] c.r.model.ClassListRepositoryTest        : Starting ClassListRepositoryTest on MSI with PID 8096 (started by Matthew MacLennan in D:\UOSA2\ICT302_RegNQuiz)
+2019-10-22 11:16:06.043  INFO 8096 --- [           main] c.r.model.ClassListRepositoryTest        : No active profile set, falling back to default profiles: default
+2019-10-22 11:16:06.817  INFO 8096 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-22 11:16:06.901  INFO 8096 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79ms. Found 14 repository interfaces.
+2019-10-22 11:16:07.275  INFO 8096 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$be270480] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-22 11:16:07.302  INFO 8096 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$3da751b2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-22 11:16:07.460  INFO 8096 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-22 11:16:07.744  INFO 8096 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-22 11:16:07.800  INFO 8096 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-22 11:16:07.869  INFO 8096 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2019-10-22 11:16:07.871  INFO 8096 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-22 11:16:08.038  INFO 8096 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-22 11:16:08.061 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@794c5f5e
+2019-10-22 11:16:08.061 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@794c5f5e
+2019-10-22 11:16:08.061 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@794c5f5e
+2019-10-22 11:16:08.062 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@2cd3fc29
+2019-10-22 11:16:08.063 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@46b5f061
+2019-10-22 11:16:08.063 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@2ff498b0
+2019-10-22 11:16:08.064 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@5908e6d6
+2019-10-22 11:16:08.064 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@5908e6d6
+2019-10-22 11:16:08.064 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@5908e6d6
+2019-10-22 11:16:08.065 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@4afd65fd
+2019-10-22 11:16:08.065 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@4afd65fd
+2019-10-22 11:16:08.066 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@4afd65fd
+2019-10-22 11:16:08.066 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@4b5ad306
+2019-10-22 11:16:08.066 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@4b5ad306
+2019-10-22 11:16:08.067 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@4b5ad306
+2019-10-22 11:16:08.067 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@605c7a9e
+2019-10-22 11:16:08.067 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@605c7a9e
+2019-10-22 11:16:08.067 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@605c7a9e
+2019-10-22 11:16:08.068 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@376af784
+2019-10-22 11:16:08.068 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@376af784
+2019-10-22 11:16:08.068 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@376af784
+2019-10-22 11:16:08.069 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@506aa618
+2019-10-22 11:16:08.069 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@506aa618
+2019-10-22 11:16:08.069 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@506aa618
+2019-10-22 11:16:08.070 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@7e2bd5e6
+2019-10-22 11:16:08.070 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@7e2bd5e6
+2019-10-22 11:16:08.070 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@7e2bd5e6
+2019-10-22 11:16:08.071 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@8432469
+2019-10-22 11:16:08.071 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@8432469
+2019-10-22 11:16:08.072 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@5ab63a04
+2019-10-22 11:16:08.072 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@5ab63a04
+2019-10-22 11:16:08.073 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@3db1ce78
+2019-10-22 11:16:08.073 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@3db1ce78
+2019-10-22 11:16:08.074 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@57c6feea
+2019-10-22 11:16:08.074 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@48c5698
+2019-10-22 11:16:08.075 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@340c5fb6
+2019-10-22 11:16:08.075 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@340c5fb6
+2019-10-22 11:16:08.076 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@11148dc2
+2019-10-22 11:16:08.076 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@11148dc2
+2019-10-22 11:16:08.077 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@40f1aa95
+2019-10-22 11:16:08.077 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@40f1aa95
+2019-10-22 11:16:08.078 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@67eeb310
+2019-10-22 11:16:08.078 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@67eeb310
+2019-10-22 11:16:08.079 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@456aa471
+2019-10-22 11:16:08.079 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@456aa471
+2019-10-22 11:16:08.080 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@51f01535
+2019-10-22 11:16:08.080 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@51f01535
+2019-10-22 11:16:08.082 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@3ef2b8e5
+2019-10-22 11:16:08.082 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@3ef2b8e5
+2019-10-22 11:16:08.083 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@44bbb7c6
+2019-10-22 11:16:08.083 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@44bbb7c6
+2019-10-22 11:16:08.084 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@63a84bb6
+2019-10-22 11:16:08.084 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@63a84bb6
+2019-10-22 11:16:08.085 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@69ba3f4e
+2019-10-22 11:16:08.085 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@69ba3f4e
+2019-10-22 11:16:08.086 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@3dde5f38
+2019-10-22 11:16:08.086 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@3dde5f38
+2019-10-22 11:16:08.087 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@1657b017
+2019-10-22 11:16:08.087 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@1657b017
+2019-10-22 11:16:08.088 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@1657b017
+2019-10-22 11:16:08.089 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@6e239337
+2019-10-22 11:16:08.090 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@48cf8414
+2019-10-22 11:16:08.090 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@48cf8414
+2019-10-22 11:16:08.090 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@48cf8414
+2019-10-22 11:16:08.091 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@752973de
+2019-10-22 11:16:08.091 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@6903ed0e
+2019-10-22 11:16:08.092 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@6903ed0e
+2019-10-22 11:16:08.092 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@77c23d90
+2019-10-22 11:16:08.093 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@77c23d90
+2019-10-22 11:16:08.093 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@3d033453
+2019-10-22 11:16:08.093 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@3d033453
+2019-10-22 11:16:08.094 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@5eeee124
+2019-10-22 11:16:08.094 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@5eeee124
+2019-10-22 11:16:08.095 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@2037f12b
+2019-10-22 11:16:08.095 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@2037f12b
+2019-10-22 11:16:08.095 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@b94703b
+2019-10-22 11:16:08.097 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@acb5508
+2019-10-22 11:16:08.097 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@acb5508
+2019-10-22 11:16:08.097 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@acb5508
+2019-10-22 11:16:08.098 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@67a8bcbb
+2019-10-22 11:16:08.098 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@67a8bcbb
+2019-10-22 11:16:08.098 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@67a8bcbb
+2019-10-22 11:16:08.099 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@6cceb281
+2019-10-22 11:16:08.100 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@30cafd13
+2019-10-22 11:16:08.101 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@34f23816
+2019-10-22 11:16:08.101 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@34f23816
+2019-10-22 11:16:08.101 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@34f23816
+2019-10-22 11:16:08.102 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@6f0c45f4
+2019-10-22 11:16:08.102 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@6f0c45f4
+2019-10-22 11:16:08.103 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@6f0c45f4
+2019-10-22 11:16:08.103 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@1669931a
+2019-10-22 11:16:08.103 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@699e0bf0
+2019-10-22 11:16:08.105 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@4e2cdc51
+2019-10-22 11:16:08.105 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@4e2cdc51
+2019-10-22 11:16:08.105 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@49e479da
+2019-10-22 11:16:08.107 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@4a9869a8
+2019-10-22 11:16:08.107 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@4a9869a8
+2019-10-22 11:16:08.108 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@4a9b92c6
+2019-10-22 11:16:08.108 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@4a9b92c6
+2019-10-22 11:16:08.108 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@7c4d1c7b
+2019-10-22 11:16:08.108 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@7db791df
+2019-10-22 11:16:08.109 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@7d522180
+2019-10-22 11:16:08.111 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@259195fe
+2019-10-22 11:16:08.112 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@259195fe
+2019-10-22 11:16:08.112 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@13cc31ae
+2019-10-22 11:16:08.112 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@5bb7a59
+2019-10-22 11:16:08.112 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@4bfa5eb9
+2019-10-22 11:16:08.112 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@2a2b7a35
+2019-10-22 11:16:08.112 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@58186f9f
+2019-10-22 11:16:08.112 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@62faf77
+2019-10-22 11:16:08.113 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@1f39269d
+2019-10-22 11:16:08.113 DEBUG 8096 --- [           main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@6e321d9d
+2019-10-22 11:16:08.189  INFO 8096 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-10-22 11:16:08.231 DEBUG 8096 --- [           main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@6115846e] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@1bec1589]
+2019-10-22 11:16:08.379  WARN 8096 --- [           main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.regnquiz.model.BookingQuestionKey
+2019-10-22 11:16:08.379  WARN 8096 --- [           main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.regnquiz.model.BookingQuestionKey
+2019-10-22 11:16:08.379  WARN 8096 --- [           main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.regnquiz.model.UserIdent
+2019-10-22 11:16:08.379  WARN 8096 --- [           main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.regnquiz.model.UserIdent
+2019-10-22 11:16:08.380  WARN 8096 --- [           main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.regnquiz.model.StudentAnswerKey
+2019-10-22 11:16:08.380  WARN 8096 --- [           main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.regnquiz.model.StudentAnswerKey
+2019-10-22 11:16:08.479 DEBUG 8096 --- [           main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@6115846e] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@2e44cb34]
+2019-10-22 11:16:09.002 TRACE 8096 --- [           main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@2e44cb34] for TypeConfiguration
+2019-10-22 11:16:09.003  INFO 8096 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-22 11:16:09.316  INFO 8096 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-10-22 11:16:09.995  WARN 8096 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-22 11:16:10.691  INFO 8096 --- [           main] c.r.model.ClassListRepositoryTest        : Started ClassListRepositoryTest in 4.859 seconds (JVM running for 5.741)
+2019-10-22 11:16:10.850 DEBUG 8096 --- [           main] org.hibernate.SQL                        : 
+    select
+        user0_.userID as userID1_9_0_,
+        user0_.givenName as givenNam2_9_0_,
+        user0_.lastName as lastName3_9_0_,
+        user0_.preferredName as preferre4_9_0_ 
+    from
+        User user0_ 
+    where
+        user0_.userID=?
+Hibernate: 
+    select
+        user0_.userID as userID1_9_0_,
+        user0_.givenName as givenNam2_9_0_,
+        user0_.lastName as lastName3_9_0_,
+        user0_.preferredName as preferre4_9_0_ 
+    from
+        User user0_ 
+    where
+        user0_.userID=?
+2019-10-22 11:16:10.854 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [11]
+2019-10-22 11:16:10.866 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([givenNam2_9_0_] : [VARCHAR]) - [matt]
+2019-10-22 11:16:10.866 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([lastName3_9_0_] : [VARCHAR]) - [sjks]
+2019-10-22 11:16:10.866 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([preferre4_9_0_] : [VARCHAR]) - [mac]
+2019-10-22 11:16:10.874 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.bookings#11]
+2019-10-22 11:16:10.874 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.classList#11]
+2019-10-22 11:16:10.874 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.studentAnswer#11]
+2019-10-22 11:16:10.874 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.units#11]
+2019-10-22 11:16:10.874 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.userType#11]
+userid: 11
+2019-10-22 11:16:10.878 DEBUG 8096 --- [           main] org.hibernate.SQL                        : 
+    select
+        booking0_.bookingID as bookingI1_0_0_,
+        booking0_.accessCode as accessCo2_0_0_,
+        booking0_.bookingLength as bookingL3_0_0_,
+        booking0_.date as date4_0_0_,
+        booking0_.userID as userID6_0_0_,
+        booking0_.time as time5_0_0_,
+        booking0_.UnitID as UnitID7_0_0_,
+        booking0_.VenueID as VenueID8_0_0_,
+        user1_.userID as userID1_9_1_,
+        user1_.givenName as givenNam2_9_1_,
+        user1_.lastName as lastName3_9_1_,
+        user1_.preferredName as preferre4_9_1_,
+        unit2_.unitID as unitID1_8_2_,
+        unit2_.UserID as UserID5_8_2_,
+        unit2_.semesterID as semester6_8_2_,
+        unit2_.code as code2_8_2_,
+        unit2_.unitName as unitName3_8_2_,
+        unit2_.year as year4_8_2_,
+        user3_.userID as userID1_9_3_,
+        user3_.givenName as givenNam2_9_3_,
+        user3_.lastName as lastName3_9_3_,
+        user3_.preferredName as preferre4_9_3_,
+        semester4_.semesterID as semester1_5_4_,
+        semester4_.description as descript2_5_4_,
+        venue5_.venueID as venueID1_11_5_,
+        venue5_.building as building2_11_5_,
+        venue5_.capacity as capacity3_11_5_,
+        venue5_.floor as floor4_11_5_,
+        venue5_.room as room5_11_5_ 
+    from
+        Booking booking0_ 
+    left outer join
+        User user1_ 
+            on booking0_.userID=user1_.userID 
+    left outer join
+        Unit unit2_ 
+            on booking0_.UnitID=unit2_.unitID 
+    left outer join
+        User user3_ 
+            on unit2_.UserID=user3_.userID 
+    left outer join
+        Semester semester4_ 
+            on unit2_.semesterID=semester4_.semesterID 
+    left outer join
+        Venue venue5_ 
+            on booking0_.VenueID=venue5_.venueID 
+    where
+        booking0_.bookingID=?
+Hibernate: 
+    select
+        booking0_.bookingID as bookingI1_0_0_,
+        booking0_.accessCode as accessCo2_0_0_,
+        booking0_.bookingLength as bookingL3_0_0_,
+        booking0_.date as date4_0_0_,
+        booking0_.userID as userID6_0_0_,
+        booking0_.time as time5_0_0_,
+        booking0_.UnitID as UnitID7_0_0_,
+        booking0_.VenueID as VenueID8_0_0_,
+        user1_.userID as userID1_9_1_,
+        user1_.givenName as givenNam2_9_1_,
+        user1_.lastName as lastName3_9_1_,
+        user1_.preferredName as preferre4_9_1_,
+        unit2_.unitID as unitID1_8_2_,
+        unit2_.UserID as UserID5_8_2_,
+        unit2_.semesterID as semester6_8_2_,
+        unit2_.code as code2_8_2_,
+        unit2_.unitName as unitName3_8_2_,
+        unit2_.year as year4_8_2_,
+        user3_.userID as userID1_9_3_,
+        user3_.givenName as givenNam2_9_3_,
+        user3_.lastName as lastName3_9_3_,
+        user3_.preferredName as preferre4_9_3_,
+        semester4_.semesterID as semester1_5_4_,
+        semester4_.description as descript2_5_4_,
+        venue5_.venueID as venueID1_11_5_,
+        venue5_.building as building2_11_5_,
+        venue5_.capacity as capacity3_11_5_,
+        venue5_.floor as floor4_11_5_,
+        venue5_.room as room5_11_5_ 
+    from
+        Booking booking0_ 
+    left outer join
+        User user1_ 
+            on booking0_.userID=user1_.userID 
+    left outer join
+        Unit unit2_ 
+            on booking0_.UnitID=unit2_.unitID 
+    left outer join
+        User user3_ 
+            on unit2_.UserID=user3_.userID 
+    left outer join
+        Semester semester4_ 
+            on unit2_.semesterID=semester4_.semesterID 
+    left outer join
+        Venue venue5_ 
+            on booking0_.VenueID=venue5_.venueID 
+    where
+        booking0_.bookingID=?
+2019-10-22 11:16:10.879 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [3]
+2019-10-22 11:16:10.881 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([userID1_9_1_] : [INTEGER]) - [3]
+2019-10-22 11:16:10.881 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([unitID1_8_2_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.881 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([userID1_9_3_] : [INTEGER]) - [3]
+2019-10-22 11:16:10.881 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([semester1_5_4_] : [INTEGER]) - [1]
+2019-10-22 11:16:10.881 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([venueID1_11_5_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.881 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([accessCo2_0_0_] : [VARCHAR]) - [123456]
+2019-10-22 11:16:10.881 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bookingL3_0_0_] : [INTEGER]) - [null]
+2019-10-22 11:16:10.882 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([date4_0_0_] : [DATE]) - [2019-09-25]
+2019-10-22 11:16:10.882 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([userID6_0_0_] : [INTEGER]) - [3]
+2019-10-22 11:16:10.884 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([time5_0_0_] : [TIME]) - [10:00:00]
+2019-10-22 11:16:10.884 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([UnitID7_0_0_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.884 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([VenueID8_0_0_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.884 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([givenNam2_9_1_] : [VARCHAR]) - [lect]
+2019-10-22 11:16:10.884 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([lastName3_9_1_] : [VARCHAR]) - [2]
+2019-10-22 11:16:10.884 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([preferre4_9_1_] : [VARCHAR]) - [null]
+2019-10-22 11:16:10.884 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([UserID5_8_2_] : [INTEGER]) - [3]
+2019-10-22 11:16:10.884 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([semester6_8_2_] : [INTEGER]) - [1]
+2019-10-22 11:16:10.884 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([code2_8_2_] : [VARCHAR]) - [jil]
+2019-10-22 11:16:10.885 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([unitName3_8_2_] : [VARCHAR]) - [xxxx]
+2019-10-22 11:16:10.885 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([year4_8_2_] : [INTEGER]) - [2019]
+2019-10-22 11:16:10.885 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript2_5_4_] : [VARCHAR]) - [S2]
+2019-10-22 11:16:10.885 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([building2_11_5_] : [INTEGER]) - [150]
+2019-10-22 11:16:10.885 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([capacity3_11_5_] : [INTEGER]) - [50]
+2019-10-22 11:16:10.885 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([floor4_11_5_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.885 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([room5_11_5_] : [INTEGER]) - [25]
+2019-10-22 11:16:10.885 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.Booking.classList#3]
+2019-10-22 11:16:10.885 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.bookings#3]
+2019-10-22 11:16:10.886 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.classList#3]
+2019-10-22 11:16:10.886 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.studentAnswer#3]
+2019-10-22 11:16:10.886 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.units#3]
+2019-10-22 11:16:10.886 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.userType#3]
+2019-10-22 11:16:10.886 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.Unit.bookings#2]
+2019-10-22 11:16:10.886 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.Semester.Unit#1]
+2019-10-22 11:16:10.886 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.Venue.bookings#2]
+bookingid: 3
+2019-10-22 11:16:10.893 DEBUG 8096 --- [           main] org.hibernate.SQL                        : 
+    /* load com.regnquiz.model.ClassList */ select
+        classlist0_.classListID as classLis1_2_5_,
+        classlist0_.attendance as attendan2_2_5_,
+        classlist0_.bookingID as bookingI4_2_5_,
+        classlist0_.internal as internal3_2_5_,
+        classlist0_.userID as userID5_2_5_,
+        booking1_.bookingID as bookingI1_0_0_,
+        booking1_.accessCode as accessCo2_0_0_,
+        booking1_.bookingLength as bookingL3_0_0_,
+        booking1_.date as date4_0_0_,
+        booking1_.userID as userID6_0_0_,
+        booking1_.time as time5_0_0_,
+        booking1_.UnitID as UnitID7_0_0_,
+        booking1_.VenueID as VenueID8_0_0_,
+        user2_.userID as userID1_9_1_,
+        user2_.givenName as givenNam2_9_1_,
+        user2_.lastName as lastName3_9_1_,
+        user2_.preferredName as preferre4_9_1_,
+        unit3_.unitID as unitID1_8_2_,
+        unit3_.UserID as UserID5_8_2_,
+        unit3_.semesterID as semester6_8_2_,
+        unit3_.code as code2_8_2_,
+        unit3_.unitName as unitName3_8_2_,
+        unit3_.year as year4_8_2_,
+        venue4_.venueID as venueID1_11_3_,
+        venue4_.building as building2_11_3_,
+        venue4_.capacity as capacity3_11_3_,
+        venue4_.floor as floor4_11_3_,
+        venue4_.room as room5_11_3_,
+        user5_.userID as userID1_9_4_,
+        user5_.givenName as givenNam2_9_4_,
+        user5_.lastName as lastName3_9_4_,
+        user5_.preferredName as preferre4_9_4_ 
+    from
+        ClassList classlist0_ 
+    left outer join
+        Booking booking1_ 
+            on classlist0_.bookingID=booking1_.bookingID 
+    left outer join
+        User user2_ 
+            on booking1_.userID=user2_.userID 
+    left outer join
+        Unit unit3_ 
+            on booking1_.UnitID=unit3_.unitID 
+    left outer join
+        Venue venue4_ 
+            on booking1_.VenueID=venue4_.venueID 
+    left outer join
+        User user5_ 
+            on classlist0_.userID=user5_.userID 
+    where
+        classlist0_.classListID=?
+Hibernate: 
+    /* load com.regnquiz.model.ClassList */ select
+        classlist0_.classListID as classLis1_2_5_,
+        classlist0_.attendance as attendan2_2_5_,
+        classlist0_.bookingID as bookingI4_2_5_,
+        classlist0_.internal as internal3_2_5_,
+        classlist0_.userID as userID5_2_5_,
+        booking1_.bookingID as bookingI1_0_0_,
+        booking1_.accessCode as accessCo2_0_0_,
+        booking1_.bookingLength as bookingL3_0_0_,
+        booking1_.date as date4_0_0_,
+        booking1_.userID as userID6_0_0_,
+        booking1_.time as time5_0_0_,
+        booking1_.UnitID as UnitID7_0_0_,
+        booking1_.VenueID as VenueID8_0_0_,
+        user2_.userID as userID1_9_1_,
+        user2_.givenName as givenNam2_9_1_,
+        user2_.lastName as lastName3_9_1_,
+        user2_.preferredName as preferre4_9_1_,
+        unit3_.unitID as unitID1_8_2_,
+        unit3_.UserID as UserID5_8_2_,
+        unit3_.semesterID as semester6_8_2_,
+        unit3_.code as code2_8_2_,
+        unit3_.unitName as unitName3_8_2_,
+        unit3_.year as year4_8_2_,
+        venue4_.venueID as venueID1_11_3_,
+        venue4_.building as building2_11_3_,
+        venue4_.capacity as capacity3_11_3_,
+        venue4_.floor as floor4_11_3_,
+        venue4_.room as room5_11_3_,
+        user5_.userID as userID1_9_4_,
+        user5_.givenName as givenNam2_9_4_,
+        user5_.lastName as lastName3_9_4_,
+        user5_.preferredName as preferre4_9_4_ 
+    from
+        ClassList classlist0_ 
+    left outer join
+        Booking booking1_ 
+            on classlist0_.bookingID=booking1_.bookingID 
+    left outer join
+        User user2_ 
+            on booking1_.userID=user2_.userID 
+    left outer join
+        Unit unit3_ 
+            on booking1_.UnitID=unit3_.unitID 
+    left outer join
+        Venue venue4_ 
+            on booking1_.VenueID=venue4_.venueID 
+    left outer join
+        User user5_ 
+            on classlist0_.userID=user5_.userID 
+    where
+        classlist0_.classListID=?
+2019-10-22 11:16:10.894 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [10]
+2019-10-22 11:16:10.899 DEBUG 8096 --- [           main] org.hibernate.SQL                        : 
+    /* load com.regnquiz.model.Booking */ select
+        booking0_.bookingID as bookingI1_0_5_,
+        booking0_.accessCode as accessCo2_0_5_,
+        booking0_.bookingLength as bookingL3_0_5_,
+        booking0_.date as date4_0_5_,
+        booking0_.userID as userID6_0_5_,
+        booking0_.time as time5_0_5_,
+        booking0_.UnitID as UnitID7_0_5_,
+        booking0_.VenueID as VenueID8_0_5_,
+        user1_.userID as userID1_9_0_,
+        user1_.givenName as givenNam2_9_0_,
+        user1_.lastName as lastName3_9_0_,
+        user1_.preferredName as preferre4_9_0_,
+        unit2_.unitID as unitID1_8_1_,
+        unit2_.UserID as UserID5_8_1_,
+        unit2_.semesterID as semester6_8_1_,
+        unit2_.code as code2_8_1_,
+        unit2_.unitName as unitName3_8_1_,
+        unit2_.year as year4_8_1_,
+        user3_.userID as userID1_9_2_,
+        user3_.givenName as givenNam2_9_2_,
+        user3_.lastName as lastName3_9_2_,
+        user3_.preferredName as preferre4_9_2_,
+        semester4_.semesterID as semester1_5_3_,
+        semester4_.description as descript2_5_3_,
+        venue5_.venueID as venueID1_11_4_,
+        venue5_.building as building2_11_4_,
+        venue5_.capacity as capacity3_11_4_,
+        venue5_.floor as floor4_11_4_,
+        venue5_.room as room5_11_4_ 
+    from
+        Booking booking0_ 
+    left outer join
+        User user1_ 
+            on booking0_.userID=user1_.userID 
+    left outer join
+        Unit unit2_ 
+            on booking0_.UnitID=unit2_.unitID 
+    left outer join
+        User user3_ 
+            on unit2_.UserID=user3_.userID 
+    left outer join
+        Semester semester4_ 
+            on unit2_.semesterID=semester4_.semesterID 
+    left outer join
+        Venue venue5_ 
+            on booking0_.VenueID=venue5_.venueID 
+    where
+        booking0_.bookingID=?
+Hibernate: 
+    /* load com.regnquiz.model.Booking */ select
+        booking0_.bookingID as bookingI1_0_5_,
+        booking0_.accessCode as accessCo2_0_5_,
+        booking0_.bookingLength as bookingL3_0_5_,
+        booking0_.date as date4_0_5_,
+        booking0_.userID as userID6_0_5_,
+        booking0_.time as time5_0_5_,
+        booking0_.UnitID as UnitID7_0_5_,
+        booking0_.VenueID as VenueID8_0_5_,
+        user1_.userID as userID1_9_0_,
+        user1_.givenName as givenNam2_9_0_,
+        user1_.lastName as lastName3_9_0_,
+        user1_.preferredName as preferre4_9_0_,
+        unit2_.unitID as unitID1_8_1_,
+        unit2_.UserID as UserID5_8_1_,
+        unit2_.semesterID as semester6_8_1_,
+        unit2_.code as code2_8_1_,
+        unit2_.unitName as unitName3_8_1_,
+        unit2_.year as year4_8_1_,
+        user3_.userID as userID1_9_2_,
+        user3_.givenName as givenNam2_9_2_,
+        user3_.lastName as lastName3_9_2_,
+        user3_.preferredName as preferre4_9_2_,
+        semester4_.semesterID as semester1_5_3_,
+        semester4_.description as descript2_5_3_,
+        venue5_.venueID as venueID1_11_4_,
+        venue5_.building as building2_11_4_,
+        venue5_.capacity as capacity3_11_4_,
+        venue5_.floor as floor4_11_4_,
+        venue5_.room as room5_11_4_ 
+    from
+        Booking booking0_ 
+    left outer join
+        User user1_ 
+            on booking0_.userID=user1_.userID 
+    left outer join
+        Unit unit2_ 
+            on booking0_.UnitID=unit2_.unitID 
+    left outer join
+        User user3_ 
+            on unit2_.UserID=user3_.userID 
+    left outer join
+        Semester semester4_ 
+            on unit2_.semesterID=semester4_.semesterID 
+    left outer join
+        Venue venue5_ 
+            on booking0_.VenueID=venue5_.venueID 
+    where
+        booking0_.bookingID=?
+2019-10-22 11:16:10.900 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [3]
+2019-10-22 11:16:10.901 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([userID1_9_0_] : [INTEGER]) - [3]
+2019-10-22 11:16:10.901 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([unitID1_8_1_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.901 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([userID1_9_2_] : [INTEGER]) - [3]
+2019-10-22 11:16:10.901 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([semester1_5_3_] : [INTEGER]) - [1]
+2019-10-22 11:16:10.902 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([venueID1_11_4_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.902 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([givenNam2_9_0_] : [VARCHAR]) - [lect]
+2019-10-22 11:16:10.902 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([lastName3_9_0_] : [VARCHAR]) - [2]
+2019-10-22 11:16:10.902 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([preferre4_9_0_] : [VARCHAR]) - [null]
+2019-10-22 11:16:10.902 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([UserID5_8_1_] : [INTEGER]) - [3]
+2019-10-22 11:16:10.902 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([semester6_8_1_] : [INTEGER]) - [1]
+2019-10-22 11:16:10.902 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([code2_8_1_] : [VARCHAR]) - [jil]
+2019-10-22 11:16:10.902 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([unitName3_8_1_] : [VARCHAR]) - [xxxx]
+2019-10-22 11:16:10.902 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([year4_8_1_] : [INTEGER]) - [2019]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript2_5_3_] : [VARCHAR]) - [S2]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([building2_11_4_] : [INTEGER]) - [150]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([capacity3_11_4_] : [INTEGER]) - [50]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([floor4_11_4_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([room5_11_4_] : [INTEGER]) - [25]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([accessCo2_0_5_] : [VARCHAR]) - [123456]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([bookingL3_0_5_] : [INTEGER]) - [null]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([date4_0_5_] : [DATE]) - [2019-09-25]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([userID6_0_5_] : [INTEGER]) - [3]
+2019-10-22 11:16:10.903 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([time5_0_5_] : [TIME]) - [10:00:00]
+2019-10-22 11:16:10.904 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([UnitID7_0_5_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.904 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([VenueID8_0_5_] : [INTEGER]) - [2]
+2019-10-22 11:16:10.904 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.bookings#3]
+2019-10-22 11:16:10.904 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.classList#3]
+2019-10-22 11:16:10.904 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.studentAnswer#3]
+2019-10-22 11:16:10.904 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.units#3]
+2019-10-22 11:16:10.904 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.userType#3]
+2019-10-22 11:16:10.905 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.Unit.bookings#2]
+2019-10-22 11:16:10.906 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.Semester.Unit#1]
+2019-10-22 11:16:10.906 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.Venue.bookings#2]
+2019-10-22 11:16:10.906 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.Booking.classList#3]
+2019-10-22 11:16:10.908 DEBUG 8096 --- [           main] org.hibernate.SQL                        : 
+    /* load com.regnquiz.model.User */ select
+        user0_.userID as userID1_9_0_,
+        user0_.givenName as givenNam2_9_0_,
+        user0_.lastName as lastName3_9_0_,
+        user0_.preferredName as preferre4_9_0_ 
+    from
+        User user0_ 
+    where
+        user0_.userID=?
+Hibernate: 
+    /* load com.regnquiz.model.User */ select
+        user0_.userID as userID1_9_0_,
+        user0_.givenName as givenNam2_9_0_,
+        user0_.lastName as lastName3_9_0_,
+        user0_.preferredName as preferre4_9_0_ 
+    from
+        User user0_ 
+    where
+        user0_.userID=?
+2019-10-22 11:16:10.908 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [11]
+2019-10-22 11:16:10.909 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([givenNam2_9_0_] : [VARCHAR]) - [matt]
+2019-10-22 11:16:10.910 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([lastName3_9_0_] : [VARCHAR]) - [sjks]
+2019-10-22 11:16:10.910 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([preferre4_9_0_] : [VARCHAR]) - [mac]
+2019-10-22 11:16:10.910 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.bookings#11]
+2019-10-22 11:16:10.910 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.classList#11]
+2019-10-22 11:16:10.910 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.studentAnswer#11]
+2019-10-22 11:16:10.910 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.units#11]
+2019-10-22 11:16:10.910 TRACE 8096 --- [           main] org.hibernate.type.CollectionType        : Created collection wrapper: [com.regnquiz.model.User.userType#11]
+2019-10-22 11:16:10.918 DEBUG 8096 --- [           main] org.hibernate.SQL                        : 
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            
+Hibernate: 
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            
+2019-10-22 11:16:10.919 DEBUG 8096 --- [           main] org.hibernate.SQL                        : 
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?
+Hibernate: 
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?
+2019-10-22 11:16:10.943 DEBUG 8096 --- [           main] org.hibernate.SQL                        : 
+    /* insert com.regnquiz.model.ClassList
+        */ insert 
+        into
+            ClassList
+            (attendance, bookingID, internal, userID, classListID) 
+        values
+            (?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert com.regnquiz.model.ClassList
+        */ insert 
+        into
+            ClassList
+            (attendance, bookingID, internal, userID, classListID) 
+        values
+            (?, ?, ?, ?, ?)
+2019-10-22 11:16:10.943 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BOOLEAN] - [true]
+2019-10-22 11:16:10.944 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [INTEGER] - [3]
+2019-10-22 11:16:10.944 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BOOLEAN] - [true]
+2019-10-22 11:16:10.944 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [INTEGER] - [11]
+2019-10-22 11:16:10.944 TRACE 8096 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [INTEGER] - [367]
+2019-10-22 11:16:10.953  WARN 8096 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2019-10-22 11:16:10.953 ERROR 8096 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry '3-11' for key 'bookingID_UNIQUE'
+2019-10-22 11:16:10.953 ERROR 8096 --- [           main] o.h.i.ExceptionMapperStandardImpl        : HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+]]></system-out>
+  </testcase>
+</testsuite>
