@@ -5,36 +5,16 @@
     <title> QuizNGo</title>
     <link rel = "stylesheet" type="text/css"
           href="/resources/css/regNGo.css">
-<<<<<<< HEAD
-=======
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
->>>>>>> origin/develop
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="/resources/javascript/login.js"></script>
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
 </head>
 <body onload="booking_info();">
-<<<<<<< HEAD
     <header id="bookingPart">
-      <section>
+    <section>
         <th:block th:if= "${booking != null}">
-           <h1>Attendance Code:</h1>
-                <h1 th:text="${booking.attendanceCode}"></h1>
-            <th:block th:if="${finished == null}">
-                <th:block th:if= "${questions == null}">
-                    <a href="javascript: document.startQuestions.submit()" role="button" id="startQuestions">Display Question</a>
-                    <form name="startQuestions" th:action="@{/booking/{id}/question(id=${booking.bookingID})}" method="post" th:hidden="true">
-                        <input hidden type="submit" value="Display Question"/>
-                    </form>
-                </th:block>
-                <th:block th:if= "${questions != null}">
-                    <a href="javascript: document.nextQuestions.submit()" role="button" id="nextQuestions">Next Question</a>
-                    <form name="nextQuestions" th:action="@{/booking/{id}/question/{qid}(id=${booking.bookingID}, qid=${questionid})}" method="post" th:hidden="true">
-                        <input hidden type="submit" value="nextQuestions"/>
-                    </form>
-                </th:block>
-=======
-    <th:block th:if= "${booking != null}">
         <h1 th:text="'Attendance Code: '+${booking.attendanceCode}"></h1>
         <th:block th:if="${finished == null}">
             <th:block th:if= "${questions == null and availableQ == 1}">
@@ -48,7 +28,6 @@
                 <form name="nextQuestions" th:action="@{/booking/{id}/question/{qid}(id=${booking.bookingID}, qid=${questionid})}" method="post" th:hidden="true">
                     <input hidden type="submit" value="nextQuestions"/>
                 </form>
->>>>>>> origin/develop
             </th:block>
         </th:block>
     </section>
@@ -79,7 +58,7 @@
       }, 1000);
     </script>
     <section>
-        <p class="timer" th:if="${timer != null}">Time will end in <span class="js-timeout" id="js-timeout" th:text="${timer}"></span></p><br/>
+        <p class="timer" th:if="${timer != null}">Time will end in <span class="js-timeout" id="js-timeout" th:text="${timer}"></span> seconds</p><br/>
     </section>
     </header>
   

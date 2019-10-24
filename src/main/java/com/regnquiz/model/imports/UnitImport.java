@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.regnquiz.model;
+package com.regnquiz.model.imports;
 
+import com.regnquiz.model.Semester;
+import com.regnquiz.model.Unit;
 import com.regnquiz.model.repositories.UnitRepository;
 import com.regnquiz.model.repositories.UserRepository;
 import java.io.IOException;

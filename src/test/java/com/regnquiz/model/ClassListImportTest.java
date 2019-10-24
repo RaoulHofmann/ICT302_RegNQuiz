@@ -5,6 +5,7 @@
  */
 package com.regnquiz.model;
 
+import com.regnquiz.model.imports.ClassListImport;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

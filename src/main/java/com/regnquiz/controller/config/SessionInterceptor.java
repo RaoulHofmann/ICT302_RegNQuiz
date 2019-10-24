@@ -1,4 +1,4 @@
-package com.regnquiz.controller;
+package com.regnquiz.controller.config;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

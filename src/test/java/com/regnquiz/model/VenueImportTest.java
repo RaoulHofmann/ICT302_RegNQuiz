@@ -5,6 +5,7 @@
  */
 package com.regnquiz.model;
 
+import com.regnquiz.model.imports.VenueImport;
 import com.regnquiz.model.repositories.VenueRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

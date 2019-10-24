@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.regnquiz.model;
+package com.regnquiz.model.imports;
 
+import com.regnquiz.model.User;
 import com.regnquiz.model.repositories.UserRepository;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;

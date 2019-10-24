@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.regnquiz.model;
+package com.regnquiz.model.imports;
 
+import com.regnquiz.model.ClassList;
 import com.regnquiz.model.repositories.BookingRepository;
 import com.regnquiz.model.repositories.ClassListRepository;
 import com.regnquiz.model.repositories.UserRepository;

@@ -46,7 +46,7 @@ public class Venue {
         bookings = new HashSet<>();
     }
     
-    Venue(String location, int capacity)
+    public Venue(String location, int capacity)
     {
         int locSplit[] = locToInt(location) ;
         this.building = locSplit[0];

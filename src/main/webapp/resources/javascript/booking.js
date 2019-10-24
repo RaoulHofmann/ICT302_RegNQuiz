@@ -35,17 +35,4 @@ function booking_info(){
     });
 }
 
-function booking_status(id){
-    $.ajax({
-        type: "POST",
-        url : '/booking/status',
-        data: { bookingID: id },
-        success : function(data) {
-            if(data == 0){
-                $("#booking_status_"+id).html("Inactive");
-            }else if(data == 1){
-                $("#booking_status_"+id).html("Active");
-            }
-        }
-    });
-}
+

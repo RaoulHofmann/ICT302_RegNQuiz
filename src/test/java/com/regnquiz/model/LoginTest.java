@@ -5,6 +5,8 @@
  */
 package com.regnquiz.model;
 
+import com.regnquiz.model.forms.Login;
+
 /**
  *
  * @author Matthew MacLennan

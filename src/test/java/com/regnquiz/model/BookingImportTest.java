@@ -5,6 +5,7 @@
  */
 package com.regnquiz.model;
 
+import com.regnquiz.model.imports.BookingImport;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;

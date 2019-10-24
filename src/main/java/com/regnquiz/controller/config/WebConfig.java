@@ -1,4 +1,4 @@
-package com.regnquiz.controller;
+package com.regnquiz.controller.config;
 
 import com.regnquiz.model.LectureRun;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/").setViewName("login");
         //registry.addViewController("/login").setViewName("login");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }

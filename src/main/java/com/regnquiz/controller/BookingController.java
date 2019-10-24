@@ -1,6 +1,10 @@
 package com.regnquiz.controller;
 
 import com.regnquiz.model.*;
+import com.regnquiz.model.forms.AccessCode;
+import com.regnquiz.model.forms.Answer;
+import com.regnquiz.model.forms.QuestionAdd;
+import com.regnquiz.model.imports.BookingImport;
 import com.regnquiz.model.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,11 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +55,8 @@ public class BookingController {
 
     @GetMapping(path = "/")
     public String booking(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        model.addAttribute("bookings", bookingRepository.findByLecture_userID((Integer)session.getAttribute("userID")));
         return "bookingOverview";
     }
 
@@ -188,7 +196,7 @@ public class BookingController {
         return new ModelAndView("booking::studentAnswer");
     }
 
-    @GetMapping(path = "/addquestion")
+    @GetMapping(path = "/question/new")
     public String addQuestion(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         model.addAttribute("semesters", semesterRepository.findAll());
@@ -196,31 +204,26 @@ public class BookingController {
         return "bookingQuestion";
     }
 
-    @PostMapping(path = "/addquestion/getyear")
-    public ModelAndView getYear(@RequestParam int semesterID, Model model, HttpServletRequest request) {
+    @PostMapping(path = "/question/getunit")
+    public ModelAndView getUnit(@RequestParam int year, @RequestParam int semesterID,Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        model.addAttribute("semesters", semesterRepository.findAll());
-        model.addAttribute("years",unitRepository.findByLectureAndSemester_SemesterID(userRepository.findById((Integer)session.getAttribute("userID")).get(), semesterID));
-        return new ModelAndView("bookingQuestion::yearSelect");
-    }
-
-    @PostMapping(path = "/addquestion/getunit")
-    public ModelAndView getUnit(@RequestParam int year, Model model, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        model.addAttribute("units", unitRepository.findByLectureAndYear(userRepository.findById((Integer)session.getAttribute("userID")).get(), year));
+        model.addAttribute("units", unitRepository.findByLectureAndYearAndSemester_SemesterID(userRepository.findById((Integer)session.getAttribute("userID")).get(), year, semesterID));
         return new ModelAndView("bookingQuestion::unitSelect");
     }
 
-    @PostMapping(path = "/addquestion/getbooking")
+    @PostMapping(path = "/question/getbooking")
     public ModelAndView getBooking(@RequestParam int unitID, Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         model.addAttribute("bookings", bookingRepository.findByUnit_unitID(unitID));
         return new ModelAndView("bookingQuestion::bookingSelect");
     }
 
-    @PostMapping(path = "/savequestion")
-    public @ResponseBody String saveQuestion(@ModelAttribute("questionAdd") QuestionAdd questionAdd, BindingResult result, ModelMap model, HttpServletRequest request){
-        System.out.println(questionAdd.getQuestionTopic());
+    @PostMapping(path = "/question/add")
+    public String saveQuestion(@RequestParam("file") MultipartFile fileChooser, @PathVariable("id") int id, @ModelAttribute("questionAdd") QuestionAdd questionAdd, Model model, HttpServletRequest request) throws IOException {
+        BookingImport bookingImport = new BookingImport();
+        bookingImport.ImportBooking(fileChooser);
+        model.addAttribute("user", userRepository.findById(id).get());
+
         return "error";
     }
 

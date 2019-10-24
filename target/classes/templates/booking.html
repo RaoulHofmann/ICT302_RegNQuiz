@@ -5,13 +5,16 @@
     <title> QuizNGo</title>
     <link rel = "stylesheet" type="text/css"
           href="/resources/css/regNGo.css">
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="/resources/javascript/login.js"></script>
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
 </head>
 <body onload="booking_info();">
-    <th:block th:if= "${booking != null}">
+    <header id="bookingPart">
+    <section>
+        <th:block th:if= "${booking != null}">
         <h1 th:text="'Attendance Code: '+${booking.attendanceCode}"></h1>
         <th:block th:if="${finished == null}">
             <th:block th:if= "${questions == null and availableQ == 1}">
@@ -27,7 +30,7 @@
                 </form>
             </th:block>
         </th:block>
-    </th:block>
+    </section>
     <script th:inline="javascript" th:if="${timer != null}">
         var x = setInterval( function()
        {
@@ -54,9 +57,12 @@
           }
       }, 1000);
     </script>
-
+    <section>
+        <p class="timer" th:if="${timer != null}">Time will end in <span class="js-timeout" id="js-timeout" th:text="${timer}"></span> seconds</p><br/>
+    </section>
+    </header>
+  
     <div id="questions" th:if= "${questions != null}">
-        <p class="timer" th:if="${timer != null}">Time will end in <span class="js-timeout" id="js-timeout" th:text="${timer}"></span></p><br/>
         <span th:text="${questions.description}"></span>
         <table>
             <th:block th:each="multipleChoice : ${multipleChoices}">

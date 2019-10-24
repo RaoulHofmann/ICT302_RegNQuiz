@@ -1,4 +1,4 @@
-package com.regnquiz.model;
+package com.regnquiz.model.forms;
 
 public class Answer {
     private int answerID;

@@ -1,4 +1,4 @@
-package com.regnquiz.model;
+package com.regnquiz.model.forms;
 
 public class AccessCode {
     private String accessCode;

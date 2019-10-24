@@ -2,11 +2,11 @@
 package com.regnquiz.controller;
 
 import com.regnquiz.model.*;
+import com.regnquiz.model.forms.Login;
+import com.regnquiz.model.imports.BookingImport;
 import com.regnquiz.model.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.InvalidDataAccessResourceUsageException;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -14,14 +14,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.*;
 import javax.validation.Valid;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 @Controller
@@ -168,12 +164,6 @@ public class MainController {
         return new ModelAndView("/login");
     }
 
-    @PostMapping(path = "/getbooking")
-    public @ResponseBody List<Booking> getbooking(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        return bookingRepository.findByLecture_userID((Integer)session.getAttribute("userID"));
-    }
-
     @GetMapping(path = "/staff/{id}")
     public String goToStaffIndex(@PathVariable("id") int id, Model model, HttpServletRequest request) {
         try {
@@ -207,7 +197,7 @@ public class MainController {
         try {
             if (request.getSession() != null && (Integer) request.getSession().getAttribute("userID") == id) {
                 model.addAttribute("user", userRepository.findById(id).get());
-                return "admin";
+                return "admin_index";
             } else {
                 return "redirect:/";
             }

@@ -5,6 +5,7 @@
  */
 package com.regnquiz.model;
 
+import com.regnquiz.model.imports.StudentImport;
 import com.regnquiz.model.repositories.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

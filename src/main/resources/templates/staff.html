@@ -16,9 +16,9 @@
     </header>
     <br/>
 
-    <input type ="submit"  value="Report" onclick="location.href='/report/lecture'"/>  <br/> <br/>
-    <input type ="submit"  value="Add Questions" onclick="location.href='/booking/addquestion'"/>  <br/> <br/>
-    <input type ="submit"  value="Booking" onclick="location.href='/booking/'"/>   <br/><br/>
+    <input type ="submit"  value="Report" onclick="location.href='/report/lecture'"/>  <br/>
+    <input type ="submit"  value="Add Questions" onclick="location.href='/booking/question/new'"/>  <br/>
+    <input type ="submit"  value="Booking" onclick="location.href='/booking/'"/>   <br/> <br/> <br/>
     <a href="javascript: document.logoutForm.submit()" role="button" id="logoutButton"> Logout</a>
     <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
         <input hidden type="submit" value="Sign Out"/>
