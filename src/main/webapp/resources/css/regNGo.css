@@ -105,7 +105,6 @@ table {
 
 table, th, td {
   border: 1px solid black;
-<<<<<<< HEAD
   background-color: #cfcfae;
   width: 70%;
 }
@@ -131,15 +130,9 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     cursor: pointer;
     margin-top: 2%;
 }
-#bookingPart {
-    
-}
 
 #bookingPart section{
     float: right;
     width: 50%;
     text-align: right;
 }
-=======
-}
->>>>>>> origin/develop

@@ -1,16 +1,32 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 6.882 s <<< FAILURE! - in TestSuite
-TestBooking on TestBooking(com.regnquiz.model.BookingRepositoryTest)(com.regnquiz.model.BookingRepositoryTest)  Time elapsed: 0.07 s  <<< FAILURE!
-org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
-	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
-Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
-	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
-	at com.regnquiz.model.BookingRepositoryTest.TestBooking(BookingRepositoryTest.java:52)
+Tests run: 21, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 7.753 s <<< FAILURE! - in TestSuite
+testUserType on testUserType(com.regnquiz.model.UserTypeRepositoryTest)(com.regnquiz.model.UserTypeRepositoryTest)  Time elapsed: 0.085 s  <<< FAILURE!
+java.util.NoSuchElementException: No value present
+	at com.regnquiz.model.UserTypeRepositoryTest.testUserType(UserTypeRepositoryTest.java:37)
 
-TestVenue on TestVenue(com.regnquiz.model.VenueRepositoryTest)(com.regnquiz.model.VenueRepositoryTest)  Time elapsed: 0.029 s  <<< FAILURE!
+testStudentAnswer on testStudentAnswer(com.regnquiz.model.StudentAnswerRepoTest)(com.regnquiz.model.StudentAnswerRepoTest)  Time elapsed: 0.007 s  <<< FAILURE!
+java.util.NoSuchElementException: No value present
+	at com.regnquiz.model.StudentAnswerRepoTest.testStudentAnswer(StudentAnswerRepoTest.java:39)
+
+testUnit on testUnit(com.regnquiz.model.UnitRepositoryTest)(com.regnquiz.model.UnitRepositoryTest)  Time elapsed: 0.011 s  <<< FAILURE!
+java.util.NoSuchElementException: No value present
+	at com.regnquiz.model.UnitRepositoryTest.testUnit(UnitRepositoryTest.java:36)
+
+testMC on testMC(com.regnquiz.model.MultipleChoiceRepoTest)(com.regnquiz.model.MultipleChoiceRepoTest)  Time elapsed: 0.033 s  <<< FAILURE!
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at com.regnquiz.model.MultipleChoiceRepoTest.testMC(MultipleChoiceRepoTest.java:41)
+
+TestClassReturn on TestClassReturn(com.regnquiz.model.ClassListRepositoryTest)(com.regnquiz.model.ClassListRepositoryTest)  Time elapsed: 0.006 s  <<< FAILURE!
+java.util.NoSuchElementException: No value present
+	at com.regnquiz.model.ClassListRepositoryTest.TestClassReturn(ClassListRepositoryTest.java:37)
+
+InsertData on InsertData(com.regnquiz.model.UserRepositoryTest)(com.regnquiz.model.UserRepositoryTest)  Time elapsed: 0.121 s  <<< FAILURE!
+java.util.NoSuchElementException: No value present
+	at com.regnquiz.model.UserRepositoryTest.InsertData(UserRepositoryTest.java:135)
+
+TestVenue on TestVenue(com.regnquiz.model.VenueRepositoryTest)(com.regnquiz.model.VenueRepositoryTest)  Time elapsed: 0.041 s  <<< FAILURE!
 org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
 	at com.regnquiz.model.VenueRepositoryTest.saveData(VenueRepositoryTest.java:71)
 	at com.regnquiz.model.VenueRepositoryTest.TestVenue(VenueRepositoryTest.java:42)
