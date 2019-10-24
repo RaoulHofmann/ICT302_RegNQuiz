@@ -8,6 +8,8 @@ package com.regnquiz.model.repositories;
 import com.regnquiz.model.MultipleChoice;
 import com.regnquiz.model.Question;
 import java.util.List;
+
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -25,4 +27,8 @@ public interface MultipleChoiceRepository extends CrudRepository<MultipleChoice,
     //Set<MultipleChoice> getMC(@Param("description") String description, @Param("question") Question question);
     List<MultipleChoice>findByQuestion_QuestionID(Integer questionID);
     MultipleChoice findByAnswerID(Integer answerID);
+
+    @Modifying
+    @Query(value= "INSERT INTO MultipleChoice (questionID, description) VALUES (:questionID, :description)",nativeQuery = true)
+    int insertMC(@Param("description") String description, @Param("questionID") int questionID);
 }

@@ -1,10 +1,8 @@
 package com.regnquiz.controller;
 
 import com.regnquiz.model.*;
-import com.regnquiz.model.forms.AccessCode;
-import com.regnquiz.model.forms.Answer;
-import com.regnquiz.model.forms.QuestionAdd;
-import com.regnquiz.model.imports.BookingImport;
+import com.regnquiz.model.forms.*;
+import com.regnquiz.model.imports.QuestionImport;
 import com.regnquiz.model.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,6 +51,12 @@ public class BookingController {
         this.runningBookings = running;
     }
 
+    private List<Integer> closedBookings;
+    @Autowired
+    public void setClosedBookings(List<Integer> closed) {
+        this.closedBookings = closed;
+    }
+
     @GetMapping(path = "/")
     public String booking(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -76,27 +80,44 @@ public class BookingController {
         try{
             return bookings.get(bookingID).isActive();
         }catch (NullPointerException e){
-            return 0;
+            if(closedBookings.contains(bookingID)){
+                return -1;
+            }else{
+                return 0;
+            }
         }
     }
 
     @GetMapping(path = "/{id}")
     public String startBooking(@PathVariable("id") int id, Model model, HttpServletRequest request) {
-        lectureRun.OpenLecture(id);
-        bookings.put(id, lectureRun);
-        runningBookings.put(lectureRun.getAccessCode(), id);
-        if(bookings.get(id).getQuizFinished()){
-            model.addAttribute("finished", 1);
-        }else{
-            if(bookings.get(id).getBookingQuestions().size() > 0){
-                model.addAttribute("availableQ", 1);
-            }else{
-                model.addAttribute("availableQ", 0);
+        if(!closedBookings.contains(id)) {
+            lectureRun.OpenLecture(id);
+            bookings.put(id, lectureRun);
+            runningBookings.put(lectureRun.getAccessCode(), id);
+            if (bookings.get(id).getQuizFinished()) {
+                model.addAttribute("finished", 1);
+            } else {
+                if (bookings.get(id).getBookingQuestions().size() > 0) {
+                    model.addAttribute("availableQ", 1);
+                } else {
+                    model.addAttribute("availableQ", 0);
+                }
+                model.addAttribute("booking", bookings.get(id).getBooking());
             }
-            model.addAttribute("booking", bookings.get(id).getBooking());
+        }else{
+            model.addAttribute("closed", 1);
         }
         return "booking";
     }
+
+    @GetMapping(path = "/{id}/close")
+    public String closeBooking(@PathVariable("id") int id, Model model, HttpServletRequest request){
+        bookings.remove(id);
+        closedBookings.add(id);
+
+        return "redirect:/booking/";
+    }
+
 
     @PostMapping(path = "/{id}/question")
     public String startQuestions(@PathVariable("id") int id, Model model, HttpServletRequest request){
@@ -112,19 +133,22 @@ public class BookingController {
 
     @PostMapping(path = "/{id}/question/{qid}")
     public String nextQuestions(@PathVariable("id") int id, @PathVariable("qid") int qid, Model model, HttpServletRequest request){
-        LectureRun lectureRun = bookings.get(id);
-        if(lectureRun.getActiveQuestion() < lectureRun.getBookingQuestions().size()-1) {
-            lectureRun.nextQuestion();
-            model.addAttribute("booking", lectureRun.getBooking());
-            model.addAttribute("questions", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion());
-            model.addAttribute("multipleChoices", lectureRun.getMultipleChoice());
-            model.addAttribute("questionid", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion().getQID());
-            model.addAttribute("timer", lectureRun.getQuestionTimer());
+        if(!closedBookings.contains(id)) {
+            LectureRun lectureRun = bookings.get(id);
+            if (lectureRun.getActiveQuestion() < lectureRun.getBookingQuestions().size() - 1) {
+                lectureRun.nextQuestion();
+                model.addAttribute("booking", lectureRun.getBooking());
+                model.addAttribute("questions", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion());
+                model.addAttribute("multipleChoices", lectureRun.getMultipleChoice());
+                model.addAttribute("questionid", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion().getQID());
+                model.addAttribute("timer", lectureRun.getQuestionTimer());
+            } else {
+                //lectureRun.saveLecture();
+                model.addAttribute("booking_id", id);
+                model.addAttribute("finished", 1);
+            }
         }else{
-            //lectureRun.saveLecture();
-            System.out.println("FINISHED!! "+id);
-            model.addAttribute("booking_id", id);
-            model.addAttribute("finished", 1);
+            model.addAttribute("closed", 1);
         }
         return "booking";
     }
@@ -200,7 +224,8 @@ public class BookingController {
     public String addQuestion(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         model.addAttribute("semesters", semesterRepository.findAll());
-        model.addAttribute("questionAdd", new QuestionAdd());
+        QuestionAdd questionAdd = new QuestionAdd();
+        model.addAttribute("questionAdd", questionAdd);
         return "bookingQuestion";
     }
 
@@ -208,6 +233,8 @@ public class BookingController {
     public ModelAndView getUnit(@RequestParam int year, @RequestParam int semesterID,Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         model.addAttribute("units", unitRepository.findByLectureAndYearAndSemester_SemesterID(userRepository.findById((Integer)session.getAttribute("userID")).get(), year, semesterID));
+        QuestionAdd questionAdd = new QuestionAdd();
+        model.addAttribute("questionAdd", questionAdd);
         return new ModelAndView("bookingQuestion::unitSelect");
     }
 
@@ -215,15 +242,15 @@ public class BookingController {
     public ModelAndView getBooking(@RequestParam int unitID, Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         model.addAttribute("bookings", bookingRepository.findByUnit_unitID(unitID));
+        QuestionAdd questionAdd = new QuestionAdd();
+        model.addAttribute("questionAdd", questionAdd);
         return new ModelAndView("bookingQuestion::bookingSelect");
     }
 
     @PostMapping(path = "/question/add")
-    public String saveQuestion(@RequestParam("file") MultipartFile fileChooser, @PathVariable("id") int id, @ModelAttribute("questionAdd") QuestionAdd questionAdd, Model model, HttpServletRequest request) throws IOException {
-        BookingImport bookingImport = new BookingImport();
-        bookingImport.ImportBooking(fileChooser);
-        model.addAttribute("user", userRepository.findById(id).get());
-
+    public String saveQuestion(@RequestParam("file") MultipartFile fileChooser, @ModelAttribute("questionAdd") QuestionAdd questionAdd, BindingResult bindingResult, Model model, HttpServletRequest request) throws IOException {
+        QuestionImport questionImport = new QuestionImport();
+        questionImport.ImportQuestion(fileChooser, questionAdd.getBookingID());
         return "error";
     }
 

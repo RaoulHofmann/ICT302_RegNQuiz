@@ -1,5 +1,7 @@
 package com.regnquiz.model.forms;
 
+import com.regnquiz.model.Question;
+
 public class QuestionAdd {
     private int bookingID;
     private int year;
@@ -11,6 +13,13 @@ public class QuestionAdd {
     }
     public void setBookingID(int bookingID) {
         this.bookingID = bookingID;
+    }
+
+    public QuestionAdd(){
+        this.bookingID = 0;
+        this.year = 0;
+        this.semesterID = 0;
+        this.unitID = 0;
     }
 
     public int getYear() {

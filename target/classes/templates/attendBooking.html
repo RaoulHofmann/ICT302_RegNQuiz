@@ -17,9 +17,7 @@
                 <th>Attendance Code</th>
                 <th>Date</th>
                 <th>Time</th>
-                <th>Building</th>
-                <th>Floor</th>
-                <th>Room</th>
+                <th>Venue</th>
             </tr>
             </thead>
             <tbody>
@@ -27,9 +25,7 @@
                 <td th:text="${booking.attendanceCode}"></td>
                 <td th:text="${booking.date}"></td>
                 <td th:text="${booking.time}"></td>
-                <td th:text="${booking.venue.building}"></td>
-                <td th:text="${booking.venue.floor}"></td>
-                <td th:text="${booking.venue.room}"></td>
+                <td th:text="${booking.venue.building}+'.'+${booking.venue.floor}+'.'+${booking.venue.room}"></td>
             </tr>
             </tbody>
         </table>
@@ -82,6 +78,7 @@
     </div>
     <span id="quizfinished" th:fragment="finishedQuiz"><h3 th:text="${finished}"></h3></span>
     <span id="waiting" th:fragment="waitingForChange"></span>
- </body>
+    <input type="button"  onclick="location.href='/'" value="Back" >
+  </body>
 </html>
 

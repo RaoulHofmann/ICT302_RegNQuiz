@@ -197,7 +197,7 @@ public class MainController {
         try {
             if (request.getSession() != null && (Integer) request.getSession().getAttribute("userID") == id) {
                 model.addAttribute("user", userRepository.findById(id).get());
-                return "admin_index";
+                return "admin";
             } else {
                 return "redirect:/";
             }

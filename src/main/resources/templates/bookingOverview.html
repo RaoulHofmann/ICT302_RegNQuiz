@@ -35,6 +35,8 @@
                                     $("#booking_status_"+/*[[${booking.bookingID}]]*/).html("Inactive");
                                 }else if(data == 1){
                                     $("#booking_status_"+/*[[${booking.bookingID}]]*/).html("Active");
+                                }else if(data == -1){
+                                    $("#booking_status_"+/*[[${booking.bookingID}]]*/).html("Closed");
                                 }
                             }
                         });

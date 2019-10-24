@@ -10,14 +10,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form maction="#" th:action="@{/booking/savequestion}" th:object="${questionAdd}" method="post" >
+<form maction="#" th:action="@{/booking/question/add}" th:object="${questionAdd}" method="post" enctype="multipart/form-data">
     <div id = "questionSelectCondition" >
-        <div id="year">
-                <label>Year:
-                    <select id="yearList" th:field="*{year}"></select>
-                </label><br />
-        </div>
-
+        <label>Year:
+            <select id="yearList" th:field="*{year}"></select>
+        </label><br />
         <script th:inline="javascript">
             var min = new Date().getFullYear()-3,
             max = min + 6,
@@ -46,7 +43,7 @@
                 });
             }
         </script>
-        <label>Semester</label>
+        <label>Semester: </label>
             <select id="semesterList" onchange="getUnit();" th:field="*{semesterID}">
                 <option th:value="-1" value="">select semester</option>
                 <option th:each="semester : ${semesters}" th:value="${semester.semesterID}" th:text="${semester.description}" value=""></option>
@@ -65,25 +62,21 @@
                 });
             }
         </script>
-        <div id="unit" th:fragment="unitSelect">
-            <th:block th:if="${units != null}">
-                <label>Unit  Name:
-                    <select id="unitList" onchange="getBooking();" th:field="*{unitID}">
-                        <option th:value="-1" value="">select unit name</option>
-                        <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitCode}+' '+${unit.unitName}" value=""></option>
-                    </select>
-                </label><br />
-            </th:block>
+        <div id="unit" th:fragment="unitSelect(questionAdd)">
+            <label>Unit  Name:
+                <select id="unitList" onchange="getBooking();" th:field="${questionAdd.unitID}">
+                    <option th:value="-1" value="">select unit name</option>
+                    <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitCode}+' '+${unit.unitName}" value=""></option>
+                </select>
+            </label><br />
         </div>
 
-        <div id="booking" th:fragment="bookingSelect">
-            <th:block th:if="${bookings != null}">
-                <label>Please select booking information:location, date and start time: <br/>
-                    <select id="bookingList" size=4 th:field="*{bookingID}">
-                        <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="'Room: '+${booking.venue.building} + '.' + ${booking.venue.floor} + '.' + ${booking.venue.room} + ' - Time: ' + ${booking.date} + ' ' + ${booking.time}" value=""></option>
-                    </select>
-                </label><br />
-            </th:block>
+        <div id="booking" th:fragment="bookingSelect(questionAdd)">
+            <label>Please select booking information:location, date and start time: <br/>
+                <select id="bookingList" size=4 th:field="${questionAdd.bookingID}">
+                    <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="'Room: '+${booking.venue.building} + '.' + ${booking.venue.floor} + '.' + ${booking.venue.room} + ' - Time: ' + ${booking.date} + ' ' + ${booking.time}" value=""></option>
+                </select>
+            </label><br />
         </div>
     </div>
         <br>
@@ -91,10 +84,10 @@
         <br>
         <br>
         <label for="fileChooser">File to upload: </label>
-        <input id="fileChooser" type="file" name="file" accept=".csv" />
+        <input id="fileChooser" type="file" name="file" accept=".xlsx" />
         <br>
 
-        <input type ="submit" value="Add" onclick="location.href='/booking/question/add'"/>
+        <input type ="submit" value="Add"/>
 
         <!--<input type ="submit" value="Save" onclick="saveQuestion()"/>-->
 

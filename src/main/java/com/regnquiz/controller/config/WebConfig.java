@@ -3,12 +3,18 @@ package com.regnquiz.controller.config;
 import com.regnquiz.model.LectureRun;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.*;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Configuration
 @Component
@@ -30,17 +36,20 @@ public class WebConfig implements WebMvcConfigurer {
         return runningBookings;
     }
 
+    @Bean
+    public List<Integer> closedBookings(){
+        List<Integer>  closedBookings = new ArrayList<>();
+        return closedBookings;
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(sessionInterceptor);
     }
 
-
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("login");
-        //registry.addViewController("/login").setViewName("login");
-        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
     @Override

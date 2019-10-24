@@ -31,6 +31,7 @@
             </th:block>
         </th:block>
     </section>
+    <h2 th:if="${closed != null}">Booking Closed, check reports for details on attendance and quizes</h2>
     <script th:inline="javascript" th:if="${timer != null}">
         var x = setInterval( function()
        {
@@ -227,6 +228,7 @@
     <div id="answerCounter" th:fragment="studentAnswer">
     </div>
     <input type="button"  onclick="location.href='/booking/'" value="Back" >
+    <input type="button"  th:onclick="'location.href=\'/booking/' + ${booking_id} + '/close\''" value="Close Booking" >
 </body>
 </html>
 
