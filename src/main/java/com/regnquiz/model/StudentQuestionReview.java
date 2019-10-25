@@ -8,6 +8,8 @@ package com.regnquiz.model;
 import com.regnquiz.model.repositories.QuestionReviewRepository;
 import java.util.List;
 import javax.transaction.Transactional;
+
+import com.regnquiz.model.repositories.StudentAnswerReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,22 +22,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentQuestionReview {
     @Autowired
-    private QuestionReviewRepository qrRepo;
+    private StudentAnswerReviewRepository qrRepo;
     
     @Transactional
-    public Iterable<QuestionReview> getQuestions()
+    public Iterable<StudentAnswerReview> getQuestions()
     {
         return qrRepo.findAll();
     }
     
     @Transactional
-    public List<QuestionReview> getQuestions(int userID)
+    public List<StudentAnswerReview> getQuestions(int userID)
     {
         return qrRepo.findByUserID(userID);
     }
     
     @Transactional
-    public List<QuestionReview> getQuestions(int userID, int unitID)
+    public List<StudentAnswerReview> getQuestions(int userID, int unitID)
     {
         return qrRepo.findByUserIDAndUnitID(userID, unitID);
     }

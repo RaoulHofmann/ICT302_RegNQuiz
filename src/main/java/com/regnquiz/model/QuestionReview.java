@@ -1,102 +1,69 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.regnquiz.model;
 
 import org.hibernate.annotations.Immutable;
 
-import java.sql.Time;
-import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Id;
 
-/**
- * Author: Stuart Hepburn
- * Date: 12/10/2019
- * Version: 1
- * Comment: Retrieves the data from the questions
- */
-@Entity 
+@Entity
 @Immutable
-@Table(name="vstudentanswers")
+@Table(name="vquestionreview")
 public class QuestionReview {
-    @Id    
-    private int correctAnswerID;
-    
-    private int userID;
-    
+    @Id
     private int unitID;
-    private String unitCode;
-    private String unitName;
-    private Date bookingDate;
-    private Time bookingTime;
+
+    private int bookingID;
+    private int questionID;
     private String question;
-    private String correctAnswer;
-    
-    private int studentAnswer;
-    private String answered;
-    
-    public QuestionReview()
-    {
-        
-    }
-    
-    public int getUserID()
-    {
-        return userID;
-    }
-    
-    public int getUnitID()
-    {
+    private String answer;
+    private int count;
+
+    public int getUnitID() {
         return unitID;
     }
-    
-    public int getCorrectAnswerID()
-    {
-        return this.correctAnswerID;
+
+    public int getBookingID() {
+        return bookingID;
     }
-    
-    public int getStudentAnswer()
-    {
-        return this.studentAnswer;
+
+    public int getCount() {
+        return count;
     }
-    
-    public String getUnitCode()
-    {
-        return unitCode;
+
+    public int getQuestionID() {
+        return questionID;
     }
-    
-    public String getUnitName()
-    {
-        return unitName;
+
+    public String getAnswer() {
+        return answer;
     }
-    
-    public Date getBookingDate()
-    {
-        return bookingDate;
-    }
-    
-    public Time getBookingTime()
-    {
-        return bookingTime;
-    }
-    
-    public String getQuestion()
-    {
+
+    public String getQuestion() {
         return question;
     }
-    
-    public String getAnswer()
-    {
-        return correctAnswer;
+
+    public void setUnitID(int unitID) {
+        this.unitID = unitID;
     }
-    
-    public String getStudentResult()
-    {
-        return answered;
+
+    public void setBookingID(int bookingID) {
+        this.bookingID = bookingID;
+    }
+
+    public void setQuestionID(int questionID) {
+        this.questionID = questionID;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }

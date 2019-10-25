@@ -11,29 +11,40 @@
   </head>
   <body>      
     <script th:inline="javascript">
-        function getAttendanceReview() {
+        function getReports() {
             $.ajax({
                 type: "POST",
-                url : '/report/getattendance',
+                url : '/report/getunitreport',
                 data: { unitID: $("#unitSelect option:selected").val() },
                 success: function (data) {
-                    $('#attendanceReview').html(data);
+                    $('#reports').html(data);
                 }
             });
         }
     </script>
     <label>Unit Name:
-    <select id="unitSelect" onchange="getAttendanceReview();">
+    <select id="unitSelect" onchange="getReports();">
         <option value="" >Select A Unit</option>
         <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitCode}+' '+${unit.unitName}+' '+${unit.semester.description}+' '+${unit.year}" value=""></option>
     </select></label><br/>
     <br/>
-      <div id="attendanceReview" th:fragment="attendanceList">
-          <ul>
-              <li th:each="attendanceReview : ${attendanceReviews}" >
-                  <a th:text="${attendanceReview.date}" th:href="@{/report/csv/attendance/{unitID}(unitID=${attendanceReview.unitID})}"></a>
-              </li>
-          </ul>
+      <div id="reports" th:fragment="reportTable">
+          <table>
+              <thead>
+                <tr>
+                    <th>AttendanceReview</th>
+                    <th>QuestionReview</th>
+                </tr>
+              </thead>
+          <tbody>
+              <tr th:each="attendanceReview : ${attendanceReviews}" >
+                  <td th:text="${attendanceReview.date}" th:href="@{/report/csv/attendance/{unitID}(unitID=${attendanceReview.unitID})}"></td>
+              </tr>
+          <tr th:each="questionReview : ${questionReviews}">
+              <td th:text="${questionReview}"
+          </tr>
+          </tbody>
+          </table>
       </div>
       <div th:if="${empty != null}">
         No Attendance Reviews

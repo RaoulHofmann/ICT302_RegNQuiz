@@ -57,14 +57,15 @@ public class ReportController {
         return "lectureReport";
     }
 
-    @PostMapping(path = "/getattendance")
+    @PostMapping(path = "/getunitreport")
     public ModelAndView getAttendance(@RequestParam int unitID, Model model, HttpServletRequest request) {
         try {
-            model.addAttribute("attendanceReviews", attendanceReviewRepository.findById(unitID).get());
+            model.addAttribute("attendanceReviews", attendanceReviewRepository.findAllByUnitID(unitID));
+            model.addAttribute("questionReviews", questionReviewRepository.findAllByUnitID(unitID));
         }catch (NoSuchElementException e){
             model.addAttribute("empty", 1);
         }
-        return new ModelAndView("lectureReport::attendanceList");
+        return new ModelAndView("lectureReport::reportTable");
     }
 
     @GetMapping(path = "/csv/attendance/{unitID}", produces = { "text/csv" })

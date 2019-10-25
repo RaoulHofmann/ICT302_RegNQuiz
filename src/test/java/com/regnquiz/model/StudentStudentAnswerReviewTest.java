@@ -5,7 +5,6 @@
  */
 package com.regnquiz.model;
 
-import com.regnquiz.model.repositories.QuestionReviewRepository;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class StudentQuestionReviewTest {
+public class StudentStudentAnswerReviewTest {
     @Autowired
     private StudentQuestionReview sr;
     
@@ -32,34 +31,34 @@ public class StudentQuestionReviewTest {
         System.out.println("#############################");
         System.out.println("#############################");
         System.out.println("#############################");
-        Iterable<QuestionReview> qi = sr.getQuestions();
-        for(QuestionReview q: qi)
+        Iterable<StudentAnswerReview> qi = sr.getQuestions();
+        for(StudentAnswerReview q: qi)
             display(q);
         
         System.out.println("#############################");
         System.out.println("#############################");
         System.out.println("#############################");
-        List<QuestionReview> qi2 = sr.getQuestions(6);
-        for(QuestionReview q: qi2)
+        List<StudentAnswerReview> qi2 = sr.getQuestions(6);
+        for(StudentAnswerReview q: qi2)
             display(q);
         
         System.out.println("#############################");
         System.out.println("#############################");
         System.out.println("#############################");
-        List<QuestionReview> qi3 = sr.getQuestions(6, 1);
-        for(QuestionReview q: qi3)
+        List<StudentAnswerReview> qi3 = sr.getQuestions(6, 1);
+        for(StudentAnswerReview q: qi3)
             display(q);
         
         System.out.println("#############################");
         System.out.println("#############################");
         System.out.println("#############################");
-        List<QuestionReview> qi4 = sr.getQuestions(6, 2);
-        for(QuestionReview q: qi4)
+        List<StudentAnswerReview> qi4 = sr.getQuestions(6, 2);
+        for(StudentAnswerReview q: qi4)
             display(q);
         
     }
     
-    public void display(QuestionReview q)
+    public void display(StudentAnswerReview q)
     {
         System.out.println("UserID: " + q.getUserID());
         System.out.println("Unit ID: " + q.getUnitID());
