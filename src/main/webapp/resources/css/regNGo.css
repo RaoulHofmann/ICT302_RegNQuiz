@@ -136,3 +136,7 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     width: 50%;
     text-align: right;
 }
+
+ul{
+    list-style-type: square;
+}

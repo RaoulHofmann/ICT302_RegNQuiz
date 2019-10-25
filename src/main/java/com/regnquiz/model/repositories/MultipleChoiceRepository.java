@@ -13,6 +13,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Set;
 
 /**
@@ -27,6 +29,7 @@ public interface MultipleChoiceRepository extends CrudRepository<MultipleChoice,
     //Set<MultipleChoice> getMC(@Param("description") String description, @Param("question") Question question);
     List<MultipleChoice>findByQuestion_QuestionID(Integer questionID);
     MultipleChoice findByAnswerID(Integer answerID);
+    MultipleChoice findByQuestion_QuestionIDAndDescription(Integer questionID, String description);
 
     @Modifying
     @Query(value= "INSERT INTO MultipleChoice (questionID, description) VALUES (:questionID, :description)",nativeQuery = true)

@@ -31,4 +31,8 @@ public interface QuestionRepository extends CrudRepository<Question, Integer>
     @Modifying
     @Query(value= "INSERT INTO Question (answerID) VALUES (:answerID)",nativeQuery = true)
     int insertQuestionAnswer(@Param("answerID") int answerID);
+
+    @Modifying
+    @Query(value= "UPDATE Question SET answerID = :answerID WHERE questionID = :questionID",nativeQuery = true)
+    int updateQuestionAnswer(@Param("answerID") int answer, @Param("questionID") int questionID);
 }

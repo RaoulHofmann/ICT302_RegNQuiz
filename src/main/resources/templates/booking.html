@@ -228,7 +228,8 @@
     <div id="answerCounter" th:fragment="studentAnswer">
     </div>
     <input type="button"  onclick="location.href='/booking/'" value="Back" >
-    <input type="button"  th:onclick="'location.href=\'/booking/' + ${booking_id} + '/close\''" value="Close Booking" >
+    <input type="button" th:if="${booking_id != null}" th:onclick="'location.href=\'/booking/' + ${booking_id} + '/close\''" value="Close Booking" >
+    <input type="button" th:if="${booking != null}" th:onclick="'location.href=\'/booking/' + ${booking.bookingID} + '/close\''" value="Close Booking" >
 </body>
 </html>
 

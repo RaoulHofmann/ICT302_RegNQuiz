@@ -10,34 +10,33 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <body>      
-	<form method=""  action="" >
-            <label>Venue Name: 
-            <select id="venueSelect">
-                <option value =" ">Venue Name</option>
-            </select></label> <br/>
-            <label>Unit Name:
-            <select id="unitSelect">
-                <option value =" ">Unit Name</option>
-            </select></label><br/>
-            <label>Student Number:
-            <select id="studentSelect">
-                <option value =" ">student Name</option>
-            </select></label>
-            
-            <br/>
-            <input type="submit" value="Search" onclick="search();">
-	</form>
-      <div th:if="${bookings != null}">
-          <table>
-              <th:block >
-                  <tr th:each="booking : ${bookings}">
-                      <td><a th:text="${booking.date}+'_'+${booking.time}+'_'+${booking.venue.building}+'.'+${booking.venue.floor}+'.'+${booking.venue.room}" th:href="@{/report/csv/booking/{bookingID}(bookingID=${booking.bookingID})}"></td>
-                  </tr>
-              </th:block>
-          </table>
+    <script th:inline="javascript">
+        function getAttendanceReview() {
+            $.ajax({
+                type: "POST",
+                url : '/report/getattendance',
+                data: { unitID: $("#unitSelect option:selected").val() },
+                success: function (data) {
+                    $('#attendanceReview').html(data);
+                }
+            });
+        }
+    </script>
+    <label>Unit Name:
+    <select id="unitSelect" onchange="getAttendanceReview();">
+        <option value="" >Select A Unit</option>
+        <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitCode}+' '+${unit.unitName}+' '+${unit.semester.description}+' '+${unit.year}" value=""></option>
+    </select></label><br/>
+    <br/>
+      <div id="attendanceReview" th:fragment="attendanceList">
+          <ul>
+              <li th:each="attendanceReview : ${attendanceReviews}" >
+                  <a th:text="${attendanceReview.date}" th:href="@{/report/csv/attendance/{unitID}(unitID=${attendanceReview.unitID})}"></a>
+              </li>
+          </ul>
       </div>
-      <div th:if="${bookings == null}">
-        No Bookings
+      <div th:if="${empty != null}">
+        No Attendance Reviews
       </div>
     <input type="button"  onclick="location.href='/'" value="Back" >
   </body>

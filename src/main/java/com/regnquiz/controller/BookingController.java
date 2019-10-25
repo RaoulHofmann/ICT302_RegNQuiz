@@ -39,6 +39,9 @@ public class BookingController {
     @Autowired
     private LectureRun lectureRun;
 
+    @Autowired
+    private QuestionImport questionImport;
+
     private HashMap<Integer, LectureRun> bookings;
     @Autowired
     public void setBookingMap(HashMap<Integer, LectureRun> bookings) {
@@ -113,11 +116,11 @@ public class BookingController {
     @GetMapping(path = "/{id}/close")
     public String closeBooking(@PathVariable("id") int id, Model model, HttpServletRequest request){
         bookings.remove(id);
+        runningBookings.remove(id);
         closedBookings.add(id);
 
         return "redirect:/booking/";
     }
-
 
     @PostMapping(path = "/{id}/question")
     public String startQuestions(@PathVariable("id") int id, Model model, HttpServletRequest request){
@@ -249,7 +252,6 @@ public class BookingController {
 
     @PostMapping(path = "/question/add")
     public String saveQuestion(@RequestParam("file") MultipartFile fileChooser, @ModelAttribute("questionAdd") QuestionAdd questionAdd, BindingResult bindingResult, Model model, HttpServletRequest request) throws IOException {
-        QuestionImport questionImport = new QuestionImport();
         questionImport.ImportQuestion(fileChooser, questionAdd.getBookingID());
         return "error";
     }
