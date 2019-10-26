@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -234,6 +236,16 @@ public class BookingController {
         model.addAttribute("semesters", semesterRepository.findAll());
         QuestionAdd questionAdd = new QuestionAdd();
         model.addAttribute("questionAdd", questionAdd);
+        Map md = model.asMap();
+        for (Object modelKey : md.keySet()) {
+            Object modelValue = md.get(modelKey);
+            System.out.println(modelKey + " -- " + modelValue);
+            if (modelKey == "success") {
+                model.addAttribute("success", 1);
+            } else if (modelKey == "failed") {
+                model.addAttribute("failed", 1);
+            }
+        }
         return "bookingQuestion";
     }
 
@@ -256,14 +268,14 @@ public class BookingController {
     }
 
     @PostMapping(path = "/question/add")
-    public String saveQuestion(@RequestParam("file") MultipartFile fileChooser, @ModelAttribute("questionAdd") QuestionAdd questionAdd, BindingResult bindingResult, Model model, HttpServletRequest request) throws IOException {
+    public String saveQuestion(@RequestParam("file") MultipartFile fileChooser, @ModelAttribute("questionAdd") QuestionAdd questionAdd, BindingResult bindingResult, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) throws IOException {
         try{
             questionImport.ImportQuestion(fileChooser, questionAdd.getBookingID());
-            model.addAttribute("success", 1);
+            redirectAttributes.addFlashAttribute("success", 1);
         }catch (Exception e){
-            model.addAttribute("failed", 1);
+            redirectAttributes.addFlashAttribute("failed", 0);
         }
-        return "bookingQuestion";
+        return "redirect:/booking/question/new";
     }
 
     @PostMapping(value = "/answer")
