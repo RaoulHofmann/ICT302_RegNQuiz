@@ -48,6 +48,12 @@ public class ReportController {
     @Autowired
     private VenueReviewRepository venueReviewRepository;
 
+    @Autowired
+    private BookingRepository bookingRepository;
+
+    @Autowired
+    private VenueRepository venueRepository;
+
     @GetMapping(path = "/lecture")
     public String lecturerReportOverview(Model model, HttpServletRequest request){
         HttpSession session = request.getSession(false);
