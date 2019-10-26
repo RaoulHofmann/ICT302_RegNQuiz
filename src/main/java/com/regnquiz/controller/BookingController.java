@@ -257,8 +257,13 @@ public class BookingController {
 
     @PostMapping(path = "/question/add")
     public String saveQuestion(@RequestParam("file") MultipartFile fileChooser, @ModelAttribute("questionAdd") QuestionAdd questionAdd, BindingResult bindingResult, Model model, HttpServletRequest request) throws IOException {
-        questionImport.ImportQuestion(fileChooser, questionAdd.getBookingID());
-        return "error";
+        try{
+            questionImport.ImportQuestion(fileChooser, questionAdd.getBookingID());
+            model.addAttribute("success", 1);
+        }catch (Exception e){
+            model.addAttribute("failed", 1);
+        }
+        return "bookingQuestion";
     }
 
     @PostMapping(value = "/answer")

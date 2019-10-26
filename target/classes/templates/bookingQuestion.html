@@ -86,11 +86,9 @@
         <label for="fileChooser">File to upload: </label>
         <input id="fileChooser" type="file" name="file" accept=".xlsx" />
         <br>
-
+        <p style="color: green" th:if="${success != null}">Upload Successful</p>
+        <p style="color: red" th:if="${failed != null}">Upload Successful</p>
         <input type ="submit" value="Add"/>
-
-        <!--<input type ="submit" value="Save" onclick="saveQuestion()"/>-->
-
         <input type="button"  onclick="location.href='/'" value="Back" >
 
 </form>
