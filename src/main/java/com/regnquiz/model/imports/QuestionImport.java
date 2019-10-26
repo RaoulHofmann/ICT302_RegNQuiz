@@ -61,34 +61,42 @@ public class QuestionImport {
                 if(!currentRow.getCell(0).getStringCellValue().equals("Empty")) {
                     // Deposit data into question object
                     Question question = new Question();
+                    List<MultipleChoice> mc = new ArrayList<>();
 
                     question.setDescription(currentRow.getCell(1).getStringCellValue());
                     question.setTime((int) currentRow.getCell(7).getNumericCellValue());
+                    Question newQuestion = questionRepository.save(question); // save question to database
+                    bookingQuestionRepository.save(new BookingQuestion(bookingRepository.findById(bookingID).get(), newQuestion));
+
                     if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) {
-                        question.addMultipleChoice(new MultipleChoice(question, "T"));
-                        question.addMultipleChoice(new MultipleChoice(question, "F"));
+                        mc.add(multipleChoiceRepository.save(new MultipleChoice(newQuestion, "T")));
+                        mc.add(multipleChoiceRepository.save(new MultipleChoice(newQuestion, "F")));
                     }else{
-                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(2).getStringCellValue()));
-                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(3).getStringCellValue()));
-                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(4).getStringCellValue()));
-                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(5).getStringCellValue()));
-                    }
-                    question.addBookingQuestion(new BookingQuestion(bookingRepository.findById(bookingID).get(), question)); // check for duplicate data
-                    Question newq = questionRepository.saveAndFlush(question); // save question to database
-
-                    for (MultipleChoice mc : newq.getMultipleChoice()) {
-                        System.out.println("MULTIPLE CHOICES!!!");
-                        System.out.println(mc.getDescription());
-                        System.out.println(mc.getAnswerID());
+                        mc.add(multipleChoiceRepository.save(new MultipleChoice(newQuestion, currentRow.getCell(2).getStringCellValue())));
+                        mc.add(multipleChoiceRepository.save(new MultipleChoice(newQuestion, currentRow.getCell(3).getStringCellValue())));
+                        mc.add(multipleChoiceRepository.save(new MultipleChoice(newQuestion, currentRow.getCell(4).getStringCellValue())));
+                        mc.add(multipleChoiceRepository.save(new MultipleChoice(newQuestion, currentRow.getCell(5).getStringCellValue())));
                     }
 
-                     /*if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) { // true/fase questions
+                    if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) { // true/fase questions
                          if (currentRow.getCell(6).getStringCellValue().equals("T")) {
-                             newq.setAnswer(multipleChoiceRepository.findByQuestion_QuestionIDAndDescription(newq.getQID(), "True").getAnswerID());
+                             newQuestion.setAnswer(mc.get(0).getMCID());
                          } else if (currentRow.getCell(6).getStringCellValue().equals("F")) {
-                             newq.setAnswer(multipleChoiceRepository.findByQuestion_QuestionIDAndDescription(newq.getQID(), "False").getAnswerID());
+                             newQuestion.setAnswer(mc.get(1).getMCID());
                          }
-                     }*/
+                     }else{
+                        if (currentRow.getCell(6).getStringCellValue().equals("A1")) {
+                            newQuestion.setAnswer(mc.get(0).getMCID());
+                        } else if (currentRow.getCell(6).getStringCellValue().equals("A2")) {
+                            newQuestion.setAnswer(mc.get(1).getMCID());
+                        } else if (currentRow.getCell(6).getStringCellValue().equals("A3")) {
+                            newQuestion.setAnswer(mc.get(2).getMCID());
+                        } else if (currentRow.getCell(6).getStringCellValue().equals("A4")) {
+                            newQuestion.setAnswer(mc.get(3).getMCID());
+                        }
+                    }
+                    questionRepository.save(newQuestion);
+                    mc.clear();
                 }
             }
         } catch (IOException e) {
