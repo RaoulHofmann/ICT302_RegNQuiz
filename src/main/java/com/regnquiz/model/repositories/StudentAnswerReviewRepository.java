@@ -6,6 +6,8 @@
 package com.regnquiz.model.repositories;
 
 import com.regnquiz.model.StudentAnswerReview;
+
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
@@ -18,4 +20,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface StudentAnswerReviewRepository extends CrudRepository<StudentAnswerReview, Integer> {
     List<StudentAnswerReview> findByUserID(int userID);
     List<StudentAnswerReview> findByUserIDAndUnitID(int userID, int unitID);
+    List<StudentAnswerReview> findByUserIDAndUnitIDAndBookingDate(int userID, int unitID, Date date);
 }

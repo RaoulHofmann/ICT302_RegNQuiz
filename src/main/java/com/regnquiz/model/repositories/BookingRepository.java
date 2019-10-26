@@ -34,4 +34,5 @@ public interface BookingRepository extends CrudRepository<Booking, Integer>{
     List<Booking> findByLecture(User user);
     List<Booking> findByDate(Date day);
     List<Booking> findByUnit_unitID(Integer unitID);
+    Booking findByUnit_unitIDAndDate(Integer unitID, Date date);
 }

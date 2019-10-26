@@ -1,22 +1,37 @@
 package com.regnquiz.model;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
 import org.hibernate.annotations.Immutable;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Immutable
 @Table(name="vquestionreview")
-public class QuestionReview {
+@IdClass(QuestionReviewKey.class)
+public class QuestionReview  implements Serializable {
     @Id
     private int unitID;
-
+    @Id
     private int bookingID;
+    @Id
     private int questionID;
+
+    @Id
+    @CsvBindByName(column = "Question")
+    @CsvBindByPosition(position = 0)
     private String question;
+
+    @Id
+    @CsvBindByName(column = "Answer")
+    @CsvBindByPosition(position = 1)
     private String answer;
+
+    @Id
+    @CsvBindByName(column = "Count")
+    @CsvBindByPosition(position = 2)
     private int count;
 
     public int getUnitID() {

@@ -1,18 +1,20 @@
 package com.regnquiz.model;
 
 import org.hibernate.annotations.Immutable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Immutable
 @Table(name="vclassattendance")
+@IdClass(AttendanceReviewKey.class)
 public class AttendanceReview {
     @Id
     private int unitID;
-
+    @Id
+    @Temporal(TemporalType.DATE)
     private Date date;
     private int total;
     private int atten;

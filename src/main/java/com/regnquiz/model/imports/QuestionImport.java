@@ -55,8 +55,6 @@ public class QuestionImport {
 
                     question.setDescription(currentRow.getCell(1).getStringCellValue());
                     question.setTime((int) currentRow.getCell(7).getNumericCellValue());
-                    List<MultipleChoice> mc = new ArrayList<>();
-                    //questionRepository.insertQuestionDescriptionTime(currentRow.getCell(1).getStringCellValue(), (int)currentRow.getCell(7).getNumericCellValue());
                     if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) {
                         question.addMultipleChoice(new MultipleChoice(question, "T"));
                         question.addMultipleChoice(new MultipleChoice(question, "F"));

@@ -7,34 +7,79 @@
            href="/resources/css/regNGo.css">
      </link>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <body>      
     <script th:inline="javascript">
-        function getAttendanceReview() {
+        function getAttReports() {
             $.ajax({
                 type: "POST",
-                url : '/report/getattendance',
+                url : '/report/getattreport',
                 data: { unitID: $("#unitSelect option:selected").val() },
                 success: function (data) {
-                    $('#attendanceReview').html(data);
+                    console.log(data);
+                    $('#reports').html(data);
                 }
             });
         }
     </script>
-    <label>Unit Name:
-    <select id="unitSelect" onchange="getAttendanceReview();">
+    <label>Units:
+    <select id="unitSelect" onchange="getAttReports();">
         <option value="" >Select A Unit</option>
         <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitCode}+' '+${unit.unitName}+' '+${unit.semester.description}+' '+${unit.year}" value=""></option>
     </select></label><br/>
-    <br/>
-      <div id="attendanceReview" th:fragment="attendanceList">
-          <ul>
-              <li th:each="attendanceReview : ${attendanceReviews}" >
-                  <a th:text="${attendanceReview.date}" th:href="@{/report/csv/attendance/{unitID}(unitID=${attendanceReview.unitID})}"></a>
-              </li>
-          </ul>
-      </div>
+
+    <!--<script th:inline="javascript">
+        function getQueReports() {
+            $.ajax({
+                type: "POST",
+                url : '/report/getquereport',
+                data: { bookingID: $("#bookingSelect option:selected").val() },
+                success: function (data) {
+                    $('#questionReview').html(data);
+                }
+            });
+        }
+    </script>
+    <label for="bookingSelect">Bookings:</label>
+        <select id="bookingSelect" onchange="getQueReports();" th:if="${bookings != null}">
+            <option value="" >Select A Booking</option>
+            <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="${booking.date}+' '+${booking.time}+' '+${booking.venue.building}+'.'+${booking.venue.floor}+'.'+${booking.venue.room}" value=""></option>
+        </select><br/>
+        <br/>-->
+    <div id="reports" th:fragment="attendanceReport" style="margin: auto;">
+        <div id="attendanceReview" style="width:600px; display:inline;">
+            <table>
+              <thead>
+                <tr>
+                    <th>AttendanceReview</th>
+                </tr>
+              </thead>
+            <tbody>
+                <tr th:each="attendanceReview : ${attendanceReviews}" >
+                    <td>
+                      <a th:text="${attendanceReview.date}" th:href="@{/report/csv/attendance/{unitID}/{date}(unitID=${attendanceReview.unitID}, date=${attendanceReview.date})}"></a>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div id="questionReview" style="width:600px; display:inline;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>QuestionReview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${bookings != null}" th:each="booking : ${bookings}">
+                        <td>
+                            <a th:text="${booking.date}+' '+${booking.time}+' '+${booking.venue.building}+'.'+${booking.venue.floor}+'.'+${booking.venue.floor}" th:href="@{/report/csv/questionreview/{bookingID}(bookingID=${booking.bookingID})}"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
       <div th:if="${empty != null}">
         No Attendance Reviews
       </div>

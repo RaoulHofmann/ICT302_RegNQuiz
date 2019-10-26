@@ -21,5 +21,7 @@ public interface ClassListRepository  extends CrudRepository<ClassList, Integer>
     ClassList[] getBookingClass(@Param("bID") Integer bID);
     
     List<ClassList> findByBookingBookingID(Integer bookingID);
-    
+
+    @Query(value = "SELECT * FROM ClassList WHERE userID = :userID AND attendance IS TRUE", nativeQuery = true)
+    List<ClassList> findByUserIDWhereAttendance(@Param("userID") int userID);
 }

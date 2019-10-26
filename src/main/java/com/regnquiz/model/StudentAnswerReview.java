@@ -5,14 +5,13 @@
  */
 package com.regnquiz.model;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
 import org.hibernate.annotations.Immutable;
 
 import java.sql.Time;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Author: Stuart Hepburn
@@ -32,12 +31,21 @@ public class StudentAnswerReview {
     private int unitID;
     private String unitCode;
     private String unitName;
+    @Temporal(TemporalType.DATE)
     private Date bookingDate;
     private Time bookingTime;
+    @CsvBindByName(column = "Question")
+    @CsvBindByPosition(position = 0)
     private String question;
+    @CsvBindByName(column = "CorrectAnswer")
+    @CsvBindByPosition(position = 1)
     private String correctAnswer;
-    
+
+    @CsvBindByName(column = "AnswerGiven")
+    @CsvBindByPosition(position = 2)
     private int studentAnswer;
+    @CsvBindByName(column = "Answered")
+    @CsvBindByPosition(position = 0)
     private String answered;
     
     public StudentAnswerReview()

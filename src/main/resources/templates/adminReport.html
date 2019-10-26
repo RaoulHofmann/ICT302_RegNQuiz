@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title> QuizNGo</title>
+     <link rel = "stylesheet" type="text/css"
+           href="/resources/css/regNGo.css">
+     </link>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+  <form action="#" th:action="@{/report/csv/adminvenuereport}" th:object="${venueReport}" method="post">
+
+    <script th:inline="javascript">
+        function getDates() {
+            $.ajax({
+                type: "POST",
+                url : '/report/getdates',
+                data: { building: $("#buildingSelect option:selected").val() },
+                success: function (data) {
+                    $('#dateList').html(data);
+                }
+            });
+        }
+
+        function getFloors() {
+            $.ajax({
+                type: "POST",
+                url : '/report/getfloors',
+                data: { building: $("#buildingSelect option:selected").val() },
+                success: function (data) {
+                    getDates();
+                    $('#floorList').html(data);
+                }
+            });
+        }
+    </script>
+    <label for="buildingSelect">Building:</label>
+    <select id="buildingSelect" th:field="*{building}" onchange="getFloors();">
+        <option value="" >Select A Building</option>
+        <option th:each="venue : ${venues}" th:value="${venue.building}" th:text="${venue.building}" value=""></option>
+    </select></label><br/>
+
+    <div id="floorList" th:fragment="floorList(venueReport)">
+        <script th:inline="javascript">
+            function getRooms() {
+                $.ajax({
+                    type: "POST",
+                    url : '/report/getrooms',
+                    data: { building: $("#buildingSelect option:selected").val(),
+                            floor: $("#floorSelect option:selected").val() },
+                    success: function (data) {
+                        $('#roomList').html(data);
+                    }
+                });
+            }
+        </script>
+        <label for="floorSelect">Floor:</label>
+        <select id="floorSelect" th:field="${venueReport.floor}" onchange="getRooms();">
+            <option value="" >Select A Floor</option>
+            <option th:each="floor : ${floors}" th:value="${floor.floor}" th:text="${floor.floor}" value=""></option>
+        </select></label><br/>
+    </div>
+
+    <div id="roomList" th:fragment="roomList(venueReport)">
+        <label for="roomSelect">Room:</label>
+        <select id="roomSelect" th:field="${venueReport.room}">
+            <option value="" >Select A Room</option>
+            <option th:each="room : ${rooms}" th:value="${room.room}" th:text="${room.room}" value=""></option>
+        </select></label><br/>
+    </div>
+
+    <div id="dateList" th:fragment="dateList(venueReport)">
+        <label for="dateSelect">Date:</label>
+        <select id="dateSelect" th:field="${venueReport.date}">
+            <option value="" >Select A Date</option>
+            <option th:each="vdate : ${vdates}" th:value="${vdate.date}" th:text="${vdate.date}" value=""></option>
+        </select></label><br/>
+    </div>
+    <input type="submit" value="Generate Report">
+  </form>
+    <br>
+    <input type="button"  onclick="location.href='/'" value="Back" >
+  </body>
+</html>
