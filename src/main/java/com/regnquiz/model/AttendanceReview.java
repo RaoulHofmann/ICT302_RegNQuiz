@@ -6,6 +6,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Author: Raoul Hofmann
+ * Date: 24/10/2019
+ * Version: 1
+ * Comment: Allows for gathering of data for attendance reviews
+ */
 @Entity
 @Immutable
 @Table(name="vclassattendance")

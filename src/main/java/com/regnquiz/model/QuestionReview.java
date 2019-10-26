@@ -7,6 +7,15 @@ import org.hibernate.annotations.Immutable;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+/**
+ * Author: Raoul Hofmann
+ * Date: 24/10/2019
+ * Version: 1
+ * Comment: Allows for gathering of data for question reviews
+ */
 @Entity
 @Immutable
 @Table(name="vquestionreview")

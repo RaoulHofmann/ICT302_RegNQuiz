@@ -19,7 +19,7 @@ import javax.persistence.*;
 public class StudentAnswer 
 {
     @EmbeddedId
-    StudentAnswerKey id;
+    StudentAnswerKey id; // Composite key
 
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -37,7 +37,7 @@ public class StudentAnswer
     {
         student = new User();
         answer = new MultipleChoice();
-        id = new StudentAnswerKey(student.getUserID(), answer.getMCID());
+        id = new StudentAnswerKey(student.getUserID(), answer.getMCID()); // Update key class with objects
     }
     
     public StudentAnswer(User student, MultipleChoice answer)

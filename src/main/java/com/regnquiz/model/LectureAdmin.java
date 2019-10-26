@@ -60,6 +60,7 @@ public class LectureAdmin {
         return u;
     }  
     
+    // Get all bookings with u as lecture
     @Transactional
     public List<Booking> getBooking()
     {
@@ -67,6 +68,7 @@ public class LectureAdmin {
         return b;
     }
     
+    // Get all bookings with unitID
     @Transactional
     public List<Booking> getBooking(int unitID)
     {
@@ -74,12 +76,14 @@ public class LectureAdmin {
         return b;
     }
     
+    // Get all ClassLists for a bookingID
     @Transactional
     public List<ClassList> getClassList(int bookingID)
     {
         return clRepository.findByBookingBookingID(bookingID);
     }
     
+    // Get all bookingQuestions in a bookingid
     @Transactional
     public List<BookingQuestion> getBookingQuestion(int bookingID)
     {
@@ -92,10 +96,11 @@ public class LectureAdmin {
         Question q = new Question();
         q.setDescription(question);
         q.setTime(time);
-        q = questionRepo.save(q);
+        q = questionRepo.save(q); // setup and save this question
 
         int i = 0;
         
+        // add multiplechoice answers to the database
         for(String s:chooses)
         {
             MultipleChoice mc = new MultipleChoice(q, s);
@@ -106,13 +111,13 @@ public class LectureAdmin {
             i++;
         }
          
-        q = questionRepo.save(q);
+        q = questionRepo.save(q); // link any multiplechoice answers to the question
         
         BookingQuestion bc = new BookingQuestion();
         bc.setBookingQuestionKey(new BookingQuestionKey(bookingID, q.getQID()));
         bc.setBooking(bookingRepository.findById(bookingID).get());
         bc.setQuestion(q);
-        bqRepo.save(bc);
+        bqRepo.save(bc); // save the whole bookingQuestion
         
         return true;
     }

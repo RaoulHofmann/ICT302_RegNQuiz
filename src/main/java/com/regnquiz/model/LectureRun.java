@@ -43,12 +43,9 @@ public class LectureRun {
     @Autowired
     private StudentAnswerRepository studentAnswerRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    private Booking b = null;
+    private Booking b = null; // Start with no booking, needs to be selected
     private int attendanceCounter = 0;
-    private int activeQuestion = -1;
+    private int activeQuestion = -1; // Default no question active
     private boolean quizFinished = false;
     private boolean timeout = false;
     private int answerCounter = 0;
@@ -58,6 +55,7 @@ public class LectureRun {
     List<StudentAnswer> sa = new ArrayList<>();
     HashMap<String, HashMap<String, Integer>> questionAnswerCounter;
 
+    // Select booking
     @Transactional
     public void OpenLecture(int bookingID)
     {
@@ -67,14 +65,6 @@ public class LectureRun {
 
         bq = bookingQuestionRepository.findByBooking_BookingID(bookingID);
 
-        /*for(ClassList c : cl)
-        {
-            System.out.println("########################################" );
-            System.out.println("########################################");
-            System.out.println("ID: " + c.getClassListID());
-            System.out.println("Booking ID: " + c.getBooking().getBookingID());
-            System.out.println("User ID: " + c.getStudent().getUserID());
-        }*/
     }
     
     @Transactional
@@ -95,15 +85,6 @@ public class LectureRun {
                 this.attendanceCounter++;
             }
         }
-
-        /*for(ClassList c : cl)
-            if(c.getStudent().getUserID()==studentID)
-            {
-                c.setAttendance();
-                classListRepository.save(c);
-                enrolled = true;
-                this.attendanceCounter++;
-            }*/
         
         return enrolled;
     }
@@ -113,6 +94,7 @@ public class LectureRun {
         return this.attendanceCounter;
     }
     
+    // Save any updates made to the booking, questions or classlist
     @Transactional
     public void saveLecture()
     {
@@ -131,6 +113,7 @@ public class LectureRun {
     @Transactional
     public Booking getBooking(){ return this.b; }
 
+    // is the booking active
     @Transactional
     public int isActive(){
         if(!this.b.equals(null)){
@@ -217,6 +200,7 @@ public class LectureRun {
         return this.mc;
     }
 
+    // Return how many questions have been answered
     @Transactional
     public HashMap<String, HashMap<String, Integer>> getQuestionAnswerCounter(){
         return this.questionAnswerCounter;

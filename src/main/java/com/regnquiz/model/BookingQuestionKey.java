@@ -16,6 +16,7 @@ import java.io.Serializable;
  */
 public class BookingQuestionKey implements Serializable
 {
+    // This class allows us to link classes that are linked in the database with composite keys
     @Column(name = "bookingID")
     private Integer BookingID;
     
