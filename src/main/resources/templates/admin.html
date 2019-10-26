@@ -23,7 +23,7 @@
         <input id="fileChooser" type="file" name="file" accept=".csv" />
         <br>
         <label for="importType">Import Type</label>
-        <select id="importType">
+        <select id="importType" name="importType">
             <option value="booking">Booking Import</option>
             <option value="classlist">Classlist Import</option>
             <option value="unit">Unit Import</option>
@@ -35,6 +35,8 @@
         <br>
         <br>
     </form>
+    <p style="color: green" th:if="${success != null}">Upload Successful</p>
+    <p style="color: red" th:if="${failed != null}">Upload Failed</p>
 </div>
 <a href="javascript: document.logoutForm.submit()" role="button" id="logoutButton"> Logout</a>
 <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">

@@ -27,7 +27,7 @@ public class ClassListImportTest
     public void TestCL()
     {
         //System.out.println("sdfgsd");
-        clImport.ImportClassList("D:/Desktop/ClassList Example.csv");
+        //clImport.ImportClassList("D:/Desktop/ClassList Example.csv");
         //System.out.println("sdfgsd");
     }
 }

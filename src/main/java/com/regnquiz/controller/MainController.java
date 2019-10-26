@@ -3,8 +3,9 @@ package com.regnquiz.controller;
 
 import com.regnquiz.model.*;
 import com.regnquiz.model.forms.Login;
-import com.regnquiz.model.imports.BookingImport;
+import com.regnquiz.model.imports.*;
 import com.regnquiz.model.repositories.*;
+import org.hibernate.id.IdentifierGenerationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.*;
 import javax.validation.Valid;
@@ -39,6 +41,18 @@ public class MainController {
     private UserTypeQueryRepository userTypeQueryRepository;
     @Autowired
     private BookingRepository bookingRepository;
+    @Autowired
+    private BookingImport bookingImport;
+    @Autowired
+    private ClassListImport classListImport;
+    @Autowired
+    private StaffImport staffImport;
+    @Autowired
+    private StudentImport studentImport;
+    @Autowired
+    private UnitImport unitImport;
+    @Autowired
+    private VenueImport venueImport;
 
     @GetMapping(path = "/gettypes")
     public @ResponseBody
@@ -200,6 +214,16 @@ public class MainController {
         try {
             if (request.getSession() != null && (Integer) request.getSession().getAttribute("userID") == id) {
                 model.addAttribute("user", userRepository.findById(id).get());
+                Map md = model.asMap();
+                for (Object modelKey : md.keySet()) {
+                    Object modelValue = md.get(modelKey);
+                    System.out.println(modelKey + " -- " + modelValue);
+                    if (modelKey == "success") {
+                        model.addAttribute("success", 1);
+                    } else if (modelKey == "failed") {
+                        model.addAttribute("failed", 1);
+                    }
+                }
                 return "admin";
             } else {
                 return "redirect:/";
@@ -209,9 +233,24 @@ public class MainController {
         }
     }
     @PostMapping(path = "/admin/{id}/upload")
-    public String uploadCSV(@RequestParam("file") MultipartFile fileChooser, @PathVariable("id") int id, Model model, HttpServletRequest request) throws IOException {
-        BookingImport bookingImport = new BookingImport();
-        bookingImport.ImportBooking(fileChooser);
+    public String uploadCSV(@RequestParam("file") MultipartFile fileChooser, @RequestParam("importType") String importType, @PathVariable("id") int id, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) throws IOException {
+
+        try {
+            if (importType.equals("booking")) {
+                bookingImport.ImportBooking(fileChooser);
+            } else if (importType.equals("classlist")) {
+                classListImport.ImportClassList(fileChooser);
+            } else if (importType.equals("staff")) {
+                staffImport.ImportStaff(fileChooser);
+            } else if (importType.equals("unit")) {
+                unitImport.ImportUnit(fileChooser);
+            } else if (importType.equals("student")) {
+                staffImport.ImportStaff(fileChooser);
+            }
+            redirectAttributes.addFlashAttribute("success", 1);
+        }catch (DataIntegrityViolationException | IdentifierGenerationException | NoSuchElementException | ArrayIndexOutOfBoundsException ex){
+            redirectAttributes.addFlashAttribute("failed", 0);
+        }
         model.addAttribute("user", userRepository.findById(id).get());
 
         return "redirect:/admin/"+id;

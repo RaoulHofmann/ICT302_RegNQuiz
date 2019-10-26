@@ -29,7 +29,7 @@ public class StudentImportTest
     @Test
     public void TestStudent()
     {
-        si.ImportStudent("D:/Desktop/CORS0213.csv");
+        //si.ImportStudent("D:/Desktop/CORS0213.csv");
         Iterable<User> students = userRepo.findAll();
         
         for (User u : students)

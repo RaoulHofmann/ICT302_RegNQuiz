@@ -28,7 +28,7 @@ public class VenueImportTest {
     
     @Test
     public void TestVenue() {
-        vi.ImportVenue("F:/Venue.csv");
+        //vi.ImportVenue("F:/Venue.csv");
         //display all in DB
         Iterable<Venue> g = venueRepository.findAll();
         

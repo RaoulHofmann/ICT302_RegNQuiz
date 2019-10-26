@@ -13,6 +13,8 @@ import com.regnquiz.model.repositories.UserRepository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+
+import org.hibernate.id.IdentifierGenerationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 
@@ -27,6 +29,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.sql.Time;
 
@@ -70,9 +73,24 @@ public class BookingImport
                 b.setDate(new Date(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[0])));
                 b.setBookingLength(Integer.parseInt(lineSplit[1]));
                 b.setTime(Time.valueOf(lineSplit[2]));
-                b.setUnit(unitRepo.findById(Integer.parseInt(lineSplit[3])).get()); // Attempt to find unit by id to prevent duplicate data in the database
-                b.setVenue(venueRepo.findById(Integer.parseInt(lineSplit[4])).get());
-                b.setLecture(userRepo.findById(Integer.parseInt(lineSplit[5])).get());
+                try {
+                    b.setUnit(unitRepo.findById(Integer.parseInt(lineSplit[3])).get()); // Attempt to find unit by id to prevent duplicate data in the database
+                }catch (NoSuchElementException e){
+                    System.out.println(e);
+                }
+
+                try {
+                    b.setVenue(venueRepo.findById(Integer.parseInt(lineSplit[4])).get());
+                }catch (NoSuchElementException e){
+                    System.out.println(e);
+                }
+
+                try {
+                    b.setLecture(userRepo.findById(Integer.parseInt(lineSplit[5])).get());
+                }catch (NoSuchElementException e){
+                    System.out.println(e);
+                }
+
                 b.setAttendanceCode(lineSplit[6]);
                
                 // save booking
@@ -80,7 +98,7 @@ public class BookingImport
                 {
                     b = bookingRepo.save(b);
                 }
-                catch(DataIntegrityViolationException ex)
+                catch(DataIntegrityViolationException | IdentifierGenerationException ex)
                 {
                     System.out.println("CSV Error: " + ex);
                 }
