@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> QuizNGo</title>
+    <link rel = "stylesheet" type="text/css"
+          href="/resources/css/regNGo.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="bookings">
+        <h3>Booking Info Table</h3>
+        <table id="booking_table">
+            <thead>
+            <tr>
+                <th>Status</th>
+                <th>Booking ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Booking Length (Min.)</th>
+                <th>Unit Code</th>
+                <th>Venue</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="booking : ${bookings}">
+                    <script th:inline="javascript">
+                        $.ajax({
+                            type: "POST",
+                            url : '/booking/status',
+                            data: { bookingID:  /*[[${booking.bookingID}]]*/},
+                            success : function(data) {
+                                if(data == 0){
+                                    $("#booking_status_"+/*[[${booking.bookingID}]]*/).html("Inactive");
+                                }else if(data == 1){
+                                    $("#booking_status_"+/*[[${booking.bookingID}]]*/).html("Active");
+                                }else if(data == -1){
+                                    $("#booking_status_"+/*[[${booking.bookingID}]]*/).html("Closed");
+                                }
+                            }
+                        });
+                    </script>
+                    <td th:id="booking_status_+${booking.bookingID}"></td>
+                    <td th:text="${booking.bookingID}"></td>
+                    <td th:text="${booking.date}"></td>
+                    <td th:text="${booking.time}"></td>
+                    <td th:text="${booking.bookingLength}"></td>
+                    <td th:text="${booking.unit.unitCode}"></td>
+                    <td th:text="${booking.venue.building}+'.'+${booking.venue.floor}+'.'+${booking.venue.room}"></td>
+                    <td><input type="button" th:onclick="'location.href=\'/booking/' + ${booking.bookingID} + '\''" value="Start Booking" ></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <input type="button"  onclick="location.href='/'" value="Back" >
+</body>
+</html>
+
