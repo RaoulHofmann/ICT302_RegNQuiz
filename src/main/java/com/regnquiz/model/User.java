@@ -16,34 +16,33 @@ import java.util.HashSet;
 public class User 
 {
     @Id
-    //@GeneratedValue
     private Integer userID;
     
-    //private String studentNo;
     private String givenName;
     @Column(name = "preferredName")
     private String prefName;
     private String lastName;
 
+    // Database objects for linking
     @JsonBackReference
     @OneToMany(mappedBy = "lecture")
-    private Set<Unit> units;
+    private Set<Unit> units; // Units user is enrolled in
 
     @JsonBackReference
     @OneToMany(mappedBy = "lecture")
-    private Set<Booking> bookings;
+    private Set<Booking> bookings; // Bookings user is enrolled in
 
     @JsonBackReference
     @OneToMany(mappedBy = "student")
-    private Set<ClassList> classList;
+    private Set<ClassList> classList; // List of classes the user is enrolled in
 
     @JsonBackReference
     @OneToMany(mappedBy = "student")
-    private Set<StudentAnswer> studentAnswer;
+    private Set<StudentAnswer> studentAnswer; // Any answers to questions user has answered 
 
     @JsonBackReference
     @OneToMany(mappedBy = "user")
-    private Set<UserType> userType;
+    private Set<UserType> userType; // Type of user (1 = admin, 2 = lecture, 3 = student)
     
     public User() 
     {

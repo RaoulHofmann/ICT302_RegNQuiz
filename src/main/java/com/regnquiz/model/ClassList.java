@@ -19,20 +19,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * Version: 1
  * Comment: Contains information about each class and student in it
  */
-//@EnableJpaRepositories(basePackages="com.regnquiz.model.repositories")
 @Entity
 public class ClassList 
-{
-    //@Autowired
-    //private UserRepository userRepository;
-   // @Autowired
-    //private BookingRepository bookingRepository;
-    
+{ 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer classListID;
-    private boolean internal;
-    private boolean attendance;
+    private boolean internal; // Is the student internal
+    private boolean attendance; // Has the student attended
 
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -42,14 +36,13 @@ public class ClassList
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "bookingID", referencedColumnName="bookingID")
-    private Booking booking;
+    private Booking booking; // The booking the classlist belongs to
     
     public ClassList() 
     {
         student = new User();
         booking = new Booking();
         attendance = false;
-        
     }
     
     public ClassList(Integer id, User student, Booking booking, boolean internal, boolean attendance)
@@ -58,8 +51,7 @@ public class ClassList
         this.student = student;
         this.booking = booking;
         this.internal = internal;
-        this.attendance = attendance;
-        
+        this.attendance = attendance;  
     }
     
     

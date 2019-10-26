@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 /**
  *
  * @author Matthew MacLennan
+ * @comment CSV reader for ClassList class, deposits in database
  */
 @Service
 public class ClassListImport 
@@ -38,16 +39,17 @@ public class ClassListImport
     @Transactional
     public void ImportClassList(String filename)
     {
-        Path myPath = Paths.get(filename);
+        Path myPath = Paths.get(filename); // set path and open file
         
         try
         {
-            List<String> lines = Files.readAllLines(myPath);
-            lines.remove(0);
-            for(String line: lines)
+            List<String> lines = Files.readAllLines(myPath); // read the lines
+            lines.remove(0); // remove fist line
+            for(String line: lines) 
             {
-                String[] lineSplit = line.split(",");
+                String[] lineSplit = line.split(","); // split csv
                 
+                // deposit data into object
                 ClassList cl = new ClassList();
                 cl.setStudent(userRepo.findById(Integer.parseInt(lineSplit[0])).get());
                 cl.setBooking(bookingRepo.findById(Integer.parseInt(lineSplit[1])).get());
@@ -58,7 +60,7 @@ public class ClassListImport
                 
                 try 
                 {
-                    cl = clRepo.save(cl);
+                    cl = clRepo.save(cl); // save to database
                 }
                 catch (DataIntegrityViolationException ex)
                 {

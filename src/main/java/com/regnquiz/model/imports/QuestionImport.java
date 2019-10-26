@@ -21,6 +21,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ *
+ * @author Raoul Hofmann
+ * @comment CSV reader for question class, deposits in database
+ */
 @Service
 public class QuestionImport {
 
@@ -41,39 +46,34 @@ public class QuestionImport {
 
     @Transactional
     public void ImportQuestion(MultipartFile filename, int bookingID) {
-        try {
+        try { 
+            // Open streams and setup xlsx reading
             InputStream is = filename.getInputStream();
             Workbook workbook = new XSSFWorkbook(is);
             Sheet datatypeSheet = workbook.getSheetAt(0);
+            
             Iterator<Row> iterator = datatypeSheet.iterator();
-            iterator.next();
-            while (iterator.hasNext()) {
+            iterator.next(); // Read first line
+            while (iterator.hasNext()) { // while there is data
 
                 Row currentRow = iterator.next();
                 if(!currentRow.getCell(0).getStringCellValue().equals("Empty")) {
+                    // Deposit data into question object
                     Question question = new Question();
 
                     question.setDescription(currentRow.getCell(1).getStringCellValue());
                     question.setTime((int) currentRow.getCell(7).getNumericCellValue());
                     List<MultipleChoice> mc = new ArrayList<>();
-                    //questionRepository.insertQuestionDescriptionTime(currentRow.getCell(1).getStringCellValue(), (int)currentRow.getCell(7).getNumericCellValue());
                     if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) {
                         question.addMultipleChoice(new MultipleChoice(question, "T"));
                         question.addMultipleChoice(new MultipleChoice(question, "F"));
-                    }/*else{
-                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(2).getStringCellValue()));
-                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(3).getStringCellValue()));
-                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(4).getStringCellValue()));
-                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(5).getStringCellValue()));
-                    }*/
-                    question.addBookingQuestion(new BookingQuestion(bookingRepository.findById(bookingID).get(), question));
-                    Question newq = questionRepository.save(question);
+                    }
+                    question.addBookingQuestion(new BookingQuestion(bookingRepository.findById(bookingID).get(), question)); // check for duplicate data
+                    Question newq = questionRepository.save(question); // save question to database
 
 
 
-                     if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) {
-                         System.out.println("ASDASDASDA");
-                         System.out.println(newq.getQuestionID());
+                     if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) { // true/fase questions
                          if (currentRow.getCell(6).getStringCellValue().equals("T")) {
                              newq.setAnswer(multipleChoiceRepository.findByQuestion_QuestionIDAndDescription(newq.getQID(), "True").getAnswerID());
                          } else if (currentRow.getCell(6).getStringCellValue().equals("F")) {

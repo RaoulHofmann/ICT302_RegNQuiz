@@ -30,8 +30,6 @@ public class Unit
     private String unitCode;
     private String unitName;
     private Integer year;
-   // @Column(name = "userID")
-    //private String userID;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

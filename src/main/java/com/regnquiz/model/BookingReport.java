@@ -3,14 +3,22 @@ package com.regnquiz.model;
 import java.sql.Time;
 import java.util.Date;
 
+/**
+ * Author: Raoul Hofmann
+ * Date: 24/10/2019
+ * Version: 1
+ * Comment: Allows for gathering of data for booking reviews
+ */
 public class BookingReport {
-    private Date date;
-    private Time time;
+    private Date date; // Date of the booking the report was generated for
+    private Time time; // Time the booking the report was generated for
 
+    // Venue information about the booking
     private int building;
     private int floor;
     private int room;
 
+    // Question information about the booking
     private Integer questionID;
     private String description;
     private Integer answerID;

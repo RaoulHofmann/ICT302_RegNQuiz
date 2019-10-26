@@ -22,7 +22,7 @@ public class Semester {
     @GeneratedValue (strategy=GenerationType.AUTO)
     private Integer semesterID;
     
-    private String description;
+    private String description; // Description of the semester for exmaple "S1" or "S2" ect.
 
     @JsonBackReference
     @OneToMany(mappedBy = "semester")

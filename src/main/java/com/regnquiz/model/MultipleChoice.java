@@ -25,16 +25,16 @@ public class MultipleChoice
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer answerID;
-    private String description;
+    private String description; // The description of the answer
 
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "QuestionID", referencedColumnName="questionID")
-    private Question question;
+    private Question question; // Question that this answer is linked to
 
     @JsonBackReference
     @OneToMany(mappedBy = "answer")
-    private Set<StudentAnswer> studentAnswer;
+    private Set<StudentAnswer> studentAnswer; // List of students that have used this answer to answer a question (used for database purposes)
     
     public MultipleChoice()
     {

@@ -22,9 +22,9 @@ public class Question
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer questionID;
-    private String description;
-    private Integer time;
-    private Integer answerID;
+    private String description; // Description of the question itself
+    private Integer time; // Time to answer the question
+    private Integer answerID; // Answer of the question
 
     @JsonBackReference
     @OneToMany(mappedBy = "question")
@@ -44,7 +44,6 @@ public class Question
     {
         this.description = desc;
         this.time = time;
-        //this.answer = answer;
         
         bookingQuestion = new HashSet<>();
         multipleChoice = new HashSet<>();

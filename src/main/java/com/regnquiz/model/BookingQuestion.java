@@ -25,19 +25,19 @@ public class BookingQuestion
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("BookingID")
     @JoinColumn(name = "BookingID", referencedColumnName="bookingID")
-    private Booking booking;
+    private Booking booking; // Booking the question belongs to 
 
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("QuestionID")
     @JoinColumn(name = "QuestionID", referencedColumnName="questionID")
-    private Question question;
+    private Question question; // The question itself
     
     public BookingQuestion()
     {
         booking = new Booking();
         question = new Question();
-        id = new BookingQuestionKey(booking.getBookingID(), question.getQID());
+        id = new BookingQuestionKey(booking.getBookingID(), question.getQID()); // Ensure the key is upto date with the data in the object
     }
     
     public BookingQuestion(Booking booking, Question question)

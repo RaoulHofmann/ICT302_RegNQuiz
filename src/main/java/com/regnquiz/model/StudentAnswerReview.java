@@ -21,8 +21,8 @@ import javax.persistence.Table;
  * Comment: Retrieves the data from the questions
  */
 @Entity 
-@Immutable
-@Table(name="vstudentanswers")
+@Immutable // Won't write to view
+@Table(name="vstudentanswers") // Uses views to gather information
 public class StudentAnswerReview {
     @Id    
     private int correctAnswerID;

@@ -5,10 +5,15 @@ import org.hibernate.annotations.Immutable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
-
+/**
+ * Author: Raoul Hofmann
+ * Date: 24/10/2019
+ * Version: 1
+ * Comment: Allows for gathering of data for question reviews
+ */
 @Entity
-@Immutable
-@Table(name="vquestionreview")
+@Immutable // So we don't write to the view
+@Table(name="vquestionreview") // Based on a view rather than a table
 public class QuestionReview {
     @Id
     private int unitID;

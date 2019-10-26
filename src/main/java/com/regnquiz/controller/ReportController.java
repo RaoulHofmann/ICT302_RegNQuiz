@@ -31,16 +31,6 @@ import java.util.NoSuchElementException;
 @Controller
 @RequestMapping(path="/report")
 public class ReportController {
-
-    @Autowired
-    private BookingRepository bookingRepository;
-
-    @Autowired
-    private BookingQuestionRepository bookingQuestionRepository;
-
-    @Autowired
-    private VenueRepository venueRepository;
-
     @Autowired
     private UnitRepository unitRepository;
 

@@ -32,7 +32,8 @@ import java.sql.Time;
 
 /**
  *
- * @author Matthew MacLennan
+ * @author Matthew MacLennan and Raoul Hofmann
+ * @comment CSV reader for booking class, deposits in database
  */
 @Service
 public class BookingImport 
@@ -50,51 +51,31 @@ public class BookingImport
     private UserRepository userRepo;
     
     @Transactional
-    //public void ImportBooking(String filename)//, Unit unit, Venue venue, User lecture)
     public void ImportBooking(MultipartFile filename)
     {
-        //Path myPath = Paths.get(filename);
-        
-        //try
-        //{
-            //List<String> lines = Files.readAllLines(myPath);
-            //lines.remove(0);
-
-        BufferedReader br = null;
+        BufferedReader br = null; // new buffered reader
         try {
-            InputStream is = filename.getInputStream();
-            br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            InputStream is = filename.getInputStream(); // put input stream into new object
+            br = new BufferedReader(new InputStreamReader(is, "UTF-8")); // put inputstream into buffered reader
             br.readLine(); //Read First Line
 
-            //for(String line: lines)
             String line = null;
-            while ((line = br.readLine()) != null)
+            while ((line = br.readLine()) != null) // while nextline has data
             {
-                String[] lineSplit = line.split(",");
+                String[] lineSplit = line.split(","); // CSV split
 
-                Booking b = new Booking(); // missing constructors from git -- fix later
+                // Deposit split lines into booking
+                Booking b = new Booking(); 
                 String[] dateSplit = lineSplit[0].split("/");
                 b.setDate(new Date(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[0])));
                 b.setBookingLength(Integer.parseInt(lineSplit[1]));
                 b.setTime(Time.valueOf(lineSplit[2]));
-                b.setUnit(unitRepo.findById(Integer.parseInt(lineSplit[3])).get());
+                b.setUnit(unitRepo.findById(Integer.parseInt(lineSplit[3])).get()); // Attempt to find unit by id to prevent duplicate data in the database
                 b.setVenue(venueRepo.findById(Integer.parseInt(lineSplit[4])).get());
                 b.setLecture(userRepo.findById(Integer.parseInt(lineSplit[5])).get());
                 b.setAttendanceCode(lineSplit[6]);
-                
-                //b.setUnit(unit);
-                //b.setVenue(venue);
-                //b.setLecture(lecture);
-                
-                /*
-                b.setDate(new Date (lineSplit[0]));
-                b.setBookingLength(Integer.parseInt(lineSplit[1]));
-                //b.setBookingID(bookingRepo.findByBooking(b.getDate(), b.getTime(), b.getUnit().getUnitID(), b.getVenue().getVenueID()));
-                //b.setAttendanceCode(bookingRepo.setAccessCode(b.getBookingID()));
-                b.setUnit(unit);
-                b.setVenue(venue);
-                b.setLecture(lecture);
-                */
+               
+                // save booking
                 try
                 {
                     b = bookingRepo.save(b);

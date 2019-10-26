@@ -6,15 +6,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ * Author: Raoul Hofmann
+ * Date: 24/10/2019
+ * Version: 1
+ * Comment: Allows for gathering of data for attendance reviews
+ */
 @Entity
-@Immutable
-@Table(name="vclassattendance")
+@Immutable // Do not write to database (due to it being a view not a table)
+@Table(name="vclassattendance") // Gather data from class attendance view in database
 public class AttendanceReview {
     @Id
     private int unitID;
 
-    private Date date;
-    private int total;
+    private Date date; // Date of the booking
+    private int total; // Total number of bookings
     private int atten;
     private double attendPercent;
 

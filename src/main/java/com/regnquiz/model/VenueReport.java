@@ -8,8 +8,10 @@ package com.regnquiz.model;
 import java.sql.Time;
 import java.util.Date;
 /**
- *
- * @author Matthew MacLennan
+ * Author: Matthew MacLennan
+ * Date: 20/10/2019
+ * Version: 1
+ * Comment: Allows for gathering of data for venue reviews
  */
 public class VenueReport 
 {

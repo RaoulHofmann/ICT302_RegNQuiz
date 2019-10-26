@@ -31,30 +31,30 @@ public class Booking
     private Integer bookingID;
     
     @Temporal(TemporalType.DATE)
-    private Date date;
-    private Time time;
-    private Integer bookingLength;
+    private Date date; // Date of booking
+    private Time time; // Time of booking
+    private Integer bookingLength; // Duration of booking
     @Column(name = "accessCode")
-    private String attendanceCode;
+    private String attendanceCode; // Unique code for attendance
 
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "UnitID", referencedColumnName="unitID")
-    private Unit unit;
+    private Unit unit; // Unit the booking is for
 
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "VenueID", referencedColumnName="venueID")
-    private Venue venue;
+    private Venue venue; // Venue the booking takes place in
 
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "userID", referencedColumnName="userID")
-    private User lecture;
+    private User lecture; // The lecture running the booking
 
     @JsonBackReference
     @OneToMany(mappedBy = "booking")
-    private Set<ClassList> classList;
+    private Set<ClassList> classList; // All students in the class
     
     public Booking() 
     {
@@ -65,16 +65,13 @@ public class Booking
         classList = new HashSet<>();
         unit = new Unit();
         venue = new Venue();
-        lecture = new User();
-        
+        lecture = new User();   
         time = Time.valueOf("00:00:00");
-        
     }
     
     public Booking(Integer id, Date date, Integer bookingLen, String attendanceCode, Unit unit, Venue venue, User lecture, ClassList classList)
     {
-        this.classList = new HashSet<>();
-        
+        this.classList = new HashSet<>();    
         this.bookingID = id;
         this.date = date;
         this.bookingLength = bookingLen;
@@ -96,7 +93,7 @@ public class Booking
         this.venue = venue;
         this.lecture = lecture;
         this.classList = classList;
-       this.time = Time.valueOf("00:00:00");
+        this.time = Time.valueOf("00:00:00");
     }
 
     Booking(int id, Date date, int bookingLen, String attendanceCode, Unit unit, Venue venue, User user) {
@@ -106,8 +103,7 @@ public class Booking
         this.attendanceCode = attendanceCode;
         this.unit = unit;
         this.venue = venue;
-        this.lecture = user;
-        
+        this.lecture = user;      
         classList = new HashSet<>();
         this.time = Time.valueOf("00:00:00");
     }
@@ -220,11 +216,4 @@ public class Booking
     public Time getTime() {
         return time;
     }
-
-    /*
-    public void generateAttendanceCode()
-    {
-        //TBD
-    }
-*/
 }

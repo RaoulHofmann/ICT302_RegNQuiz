@@ -58,7 +58,6 @@ public class MainController {
             typeRepository.save(t);
         } catch (DataIntegrityViolationException ex) {
             return "Data Integrity Violation Exception" + ex;
-            //throw new DataIntegrityViolationException("Data Integrity Violation Exception");
         }
         return "Saved";
     }
@@ -77,7 +76,6 @@ public class MainController {
             typeRepository.save(t);
         } catch (DataIntegrityViolationException ex) {
             return "Data Integrity Violation Exception" + ex;
-            //throw new DataIntegrityViolationException("Data Integrity Violation Exception");
         }
         return "Saved";
     }
@@ -96,7 +94,6 @@ public class MainController {
             userRepository.save(n);
         } catch (DataIntegrityViolationException ex) {
             return "Data Integrity Violation Exception" + ex;
-            //throw new DataIntegrityViolationException("Data Integrity Violation Exception");
         }
         return "Saved";
     }

@@ -3,7 +3,12 @@ package com.regnquiz.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
-
+/**
+ * Author: Matthew MacLennan
+ * Date: 22/9/2019
+ * Version: 1
+ * Comment: Composite key class for usertype object
+ */
 @Embeddable
 public class UserTypeKey implements Serializable {
 
