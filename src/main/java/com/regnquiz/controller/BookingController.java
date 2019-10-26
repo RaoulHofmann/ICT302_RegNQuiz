@@ -21,6 +21,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ *
+ * @author Raoul Hofmann
+ * @comment Booking and quizes controller
+ */
 @Controller
 @RequestMapping(path="/booking")
 public class BookingController {

@@ -9,6 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.PersistenceContext;
@@ -44,7 +45,7 @@ public class QuestionImport {
     @Autowired
     private MultipleChoiceRepository multipleChoiceRepository;
 
-    @Transactional
+    @Transactional()
     public void ImportQuestion(MultipartFile filename, int bookingID) {
         try { 
             // Open streams and setup xlsx reading
@@ -66,19 +67,28 @@ public class QuestionImport {
                     if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) {
                         question.addMultipleChoice(new MultipleChoice(question, "T"));
                         question.addMultipleChoice(new MultipleChoice(question, "F"));
+                    }else{
+                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(2).getStringCellValue()));
+                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(3).getStringCellValue()));
+                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(4).getStringCellValue()));
+                        question.addMultipleChoice(new MultipleChoice(question, currentRow.getCell(5).getStringCellValue()));
                     }
                     question.addBookingQuestion(new BookingQuestion(bookingRepository.findById(bookingID).get(), question)); // check for duplicate data
-                    Question newq = questionRepository.save(question); // save question to database
+                    Question newq = questionRepository.saveAndFlush(question); // save question to database
 
+                    for (MultipleChoice mc : newq.getMultipleChoice()) {
+                        System.out.println("MULTIPLE CHOICES!!!");
+                        System.out.println(mc.getDescription());
+                        System.out.println(mc.getAnswerID());
+                    }
 
-
-                     if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) { // true/fase questions
+                     /*if (currentRow.getCell(0).getStringCellValue().equals("TrueFalse")) { // true/fase questions
                          if (currentRow.getCell(6).getStringCellValue().equals("T")) {
                              newq.setAnswer(multipleChoiceRepository.findByQuestion_QuestionIDAndDescription(newq.getQID(), "True").getAnswerID());
                          } else if (currentRow.getCell(6).getStringCellValue().equals("F")) {
                              newq.setAnswer(multipleChoiceRepository.findByQuestion_QuestionIDAndDescription(newq.getQID(), "False").getAnswerID());
                          }
-                     }
+                     }*/
                 }
             }
         } catch (IOException e) {

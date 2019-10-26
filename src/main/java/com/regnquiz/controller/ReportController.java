@@ -9,7 +9,6 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import com.regnquiz.model.*;
 import com.regnquiz.model.forms.VenueReportForm;
 import com.regnquiz.model.repositories.*;
-import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
@@ -26,6 +25,12 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+/**
+ *
+ * @author Raoul Hofmann
+ * @comment Everything regarding report views and generation
+ */
 
 @Controller
 @RequestMapping(path="/report")

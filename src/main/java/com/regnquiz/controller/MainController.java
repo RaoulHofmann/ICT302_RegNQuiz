@@ -20,6 +20,12 @@ import javax.validation.Valid;
 import java.io.*;
 import java.util.*;
 
+
+/**
+ *
+ * @author Raoul Hofmann
+ * @comment Main controller for handling login, etc.
+ */
 @Controller
 @RequestMapping(path="/") // This means URL's start with /demo (after Application path)
 public class MainController {

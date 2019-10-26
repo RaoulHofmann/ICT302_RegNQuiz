@@ -44,7 +44,7 @@ public class ClassListRepositoryTest {
          
         classListRepository.save(cl);
 
-        display(classListRepository.findById(329).get());
+        //display(classListRepository.findById(329).get());
         //display(classListRepository.findById(Integer.SIZE).get());
         
         //ClassList[] g = classListRepository.getBookingClass(2);

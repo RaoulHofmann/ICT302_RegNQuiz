@@ -32,7 +32,7 @@ public class SemesterRepoTest
         
         semRepo.save(sem);
         
-        display(semRepo.findById(9).get());
+        //display(semRepo.findById(9).get());
         
         Iterable<Semester> allSems = semRepo.findAll();
         for(Semester s : allSems)

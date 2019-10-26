@@ -16,6 +16,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ *
+ * @author Raoul Hofmann
+ * @comment Config for WebMVC including beans for booking managment
+ */
 @Configuration
 @Component
 @EnableWebMvc
