@@ -10,6 +10,12 @@
 
   </head>
   <body>
+      <header>
+          <div class="header_banner">
+              <img src="/resources/image/QuiztasticLogo.png" alt="logo" />
+              <h1>QuizTastic’s RegNGo</h1><br/>
+          </div>
+      </header>
 	<p class="main">
     <form action="#" name="accessCode" method="get" th:action="@{/booking/attend}" th:object="${accessCode}" >
 	<br/>
@@ -27,5 +33,9 @@
 	</form>
     <input type ="submit"  value="Back" onclick="location.href='/'"/>  <br/> <br/>
     </p>
+      <div class="footer">
+            © Team 9 QuizTastic's  Murdoch University
+
+        </div>
  </body>
 </html>

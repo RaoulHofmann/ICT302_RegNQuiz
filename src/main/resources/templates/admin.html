@@ -10,10 +10,18 @@
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
 </head>
 <body>
-<header>
-    <h1 th:if= "${user.prefName != null}" th:text="'(' + ${user.prefName}  + ')"></h1>
-    <h1 th:text="${user.givenName} + ' ' + ${user.lastName}"></h1>
-</header>
+    <header>
+          <div class="header_banner">
+              <img src="/resources/image/QuiztasticLogo.png" alt="logo" />
+              <h1>QuizTastic’s RegNGo</h1><br/>
+          </div>
+      </header>
+    <div>
+        <header>
+            <h1 th:if= "${user.prefName != null}" th:text="'(' + ${user.prefName}  + ')"></h1>
+            <h1 th:text="${user.givenName} + ' ' + ${user.lastName}"></h1>
+        </header>
+    </div>
 <br/>
 
 <input type ="submit"  value="Report" onclick="location.href='/report/admin'"/>  <br/> <br/>
@@ -42,6 +50,10 @@
 <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
     <input hidden type="submit" value="Sign Out"/>
 </form>
+<div class="footer">
+            © Team 9 QuizTastic's  Murdoch University
+
+        </div>
 </body>
 </html>
 

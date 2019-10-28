@@ -9,6 +9,12 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
+      <header>
+          <div class="header_banner">
+              <img src="/resources/image/QuiztasticLogo.png" alt="logo" />
+              <h1>QuizTastic’s RegNGo</h1><br/>
+          </div>
+      </header>
   <form action="#" th:action="@{/report/csv/adminvenuereport}" th:object="${venueReport}" method="post">
 
     <script th:inline="javascript">
@@ -81,5 +87,9 @@
   </form>
     <br>
     <input type="button"  onclick="location.href='/'" value="Back" >
+        <div class="footer">
+            © Team 9 QuizTastic's  Murdoch University
+
+        </div>
   </body>
 </html>

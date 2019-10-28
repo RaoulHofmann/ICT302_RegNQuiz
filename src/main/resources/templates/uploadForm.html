@@ -1,5 +1,11 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <body>
+<header>       
+        <div class="header_banner">
+            <img src="/resources/image/QuiztasticLogo.png" alt="logo" />
+            <h1>QuizTastic’s RegNGo</h1><br/>          
+        </div>
+    </header>
 
 <div th:if="${message}">
     <h2 th:text="${message}"/>
@@ -21,6 +27,9 @@
         </li>
     </ul>
 </div>
+    <div class="footer">
+        © Team 9 QuizTastic's  Murdoch University
 
+    </div>
 </body>
 </html>

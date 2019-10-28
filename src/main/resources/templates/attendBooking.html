@@ -10,6 +10,12 @@
         <script type="text/javascript" src="/resources/javascript/booking.js"></script>
   </head>
   <body>
+      <header>
+          <div class="header_banner">
+              <img src="/resources/image/QuiztasticLogo.png" alt="logo" />
+              <h1>QuizTastic’s RegNGo</h1><br/>
+          </div>
+      </header>
     <div id="welcome_div">
         <table>
             <thead>
@@ -79,6 +85,10 @@
     <span id="quizfinished" th:fragment="finishedQuiz"><h3 th:text="${finished}"></h3></span>
     <span id="waiting" th:fragment="waitingForChange"></span>
     <input type="button"  onclick="location.href='/'" value="Back" >
+        <div class="footer">
+            © Team 9 QuizTastic's  Murdoch University
+
+        </div>
   </body>
 </html>
 

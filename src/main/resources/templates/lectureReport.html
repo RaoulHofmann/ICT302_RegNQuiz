@@ -8,7 +8,13 @@
      </link>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
-  <body>      
+  <body>  
+      <header>
+          <div class="header_banner">
+              <img src="/resources/image/QuiztasticLogo.png" alt="logo" />
+              <h1>QuizTastic’s RegNGo</h1><br/>
+          </div>
+      </header>
     <script th:inline="javascript">
         function getAttReports() {
             $.ajax({
@@ -22,12 +28,13 @@
             });
         }
     </script>
+    <div id="lectureReport">
     <label>Units:
     <select id="unitSelect" onchange="getAttReports();">
         <option value="" >Select A Unit</option>
         <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitCode}+' '+${unit.unitName}+' '+${unit.semester.description}+' '+${unit.year}" value=""></option>
     </select></label><br/>
-
+    </div>
     <!--<script th:inline="javascript">
         function getQueReports() {
             $.ajax({
@@ -84,5 +91,9 @@
         No Attendance Reviews
       </div>
     <input type="button"  onclick="location.href='/'" value="Back" >
+    <div class="footer">
+        © Team 9 QuizTastic's  Murdoch University
+
+    </div>
   </body>
 </html>

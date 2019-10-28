@@ -10,6 +10,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <header>
+          <div class="header_banner">
+              <img src="/resources/image/QuiztasticLogo.png" alt="logo" />
+              <h1>QuizTastic’s RegNGo</h1><br/>
+          </div>
+      </header>
 <form maction="#" th:action="@{/booking/question/add}" th:object="${questionAdd}" method="post" enctype="multipart/form-data">
     <div id = "questionSelectCondition" >
         <label>Year:
@@ -91,5 +97,9 @@
         <input type ="submit" value="Add"/>
         <input type="button"  onclick="location.href='/'" value="Back" >
 </form>
+    <div class="footer">
+            © Team 9 QuizTastic's  Murdoch University
+
+    </div>
 </body>
 </html>

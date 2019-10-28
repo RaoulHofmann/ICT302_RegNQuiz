@@ -8,10 +8,15 @@
     <script src="/resources/javascript/login.js"></script>
 </head>
 <body>
-<div class="login" id="login_form">
-    <header>
-        <h1>Login </h1>
+    <header>       
+        <div class="header_banner">
+            <img src="/resources/image/QuiztasticLogo.png" alt="logo" />
+            <h1>QuizTastic’s RegNGo</h1><br/>          
+        </div>
     </header>
+<div class="login" id="login_form">
+    
+    <h2>Login </h3>
     <br/>
     <div th:if= "${logout!= null}" class="alert alert-success alert-dismissible" id="logged_out_alert">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -46,7 +51,10 @@
     <br/>
     <!--<input type ="submit" value = "Import .csv File" />-->
 </div>
+    <div class="footer">
+        © Team 9 QuizTastic's  Murdoch University
 
+    </div>
 </body>
 </html>
 

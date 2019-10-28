@@ -12,7 +12,15 @@
     <script type="text/javascript" src="/resources/javascript/booking.js"></script>
 </head>
 <body onload="booking_info();">
+    <header>
+          <div class="header_banner">
+              <img src="/resources/image/QuiztasticLogo.png" alt="logo" />
+              <h1>QuizTastic’s RegNGo</h1><br/>
+          </div>
+      </header>
+    <div>
     <header id="bookingPart">
+    
     <section>
         <th:block th:if= "${booking != null}">
         <h1 th:text="'Attendance Code: '+${booking.attendanceCode}"></h1>
@@ -62,6 +70,7 @@
         <p class="timer" th:if="${timer != null}">Time will end in <span class="js-timeout" id="js-timeout" th:text="${timer}"></span> seconds</p><br/>
     </section>
     </header>
+    </div>
   
     <div id="questions" th:if= "${questions != null}">
         <span th:text="${questions.description}"></span>
@@ -230,6 +239,10 @@
     <input type="button"  onclick="location.href='/booking/'" value="Back" >
     <input type="button" th:if="${booking_id != null}" th:onclick="'location.href=\'/booking/' + ${booking_id} + '/close\''" value="Close Booking" >
     <input type="button" th:if="${booking != null}" th:onclick="'location.href=\'/booking/' + ${booking.bookingID} + '/close\''" value="Close Booking" >
-</body>
+        <div class="footer">
+            © Team 9 QuizTastic's  Murdoch University
+
+        </div>
+ </body>
 </html>
 
