@@ -16,6 +16,7 @@
               <h1>QuizTastic’s RegNGo</h1><br/>
           </div>
       </header>
+    
 <form maction="#" th:action="@{/booking/question/add}" th:object="${questionAdd}" method="post" enctype="multipart/form-data">
     <div id = "questionSelectCondition" >
         <label>Year:
@@ -86,14 +87,18 @@
         </div>
     </div>
         <br>
-        <a href="/resources/file/question_template.xlsx" download>Question Template</a>
-        <br>
-        <br>
-        <label for="fileChooser">File to upload: </label>
-        <input id="fileChooser" type="file" name="file" accept=".xlsx" />
-        <br>
-        <p style="color: green" th:if="${success != null}">Upload Successful</p>
-        <p style="color: red" th:if="${failed != null}">Upload Failed</p>
+            <div id="questionTemplate">
+                <a href="/resources/file/question_template.xlsx" download>Question Template</a>
+                </div>
+                <br/><br/>
+                <div id="fileUpload"
+                <label for="fileChooser">File to upload: </label>
+                <input id="fileChooser" type="file" name="file" accept=".xlsx" />
+            
+                </div>
+                <br/>
+                <p style="color: green" th:if="${success != null}">Upload Successful</p>
+                <p style="color: red" th:if="${failed != null}">Upload Failed</p>
         <input type ="submit" value="Add"/>
         <input type="button"  onclick="location.href='/'" value="Back" >
 </form>

@@ -16,7 +16,7 @@
               <h1>QuizTastic’s RegNGo</h1><br/>
           </div>
       </header>
-    <div>
+    <div id="superUser">
         <header>
             <h1 th:if= "${user.prefName != null}" th:text="'(' + ${user.prefName}  + ')"></h1>
             <h1 th:text="${user.givenName} + ' ' + ${user.lastName}"></h1>
@@ -24,8 +24,7 @@
     </div>
 <br/>
 
-<input type ="submit"  value="Report" onclick="location.href='/report/admin'"/>  <br/> <br/>
-<div>
+<div id="superForm">
     <form action="#" th:action="@{/admin/{id}/upload(id=${user.userID})}" method="post" enctype="multipart/form-data">
         <label for="fileChooser">File to upload: </label>
         <input id="fileChooser" type="file" name="file" accept=".csv" />
@@ -39,17 +38,21 @@
             <option value="student">Student Import</option>
         </select>
         <br>
-        <input type="submit" value="Upload" />
-        <br>
-        <br>
+        <input type="submit" value="Upload" /> <br/>
+
     </form>
     <p style="color: green" th:if="${success != null}">Upload Successful</p>
     <p style="color: red" th:if="${failed != null}">Upload Failed</p>
 </div>
+<div id="superReportButton">
+<input type ="submit"  value="Report" onclick="location.href='/report/admin'"/>  <br/> <br/>
+</div>
+<div id="superLogout">
 <a href="javascript: document.logoutForm.submit()" role="button" id="logoutButton"> Logout</a>
 <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
     <input hidden type="submit" value="Sign Out"/>
 </form>
+</div>
 <div class="footer">
             © Team 9 QuizTastic's  Murdoch University
 

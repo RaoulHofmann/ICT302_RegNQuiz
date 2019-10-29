@@ -15,6 +15,7 @@
               <h1>QuizTastic’s RegNGo</h1><br/>
           </div>
       </header>
+  <div id="adminReport">
   <form action="#" th:action="@{/report/csv/adminvenuereport}" th:object="${venueReport}" method="post">
 
     <script th:inline="javascript">
@@ -85,6 +86,7 @@
     </div>
     <input type="submit" value="Generate Report">
   </form>
+  </div>
     <br>
     <input type="button"  onclick="location.href='/'" value="Back" >
         <div class="footer">

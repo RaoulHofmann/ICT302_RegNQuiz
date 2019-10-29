@@ -236,9 +236,11 @@
 
     <div id="answerCounter" th:fragment="studentAnswer">
     </div>
+    <div id="buttonOnBooking">
     <input type="button"  onclick="location.href='/booking/'" value="Back" >
     <input type="button" th:if="${booking_id != null}" th:onclick="'location.href=\'/booking/' + ${booking_id} + '/close\''" value="Close Booking" >
     <input type="button" th:if="${booking != null}" th:onclick="'location.href=\'/booking/' + ${booking.bookingID} + '/close\''" value="Close Booking" >
+        </div>
         <div class="footer">
             © Team 9 QuizTastic's  Murdoch University
 

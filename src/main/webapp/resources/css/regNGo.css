@@ -14,6 +14,9 @@ header{
 	 
     text-align: center;
 	 }
+#loginForm{
+    margin-top: 0;
+}
 div#login_form {
     width: 80%;
     background-color: #cfcfae;
@@ -22,6 +25,9 @@ div#login_form {
     margin-top: 13%;
     padding-top: 4%;
     padding-bottom: 4%;
+}
+div#staffMain {
+    margin-top: 20%;
 }
 
 #js-timeout {
@@ -69,7 +75,7 @@ input[type=submit] {
     cursor: pointer;
 }
 input[type=button], #logoutButton {
-    width: 20%;
+    width: 120px;
     background-color: #a3a35f;
     color: black;
     font-weight:bold;
@@ -129,6 +135,10 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     -webkit-appearance: button;
     cursor: pointer;
     margin-top: 2%;
+    
+}
+#buttonOnBooking {
+    margin-bottom: 70px;
 }
 
 #bookingPart section{
@@ -189,3 +199,43 @@ header#bookingPart {
 }#questionSelectCondition{
     margin-top: 25%;
 }
+
+#staffMain {
+    margin-top: 20%;
+}
+
+div#welcome_div {
+    margin-top: 13%;
+}
+div#reports {
+    margin-top: 20%;
+}
+
+#superUser {
+    margin-top: 20%;
+}
+#superForm form{
+    margin-top: 5%;
+    text-align: left;
+    margin-left: 38%;
+}
+#superLogout form{
+    margin-left: 37%;
+
+}
+#superReportButton{
+  
+}
+#questionSelectCondition {
+    text-align: right;
+    margin-right: 30%;
+}
+#questionTemplate{
+    text-align: right;
+    margin-right: 30%; 
+}
+#fileUpload{
+    text-align: right;
+    margin-right: 20%; 
+}
+
