@@ -74,7 +74,7 @@
                     <th:block th:each="multipleChoice : ${multipleChoices}">
                         <tr>
                             <td th:text="${multipleChoice.description}"></td>
-                            <td><input type="checkbox" th:field="*{answerID}" th:value="${multipleChoice.answerID}"/></td>
+                            <td><input type="radio" th:field="*{answerID}" th:value="${multipleChoice.answerID}"/></td>
                         </tr>
                     </th:block>
                 </table>
