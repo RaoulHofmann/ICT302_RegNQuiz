@@ -122,6 +122,8 @@ public class BookingController {
 
     @GetMapping(path = "/{id}/close")
     public String closeBooking(@PathVariable("id") int id, Model model, HttpServletRequest request){
+        LectureRun lectureRun = bookings.get(id);
+        lectureRun.saveLecture();
         bookings.remove(id);
         runningBookings.remove(id);
         closedBookings.add(id);
