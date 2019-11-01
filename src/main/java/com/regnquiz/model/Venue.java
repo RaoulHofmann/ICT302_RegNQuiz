@@ -19,7 +19,7 @@ import java.util.HashSet;
 @Entity // This tells Hibernate to make a table out of this class
 public class Venue {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int venueID;
     private int building;
     private int floor;

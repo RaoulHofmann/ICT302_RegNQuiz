@@ -23,7 +23,7 @@ import java.util.HashSet;
 public class MultipleChoice 
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer answerID;
     private String description; // The description of the answer
 

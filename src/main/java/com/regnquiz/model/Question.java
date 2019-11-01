@@ -20,7 +20,7 @@ import java.util.HashSet;
 public class Question 
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer questionID;
     private String description; // Description of the question itself
     private Integer time; // Time to answer the question

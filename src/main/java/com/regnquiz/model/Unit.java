@@ -23,7 +23,7 @@ import java.util.HashSet;
 public class Unit 
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer unitID;
     
     @Column(name = "code")

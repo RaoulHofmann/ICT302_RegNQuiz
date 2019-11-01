@@ -20,18 +20,14 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.NoSuchElementException;
-import java.util.Set;
 import java.sql.Time;
+import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  *
@@ -90,8 +86,9 @@ public class BookingImport
                 }catch (NoSuchElementException e){
                     System.out.println(e);
                 }
-
-                b.setAttendanceCode(lineSplit[6]);
+                
+                String generatedString = RandomStringUtils.randomAlphanumeric(6);
+                b.setAttendanceCode(generatedString);
                
                 // save booking
                 try

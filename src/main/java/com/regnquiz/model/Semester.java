@@ -19,7 +19,7 @@ import java.util.HashSet;
 @Entity
 public class Semester {
     @Id
-    @GeneratedValue (strategy=GenerationType.AUTO)
+    @GeneratedValue (strategy=GenerationType.IDENTITY)
     private Integer semesterID;
     
     private String description; // Description of the semester for exmaple "S1" or "S2" ect.

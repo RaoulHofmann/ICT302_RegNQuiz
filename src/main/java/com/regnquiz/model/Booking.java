@@ -27,7 +27,7 @@ import java.util.HashSet;
 public class Booking 
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer bookingID;
     
     @Temporal(TemporalType.DATE)

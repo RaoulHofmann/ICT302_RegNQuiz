@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity // This tells Hibernate to make a table out of this class
 public class Type {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer typeID;
 
     private String description;
