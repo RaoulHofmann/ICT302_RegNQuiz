@@ -19,7 +19,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 /**
- * Author: Stuart Hepburn
+ * Author: Stuart Hepburn and Raoul Hofmann
  * Date: 25/9/2019
  * Version: 1
  * Comment: this class will run all the components for the lecture 
