@@ -21,20 +21,18 @@
     <div>
     <header id="bookingPart">
     
-    <section>
+    <section >
         <th:block th:if= "${booking != null}">
         <h1 th:text="'Attendance Code: '+${booking.attendanceCode}"></h1>
         <th:block th:if="${finished == null}">
             <th:block th:if= "${questions == null and availableQ == 1}">
-                <input type="button" onclick="document.startQuestions.submit()" value="Display Question" >
-                <!--<a href="javascript: document.startQuestions.submit()" role="button" class="button" id="startQuestions">Display Question</a>-->
+                <input type="button" onclick="document.startQuestions.submit()" value="Display Question" style="width: 160px;">
                 <form name="startQuestions" th:action="@{/booking/{id}/question(id=${booking.bookingID})}" method="post" th:hidden="true">
                     <input hidden type="submit" value="displayQuestion"/>
                 </form>
             </th:block>
             <th:block th:if= "${questions != null}">
                 <input type="button" onclick="document.nextQuestions.submit()" value="Next Question" >
-                <!--<a href="javascript: document.nextQuestions.submit()" role="button" class="button" id="nextQuestions">Next Question</a>-->
                 <form name="nextQuestions" th:action="@{/booking/{id}/question/{qid}(id=${booking.bookingID}, qid=${questionid})}" method="post" th:hidden="true">
                     <input hidden type="submit" value="nextQuestions"/>
                 </form>

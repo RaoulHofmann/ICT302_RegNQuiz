@@ -5,16 +5,19 @@ body{
     margin-left: 5%
 
 }
-h1 { 
+h1 {
     font-family:"Times New Roman", Times , serif ;
     color: black;
     size: A4;
 	}
-header{	 
-	 
+header{
+
     text-align: center;
 	 }
 #loginForm{
+    margin-top: 0;
+}
+#superForm{
     margin-top: 0;
 }
 div#login_form {
@@ -31,7 +34,7 @@ div#staffMain {
 }
 
 #js-timeout {
-    font-size: 500%; 
+    font-size: 500%;
     color: red;
          }
  .timer{
@@ -42,7 +45,7 @@ div#staffMain {
     font-size: 300%;
     text-align: left;
     margin-left: 60px;
-             
+
          }
 input[type=text], select {
     width: 50%;
@@ -98,7 +101,7 @@ li {
 textarea {
     width: 50%;
     height: 50%;
-    
+
     overflow: scroll;
 }
 
@@ -124,7 +127,7 @@ td, th {
     height: 55px;
 }
 h3:{
-   font-size: 32px; 
+   font-size: 32px;
 }
 button, html input[type=button], input[type=reset], input[type=submit] {
     width: 120px;
@@ -135,14 +138,14 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     -webkit-appearance: button;
     cursor: pointer;
     margin-top: 2%;
-    
+
 }
 #buttonOnBooking {
     margin-bottom: 70px;
 }
 
 #bookingPart section{
-    float: right;
+    float: center;
     width: 50%;
     text-align: right;
 }
@@ -186,10 +189,10 @@ ul{
     color: #364501;
 }
 table#booking_table {
-    margin-top: 20%;
+    margin-top: 0;
 }
 form {
-    margin-top: 20%;
+    margin-top: 0;
 }
 header#bookingPart {
     margin-top: 16%;
@@ -197,7 +200,11 @@ header#bookingPart {
 #lectureReport {
     margin-top: 25%;
 }#questionSelectCondition{
-    margin-top: 25%;
+    margin-top: 15%;
+}
+
+#bookings{
+ margin-top: 15%;
 }
 
 #staffMain {
@@ -212,19 +219,16 @@ div#reports {
 }
 
 #superUser {
-    margin-top: 20%;
+    margin-top: 10%;
+    margin-bottom: 0;
 }
-#superForm form{
-    margin-top: 5%;
-    text-align: left;
-    margin-left: 38%;
-}
+
 #superLogout form{
     margin-left: 37%;
 
 }
-#superReportButton{
-  
+#superBody{
+      margin-top: 0;
 }
 #questionSelectCondition {
     text-align: right;
@@ -232,10 +236,10 @@ div#reports {
 }
 #questionTemplate{
     text-align: right;
-    margin-right: 30%; 
+    margin-right: 30%;
 }
 #fileUpload{
     text-align: right;
-    margin-right: 20%; 
+    margin-right: 20%;
 }
 

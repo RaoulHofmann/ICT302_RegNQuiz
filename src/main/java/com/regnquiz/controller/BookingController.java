@@ -5,6 +5,8 @@ import com.regnquiz.model.forms.*;
 import com.regnquiz.model.imports.QuestionImport;
 import com.regnquiz.model.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -65,6 +67,18 @@ public class BookingController {
     @Autowired
     public void setClosedBookings(List<Integer> closed) {
         this.closedBookings = closed;
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void checkAttendanceCloseBooking() {
+        bookingRepository.findAll().iterator().forEachRemaining(b -> {
+            b.getClassList().iterator().forEachRemaining(bc -> {
+                if(bc.isAttendance()){
+                    closedBookings.add(b.getBookingID());
+                }
+            });
+        });
+
     }
 
     @GetMapping(path = "/")

@@ -17,46 +17,36 @@
           </div>
       </header>
     <div id="superUser">
-        <header>
             <h1 th:if= "${user.prefName != null}" th:text="'(' + ${user.prefName}  + ')"></h1>
             <h1 th:text="${user.givenName} + ' ' + ${user.lastName}"></h1>
-        </header>
     </div>
-<br/>
-
-<div id="superForm">
-    <form action="#" th:action="@{/admin/{id}/upload(id=${user.userID})}" method="post" enctype="multipart/form-data">
-        <label for="fileChooser">File to upload: </label>
-        <input id="fileChooser" type="file" name="file" accept=".csv" />
-        <br>
-        <label for="importType">Import Type</label>
-        <select id="importType" name="importType">
-            <option value="booking">Booking Import</option>
-            <option value="classlist">Classlist Import</option>
-            <option value="unit">Unit Import</option>
-            <option value="staff">Staff Import</option>
-            <option value="student">Student Import</option>
-        </select>
-        <br>
-        <input type="submit" value="Upload" /> <br/>
-
-    </form>
-    <p style="color: green" th:if="${success != null}">Upload Successful</p>
-    <p style="color: red" th:if="${failed != null}">Upload Failed</p>
-</div>
-<div id="superReportButton">
-<input type ="submit"  value="Report" onclick="location.href='/report/admin'"/>  <br/> <br/>
-</div>
-<div id="superLogout">
-<a href="javascript: document.logoutForm.submit()" role="button" id="logoutButton"> Logout</a>
-<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-    <input hidden type="submit" value="Sign Out"/>
-</form>
-</div>
-<div class="footer">
+    <div id="superBody">
+        <p style="color: green" th:if="${success != null}">Upload Successful</p>
+        <p style="color: red" th:if="${failed != null}">Upload Failed</p>
+        <form action="#" th:action="@{/admin/{id}/upload(id=${user.userID})}" method="post" enctype="multipart/form-data" id="superForm">
+            <label for="fileChooser">File to upload: </label><br>
+            <input id="fileChooser" type="file" name="file" accept=".csv" />
+            <br><br>
+            <label for="importType">Import Type</label><br>
+            <select id="importType" name="importType">
+                <option value="booking">Booking Import</option>
+                <option value="classlist">Classlist Import</option>
+                <option value="unit">Unit Import</option>
+                <option value="staff">Staff Import</option>
+                <option value="student">Student Import</option>
+            </select>
+            <br>
+            <input type="submit" value="Upload" />
+        </form>
+        <input type="submit"  value="Report" onclick="location.href='/report/admin'"/>  <br/> <br/>
+        <a href="javascript: document.logoutForm.submit()" role="button" id="logoutButton"> Logout</a>
+        <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+            <input hidden type="submit" value="Sign Out"/>
+        </form>
+    </div>
+    <div class="footer">
             © Team 9 QuizTastic's  Murdoch University
-
-        </div>
+    </div>
 </body>
 </html>
 
