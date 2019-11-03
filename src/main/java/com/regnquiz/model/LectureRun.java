@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.Set;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 
@@ -19,7 +21,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 /**
- * Author: Stuart Hepburn
+ * Author: Stuart Hepburn and Raoul Hofmann
  * Date: 25/9/2019
  * Version: 1
  * Comment: this class will run all the components for the lecture 
@@ -234,4 +236,58 @@ public class LectureRun {
     public boolean getTimeout(){
         return this.timeout;
     }
+    
+    @Transactional
+    public void autoAttendance()
+    {
+        //System.out.println("############################# " );
+        //System.out.println("############################# " );
+        //System.out.println("############################# " );
+        
+        for(ClassList c: cl)
+        {
+            //Random rand = new Random();
+            //if(c.getStudent().getUserID()!=4){
+                if(c.isAttendance()==false)
+                {
+                    setAttendance(c.getStudent().getUserID());
+                    //System.out.println("############################# " + c.getStudent().getUserID());
+
+                }
+            //}
+            
+        } 
+    }
+    
+    @Transactional
+    public void autoStudentAnswer()
+    {
+        //System.out.println("############################# " );
+       // System.out.println("############################# " );
+        //System.out.println("############################# " );
+        Set<MultipleChoice> ms = bq.get(activeQuestion).getQuestion().getMultipleChoice();
+        int cnt = ms.size();
+        int answer;
+        Random rand = new Random();
+        
+        for(ClassList c: cl)
+        {
+           answer = rand.nextInt(cnt);
+           int i = 1;
+           //if(c.getStudent().getUserID()!=4){
+            for(MultipleChoice m:ms)
+            {
+                if(i==answer)
+                {
+                    setStudentAnswer(m.getAnswerID(),c.getStudent().getUserID());
+                }
+                i++; 
+            }
+          //}
+        }
+        
+       // studentAnswerRepository.saveAll(sa);
+ 
+    }
+    
 }

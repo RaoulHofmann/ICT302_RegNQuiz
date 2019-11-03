@@ -26,7 +26,7 @@ public class LectureRunTest {
     @Test
     public void Start()
     {
-        lr.OpenLecture(3);
+        lr.OpenLecture(2);
         
         System.out.println();
         System.out.println();
@@ -36,6 +36,12 @@ public class LectureRunTest {
         
         
         lr.setAttendance(5);
+        lr.autoAttendance();
+        lr.startQuestion();
+        lr.autoStudentAnswer();
+        lr.nextQuestion();
+        lr.autoStudentAnswer();
+        
         
         lr.saveLecture();
         
