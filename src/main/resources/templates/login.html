@@ -14,47 +14,32 @@
             <h1>QuizTastic’s RegNGo</h1><br/>          
         </div>
     </header>
-<div class="login" id="login_form">
-    
-    <h2>Login </h3>
-    <br/>
-    <div th:if= "${logout!= null}" class="alert alert-success alert-dismissible" id="logged_out_alert">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <span>
+    <div class="login" id="login_form">
+        <h2>Login </h2>
+        <span th:if= "${logout!= null}" id="logged_out_alert" style="color:green">
                 <p>Logged Out</p>
-            </span>
-    </div>
-
-    <div th:if= "${logout_err != null}" class="alert alert-danger alert-dismissible" id="logged_out_danger">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <span>
+        </span>
+        <span th:if= "${logout_err != null}" id="logged_out_danger" style="color:red">
                 <p>Error Logging out!!!</p>
-            </span>
-    </div>
-
-    <div th:if= "${error != null}" class="alert alert-danger alert-dismissible" id="log_in_error">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <span>
+        </span>
+        <span th:if= "${error != null}" id="log_in_error" style="color:red">
                 <p>Error Logging in!!!</p>
             </span>
+        <div>
+            <form action="#" th:action="@{/login}" th:object="${login}" method="post" id="loginForm">
+                <label for="userID">UserName</label><br />
+                <input type="text" name="userID" id="userID" onblur = "checkName()" placeholder="User ID"/>
+                <br />
+                <label for="password">Password</label><br />
+                <input type="text" name="password" id="password" onblur = "checkPassword()"  placeholder="Password"/>
+                <br />
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        <!--<input type ="submit" value = "Import .csv File" />-->
     </div>
-    <div id="loginForm">
-    <form action="#" th:action="@{/login}" th:object="${login}" method="post" >
-        <label for="userID">UserName</label>
-        <input type="text" name="userID" id="userID" onblur = "checkName()" placeholder="User ID"/>
-        <br />
-        <label for="password">Password</label>
-        <input type="text" name="password" id="password" onblur = "checkPassword()"  placeholder="Password"/>
-        <br />
-        <input type="submit" value="Login">
-    </form>
-    <br/>
-    </div>
-    <!--<input type ="submit" value = "Import .csv File" />-->
-</div>
     <div class="footer">
         © Team 9 QuizTastic's  Murdoch University
-
     </div>
 </body>
 </html>

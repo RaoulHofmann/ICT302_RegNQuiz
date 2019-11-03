@@ -17,10 +17,8 @@
           </div>
       </header>
       <div id="staffMain">
-          <header>
-              <h1 th:if= "${user.prefName != null}" th:text="'(' + ${user.prefName}  + ')"></h1>
-              <h1 th:text="${user.givenName} + ' ' + ${user.lastName}"></h1>
-          </header>
+          <h1 th:if= "${user.prefName != null}" th:text="'(' + ${user.prefName}  + ')"></h1>
+          <h1 th:text="${user.givenName} + ' ' + ${user.lastName}"></h1>
       </div>
     <br/>
 
