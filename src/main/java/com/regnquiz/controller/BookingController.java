@@ -116,6 +116,7 @@ public class BookingController {
     public String startBooking(@PathVariable("id") int id, Model model, HttpServletRequest request) {
         if(!closedBookings.contains(id)) {
             lectureRun.OpenLecture(id);
+            lectureRun.autoAttendance();
             bookings.put(id, lectureRun);
             runningBookings.put(lectureRun.getAccessCode(), id);
             if (bookings.get(id).getQuizFinished()) {
@@ -149,6 +150,7 @@ public class BookingController {
     public String startQuestions(@PathVariable("id") int id, Model model, HttpServletRequest request){
         LectureRun lectureRun = bookings.get(id);
         lectureRun.startQuestion();
+        lectureRun.autoStudentAnswer();
         model.addAttribute("booking", lectureRun.getBooking());
         model.addAttribute("questions", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion());
         model.addAttribute("multipleChoices", lectureRun.getMultipleChoice());
@@ -163,6 +165,7 @@ public class BookingController {
             LectureRun lectureRun = bookings.get(id);
             if (lectureRun.getActiveQuestion() < lectureRun.getBookingQuestions().size() - 1) {
                 lectureRun.nextQuestion();
+                lectureRun.autoStudentAnswer();
                 model.addAttribute("booking", lectureRun.getBooking());
                 model.addAttribute("questions", lectureRun.getBookingQuestions().get(lectureRun.getActiveQuestion()).getQuestion());
                 model.addAttribute("multipleChoices", lectureRun.getMultipleChoice());
@@ -237,6 +240,7 @@ public class BookingController {
             return bookings.get(bookingID).getAttendanceCount();
         }catch (NullPointerException e){
             return -1;
+
         }
     }
 

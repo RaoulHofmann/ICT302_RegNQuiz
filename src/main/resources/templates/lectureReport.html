@@ -29,30 +29,14 @@
         }
     </script>
     <div id="lectureReport">
-    <label>Units:
+        <input type="button"  onclick="location.href='/'" value="Back" ><br/>
+
+        <label>Units:
     <select id="unitSelect" onchange="getAttReports();">
         <option value="" >Select A Unit</option>
         <option th:each="unit : ${units}" th:value="${unit.unitID}" th:text="${unit.unitCode}+' '+${unit.unitName}+' '+${unit.semester.description}+' '+${unit.year}" value=""></option>
     </select></label><br/>
     </div>
-    <!--<script th:inline="javascript">
-        function getQueReports() {
-            $.ajax({
-                type: "POST",
-                url : '/report/getquereport',
-                data: { bookingID: $("#bookingSelect option:selected").val() },
-                success: function (data) {
-                    $('#questionReview').html(data);
-                }
-            });
-        }
-    </script>
-    <label for="bookingSelect">Bookings:</label>
-        <select id="bookingSelect" onchange="getQueReports();" th:if="${bookings != null}">
-            <option value="" >Select A Booking</option>
-            <option th:each="booking : ${bookings}" th:value="${booking.bookingID}" th:text="${booking.date}+' '+${booking.time}+' '+${booking.venue.building}+'.'+${booking.venue.floor}+'.'+${booking.venue.room}" value=""></option>
-        </select><br/>
-        <br/>-->
     <div id="reports" th:fragment="attendanceReport" style="margin: auto;">
         <div id="attendanceReview" style="width:600px; display:inline;">
             <table>
@@ -90,7 +74,6 @@
       <div th:if="${empty != null}">
         No Attendance Reviews
       </div>
-    <input type="button"  onclick="location.href='/'" value="Back" >
     <div class="footer">
         © Team 9 QuizTastic's  Murdoch University
 
