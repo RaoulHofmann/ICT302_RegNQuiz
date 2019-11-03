@@ -247,14 +247,14 @@ public class LectureRun {
         for(ClassList c: cl)
         {
             //Random rand = new Random();
-            //if(c.getStudent().getUserID()!=4){
+            if(c.getStudent().getUserID()!=4){
                 if(c.isAttendance()==false)
                 {
                     setAttendance(c.getStudent().getUserID());
                     //System.out.println("############################# " + c.getStudent().getUserID());
 
                 }
-            //}
+            }
             
         } 
     }
@@ -274,7 +274,7 @@ public class LectureRun {
         {
            answer = rand.nextInt(cnt);
            int i = 1;
-           //if(c.getStudent().getUserID()!=4){
+           if(c.getStudent().getUserID()!=4){
             for(MultipleChoice m:ms)
             {
                 if(i==answer)
@@ -284,7 +284,7 @@ public class LectureRun {
                 }
                 i++; 
             }
-          //}
+          }
         }
         
        // studentAnswerRepository.saveAll(sa);
