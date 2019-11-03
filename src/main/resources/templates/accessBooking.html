@@ -17,7 +17,7 @@
           </div>
       </header>
 	<p class="main">
-    <form action="#" name="accessCode" method="get" th:action="@{/booking/attend}" th:object="${accessCode}" >
+    <form action="#" name="accessCode" method="get" th:action="@{/booking/attend}" th:object="${accessCode}" id="accessBooking">
 	<br/>
         <div th:if= "${nobooking != null}" class="alert alert-success alert-dismissible" id="nobooking">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

@@ -280,6 +280,7 @@ public class LectureRun {
                 if(i==answer)
                 {
                     setStudentAnswer(m.getAnswerID(),c.getStudent().getUserID());
+                    setQuestionAnswerCounter(m.getAnswerID());
                 }
                 i++; 
             }

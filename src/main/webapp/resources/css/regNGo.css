@@ -223,6 +223,16 @@ div#reports {
     margin-bottom: 0;
 }
 
+#answerReview{
+    margin-top: 15%;
+    margin-bottom: 0;
+}
+
+#accessBooking{
+    margin-top: 15%;
+    margin-bottom: 0;
+}
+
 #superLogout form{
     margin-left: 37%;
 
